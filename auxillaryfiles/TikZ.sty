@@ -1,0 +1,185 @@
+\usepackage{pgf}								% Grafici 2D/3D
+\usepackage{pgfkeys}							% Opzioni di controllo per il pacchetto precedente
+\usepackage{pgfmath}							% Opzioni per il pacchetto PGF
+\usepackage{pgfplots}							% Grafici 2D/3D per il pacchetto PGF
+\usepackage{tikz}								% Grafici 2D/3D
+\usepackage{tikz-3dplot}							% Grafici 3D
+\usepackage{tkz-base}							% Grafici 2D
+\usepackage{tkz-fct}								% Strumenti per grafici 2D
+
+\usetikzlibrary{positioning, arrows, 3d, calc, cd, patterns, plotmarks, spy, intersections}
+
+\pgfplotsset{compat=newest, trig format=deg}			% Per impostare gli angoli in radianti come default sostituire 'deg' con 'rad'
+\usepgflibrary{shadings}
+\usepgfplotslibrary{colorbrewer, colormaps, fillbetween, patchplots, polar}
+
+%%%%% 									PGF Assi cartesiani (IMPOSTAZIONI GLOBALI)
+\pgfplotsset{every axis/.append style={tick style={thin}}}
+\pgfplotsset{
+	every axis/.append style={
+		% Vista
+			%unit vector ratio*=1 1 1,
+			axis on top,
+			xmin=0,
+			ymin=0,
+			view={115}{15},
+			plot box ratio=1 1 1,
+			axis lines= middle,   
+			enlarge x limits={abs=15pt},
+			enlarge y limits={abs=15pt},
+			enlarge z limits={abs=0pt},
+		%Rette
+			x axis line style={-stealth},      
+			y axis line style={-stealth},
+			z axis line style={-stealth},
+		%Tick
+			xtick align=center,
+			xtick distance=1,
+			xtick style=thin,
+			xtick=\empty,
+			xticklabels={},
+			ytick align=center,
+			ytick distance=1,
+			ytick style=thin,
+			ytick=\empty,
+			yticklabels={},
+			ztick align=center,
+			ztick distance=,
+			ztick=\empty,
+			ztick style=thin,
+			tick style=black,
+		%Label
+			ticklabel style={font=\tiny, black},
+			xlabel =  {\scriptsize $x$},
+			xlabel style={anchor=north west},
+			ylabel = {\scriptsize $y$},
+			ylabel style={anchor=south west},
+			zlabel = {\scriptsize $z$},
+			zlabel style={anchor=east}}}
+%%%%%										PGF Assi polari (IMPOSTAZIONI GLOBALI)
+\makeatletter
+	\def\axispolar{\@ifnextchar[\axispolar@i \axispolar@ii}
+	\def\axispolar@i[#1]{\polaraxis[
+			%unit vector ratio*=1 1 1,
+			axis on top,
+			plot box ratio=1 1 1,
+			%axis equal,
+			axis x line=bottom,	
+			axis y line=middle,
+			axis z line=none,
+			enlarge x limits={0},
+			enlarge y limits={.075},
+		%Rette
+			x axis line style={thin, help lines, -stealth},      
+			y axis line style={thin, help lines, -stealth},
+		%Tick
+			xtick align=center,
+			xtick distance=1,
+			xtick style=thin, 
+			xtick=\empty,
+			ytick align=center,
+			ytick distance=1,
+			ytick style=thin,
+			ytick=\empty,
+			tick style=black,
+		%Label
+			ticklabel style={font=\scriptsize, black},
+			xlabel =  {\scriptsize $\theta$},
+			xlabel style={anchor=near ticklabel},
+			ylabel = {\scriptsize $\rho$},
+		%Per nascondere tick scomodi
+			xtickmin = 0.00001,
+			extra y ticks = {1}, 
+			yticklabel = {\color{white}.},
+			#1]
+			\begingroup}
+				\def\axispolar@ii{ \begingroup\polaraxis}
+				\def\endaxispolar{\endpolaraxis
+			\endgroup}
+\makeatother
+
+%%%%% 									Impostazioni globali PLOTS
+\pgfplotsset{every axis plot/.append style={mark=none}}
+
+%%%%%										Impostazioni globali MARKERS DEI PUNTI
+\tikzset{every mark/.append style={mark=*,
+			mark size=2.75pt,
+			scale=1,
+			mark options={color=black},}}
+
+%%%%%										Impostazioni globali PIN
+\tikzset{every pin/.style={shade,
+			left color=yellow!50,
+			right color=yellow!10,
+			rectangle,
+			rounded corners=6pt,
+			font=\tiny}}
+
+%%%%%										Impostazioni globali SEGMENTI, LINEE
+\pgfplotsset{every axis/.append style={line width=.8pt,
+			solid,
+			tick style={ultra thick}}}
+
+%%%%% 									Impostazioni globali FONT LABEL
+\pgfplotsset{tick label style={font=\scriptsize},
+			label style={font=\scriptsize},
+			legend style={font=\scriptsize}}
+
+%%%%% 									Impostazioni globali MAJOR GRID
+\pgfplotsset{every major grid/.style={help lines,
+			gray,
+			very thin}}
+
+%%%%% 									Impostazioni globali TITOLI PGF FIGURES
+\pgfplotsset{every axis title/.append style={at={(0.5,1)},
+			font=\bf, black}}	
+
+%%%%% 									Impostazioni globali LEGENDE
+\pgfplotsset{every axis legend/.append style={shade,
+			left color=yellow!50,
+			right color=yellow!10,
+			draw=none,
+			cells={anchor=west},
+			inner xsep=2pt,
+			inner ysep=4pt,
+			nodes={inner sep=2.5pt},
+			anchor=north east,
+			at={(1.25,1.025)}}}
+
+%%%%% 									Impostazioni globali COLORBAR
+\pgfplotsset{colorbar style={
+					at={(parent axis.right of north east)},
+					anchor=north west,
+					width=.5cm,
+					axis x line = none,
+					axis equal= false,
+					ytick=\empty,},
+			colorbar shift/.style={xshift=1cm}}
+
+%%%%% 									Impostazioni globali LEGENDA A BARRE
+\pgfplotsset{/pgfplots/xbar legend/.style={
+			/pgfplots/legend image code/.code={
+					\draw [##1,/tikz/.cd,bar width=2.5pt, yshift=-.15em, bar shift=0pt]
+					plot coordinates {(0cm,.75em) (2*\pgfplotbarwidth,.5em)};},},
+			/pgfplots/ybar legend/.style={
+					/pgfplots/legend image code/.code={
+						\draw [##1,/tikz/.cd,bar width=2.5pt, yshift=-.15em, bar shift=0pt]
+							plot coordinates {(0cm,.75em) (2*\pgfplotbarwidth,.5em)};},},
+			/pgfplots/xbar interval legend/.style={
+					/pgfplots/legend image code/.code={
+						\draw [##1,/tikz/.cd,bar width=2.5pt,yshift=-.15em, bar shift=0pt]
+							plot coordinates {(0cm,.75em) (2*\pgfplotbarwidth,.5em)};},},
+			/pgfplots/ybar interval legend/.style=
+					/pgfplots/legend image code/.code={
+						\draw [##1,/tikz/.cd,bar width=2.5pt, yshift=-.15em, bar shift=0pt]
+							plot coordinates {(0cm,.75em) (2*\pgfplotbarwidth,.5em)};},}
+
+%%%%%%%%%%								IMPOSTAZIONI TKZ
+%%%%%%%%%%
+\usepackage{tkz-euclide}
+	\tkzSetUpPoint[size=2.75pt, color=black, fill=black, shape=circle, opacity=1]
+	\tkzSetUpLine[line width=.8pt, color=black, style=solid]
+	\tkzSetUpCompass[color=black, line width=.8pt, style=solid]
+	\tkzSetUpArc[color=black, line width=.8pt, style=solid]
+	\tkzSetUpColors[background=white, text=black]
+	\tkzSetUpLabel[font=\scriptsize]

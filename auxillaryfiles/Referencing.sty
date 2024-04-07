@@ -1,0 +1,18 @@
+%%%%%%%%%%									Collegamenti ipertestuali
+%%%%%%%%%%
+\RequirePackage[breaklinks, colorlinks=true, hypertexnames=true, linktoc=all]{hyperref}
+
+	%%%%%%%%%% Colori dei link ipertestuali
+	\hypersetup{colorlinks, %I colori sono per il pdf, per la stampa impostare 'black' per tutti i colori
+			urlcolor={Url},  % default='Url'
+			citecolor={Cite}, % default='Cite'
+			linkcolor={Link}} % default='Link'
+
+%%%%%%%%%% Impostazioni indice analitico
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{imakeidx}
+\indexsetup{othercode=\small}
+\makeindex[program=makeindex, columns=2, intoc=false]
+
+%%% Miglior referencing
+\pagenumbering{none}

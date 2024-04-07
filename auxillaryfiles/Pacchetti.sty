@@ -1,0 +1,45 @@
+%%%%%		Di fianco a ogni pacchetto c'è una breve descrizione riadattata da quella in ctan.org: questi pacchetti sono più o meno opzionali e possono essere rimossi se non sono utilizzati, ma in questo caso probabilmente
+%%%%%		il compilatore darebbe alcuni errori legati al fatto che essi sono utilizzati per definire alcuni stili del documento o alcune funzioni qui sotto. Per una analisi completa dei pacchetti consultare i manuali su ctan.org
+
+\usepackage[skins, breakable]{tcolorbox}			% Creazione di box, ad esempio per i teoremi
+
+\usepackage[unboxed]{cwpuzzle}				% Puzzle
+
+\usepackage{
+adjustbox,									% Typesetting di box
+%afterpage,								% Gestione comandi da una pagina in poi
+amsmath,									% Typesetting in ambiente matematico
+amssymb,									% Simboli in ambiente matematico
+amsthm,									% Typesetting teoremi
+accents,									% Lettere accentate
+booktabs,									% Tabelle
+%changepage,								% Gestione pagine (pari/dispari, ...)
+duckuments,								% Testo riempitivo
+%etoolbox,								% Modifica comandi a livello kernel
+dirtytalk,									% Migliore aspetto delle virgolette " "
+enumitem,									% Layout ambienti itemize/enumerate/description
+%graphicx,								% Opzioni grafiche (e.g. rotatebox)
+lipsum,									% Testo riempitivo
+lmodern,									% Gestione dei fontsize
+longtable,									% Creazione di tabelle a cavallo su più pagine
+makeidx,									% Creazione dell'indice analitico
+mathrsfs,									% Caratteri in ambiente matematico (e.g. \mathscr)
+nicefrac,									% Miglioramento aspetto frazioni
+polynom,									% Typesetting di polinomi (Euclide, Ruffini, ...)
+polynomial,								% Typesetting di polinomi
+%setspace,								% Miglioramento gestione degli spazi nel testo
+%scalerel,									% Scaling di simboli
+%scrextend,								% Operatori logici
+%subfig,									% Gestione delle figure
+%verbatim,								% Stile di scrittura
+wrapfig,									% Gestione di figure flottanti
+xcolor,									% Colori
+%youngtab,								% Tableaux di Ferrers e di Young
+}
+
+%%%%% Strumenti in ambiente matematico
+\RequirePackage[fixamsmath, disallowspaces]{mathtools}	
+	\mathtoolsset{showonlyrefs, showmanualtags}
+
+%%%%% Gestione di box
+\input{insbox}

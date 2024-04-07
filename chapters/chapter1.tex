@@ -1,0 +1,97 @@
+\chapter{Environments}
+\section{Teoremi, dimostrazioni, proposizioni, lemmi, corollari}
+	\begin{verbatim}
+		\begin{The}		\lipsum[1]		\end{The}
+	\end{verbatim}
+\begin{The}		\lipsum[1]		\end{The}
+
+	\begin{verbatim}
+		\begin{Proof}		\lipsum[1]		\end{Proof}
+	\end{verbatim}
+\begin{Proof}	\lipsum[2]		\end{Proof}
+
+\begin{verbatim}
+	\begin{Pro}		\lipsum[1]		\end{Pro}
+\end{verbatim}
+\begin{Pro}		\lipsum[3] 		\end{Pro}
+
+\begin{verbatim}
+	\begin{Le}		\lipsum[1]		\end{Le}
+\end{verbatim}
+\begin{Le}			\lipsum[5]		\end{Le}
+
+\begin{verbatim}
+	\begin{Co}		\lipsum[1]		\end{Co}
+\end{verbatim}
+\begin{Co}		\lipsum[6]		\end{Co}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Definizioni, esempi, osservazioni}
+\begin{verbatim}
+	\begin{De}		\lipsum[1]		\end{De}
+\end{verbatim}
+\begin{De}		\lipsum[7]		\end{De}
+
+\begin{verbatim}
+	\begin{Exa}		\lipsum[1]		\end{Exa}
+\end{verbatim}\begin{Exa}\lipsum[8] \end{Exa}
+
+\begin{verbatim}
+	\begin{Oss}		\lipsum[1]		\end{Oss}
+\end{verbatim}
+\begin{Oss}\lipsum \end{Oss}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Description, itemize, enumerate}
+\paragraph*{} \underline{Description}
+\begin{verbatim}
+	\begin{description}		\item[Oggetto 1] Prova \item[Oggetto 2] Prova		\end{description}
+\end{verbatim}
+\begin{description}
+	\item[Oggetto 1] Prova 
+	\item[Oggetto 2] Prova 
+\end{description}
+
+\begin{verbatim}
+	\begin{itemize}		\item Prova \item Prova \item Prova		\end{itemize}
+\end{verbatim}
+\paragraph*{} \underline{Itemize}
+\begin{itemize}
+	\item Prova 
+	\item Prova
+	\item \lipsum[9]
+\end{itemize}
+
+\begin{verbatim}
+	\begin{enumerate}		\item Prova \item Prova		\end{enumerate}
+\end{verbatim}
+\paragraph*{} \underline{Enumerate}
+\begin{enumerate}
+	\item Prova
+	\item Prova
+\end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Note a margine}
+	\lipsum[1]
+	\note{Nota a margine: può essere utile come segnaposto per definizioni, teoremi... Si usa col comando \text{$\setminus$note\{\#1\}}}
+	\lipsum[1]
+	\lipsum[1]
+		\expl{Ho impostato una versione con un colore diverso per spiegare passaggi nelle dimostrazioni. Si usa col comando \text{$\setminus$expl\{\#1\}}}
+	\lipsum[1]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Collegamenti ipertestuali, citazioni, indici, url}
+	\paragraph*{} Un collegamento ipertestuale si realizza con
+\begin{verbatim}\label{Label}\end{verbatim}		
+e si richiama con
+ \begin{verbatim}\ref{LabelTesto}\end{verbatim}
+ Risultato: \label{LabelTesto}\ref{LabelTesto}
+
+\paragraph*{} Una citazione a un libro in bibliografia si realizza con
+\begin{verbatim}\cite{LabelLibro}\end{verbatim}
+	Risultato: \cite{Label}
+
+\paragraph*{} Si inserisce un nuovo elemento nell'indice analitico con i comandi
+\begin{verbatim}\index{Index}\end{verbatim}
+\begin{verbatim}\index{Index!SecondaVoce}\end{verbatim}
+Per il risultato di questi comandi vedere l'indice analitico a fine documento. \index{Index}\index{Index!SecondaVoce}
+\paragraph*{} Per mettere un link si può usare
+\begin{verbatim}\url{https://poisson.phc.dm.unipi.it/~puddu}\end{verbatim}
+Risultato: \url{https://poisson.phc.dm.unipi.it/~puddu}

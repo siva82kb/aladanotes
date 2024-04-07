@@ -1,0 +1,146 @@
+\geometry{
+	%%%%% Pagina
+	a4paper,
+	top=2.5cm,
+	bottom=3cm,
+	marginparsep=.2cm,
+	marginparwidth=1.95cm,
+	voffset=0pt,
+	hoffset=0pt,
+	%%%%% Margini
+	left=72pt,
+	right=72pt,
+	%%%%% Contenuto
+	textwidth=13cm,
+	textheight=180mm,
+	headheight=21pt,
+	%%%%% Header e footer
+	headsep=10pt,
+	footskip=20pt,
+	footnotesep=10pt,
+}
+
+%%%%%%%%%% Nome Dimostrazione
+	\renewcommand{\proofname}{Dimostrazione}
+%%%%%%%%%% Nome Bibliografia
+	\addto{\captionsitalian}{\renewcommand{\bibname}{}}
+%%%%%%%%%% Nome Parti
+	\addto\captionsitalian{\renewcommand{\partname}{}}
+	\renewcommand{\thepart}{}
+%%%%%%%%%% Nome Capitoli
+	\renewcommand{\chaptername}{Capitolo}
+%%%%%%%%%% No numeri di pagina nelle prime pagine dei capitoli
+	\makeatletter
+		\let\ps@plain\ps@empty
+	\makeatother
+%%%%%%%%%% Pagina pari bianca alla fine di ogni capitolo	
+\makeatletter
+	\def\cleardoublepage{\clearpage \ifodd\c@page\else
+  	\vspace*{\fill}
+  	\pagestyle{plain}
+ 	\newpage
+	\pagestyle{fancymain}
+	\fi}
+\makeatother
+%%%%%%%%%% Caption delle figure
+\usepackage{caption}
+\captionsetup{
+	format=hang,
+	indention=0cm,
+	labelformat= simple,		% oppure 'empty'
+	labelsep=period,		% oppure 'none', 'colon', 'space'
+	labelfont=bf,
+	width=.5\textwidth,
+	skip=10pt}
+%%%%%%%%%% Wrapfigure
+\BeforeBeginEnvironment{wrapfigure}{\setlength{\intextsep}{0pt}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%															TOC
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Nascondere dall'indice
+\newcounter{Counter2}
+\newcommand{\hidefromtoc}{\setcounter{Counter2}{\value{tocdepth}}
+	\addtocontents{toc}{\protect\setcounter{tocdepth}{-10}}}
+\newcommand{\unhidefromtoc}{\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}}
+\contentsmargin{0cm}
+	% Parti di documento
+\titlecontents{part}[2.5pc]
+{\addvspace{10pt}}
+{}
+{\LARGE\bfseries}
+{\color{black}\dotfill\;\;\Large\bfseries Pagina \thecontentspage}
+	% Capitoli
+\titlecontents{chapter}[2.5pc]
+{\addvspace{15pt}}
+{\begin{tikzpicture}
+		\pgftext{\LArge\bfseries\bfseries\color{black}\hspace{-1cm} Capitolo\ \thecontentslabel{\color{white}.}\hspace{.5cm} }
+	\end{tikzpicture}\Large }
+{}
+{\color{black}\titlerule\; \;\Large\bfseries Pagina \thecontentspage}
+	% Sezioni
+\titlecontents{section}[8 pc]
+{\addvspace{1pt}}
+{\contentslabel[\small\bfseries\thecontentslabel]{2pc}}
+{}
+{\dotfill\small \thecontentspage}
+[]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%															FORMATO TITOLI PARTI, CAPITOLI, SEZIONI, ...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[sf,sl,outermarks]{titlesec}		% Typesetting capitoli/sezioni/...
+	% Sezioni
+\titleformat{\section}{\normalfont\sffamily\FontSec\bfseries}{\thesection}{.5em}{\ul}
+\titlespacing*{\section}{0pt}{1.5\baselineskip}{.5\baselineskip}
+	% Sottosezioni
+\titleformat{\subsection}{\normalfont\sffamily\FontSubsec\bfseries}{\thesubsection}{.5em}{\ul}
+\titlespacing*{\subsection}{0pt}{1\baselineskip}{0.5\baselineskip}
+	% Sottosottosezioni
+\titleformat{\subsubsection}{\normalfont\sffamily\FontSubsubsec\bfseries}{}{.5em}{\ul}
+\titlespacing*{\subsubsection}{0pt}{1\baselineskip}{0.5\baselineskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%															STILE DI PAGINA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%% Frontmatter style
+\fancypagestyle{fancyfront}{
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0.25pt}
+	\pagenumbering{Roman}
+	\fancyhead[L,R]{}
+	\fancyfoot[C]{\small\thepage}
+	\fancyfoot[LO,RE]{}
+	\fancyfoot[LE,RO]{}}
+%%%%%%%% Mainmatter style
+\fancypagestyle{fancymain}{
+\renewcommand{\headrulewidth}{0.25pt}
+	\fancyhead[LE, RO]{\small\parbox{.45\textwidth}{\centering \bfseries\nouppercase{\leftmark}}\vspace{.065cm}}
+	\fancyhead[LO, RE]{\small\parbox{.45\textwidth}{\centering\nouppercase{\rightmark}}\vspace{.065cm}}
+	\fancyfoot[LE,RO]{\small\thepage}
+	\fancyfoot[C]{}
+	\fancyfoot[LO,RE]{\small mattiapuddu@icloud.com}}
+%%%%%%%% Appendice style
+\fancypagestyle{fancyapp}{
+	\renewcommand{\headrulewidth}{0.25pt}
+	\fancyhead[LE, RO]{\small\parbox{.45\textwidth}{\centering \bfseries\nouppercase{\leftmark}}}
+	\fancyhead[LO, RE]{\small\parbox{.45\textwidth}{\centering\nouppercase{\rightmark}}} 
+	\fancyfoot[LE,RO]{\small\thepage}
+	\fancyfoot[C]{}
+	\fancyfoot[LO,RE]{\small mattiapuddu@icloud.com}}
+%%%%%%%%% Bibliografia style
+\fancypagestyle{fancyBibliografia}{
+	\renewcommand{\headrulewidth}{0.25pt}
+	\renewcommand{\footrulewidth}{0.25pt}
+	\fancyfoot[LE,RO]{}
+	\fancyhead[LO,RE]{\bf\small Bibliografia}}
+%%%%%%%%%% Indice analitico style
+\fancypagestyle{fancyIndiceAnalitico}{
+	\renewcommand{\headrulewidth}{0.25pt}
+	\renewcommand{\footrulewidth}{0.25pt}
+	\fancyhead[L,R]{}
+	\fancyfoot[L,R]{}
+	\fancyfoot[C]{\small\thepage}
+	\fancyfoot[LE,RO]{}
+	\fancyhead[LO,RE]{\bf\small Indice analitico}}

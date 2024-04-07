@@ -1,0 +1,77 @@
+%%%%%%%%%%						Impostazioni description/itemize/enumerate
+	\setlist[description]{style=multiline,
+					topsep=0.25cm,
+					itemsep=-0.25cm,
+					parsep=0.5cm,
+					labelwidth=2.5cm,
+					labelindent=\parindent,
+					leftmargin=3cm}
+
+	\renewcommand{\labelitemi}{$\sbullet$}
+	\setlist[itemize]{style=multiline,
+				topsep=0.25cm,
+				itemsep=-0.25cm,
+				parsep=0.5cm,
+				labelwidth=0.35cm,
+				labelindent=\parindent,
+				leftmargin=.85cm}
+
+	\setlist[enumerate]{style=multiline,
+					topsep=0.25cm,
+					itemsep=-0.25cm,
+					parsep=0.5cm,
+					labelwidth=0.35cm,
+					labelindent=\parindent,
+					leftmargin=.85cm}
+
+%%%%%%%%%%						Tabular
+\hfuzz=0.64pt
+\usepackage{makecell}
+	\renewcommand\theadalign{cc}
+	\renewcommand\theadfont{\bfseries}
+	\renewcommand\theadgape{\Gape[2pt]}
+	\renewcommand\cellgape{\Gape[2pt]}
+\usepackage{subcaption}
+
+%%%%%%%%%%						Ambienti matematici
+\usepackage{thmtools}
+	%%%%%%%%%% 			Stile Teorema, Proposizione, Lemma, Corollario, Definizione
+\declaretheoremstyle[spaceabove=8pt,
+					spacebelow=8pt,
+					headpunct={},
+					postheadspace=.5cm,
+					within=section,]{SettingTheorem}
+			%%%%%%%%%% Teorema
+			\declaretheorem[name=Teorema, style=SettingTheorem]{The}
+			%%%%%%%%%% Proposizione
+			\declaretheorem[name=Proposizione, style=SettingTheorem]{Pro}
+			%%%%%%%%%% Lemma
+			\declaretheorem[name=Lemma, style=SettingTheorem]{Le}
+			%%%%%%%%%% Corollario
+			\declaretheorem[name=Corollario, style=SettingTheorem]{Co}
+			%%%%%%%%%% Definizione
+			\declaretheorem[name=Definizione, style=SettingTheorem]{De}
+
+	%%%%%%%%%			Stile Dimostrazione
+\declaretheoremstyle[spaceabove=8pt,
+					spacebelow=8pt,
+					headfont=\normalfont\bfseries,
+					bodyfont=\normalfont,
+					postheadspace=.5cm,
+					qed=$\square$,
+					headpunct={}]{SettingProof}
+			%%%%%%%%%% Dimostrazione
+			\declaretheorem[name=Dimostrazione, style=SettingProof, unnumbered]{Proof}
+			%%%%%%%%%% Stile Esempio, Osservazione
+\declaretheoremstyle[within=section, headpunct={}, mdframed={innertopmargin=1pt,
+					innerbottommargin=1pt,
+					innerleftmargin=.4cm,
+					innerrightmargin=.4cm,
+					roundcorner=25pt,
+					backgroundcolor=black!4,
+					linecolor=white,
+					fontcolor=black}]{SettingExa}
+			%%%%%%%%%% Esempio
+			\declaretheorem[name=Esempio, style=SettingExa]{Exa}
+			%%%%%%%%%% Osservazione
+			\declaretheorem[name=Osservazione, style=SettingExa]{Oss}
