@@ -1,0 +1,33 @@
+%%%%%%%%%%%%%%%%%%%%% Custom-Defintions %%%%%%%%%%%%%%%%%
+\def\mf{\ensuremath\mathbf}
+\def\mb{\ensuremath\mathbb}
+\def\mc{\ensuremath\mathcal}
+\def\lp{\ensuremath\left(}
+\def\rp{\ensuremath\right)}
+\def\lv{\ensuremath\left\lvert}
+\def\rv{\ensuremath\right\rvert}
+\def\lV{\ensuremath\left\lVert}
+\def\rV{\ensuremath\right\rVert}
+\def\lc{\ensuremath\left\{}
+\def\rc{\ensuremath\right\}}
+\def\ls{\ensuremath\left[}
+\def\rs{\ensuremath\right]}
+\def\bmx{\ensuremath\begin{bmatrix*}[r]}
+\def\emx{\ensuremath\end{bmatrix*}}
+\def\bmxc{\ensuremath\begin{bmatrix*}[c]}
+
+\newcommand{\pp}[1]{\lp #1\rp}
+\newcommand{\ct}[1]{\lp #1\rp}
+\newcommand{\dt}[1]{\ls #1\rs}
+\newcommand{\cols}[2]{\begin{columns}[#1] #2 \end{columns}}
+\newcommand{\col}[2]{\begin{column}{#1} #2 \end{column}}
+\newcommand{\eqnwl}[1]{\begin{equation} #1 \end{equation}}
+\newcommand{\eqnwol}[1]{\begin{equation*} #1 \end{equation*}}
+
+%%%%%%%%%%%%%%%%%%%%% Figure-Caption %%%%%%%%%%%%%%%%%
+% Customize the caption appearance
+\captionsetup[figure]{
+  font={small},  % Small font, bold, and italic
+  labelfont={bf, color=black},  % Label font color
+  textfont={color=gray}  % Text font color
+}
