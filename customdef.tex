@@ -31,3 +31,10 @@
   labelfont={bf, color=black},  % Label font color
   textfont={color=gray}  % Text font color
 }
+
+%%%%%%%%%%%%%%%%%%%%% Figure-Subcaption %%%%%%%%%%%%%%%%%
+% Redefine the \p@subfigure and \thesubfigure commands
+\makeatletter
+\renewcommand{\p@subfigure}{\thefigure}
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+\makeatother
