@@ -303,14 +303,51 @@ One immediate consequence of the above definition is that hte zero element of th
 \end{example}
 
 \section{Linear combinations and others}
-We can combine the two fundamental operations on vectors into a single operation called the \textit{linear combination} of a set of vectors. Given a set of vectors $\mf{v}_1, \mf{v}_2, \ldots, \mf{v}_m \in \mb{R}^n$ and scalars $c_1, c_2, \ldots, c_n \in \mb{R}$, the linear combination of the vectors is given by:
-\[ \mf{v} = c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_n \mf{v}_m \in \mb{R}^n \]
+Linear combination is an \textit{algebraic operation} performed on a set of vectors. We can combine the two fundamental operations on vectors into a single operation called the \textit{linear combination} of a set of vectors. Given a set of vectors $\mf{v}_1, \mf{v}_2, \ldots, \mf{v}_m \in \mb{R}^n$ and scalars $c_1, c_2, \ldots, c_n \in \mb{R}$, the linear combination of the vectors is given by:
+\begin{equation}
+    \mf{v} = c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_n \mf{v}_m \in \mb{R}^n
+    \label{eq:linear-comb}
+\end{equation}
 Notice that the linear cominations of single vector $\mf{v}_1$ are simply different scaled versions of the vector $c_1 \mf{v}_1$. Linear cominations are the bread-and-butter of linear algebra and we will encounter them again and again. An informal way to think of a linear combination of a set of vectors as process of mixing the set of vectors together with the corresponding scalar $c_i$ determining the amount of a vector in the mixture. There are other types of combinations of vectors, which we will not discuss further in this book.
 \begin{itemize}
     \item \textbf{Affine combination:} $\mf{v} = c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_n \mf{v}_m, \quad \sum_{i=1}^{m} c_i = 1$
     \item \textbf{Convex combinations:} $\mf{v} = c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_n \mf{v}_m, \quad c_i \geq 0, \,\, \sum_{i=1}^{m} c_i = 1$
     \item \textbf{Conic combinations:} $\mf{v} = c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_n \mf{v}_m, \quad c_i \geq 0$
 \end{itemize}
+
+\section{Linear independece of a set of vectors}
+Linear independece is a \textit{property} of a set of vectors; a set of vector is either linearly independent or linearly dependent. The concept of linear independence is easy to understand the but the algebraic condition for independence can seem a bit unintuitive. A set of vectors is said to be \text{linearly independent} if no vector in the set can be expressed as a linear combination of the other vectors in the set. 
+
+More formally, a set of vectors $V = \lc \mf{v}_i \rc_{i=1}^{m}$ is said to be linearly independent if and only if the only way to produce the zero vector $\mf{0}$ through the linear combination of the set $V$ is by setting all the scalars to zero, i.e.,
+\begin{equation}
+    c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_n \mf{v}_m = \mf{0} \quad \text{if and only if} \quad c_1 = c_2 = \cdots = c_m = 0
+    \label{eq:linear-indep}
+\end{equation}
+To understand this better, let's assume that the set $V$ is linear dependent and let's assume that the vector $\mf{v}_m$ can be represented as the linear combination of the vectors $\mf{v}_1, \mf{v}-2, \cdots \mf{v}_{m-1}$. This means that there exist a set of scalar $\alpha_i, \,\, 1 \leq i \leq m-1$, such that
+\[ \alpha_1 \mf{v}_1 + \alpha_2 \mf{v}_2 + \cdots + \alpha_{m-1}\mf{v}_{m-1} = \mf{v}_m \]
+Multiplying both sides by a scalar $c_m \neq 0$ we get,
+\[ \begin{split}
+    c_m\alpha_1 \mf{v}_1 + c_m\alpha_2 \mf{v}_2 + \cdots + c_m\alpha_{m-1}\mf{v}_{m-1} &= c_m\mf{v}_m \\
+    \implies c_m\alpha_1 \mf{v}_1 + c_m\alpha_2 \mf{v}_2 + \cdots + c_m\alpha_{m-1}\mf{v}_{m-1} - c_m\mf{v}_m &= \mf{0}
+\end{split} \]
+This implies that there exist a set of scalar $c_i = c_m\alpha_i, \,\, 1 \leq i \leq m-1$, and $c_m$ such that $c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_m \mf{v}_m = \mf{0}$, where not all $c_i$ are zero. So when a set is linearly dependent, then there are scalars $c_i$, not all zero, such that the linear combination of the vectors from $V$ with these scalars produces the zero vector.
+
+Now, let's assume that the set $V$ is linearly independent, that is no vector in the set $V$ can be expressed as a linear combination of other vectors in that set. And let's assume that there are scalars $c_i$, not all zero, such that the linear combination of the vectors from $V$ with these scalars produces the zero vector, i.e.,
+\[ \begin{split}
+    c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_m \mf{v}_m &= \mf{0} \\
+    \implies \frac{c_1}{c_m} \mf{v}_1 + \frac{c_2}{c_m} \mf{v}_2 + \cdots + \frac{c_{m-1}}{c_m}\mf{v}_{m-1} &= \mf{v}_m, \,\, c_m \neq 0
+\end{split} \]
+But this a contradiction because we have just expressed $\mf{v}_m$ is expressed as a linear combination of the vectors $\mf{v}_1, \mf{v}_2, \cdots \mf{v}_{m-1}$.
+
+\section{Span of a set of vectors}
+So, linear combinations of a set of vectors $V = \lc \mf{v}_i \rc_{i=1}^{m}$ is a way of generating new vectors not in that set. All we need to do is choose a random set of real numbers $\lc c_i \rc_{i=1}^{m}$, and ``mix'' these vectors from the set using these as weights. What all can we generate by taking all possible linear combinations of the set $V$? Clearly there are infinite number of vectors we could generate through this process, and we can put them all together in a set. And this set has a name -- the \textit{span} of the set $V$. The span of a set of vectors $V = \lc \mf{v}_i \rc_{i=1}^{m}$ is denoted by $\text{span}\lp V \rp$ and is defined as:
+\begin{equation}
+    \text{span}\lp V \rp = \lc c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_n \mf{v}_m \, : \, c_i \in \mb{R} \rc
+    \label{eq:span-vec}
+\end{equation}
+
+It turns out that the set of all possible linear combinations of the set $V$ is a subspace of $\mb{R}^n$ called the \textit{span} of the set $V$. The span of a set of vectors $V = \lc \mf{v}_i \rc_{i=1}^{m}$ is denoted by $\text{span}\lp V \rp$ and is defined as:
+
 
 
 % \section{Number theory}
