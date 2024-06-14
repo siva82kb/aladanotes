@@ -29,9 +29,11 @@
         \filldraw[opacity=0.2, blue!30] (V_n1_p2) -- (V_p1_p2) -- (V_p1_n2) -- (V_n1_n2);
 
         % Draw the vectors
-        \draw[-stealth, thick, red!70!black] (O) -- (V1) node[xshift=0.05cm, yshift=-0.2cm]{\small $\mathbf{v}_1$};
-        \draw[-stealth, thick, green!70!black] (O) -- (V2) node[xshift=0.05cm, yshift=0.15cm]{\small $\mathbf{v}_2$};
-
+        \draw[dashed, thin, red!70!black] (0.5, 0.5, 0) -- (-0.5, -0.5, 0);
+        \draw[-latex, thick, red!70!black] (O) -- (V1) node[xshift=0.0cm, yshift=-0.3cm]{\small $\mathbf{v}_1$};
+        \draw[dashed, thin, green!50!black] (-0.5, 0, 0.5) -- (0.5, 0, -0.5);
+        \draw[-latex, thick, green!70!black] (O) -- (V2) node[xshift=0.25cm, yshift=0.05cm]{\small $\mathbf{v}_2$};
+        
         \node[xshift=0.4cm, yshift=0.5cm] at (1, 0.325, 1.2) {\small $\text{span}\left(\left\{\mathbf{v}_1, \mathbf{v}_2\right\}\right)$};
 
     \end{tikzpicture}

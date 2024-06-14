@@ -1,0 +1,49 @@
+%%%%%%%%%%%%%%%%%%%%% Custom-Defintions %%%%%%%%%%%%%%%%%
+\declaretheorem[numberwithin=chapter]{theorem}
+\declaretheorem[numberwithin=chapter]{axiom}
+\declaretheorem[numberwithin=chapter]{lemma}
+\declaretheorem[numberwithin=chapter]{proposition}
+\declaretheorem[numberwithin=chapter]{claim}
+\declaretheorem[numberwithin=chapter]{conjecture}
+\declaretheorem[sibling=theorem]{corollary}
+\declaretheorem[numberwithin=chapter, style=definition]{definition}
+\declaretheorem[numberwithin=chapter, style=definition]{problem}
+\declaretheorem[numberwithin=chapter, style=definition]{example}
+\declaretheorem[numberwithin=chapter, style=definition]{exercise}
+\declaretheorem[numberwithin=chapter, style=definition]{observation}
+\declaretheorem[numberwithin=chapter, style=definition]{fact}
+\declaretheorem[numberwithin=chapter, style=definition]{construction}
+\declaretheorem[numberwithin=chapter, style=definition]{remark}
+\declaretheorem[numberwithin=chapter, style=remark]{question}
+
+\usepackage{changepage}
+\newenvironment{solution}
+    {\renewcommand\qedsymbol{$\square$}\color{blue}\begin{adjustwidth}{0em}{2em}
+      \small % Adjust font size to small
+      \begin{proof}[\textit Solution.~]}
+    {\end{proof}\end{adjustwidth}}
+
+% Define boxed environments for problems and solutions
+\newmdenv[
+  linecolor=black,
+  backgroundcolor=gray!10,
+  roundcorner=10pt,
+  nobreak=true,
+  innertopmargin=2pt,
+  innerbottommargin=10pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  linewidth=0.pt
+]{boxedstuff}
+
+% \newmdenv[
+%   linecolor=blue,
+%   backgroundcolor=blue!5,
+%   roundcorner=10pt,
+%   nobreak=true,
+%   innertopmargin=10pt,
+%   innerbottommargin=10pt,
+%   innerleftmargin=10pt,
+%   innerrightmargin=10pt,
+%   linewidth=1pt
+% ]{boxedsolution}

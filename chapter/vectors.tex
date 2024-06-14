@@ -377,7 +377,7 @@ Geometrically, this means that the $\text{span}\pp{V}$ will be a flat surface in
     \caption{Span of a set of vectors in $\mb{R}^2$ and $\mb{R}^3$.}
 \end{figure}
 
-\section{Measuring the size of a vector}
+\section{How big is a vector?}
 The size of a vector is an extension of the idea of the magnitude of a real number. The magnitude of a real number $a \in \mb{R}$ tells us how big the number is irrespective of its sign:
 \begin{equation}
     \vert a \vert = \begin{cases} a, & a \geq 0 \\ -a, & a < 0 \end{cases}
@@ -408,15 +408,109 @@ Apart from the \textit{2-norm}, the \textit{1-norm} and the \textit{$\infty$-nor
 \end{equation}
 The \textit{1-norm} is the sum of the absolute value of the elements of the vector, and the \textit{$\infty$-norm} is the maximum of the absolute value of the elements of the vector. The \textit{1-norm} is also called the \textit{Manhattan norm} or the \textit{Taxicab norm} because it measures the distance between two points in a city if you can only travel along the grid of streets.
 
+
+\begin{boxedstuff}
+    \begin{problem}
+        Why does the $\infty$-norm measure have this weird looking definition compared to the other $p$-norms?
+        \begin{solution}
+            Consider the vector $\mf{x} \in \mb{R}^n$, and $x_{max} = \max_{0 \leq i \leq n} \vert x_i \vert$; let's also assume that the $j^{th}$ element of $\mf{x}$ has the maximum absolute value, i.e. $x_{max} = \vert x_j \vert$. The $p$-norm is defined as the following:
+            \[ \begin{split} 
+                \norm{\mf{x}}_p &= \lp \sum_{i=1}^{n} \vert x_i \vert^p \rp^{1/p} = x_{max} \lp 1 + \sum_{\substack{1 \leq i \leq n \\ i \neq j}} \lv \frac{x_i}{x_j} \rv^p \rp^{1/p} = x_{max}\lp N \rp^{1/p}\\
+            \end{split}
+            \]
+            where, $N$ is a real number between $1$ and $n$, because $\vert \frac{x_i}{x_j} \vert \leq 1$ (why?). Now, if we increase the value of $p$ to infinity, then the term $\lim_{p \to infty} \lp N \rp^{1/p}= 1$. Thus, we have $\lV \mf{x} \rV_{\infty} = \lim_{p \to \infty} \lV \mf{x} \rV_p = x_{max} = \max_{i} \lv x_i \rv$.
+        \end{solution}
+    \end{problem}
+\end{boxedstuff}
+
 \subsection{Geometry of the p-norms}
 In the case of real numbers, the set of all numbers with a magnitude of $1$ is the set $\lc -1, 1 \rc$. We can plot these points in the real line as below.
 
+% Figure showing the loucs of all points with magnitude 1
+% on the real line.
+\begin{figure}[h]
+    \centering
+    \includegraphics{figure/chapter01/mag-locus.pdf}
+    \caption{The set of all real numbers with magnitude $1$. This set contains two numbers $\lc -1, 1 \rc$.}
+    \label{fig:real-line-1-norm}
+\end{figure}
 
+In $\mb{R}^2$, the set of all vectors from $\mb{R}^2$ with a \textit{2-norm} of $1$ is the unit circle. The following figure shows the set of all points in $\mb{R}^2$ with unit 1, 2, $p$, and $\infty$ norm.
 
-In the case of vectors in $\mb{R}^2$, the set of all vectors with a 2-norm of $1$ is the unit circle. In the case of vectors in $\mb{R}^3$, the set of all vectors with a 2-norm of $1$ is the unit sphere. What about the set of all vectors with a 1-norm of $1$? This is the set of all vectors that lie on the surface of a diamond in $\mb{R}^2$ and a cube in $\mb{R}^3$. What about the set of all vectors with a 3-norm of $1$? This is the set of all vectors that lie on the surface of a cube in $\mb{R}^3$. What about the set of all vectors with a $p$-norm of $1$? This is the set of all vectors that lie on the surface of a $p$-dimensional cube in $\mb{R}^p$.
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.24\textwidth}
+        \includegraphics{figure/chapter01/norm1.pdf}
+        \caption{1-norm}
+        \label{fig:norm1}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.24\textwidth}
+        \centering
+        \includegraphics{figure/chapter01/norm2.pdf}
+        \caption{2-norm}
+        \label{fig:norm2}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.24\textwidth}
+        \centering
+        \includegraphics{figure/chapter01/normp.pdf}
+        \caption{$p$-norm}
+        \label{fig:normp}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.24\textwidth}
+        \centering
+        \includegraphics{figure/chapter01/norminf.pdf}
+        \caption{$\infty$-norm}
+        \label{fig:norminf}
+    \end{subfigure}
+    \caption{Locus of all points with unit 1, 2, $p$, and $\infty$ norms in $\mb{R}^2$.}
+\end{figure}
 
+\begin{boxedstuff}
+    \begin{problem}
+        Can you explain why the different norms have these shapes? 
+    \end{problem}
+    \begin{problem}
+        Can you write a Python program to generate the above plots for different values of $p = 1, 2, 3, 10$ and $\infty$?
+    \end{problem}
+    \begin{problem}
+        Can describe what these 1, 2, $p$ and $\infty$ norms will look like in $\mb{R}^3$?
+    \end{problem}
+\end{boxedstuff}
 
+\section{How similar are two vectors?}
+The idea of how similar two or more vectors are is an important topic  in data analysis, in particular in classification problems in machine learning. Vectors that are ``similar'' somehow belong to the same ``category'' or ``class'', while vectors that are ``dissimilar'' belong to different categories or classes. There are various ways to measure the similarity between two vectors. We will look at two methods in this section where similarity is mesasured by computing the distance between two vectors or by computing the angle between two vectors.
 
+\subsection{Distance between two vectors}
+\begin{wrapfigure}{r}{0.35\textwidth}
+    \centering
+    \includegraphics[width=0.95\linewidth]{figure/chapter01/dist-demo.pdf}
+    \caption{Distance between two vectors.}
+    \label{fig:distance1}
+\end{wrapfigure}
+The logic here is that similar vectors correspond to points that are close together, while disimilar vectors are father away. We can make use of the norm to compute the distance between two vectors $\mf{x}, \mf{y} \in \mb{R}^n$. Since the the difference between these two vectors $\mf{x} - \mf{y}$ is also another vector, we can compute the distance between vectors $\mf{x}$ and $\mf{y}$ as the norm of the vector $\mf{x} - \mf{y}$ (Figure~\ref{fig:distance1}).
+\[ \text{Distance between } \mf{x} \text{ and } \mf{y} = d\pp{\mf{x}, \mf{y}} = \lV \mf{x} - \mf{y} \rV_p \]
+We could use any of the $p$ norms to compute this or come-up with a new norm depending on the application we are dealing with. Take look at the clusters of points shown in Figure xxx, we would agree that the different colored points each form a cluster, since the points of the same color are closer to each other than points from another color. 
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.35\textwidth}
+        \includegraphics[width=0.95\linewidth]{figure/chapter01/dist-demo.pdf}
+        \caption{Distance between two vectors $\mf{x}$ and $\mf{y}$ in $\mb{R}^2$. This figures depicts the 2-norm, but any $p$-norm or valid norm function could be used to quantify the distance between two vectors or points.}
+        % \caption{adsgads}
+        \label{fig:dist1}
+    \end{subfigure}
+    \hspace{0.05\textwidth}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[width=0.85\linewidth]{figure/chapter01/cluster-dist.pdf}
+        \caption{Distance between two vectors $\mf{x}$ and $\mf{y}$ in $\mb{R}^2$. This figures depicts the 2-norm, but any $p$-norm or valid norm function could be used to quantify the distance between two vectors or points. Distance between two vectors $\mf{x}$ and $\mf{y}$ in $\mb{R}^2$. This figures depicts the 2-norm, but any $p$-norm or valid norm function could be used to quantify the distance between two vectors or points.}
+        \label{fig:dist2}
+    \end{subfigure}
+    \caption{}
+\end{figure}
+
+The similarity between two vectors is measured by the \textit{distance} between the two vectors. The distance between two vectors $\mf{x}, \mf{y} \in \mb{R}^n$ is a function that maps the two vectors to a non-negative real number, and satisfies the following properties:
+We looked at the magnitude or size of a vector in the previous section. But vectors also have directions associated with them. If we have two vectors $\mf{x}, \mf{y} \in \mb{R}^n$, then we can ask if these two vectors pointing in similar directions? If the vectors are pointing in the same direction, then they are said to be \textit{collinear}.
 % \section{Number theory}
 % Figure example
 % \begin{figure}[!ht]

@@ -5,12 +5,19 @@
 \documentclass[11pt,twoside]{book}
 
 % \usepackage[mono=false]{libertine} % new linux font, ignore mono
+% \usepackage{fourier}
+% \usepackage{newpxtext}
+% \usepackage{newpxmath}
+% \usepackage{kpfonts}
+% \usepackage{mathpazo}
+\usepackage{charter}
 
 \usepackage{luatex85}
 
 \renewcommand{\baselinestretch}{1.05}
 \usepackage{amsmath,amsthm,amssymb,mathrsfs,amsfonts,dsfont}
 \usepackage{epsfig,graphicx}
+\usepackage{wrapfig} % for wrapping figures
 \usepackage{tikz}
 \usepackage{tikz-3dplot} % Required for 3D plots
 \usepackage{tabularx}
@@ -50,31 +57,22 @@
 
 % adjust margin
 \usepackage[margin=2.3cm]{geometry}
-\headheight13.6pt
+% \headheight13.6pt
+\geometry{
+    % Adjust these parameters as needed
+    left=2.5cm,
+    right=2.5cm,
+    top=2.5cm,
+    bottom=2.5cm,
+    % Other options
+    %bindingoffset=0.5cm, % If using twoside, adjust for binding offset
+    %showframe, % Uncomment to show the frame
+}
 
-%%%%%%%%%%%%%%%% thmtools %%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%% thmtools %%%%%%%%%%%%%%%%%%%%%
+\usepackage{mdframed}
 \usepackage{thmtools}
-\declaretheorem[numberwithin=chapter]{theorem}
-\declaretheorem[numberwithin=chapter]{axiom}
-\declaretheorem[numberwithin=chapter]{lemma}
-\declaretheorem[numberwithin=chapter]{proposition}
-\declaretheorem[numberwithin=chapter]{claim}
-\declaretheorem[numberwithin=chapter]{conjecture}
-\declaretheorem[sibling=theorem]{corollary}
-\declaretheorem[numberwithin=chapter, style=definition]{definition}
-\declaretheorem[numberwithin=chapter, style=definition]{problem}
-\declaretheorem[numberwithin=chapter, style=definition]{example}
-\declaretheorem[numberwithin=chapter, style=definition]{exercise}
-\declaretheorem[numberwithin=chapter, style=definition]{observation}
-\declaretheorem[numberwithin=chapter, style=definition]{fact}
-\declaretheorem[numberwithin=chapter, style=definition]{construction}
-\declaretheorem[numberwithin=chapter, style=definition]{remark}
-\declaretheorem[numberwithin=chapter, style=remark]{question}
-%%%%%%%%%%%%%%%% thmtools %%%%%%%%%%%%%%%%%%%%%
-\usepackage{changepage}
-\newenvironment{solution}
-    {\renewcommand\qedsymbol{$\square$}\color{blue}\begin{adjustwidth}{0em}{2em}\begin{proof}[\textit Solution.~]}
-    {\end{proof}\end{adjustwidth}}
+\input{./thmdef.tex}
 
 %%%%%%%%%%%%%%%% index %%%%%%%%%%%%%%%%%%%%%
 \begin{filecontents}{index.ist}
