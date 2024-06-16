@@ -1,0 +1,22 @@
+% tikzpic.tex
+\documentclass[crop,tikz]{standalone}% 'crop' is the default for v1.0, before it was 'preview'
+%\usetikzlibrary{...}% tikz package already loaded by 'tikz' option
+\usepackage{amsmath,amsthm,amssymb,mathrsfs,amsfonts,dsfont}
+\usetikzlibrary{plotmarks}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.0]
+    \node[below left,xshift=0.1cm, yshift=0.1cm,black] at (0, 0) {$\mathbf{0}$};
+    % \draw[-latex, ultra thick, black] (1,2) --  (3,1);
+    \draw[-latex, thick, blue!50] (0,0) --  (3,1) node[below right, black] {$\mathbf{x}$};
+    \fill[blue] (3,1) circle (0.1);
+    \draw[-latex, thick, red!50] (0,0) --  (1, 2) node[left, black] {$\mathbf{y}$};
+    \fill[red] (1,2) circle (0.1);
+    
+    % Draw angle arc
+    \draw[thick, black, ->] (1.0,0.33) arc[start angle=18.435, end angle=61, radius=1.118];
+    \node at (1.0, 0.85) {$\theta$};
+    
+    \node[right] at (1.25, 1.65) {\small $\mathbf{x}^\top\mathbf{y} = \left\Vert \mathbf{x}\right\Vert_2 \cdot \left\Vert \mathbf{y}\right\Vert_2  \cdot \cos(\theta)$};
+\end{tikzpicture}
+\end{document}

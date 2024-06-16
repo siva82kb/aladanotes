@@ -481,36 +481,68 @@ In $\mb{R}^2$, the set of all vectors from $\mb{R}^2$ with a \textit{2-norm} of 
 The idea of how similar two or more vectors are is an important topic  in data analysis, in particular in classification problems in machine learning. Vectors that are ``similar'' somehow belong to the same ``category'' or ``class'', while vectors that are ``dissimilar'' belong to different categories or classes. There are various ways to measure the similarity between two vectors. We will look at two methods in this section where similarity is mesasured by computing the distance between two vectors or by computing the angle between two vectors.
 
 \subsection{Distance between two vectors}
-\begin{wrapfigure}{r}{0.35\textwidth}
-    \centering
-    \includegraphics[width=0.95\linewidth]{figure/chapter01/dist-demo.pdf}
-    \caption{Distance between two vectors.}
-    \label{fig:distance1}
-\end{wrapfigure}
-The logic here is that similar vectors correspond to points that are close together, while disimilar vectors are father away. We can make use of the norm to compute the distance between two vectors $\mf{x}, \mf{y} \in \mb{R}^n$. Since the the difference between these two vectors $\mf{x} - \mf{y}$ is also another vector, we can compute the distance between vectors $\mf{x}$ and $\mf{y}$ as the norm of the vector $\mf{x} - \mf{y}$ (Figure~\ref{fig:distance1}).
+The logic here is that similar vectors correspond to points that are close together, while disimilar vectors are father away. We can make use of the norm to compute the distance between two vectors $\mf{x}, \mf{y} \in \mb{R}^n$. Since the the difference between these two vectors $\mf{x} - \mf{y}$ is also another vector, we can compute the distance between vectors $\mf{x}$ and $\mf{y}$ as the norm of the vector $\mf{x} - \mf{y}$ (Figure~\ref{fig:dist1}).
 \[ \text{Distance between } \mf{x} \text{ and } \mf{y} = d\pp{\mf{x}, \mf{y}} = \lV \mf{x} - \mf{y} \rV_p \]
-We could use any of the $p$ norms to compute this or come-up with a new norm depending on the application we are dealing with. Take look at the clusters of points shown in Figure xxx, we would agree that the different colored points each form a cluster, since the points of the same color are closer to each other than points from another color. 
+We could use any of the $p$ norms to compute this or come-up with a new norm depending on the application we are dealing with. Take look at the clusters of points shown in Figure~\ref{fig:dist-clusters}, we would agree that the different colored points each form a cluster, since the points of the same color are closer to each other than points from another color. 
 
 \begin{figure}[h]
     \centering
     \begin{subfigure}[b]{0.35\textwidth}
         \includegraphics[width=0.95\linewidth]{figure/chapter01/dist-demo.pdf}
         \caption{Distance between two vectors $\mf{x}$ and $\mf{y}$ in $\mb{R}^2$. This figures depicts the 2-norm, but any $p$-norm or valid norm function could be used to quantify the distance between two vectors or points.}
-        % \caption{adsgads}
         \label{fig:dist1}
     \end{subfigure}
     \hspace{0.05\textwidth}
     \begin{subfigure}[b]{0.4\textwidth}
         \centering
         \includegraphics[width=0.85\linewidth]{figure/chapter01/cluster-dist.pdf}
-        \caption{Distance between two vectors $\mf{x}$ and $\mf{y}$ in $\mb{R}^2$. This figures depicts the 2-norm, but any $p$-norm or valid norm function could be used to quantify the distance between two vectors or points. Distance between two vectors $\mf{x}$ and $\mf{y}$ in $\mb{R}^2$. This figures depicts the 2-norm, but any $p$-norm or valid norm function could be used to quantify the distance between two vectors or points.}
-        \label{fig:dist2}
+        \caption{Distance between two vectors $\mf{x}$ and $\mf{y}$ in $\mb{R}^2$. This figures depicts the 2-norm, but any $p$-norm or valid norm function could be used to quantify the distance between two vectors or points.  could be used to quantify the distance between}
+        \label{fig:dist-clusters}
     \end{subfigure}
     \caption{}
 \end{figure}
 
-The similarity between two vectors is measured by the \textit{distance} between the two vectors. The distance between two vectors $\mf{x}, \mf{y} \in \mb{R}^n$ is a function that maps the two vectors to a non-negative real number, and satisfies the following properties:
-We looked at the magnitude or size of a vector in the previous section. But vectors also have directions associated with them. If we have two vectors $\mf{x}, \mf{y} \in \mb{R}^n$, then we can ask if these two vectors pointing in similar directions? If the vectors are pointing in the same direction, then they are said to be \textit{collinear}.
+\subsection{Angle between two vectors}
+This approach is based on the idea that the direction of the vector repesenting a point contains information about the point. Thus, vectors that point in a similar direction could be considered similar. But how do we measure the angle between two vectors in $\mb{R}^n$? This is where the concept of the \textit{standard inner product} (or the dot product from vectors from high school math and physics). The standard inner product of two vectors $\mf{x}, \mf{y} \in \mb{R}^n$ is defined as:
+\[ \mf{x}^\top\mf{y} = \sum_{i=1}^{n} x_i y_i \]
+The superscript `$\top$' represents the transpose operation. We will not worry about what it means in the next chapter. The standard inner product takes in two vectors $\mf{x}, \mf{y} \in \mb{R}^n$ and returns a scalar value $\mb{R}$; it can be both positive and negative. We compute it by simply taking the two vectors $\mf{x} = \bmxc x_1 \\ \vdots \\ x_n \emx$ and $\mf{y} = \bmxc y_1 \\ \vdots \\ y_n \emx$, and multiply the two of them element-wise $x_i y_i, \, 1 \leq i \leq n$ and add the $n$ products together $\sum_{i=1}^n x_i y_i$ to obtain the inner product.
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=0.95\linewidth]{figure/chapter01/angle-demo.pdf}
+        \caption{Angle between two vectors $\mf{x}$ and $\mf{y}$ in $\mb{R}^2$. The standard inner product provides a measure of the cosine of the angle between the two vectoes.}
+        \label{fig:angle1}
+    \end{subfigure}
+    \hspace{0.05\textwidth}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[width=0.85\linewidth]{figure/chapter01/cluster-angle.pdf}
+        \caption{The relative angle between the points of the same colors is smaller than that of points of different colors.}
+        \label{fig:angle-clusters}
+    \end{subfigure}
+    \caption{}
+\end{figure}
+
+The standard inner product of two vectors $\mf{x}$ and $\mf{y}$ is related to the cosine of the angle $\theta$ between the two vectors, and the 2-norm of the two vectors.
+\[ \mf{x}^\top\mf{y} = \sum_{i=1}^n x_i y_i = \lV \mf{x} \rV_2 \cdot \lV \mf{y} \rV_2 \cdot \cos\pp{\theta} \]
+The angle $\theta$ between the two vectors $\mf{x}$ and $\mf{y}$ can be computed as:
+\[ \theta = \cos^{-1}\pp{\frac{\mf{x}^\top \mf{y}}{\lV \mf{x} \rV_2 \lV \mf{y} \rV_2}}, \,\, \lV \mf{x} \rV_2 \neq 0, \lV \mf{y} \rV_2 \neq 0 \]
+If the 2-norms of the $\mf{x}$ and $\mf{y}$, then $\mf{x}^\top\mf{y}$ is simply the cosine of the angle between the vectors.
+
+\section{Inner product}
+$\mf{x}^\top\mf{y}$ is the standard inner product, which of course means there are non-standard inner products. The concept of an inner product is a general one - it is a function that maps two vectors to a scalar value, and satisfies the following properties:
+\begin{itemize}
+    \item \textbf{Symmetry:} For any vectors $\mf{x}, \mf{y} \in \mb{R}^n$, $\mf{x}^\top\mf{y} = \mf{y}^\top\mf{x}$.
+    \item \textbf{Linearity:} For any vectors $\mf{x}, \mf{y}, \mf{z} \in \mb{R}^n$ and any scalars $a, b \in \mb{R}$, $\lp a\mf{x} + b\mf{y} \rp^\top\mf{z} = a\mf{x}^\top\mf{z} + b\mf{y}^\top\mf{z}$.
+    \item \textbf{Positive definiteness:} For any vector $\mf{x} \in \mb{R}^n$, $\mf{x}^\top\mf{x} \geq 0$, and $\mf{x}^\top\mf{x} = 0$ if and only if $\mf{x} = \mf{0}$.
+\end{itemize}
+
+
+The standard inner product is also called the \textit{dot product} or the \textit{scalar product}. The standard inner product is a special case of a more general class of inner products called the \textit{inner product}. The inner product of two vectors $\mf{x}, \mf{y} \in \mb{R}^n$ is a function that maps two vectors to a scalar value, and satisfies the following properties:
+
+
+
 % \section{Number theory}
 % Figure example
 % \begin{figure}[!ht]
