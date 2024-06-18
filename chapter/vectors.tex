@@ -11,6 +11,15 @@ The elements of the $n$-vector $x_1, x_2, \ldots, x_n$ are called the \textit{co
 
 \noindent \textbf{Where do we come across such $n$-vectors?} In many places, such as in physics, engineering, economics, medicine, etc. Any application where we deal with multiple pieces of information that can be represented as a list of numbers can be represented as an $n$-vector. When we deal with systems with multiple inputs, multiple output, or multiple states, we can represent these as $n$-vectors. We talk about the state of a system in a later chapter.
 
+\subsection{Some common $n$-vectors}
+We will often come across some special $n$-vectors in this document course and in many applications. We will define some of these vectors here.
+\begin{itemize}
+    \item \textbf{Zero vector:} The $n$-vector whose components are all zeros is called the \textit{zero vector}. $\mf{0} = \bmxc 0 \\ 0 \\ \vdots \\ 0\emx$
+    \item \textbf{One vector:} The $n$-vector whose components are all ones is called the \textit{one vector}. $\mf{1} = \bmxc 1 \\ 1 \\ \vdots \\ 1\emx$
+    \item \textbf{Unit vectors:} The $n$-vectors whose components are all zeros except for one component which is 1. These are called the \textit{standard basis vectors} and are denoted by $\mf{e}_1, \mf{e}_2, \ldots, \mf{e}_n$. The $n$-vector $\mf{e}_i$ has all components as zeros except for the $i^{th}$ component which is 1. For example, the unit vectors in $\mb{R}^2$ are:
+    \[ \mf{e}_1 = \bmx 1 \\ 0\emx \quad \mf{e}_2 = \bmx 0 \\ 1 \emx  \]
+\end{itemize}
+
 \section{Visualizing $n$-vectors}
 The $n$-vectors can be visualized as points in $n$-dimensional space. For example, A 1-vector or just single real number or a \textit{scalar} can be thought of as a point on the real line. The 1-vector $x = 2.45$ is shown in Figure~\ref{fig:1-vector} is the red point. But we will find it useful to visualize a 1-vector as an arrow starting at the origin and ending at the point on the real line. The arrow is shown in blue in Figure~\ref{fig:1-vector}. 
 
@@ -325,8 +334,16 @@ Notice that the linear cominations of single vector $\mf{v}_1$ are simply differ
     \item \textbf{Conic combinations:} $\mf{v} = c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_n \mf{v}_m, \quad c_i \geq 0$
 \end{itemize}
 
-\section{Linear independece of a set of vectors}
-Linear independece is a \textit{property} of a set of vectors; a set of vector is either linearly independent or linearly dependent. The concept of linear independence is easy to understand the but the algebraic condition for independence can seem a bit unintuitive. A set of vectors is said to be \text{linearly independent} if no vector in the set can be expressed as a linear combination of the other vectors in the set. 
+\section{Linear independence of a set of vectors}
+\secsum{
+    \begin{itemize}
+        \item Linear independence is a property of a set of vectors.
+        \item A set is either linear independent or its not.
+        \item No element of a linearly independent set can be represented as linear combination of the other elements in the set.
+        \item Linearly independent set does not have any redundancy.
+    \end{itemize}
+}
+Linear independece is a \textit{property} of a set of vectors; a set of vector is either linearly independent or linearly dependent. The concept of linear independence is easy to understand the but the algebraic condition for independence can seem a bit unintuitive. A set of vectors is said to be \text{linearly independent} if no vector in the set can be expressed as a linear combination of the other vectors in the set. This means that there is some unique  information contained in each element of the set, which cannot be obtained from the other elements of the set, i.e., there is no redundancy, so to speak. 
 
 More formally, a set of vectors $V = \lc \mf{v}_i \rc_{i=1}^{m}$ is said to be linearly independent if and only if the only way to produce the zero vector $\mf{0}$ through the linear combination of the set $V$ is by setting all the scalars to zero, i.e.,
 \begin{equation}
@@ -350,6 +367,13 @@ Now, let's assume that the set $V$ is linearly independent, that is no vector in
 But this a contradiction because we have just expressed $\mf{v}_m$ is expressed as a linear combination of the vectors $\mf{v}_1, \mf{v}_2, \cdots \mf{v}_{m-1}$.
 
 \section{Span of a set of vectors}
+\secsum{
+    \begin{itemize}
+        \item The span of a set of vectors $V$ is another set.
+        \item It is generated through the linear combination of the elements of $V$.
+        \item The span of a set of vector $V$ is a subsapce of the originak vectors space the elements of $V$ are from.
+    \end{itemize}
+}
 So, linear combinations of a set of vectors $V = \lc \mf{v}_i \rc_{i=1}^{m}$ ($\mf{v}_i \in \mb{R}^n$) is a way of generating new vectors not in that set. All we need to do is choose a random set of real numbers $\lc c_i \rc_{i=1}^{m}$, and ``mix'' the vectors $\mf{v}_i$ from the set using these as weights. Clearly there are infinite number of vectors we could generate through this process, and we can put them all together in a set. And this set has a name -- the \textit{span} of the set $V$. The span of a set of vectors $V = \lc \mf{v}_i \rc_{i=1}^{m}$ is denoted by $\text{span}\lp V \rp$ and is defined as:
 \begin{equation}
     \text{span}\lp V \rp = \lc c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_n \mf{v}_m \, : \, c_i \in \mb{R} \rc \subseteq \mb{R}^n
@@ -549,45 +573,95 @@ The concept of an inner product is a general one. An inner product $\langle \cdo
     \item \textbf{Symmetry:} For any vectors $\mf{x}, \mf{y}$, $\langle \mf{x}, \mf{y} \rangle = \langle \mf{y}, \mf{x} \rangle$.
     \item \textbf{Linearity:} For any vectors $\mf{x}, \mf{y}$, $\mf{z}$, and any scalars $\alpha, \beta \in \mb{R}$, $\langle \alpha\mf{x} + \beta \mf{y}, \mf{z} \rangle = \alpha \langle \mf{x}, \mf{y}\rangle + \beta \langle \mf{y}, \mf{z}\rangle$.
 \end{itemize}
-We will come across other inner products in due course, but we will stick to the standard inner product for most problem in $\mb{R}^n$ in this course.
+We will come across other inner products in due course, but we will stick to the standard inner product for most problem in $\mb{R}^n$ in this course. A class of inner products in $\mb{R}^n$ is of the form $\langle \mf{x}, \mf{y}\rangle = \mf{x}^\top\mf{A}\mf{y}$, where $\mf{A}$ is a $n \times n$ \textit{positive definite} matrix. The standard inner product is a special case of this class of inner products where $\mf{A} = \mf{I}$, the identity matrix. That may sound like too much jargon for now, but we will come to these concepts in the upcoming chapters.
 
 \begin{boxedstuff}
 \begin{problem}
     Consider the vector space $\mb{R}^n$. Is the the following a valid inner product of $\mb{R}^n$?
     \[ \langle \mf{x}, \mf{y}\rangle = \sum_{i=1}^n w_1 x_i y_i, \,\, w_i \in \mb{R}, \,\, w_i > 0 \]
-    %     \item $\langle \mf{x}, \mf{y}\rangle = \sum_{i=1}^n w_i x_i y_i$, $\,\, w_i = \begin{cases} +1, & i \text{ is odd} \\  -1, & i \text{ is even}\end{cases}$.
-    % \end{enumerate}
+    \begin{solution}
+        To find out if this is a valid inner product, we need to verify by if it satisfies the properties of an inner product. 
+        \begin{itemize}
+            \item \textbf{Positive definiteness}: The first property is positive definiteness, which is satisfied because $w_i > 0$.
+            \[ \langle \mf{x}, \mf{x} \rangle = \sum_{i=1}^n w_i x_i^2 \geq 0, \,\, \text{since, } w_i > 0 \text{ and } x_i^2 \geq 0 \]
+            Notice, that if any of the $w_i$ is zero or negative, then $\langle \mf{x}, \mf{y} \rangle$ will not be a valid inner product (why?).
+            \item \textbf{Symmetry}: From the commutativity and associativity of multiplication of real numbers, we have $\langle \mf{x}, \mf{y} \rangle = \langle \mf{y}, \mf{x} \rangle$. 
+        
+            \item\textbf{Linearity}: This is also satisfied. You should verify this yourself.
+        \end{itemize}
+        The given function is a valid inner product of $\mb{R}^n$.
+    \end{solution}
+\end{problem}
+\begin{problem}
+    Consider the vector space $\mb{R}^n$. Is the the following a valid inner product of $\mb{R}^n$?
+    \[ \langle \mf{x}, \mf{y}\rangle = \sum_{i=1}^n w_i x_i y_i, \,\, w_i = \begin{cases} +1, & i \text{ is odd} \\  -1, & i \text{ is even}\end{cases} \]
+    \begin{solution}
+        To find out if this is a valid inner product, we need to verify by if it satisfies the properties of an inner product. 
+        \begin{itemize}
+            \item \textbf{Positive definiteness}: This is not satisfied. Can you provide an example where positive definiteness fails?
+        \end{itemize}
+        The given function is a \textit{not} valid inner product of $\mb{R}^n$.
+    \end{solution}
 \end{problem}
 \end{boxedstuff}
 
-% \section{Number theory}
-% Figure example
-% \begin{figure}[!ht]
-%     \centering
-%     \includegraphics[width=1\linewidth]{./figure/elliptic_curves.pdf}
-%     \caption{Elliptic curves \cite{childsUniversalComputationQuantum2009} }
-% \end{figure}
+\section{Orthogonality of vectors}
 
+% Floating figure to the right of the text
+\begin{wrapfigure}{r}{0.4\textwidth}
+    \centering
+    \includegraphics[width=0.35\textwidth]{figure/chapter01/ortho-demo.pdf}
+    \caption{Orthogonal vectors in $\mb{R}^2$.}
+    \label{fig:orthog-vectors}
+\end{wrapfigure}
+The concept of orthogonality is a generalization of the concept of perpendicularity in $\mb{R}^2$ and $\mb{R}^3$. Two vectors $\mf{x}, \mf{y} \in \mb{R}^n$ are said to be orthogonal if their standard inner product is zero, i.e., $\mf{x}^\top\mf{y} = 0$.
 
-% \section{Algorithm}
-% % \begin{center}
-% % \begin{minipage}{.9\linewidth}
-% % algorithm2e
-% % https://www.overleaf.com/learn/latex/Algorithms#The_algorithm2e_package
-% \begin{algorithm}[H]
-%     \SetKwInOut{Input}{input}
-%     \SetKwInOut{Output}{output}
-%     \Input{Integer $N$ and parameter $1^t$}
-%     \Output{A decision as to whether $N$ is prime or composite}
-%     \BlankLine
-%     \For{ $i = 1,2, \ldots, t$} {
-%         $a\leftarrow \qty{1,\dots,N_1}$\;
-%         \If{$a^{N-1} \neq 1 \mod{N}$}
-%     {\Return "composite"}
-%     }
-%     \Return "prime"
-%     \caption{Primality testing - first attempt}
-%     \label{alg:miller_rabin}
-% \end{algorithm}
-% % \end{minipage}
-% % \end{center}
+Geometrically, when two vectors $\mf{x}$ and $\mf{y}$ are orthogonal, then when we move along the direction of one vector, we are not moving along the direction of the other vector. If directions of vector convey some information about something, then vectors that are orthogonal to each other are vectors that convey mutually exclusive information,i.e. the two vectors share nothing in commong. The concept of orthogonality is a very important concept in linear algebra and we will encounter it again and again.
+
+Note that this definition of orthogonality also implied that $\mf{0}$ is othorognal to all vectors!
+
+\begin{boxedstuff}
+    \begin{problem}
+        Explain why the following statement about the unit vectors of $\mb{R}^n$ is true.
+        \[ \mf{e}_i^\top\mf{e}_j = \begin{cases} 1, & i = j \\ 0, & i \neq j \end{cases} \]
+        All the unit vectors of $\mb{R}^n$ are orthogonal to each other, and have unit length.
+    \end{problem}
+    \begin{problem}
+        Show if two vectors $\mf{x}$ and $\mf{y}$ are orthogonal to each other, then the following is true.
+        \[ \lV \mf{x} - \mf{y} \rV_2^2 = \lV \mf{x} \rV_2^2 + \lV \mf{y} \rV_2^2 \]
+    \end{problem}
+\end{boxedstuff}
+
+\section{Basis of a vector space}
+A set of vectors $V = \lc \mf{v}_1, \mf{v}_2,  \cdots \mf{v}_k \rc, \,\, \mf{v}_i \in \mb{R}^n$ is called a basis for $\mb{R}^n$ if it is a linearly independent set and if it spans $\mb{R}^n$. This effectively means the following two things. If $V$ is a basis for a vector space, then,
+\begin{enumerate}
+    \item `` spans $\mb{R}^n$ '' $\longrightarrow$ It can be used to generate every element of $\mb{R}^n$ through a linear comibination operation.
+    \item `` linearly independent '' $\longrightarrow$ There is a unique linear combination of the elements of $V$ that produces every element of $\mb{R}^n$.
+\end{enumerate}
+A basis is the smallest possible set for generating a vector space. 
+
+Note that although the above definition and description is done usign $\mb{R}^n$, the concept of a basis applies to any vector space and all its subspaces.
+
+\begin{boxedstuff}
+    \begin{example}
+        Consider the set of vectors $V = \lc \mf{e}_1 \rc \subset \mb{R}^2$. This set $V$ forms a basis for the subspace $S_1 = \lc \bmx \alpha \\ 0\emx \,\, : \,\, \alpha \in \mb{R} \rc$. This is because, the $\text{span}\pp{V} = S_1$ (verify this) and the set $V$ is linearly independent, because $\beta \mf{e}_1 = \mf{0}$ only if $\beta = 0$.
+    \end{example}
+
+    \begin{example}
+        Consider the set of vectors $V = \lc \mf{e}_1, 3\mf{e}_1\rc \subset \mb{R}^2$. This set $V$ does not form a basis for the subspace $S_1 = \lc \bmx \alpha \\ 0\emx \,\, : \,\, \alpha \in \mb{R} \rc$. The $\text{span}\pp{V} = S_1$ (verify this). But the set $V$ is linearly dependent, because $-3 \mf{e}_1 + 1\pp{3\mf{e}_1} = \mf{0}$, thus a non-zero set of coefficients result in the zero vector.
+    \end{example}
+
+    \begin{example}
+        Consider the set of vectors $V = \lc \mf{e}_1, \mf{e}_2\rc \subset \mb{R}^2$. This set $V$ is a basis for $\mb{R}^2$. The $\text{span}\pp{V} = \mb{R}^2$ (verify this). And this set $V$ is linearly independent, because $\beta_1 \mf{e}_1 + \beta_2\mf{e}_2 = \bmxc \beta_1 \\ \beta_2 \emx$, thus the only was we get the zero vector through the linear combination is if $\beta_1 = \beta_2 = 0$.
+    \end{example}
+
+    \begin{example}
+        Consider the set of vectors $V = \lc \mf{e}_1, \mf{e}_2, \bmxc 1 \\ 1\emx\rc \subset \mb{R}^2$. This set $V$ is a basis for $\mb{R}^2$. The $\text{span}\pp{V} = \mb{R}^2$ (verify this). And this set $V$ is linearly dependent, because $\mf{e}_1 + \mf{e}_2 - 1 \bmx 1 \\ 1\emx = \mf{0}$; a non-zero linear comination produces the zero vector. Thus, $V$ is not a basis for $\mb{R}^2$. 
+    \end{example}
+\end{boxedstuff}
+
+How many basis does a vector space have? For instance, how many different basis does $\mb{R}^2$ have? For a set to be a basis, all we need to ensure is that the set spans $\mb{R}^2$ and is linearly independent. Thus, there are infinitely many basis for $\mb{R}^2$. For instance, the sets $\lc \alpha_1\mf{e}_1, \alpha_2\mf{e}_2 \rc$ with $0 \neq \alpha_1, \alpha_2 \in \mb{R}$ are all basis for $\mb{R}^2$. Since there are inifinite number of choices for $\alpha_1, \alpha_2$, we have an infite number of basis for $\mb{R}^2$. The same argument applies to $\mb{R}^n$.
+
+Consider a basis for $\mb{R}^n$, $V = \lc \mf{v}_1, \mf{v}_2, \cdots \mf{v}_n \rc, \,\, \mf{v}_i \in \mb{R}^n$. Any vector $\mf{w} \in \mb{R}^n$ can be uniquely expressed as a linear combination of the elements of $V$, as follows,
+\[ \mf{w} = \alpha_1 \mf{v}_1 + \alpha_2 \mf{v}_2 + \cdots + \alpha_n \mf{v}_n, \,\,\, \alpha_i \in \mb{R} \]
+The coefficient $\alpha_i$ are unique for a given vector $\mf{w}$, and are called the \textit{coordinates} of the vector $\mf{w}$ with respect to the basis $V$. 

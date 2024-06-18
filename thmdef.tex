@@ -36,14 +36,18 @@
   linewidth=0.pt
 ]{boxedstuff}
 
-% \newmdenv[
-%   linecolor=blue,
-%   backgroundcolor=blue!5,
-%   roundcorner=10pt,
-%   nobreak=true,
-%   innertopmargin=10pt,
-%   innerbottommargin=10pt,
-%   innerleftmargin=10pt,
-%   innerrightmargin=10pt,
-%   linewidth=1pt
-% ]{boxedsolution}
+% Define boxed environments for section summary
+\newmdenv[
+  linecolor=blue,
+  backgroundcolor=blue!5,
+  roundcorner=10pt,
+  nobreak=false,
+  innertopmargin=10pt,
+  innerbottommargin=10pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  linewidth=0.pt,
+  font=\small
+]{secsumbox}
+
+\newcommand{\secsum}[1]{\begin{secsumbox} #1 \end{secsumbox}}
