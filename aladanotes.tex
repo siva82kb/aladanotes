@@ -58,15 +58,14 @@
 % adjust margin
 \usepackage[margin=2.3cm]{geometry}
 % \headheight13.6pt
+% Set up mirrored margins for book-like layout
 \geometry{
-    % Adjust these parameters as needed
-    left=2.5cm,
-    right=2.5cm,
-    top=2.5cm,
-    bottom=2.5cm,
-    % Other options
-    %bindingoffset=0.5cm, % If using twoside, adjust for binding offset
-    %showframe, % Uncomment to show the frame
+  bindingoffset=10mm, % Space for binding
+  inner=15mm, % Inner margin (next to the binding)
+  outer=15mm, % Outer margin
+  top=20mm,
+  bottom=20mm,
+  twoside % Enable different margins for odd and even pages
 }
 
 % %%%%%%%%%%%%%%%% thmtools %%%%%%%%%%%%%%%%%%%%%
