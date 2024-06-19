@@ -660,8 +660,32 @@ Note that although the above definition and description is done usign $\mb{R}^n$
     \end{example}
 \end{boxedstuff}
 
-How many basis does a vector space have? For instance, how many different basis does $\mb{R}^2$ have? For a set to be a basis, all we need to ensure is that the set spans $\mb{R}^2$ and is linearly independent. Thus, there are infinitely many basis for $\mb{R}^2$. For instance, the sets $\lc \alpha_1\mf{e}_1, \alpha_2\mf{e}_2 \rc$ with $0 \neq \alpha_1, \alpha_2 \in \mb{R}$ are all basis for $\mb{R}^2$. Since there are inifinite number of choices for $\alpha_1, \alpha_2$, we have an infite number of basis for $\mb{R}^2$. The same argument applies to $\mb{R}^n$.
+How many different basis does a vector space have? For instance, how many different basis does $\mb{R}^2$ have? For a set to be a basis, all we need to ensure is that the set spans $\mb{R}^2$ and is linearly independent. Thus, there are infinitely many basis for $\mb{R}^2$. For instance, the sets $\lc \alpha_1\mf{e}_1, \alpha_2\mf{e}_2 \rc$ with $0 \neq \alpha_1, \alpha_2 \in \mb{R}$ are all basis for $\mb{R}^2$. Since there are inifinite number of choices for $\alpha_1, \alpha_2$, we have an infite number of basis for $\mb{R}^2$. The same argument applies to $\mb{R}^n$.
 
-Consider a basis for $\mb{R}^n$, $V = \lc \mf{v}_1, \mf{v}_2, \cdots \mf{v}_n \rc, \,\, \mf{v}_i \in \mb{R}^n$. Any vector $\mf{w} \in \mb{R}^n$ can be uniquely expressed as a linear combination of the elements of $V$, as follows,
-\[ \mf{w} = \alpha_1 \mf{v}_1 + \alpha_2 \mf{v}_2 + \cdots + \alpha_n \mf{v}_n, \,\,\, \alpha_i \in \mb{R} \]
-The coefficient $\alpha_i$ are unique for a given vector $\mf{w}$, and are called the \textit{coordinates} of the vector $\mf{w}$ with respect to the basis $V$. 
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.28\textwidth}
+        \includegraphics{figure/chapter01/basis-rep-a.pdf}
+        \caption{}
+        \label{fig:basis1}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.28\textwidth}
+        \centering
+        \includegraphics{figure/chapter01/basis-rep-b.pdf}
+        \caption{}
+        \label{fig:basis2}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.40\textwidth}
+        \centering
+        \includegraphics{figure/chapter01/basis-rep-c.pdf}
+        \caption{}
+        \label{fig:basis3}
+    \end{subfigure}
+    \caption{Representation of $\mf{w}$ in three different basis of $\mb{R}^2$. (a) and (c) are some arbitrary basis, while (b) is an orthonormal basis.}
+\end{figure}
+
+
+
+
+\section{Dimension of a vector space}
+Although there can be infinite number of basis for a vector space, there is something common to all basis sets -- they all have the same number of elements. This number is called the \textit{dimension} of the vector space. The dimension of a vector space is the number of elements in a basis for that vector space. The dimension of $\mb{R}^n$ is $n$. The dimension of a subspace of $\mb{R}^n$ is the number of elements in a basis for that subspace. The dimension of a subspace is always less than or equal to the dimension of the vector space it is a subspace of.

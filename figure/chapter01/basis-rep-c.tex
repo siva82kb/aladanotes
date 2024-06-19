@@ -1,0 +1,24 @@
+% tikzpic.tex
+\documentclass[crop,tikz]{standalone}% 'crop' is the default for v1.0, before it was 'preview'
+%\usetikzlibrary{...}% tikz package already loaded by 'tikz' option
+\usepackage{amsmath,amsthm,amssymb,mathrsfs,amsfonts,dsfont}
+\usetikzlibrary{plotmarks}
+
+\begin{document}
+\begin{tikzpicture}[scale=1.15]
+    \node[below left,xshift=0.2cm, yshift=0.0cm,black] at (0, 0) {$\mathbf{0}$};
+    %%%%% v1
+    \draw[-, ultra thin, blue!50] (-1,0) --  (3.0, 0);
+    \draw[-latex, thick, blue!50] (0,0) --  (1, 0) node[below right, black] {$\mathbf{v}_1$};
+    \draw[-latex, thick, blue!40] (0,0) --  (-0.857,0) node[below, xshift=-0.1cm,gray] {\small $-0.857\mathbf{v}_1$};
+    %%%%% v2
+    \draw[-, ultra thin, red!50] (-1.0, -0.7) --  (3.0, 2.1);
+    \draw[-latex, thick, red!50] (0, 0) --  (1,0.7) node[right,yshift=-0.1cm,black] {$\mathbf{v}_2$};
+    \draw[-latex, thick, red!40] (0,0) --  (2.857,2) node[xshift=0.3cm, yshift=-0.3cm, gray] {\small $2.857\mathbf{v}_2$};
+    %%%%% w
+    \draw[-latex, thick, black] (0,0) --  (2, 2) node[yshift=0.15cm, black] {$\mathbf{w}$};
+    \draw[dotted, thick, blue!50] (2.857, 2) --  (2,2);
+    \draw[dotted, thick, red!50] (-0.857, 0) --  (2,2);
+    \node[right] at (0, -0.75) {$\mathbf{w} = -0.857\mathbf{v}_1 + 2.857\mathbf{v}_2$};
+\end{tikzpicture}
+\end{document}
