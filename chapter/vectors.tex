@@ -20,6 +20,55 @@ We will often come across some special $n$-vectors in this document course and i
     \[ \mf{e}_1 = \bmx 1 \\ 0\emx \quad \mf{e}_2 = \bmx 0 \\ 1 \emx  \]
 \end{itemize}
 
+We now look at some examples of $n$-vectors that we come aross in applications.
+
+% \begin{tcolorbox}[]
+%     % Include your figure
+%     \begin{center}
+%       \includegraphics[width=0.5\textwidth]{example-image}
+%       \captionof{figure}{An example figure inside a tcolorbox}
+%     \end{center}
+  
+%     % Include your table
+%     \begin{center}
+%       \begin{tabular}{|c|c|c|}
+%         \hline
+%         A & B & C \\
+%         \hline
+%         1 & 2 & 3 \\
+%         4 & 5 & 6 \\
+%         \hline
+%       \end{tabular}
+%       \captionof{table}{An example table inside a tcolorbox}
+%     \end{center}
+%   \end{tcolorbox}
+
+
+\begin{boxedstuff}
+    \begin{example}
+        \textbf{Basic clinical information during a hospital visit}. When a patient visits a hostpial, several clinically relevant variables are captured, for instance: 
+        % \begin{table}[]
+            % \begin{tabular}{ccc}
+            % \hline
+            % \textbf{Index} & \textbf{Variable} & \textbf{Units} \\ \hline
+            % 1 & Sex & \begin{tabular}[c]{@{}c@{}}None\\ (0 - Male, 1- Female)\end{tabular} \\
+            % 2 & Age & Years \\
+            % 3 & Height & cm \\
+            % 4 & Weight & kg \\
+            % 5 & Heart rate & count \\
+            % 6 & Systolic pressure & mm of Hg \\
+            % 7 & Diastolic pressure & mm of Hg \\
+            % 8 & Temperature & celcius \\ \hline
+            % \end{tabular}
+        % \end{table}
+        
+        Sex, Age, heart rate, systolic pressure, diastolic presure, and temperature; we assume that categorical variables are given numerical lables. The following are some examples of $n$-vectors generated from three different patients visiting the hospital.
+        % \begin{equation*}
+        %     \mf{x}_1 = \bmxc 1 \\ \emx \quad \mf{x}_2 = \bmxc \emx \quad \mf{x}_3 = \bmxc \emx
+        % \end{equation*}
+    \end{example}
+\end{boxedstuff}
+
 \section{Visualizing $n$-vectors}
 The $n$-vectors can be visualized as points in $n$-dimensional space. For example, A 1-vector or just single real number or a \textit{scalar} can be thought of as a point on the real line. The 1-vector $x = 2.45$ is shown in Figure~\ref{fig:1-vector} is the red point. But we will find it useful to visualize a 1-vector as an arrow starting at the origin and ending at the point on the real line. The arrow is shown in blue in Figure~\ref{fig:1-vector}. 
 
@@ -772,14 +821,14 @@ Here is another interesting consequence of linearity. If we know the value of a 
 
     \item If $S_1, S_2 \subseteq V$ are subspaces of a vectors space $V$ then, is $S_1 \cap S_2$ a subspace? Is $S_1 \cup S_2$ a subspace? Explain your answers.
     
-    \item Consider a vector $\mf{v} = \begin{bmatrix*}v_1 & v_2 & \cdots & v_n\end{bmatrix*}^\top$. Express the following in-terms of inner product between a constant vector $\mf{u}$ and the given vector $\mf{v}$, and in each case specify the vector $\mf{u}$. \textbf{[Marks: 3]}
+    \item Consider a vector $\mf{v} = \begin{bmatrix*}v_1 & v_2 & \cdots & v_n\end{bmatrix*}^\top$. Express the following in-terms of inner product between a constant vector $\mf{u}$ and the given vector $\mf{v}$, and in each case specify the vector $\mf{u}$.
     \begin{enumerate}
         \item $\sum_{i=1}^n v_i$
         \item $\frac{1}{n}\sum_{i=1}^n v_i$
         \item $\frac{1}{5}\sum_{i=3}^5 v_i$
     \end{enumerate} 
     
-    \item Which of the following are linear functions of $\left\{x_1, x_2, \ldots,x_n\right\}$? \textbf{[Marks: 3]}
+    \item Which of the following are linear functions of $\left\{x_1, x_2, \ldots,x_n\right\}$?
     \begin{enumerate}
         \item $\min_i \left\{x_i\right\}_{i=1}^{n}$
         \item $\left(\sum_{i=1}^n x_i^2\right)^{1/2}$
@@ -805,7 +854,15 @@ Here is another interesting consequence of linearity. If we know the value of a 
         \end{cases}$
     \end{enumerate}
 
-    \item \textcolor{blue}{\textbf{[Programming]}} Let's build a simple classifier using the concepts you've learned in this chapter. 
+    \item \textcolor{blue}{\textbf{[Programming]}} Let's build a simple classifier using the concepts you've learned in this chapter. We will pretend that we are doing this for classifying or detecting the presence or absence of a disease called - \textit{vector space sickness}. We wish to do this through two clinical tests - (1) \textit{Subspace assay} and (2) \textit{Basis balance scale}. Both these serious clinical tests generate numerical outcomes that can assume any real number value.
+    
+    The department has been conducting a large scale clinical study for the last 5-6 years collecting data from participants, from different background, with and without vector space sickness by administering the subspace assay and the basis balance test. The data from this study is stored as a CSV file with four columns: (a) \textcolor{blue}{\texttt{subjectno}} -- subject numbers, (b) \textcolor{blue}{\texttt{x1}} --  value of the subspace assay test, (c) \textcolor{blue}{\texttt{x2}} -- value of the basis balance scale, and (d) \textcolor{blue}{\texttt{vss}} -- presence (1) or absence (0) of the vector space sickness condition. Each row of this CSV file corresponds to a individual subject who participated in the study. Your goal here is to look at the data from this experiment and propose how we could build a classifier for determine if a person has vector space sickness is we are given their scores on the subspace assay and the basis balance scale clinical tests. 
+
+    \begin{enumerate}
+        \item \textbf{Dataset from young MTechs}. One group of participants in the study was a a large sample of  of young, 1st year MTech students. Unfortunately, almost half of these students were diagnosed with vector space sickness. This data is stored in \textcolor{blue}{\texttt{expt1.csv}}. Read this data, make a scatter plot in 2D (\texttt{x1} versus \texttt{x2}) with the data points for participants with vector space sickness in blue and the one without vector space sickness in red. Look at the data, and propose how you could use the measurements \texttt{x1} and \texttt{x2} to distinguish between participants from the two groups. Implement the classifier you've proposed and find out how well it performs in correctly classifying the two groups.
+        
+        \item \textbf{Messed up dataset}. When collecting data from a second set of participants (similar to the one in \textcolor{blue}{\texttt{expt1.csv}}), the engineer had written a program program and ended up saving the results from the subspace assay in a different units. This data is available in \textcolor{blue}{\texttt{expt2.csv}}. Surely, the classifier you've developed using expt1.csv should work here as well, as the data is froma similar population, we are using the same two clinical tests, except for the change of units in one of the tests. Run the classifier you've developed using \textcolor{blue}{\texttt{expt1.csv}} on data from \textcolor{blue}{\texttt{expt2.csv}}. Does the classifier work as well? If yes, great! You can move to the next question. If not, why? How can we fix this problem?
+    \end{enumerate}
 \end{enumerate}
 
 
