@@ -23,60 +23,60 @@
       \begin{proof}[\textit Solution.~]}
     {\end{proof}\end{adjustwidth}}
 
-% % Define boxed environments for problems and solutions
-% \newmdenv[
-%   linecolor=black,
-%   backgroundcolor=gray!10,
-%   roundcorner=10pt,
-%   nobreak=false,
-%   innertopmargin=2pt,
-%   innerbottommargin=10pt,
-%   innerleftmargin=10pt,
-%   innerrightmargin=10pt,
-%   linewidth=0.pt
-% ]{boxedstuff}
-
-% % Define boxed environments for section summary
-% \newmdenv[
-%   linecolor=blue,
-%   backgroundcolor=blue!5,
-%   roundcorner=10pt,
-%   nobreak=false,
-%   innertopmargin=10pt,
-%   innerbottommargin=10pt,
-%   innerleftmargin=10pt,
-%   innerrightmargin=10pt,
-%   linewidth=0.pt,
-%   font=\small
-% ]{secsumbox}
-
 % Define boxed environments for problems and solutions
-\newtcolorbox{boxedstuff}{
-  colframe=black,
-  colback=gray!10,
-  arc=10pt,
-  top=2pt,
-  bottom=10pt,
-  left=10pt,
-  right=10pt,
-  boxrule=0pt,
-  before skip=10pt,
-  after skip=10pt
-}
+\newmdenv[
+  linecolor=black,
+  backgroundcolor=gray!10,
+  roundcorner=10pt,
+  nobreak=false,
+  innertopmargin=2pt,
+  innerbottommargin=10pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  linewidth=0.pt
+]{boxedstuff}
 
 % Define boxed environments for section summary
-\newtcolorbox{secsumbox}{
-  colframe=blue,
-  colback=blue!5,
-  arc=10pt,
-  top=10pt,
-  bottom=10pt,
-  left=10pt,
-  right=10pt,
-  boxrule=0pt,
-  fontupper=\small,
-  before skip=10pt,
-  after skip=10pt
-}
+\newmdenv[
+  linecolor=blue,
+  backgroundcolor=blue!5,
+  roundcorner=10pt,
+  nobreak=false,
+  innertopmargin=10pt,
+  innerbottommargin=10pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  linewidth=0.pt,
+  font=\small
+]{secsumbox}
+
+% % Define boxed environments for problems and solutions
+% \newtcolorbox{boxedstuff}{
+%   colframe=black,
+%   colback=gray!10,
+%   arc=10pt,
+%   top=2pt,
+%   bottom=10pt,
+%   left=10pt,
+%   right=10pt,
+%   boxrule=0pt,
+%   before skip=10pt,
+%   after skip=10pt
+% }
+
+% % Define boxed environments for section summary
+% \newtcolorbox{secsumbox}{
+%   colframe=blue,
+%   colback=blue!5,
+%   arc=10pt,
+%   top=10pt,
+%   bottom=10pt,
+%   left=10pt,
+%   right=10pt,
+%   boxrule=0pt,
+%   fontupper=\small,
+%   before skip=10pt,
+%   after skip=10pt
+% }
 
 \newcommand{\secsum}[1]{\begin{secsumbox} #1 \end{secsumbox}}

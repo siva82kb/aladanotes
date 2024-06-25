@@ -22,50 +22,37 @@ We will often come across some special $n$-vectors in this document course and i
 
 We now look at some examples of $n$-vectors that we come aross in applications.
 
-% \begin{tcolorbox}[]
-%     % Include your figure
-%     \begin{center}
-%       \includegraphics[width=0.5\textwidth]{example-image}
-%       \captionof{figure}{An example figure inside a tcolorbox}
-%     \end{center}
-  
-%     % Include your table
-%     \begin{center}
-%       \begin{tabular}{|c|c|c|}
-%         \hline
-%         A & B & C \\
-%         \hline
-%         1 & 2 & 3 \\
-%         4 & 5 & 6 \\
-%         \hline
-%       \end{tabular}
-%       \captionof{table}{An example table inside a tcolorbox}
-%     \end{center}
-%   \end{tcolorbox}
-
-
 \begin{boxedstuff}
     \begin{example}
-        \textbf{Basic clinical information during a hospital visit}. When a patient visits a hostpial, several clinically relevant variables are captured, for instance: 
-        % \begin{table}[]
-            % \begin{tabular}{ccc}
-            % \hline
-            % \textbf{Index} & \textbf{Variable} & \textbf{Units} \\ \hline
-            % 1 & Sex & \begin{tabular}[c]{@{}c@{}}None\\ (0 - Male, 1- Female)\end{tabular} \\
-            % 2 & Age & Years \\
-            % 3 & Height & cm \\
-            % 4 & Weight & kg \\
-            % 5 & Heart rate & count \\
-            % 6 & Systolic pressure & mm of Hg \\
-            % 7 & Diastolic pressure & mm of Hg \\
-            % 8 & Temperature & celcius \\ \hline
-            % \end{tabular}
-        % \end{table}
-        
-        Sex, Age, heart rate, systolic pressure, diastolic presure, and temperature; we assume that categorical variables are given numerical lables. The following are some examples of $n$-vectors generated from three different patients visiting the hospital.
-        % \begin{equation*}
-        %     \mf{x}_1 = \bmxc 1 \\ \emx \quad \mf{x}_2 = \bmxc \emx \quad \mf{x}_3 = \bmxc \emx
-        % \end{equation*}
+        \textbf{Basic clinical information during a hospital visit}. When a patient visits a hostpial, several clinically relevant variables are captured, for instance:
+        \begin{small}
+            \begin{center}
+            \begin{tabular}{ccc}
+                \hline
+                \textbf{Index} & \textbf{Variable} & \textbf{Units} \\ \hline
+                1 & Sex & None (0: Male, 1: Female) \\
+                2 & Age & Years \\
+                3 & Height & cm \\
+                4 & Weight & kg \\
+                5 & Heart rate & count \\
+                6 & Systolic pressure & mm of Hg \\
+                7 & Diastolic pressure & mm of Hg \\
+                8 & Temperature & celcius \\ \hline
+            \end{tabular}
+            \end{center}
+        \end{small}
+        The following are some examples of $n$-vectors generated from three different patients visiting the hospital.
+        \begin{equation*}
+            \mf{x}_1 = \bmxc 1 \\ 67 \\ 152 \\ 56 \\ 132 \\ 102 \\ 37.1 \emx \quad \mf{x}_2 = \bmxc 0 \\ 36 \\ 172 \\ 97 \\ 156 \\ 97 \\ 36.5 \emx \quad \mf{x}_3 = \bmxc 1 \\ 22 \\ 162 \\ 56 \\ 121 \\ 78 \\ 38.2 \emx
+        \end{equation*}
+    \end{example}
+
+    \begin{example}
+        \textbf{Time series data}. We often collect data over time, often at regular intervals. For example, consider the example of an attending nurse taking the temperature of a patient admitted to the hospital for an infectious disease. The nurse records the temperature of the patient every hour, without fail for the 48 hours the patient spent in the hosptial. This temperature record will have a total of 49 measurements, which can conveniently think of as a $n$-vector, in this case a $49$-vector. Instead of writing down the entire $49$-vector, we depict it as a time series plot.
+        \begin{center}
+            \includegraphics[width=0.5\textwidth]{figure/chapter01/temp-ts.pdf}
+            \captionof{figure}{Body temperature recorded at multiple time points.}
+        \end{center}
     \end{example}
 \end{boxedstuff}
 
@@ -293,7 +280,7 @@ One immediate consequence of the above definition is that hte zero element of th
         \caption{Vector addition.}
         \label{fig:subspace1-addition}
     \end{subfigure}
-    \caption{Example of a subspace of $\mb{R}$. (a) Shows the set of all points in $\mb{R}^2$ corresponding to the subset $S = \left\{ \bmxc x \\ 2 x\emx\right\} \subset \mb{R}^2$. (b) Shows that the set $S$ is closed under scalar multiplication. Take any vecotr from the line, and scale it and it remains on that blue line. (c) Shows that $S$ is closed under vector addition. If we take any two vectors from the blue line and add them, the resulting vector remains in the blue line.}
+    \caption{Example of a subspace of $\mb{R}^2$. (a) Shows the set of all points in $\mb{R}^2$ corresponding to the subset $S = \left\{ \bmxc x \\ 2 x\emx\right\} \subset \mb{R}^2$. (b) Shows that the set $S$ is closed under scalar multiplication. Take any vecotr from the line, and scale it and it remains on that blue line. (c) Shows that $S$ is closed under vector addition. If we take any two vectors from the blue line and add them, the resulting vector remains in the blue line.}
 \end{figure}    
     
 \begin{boxedstuff}
@@ -370,7 +357,7 @@ One immediate consequence of the above definition is that hte zero element of th
     \caption{Example of a subspace of $\mb{R}$. (a) Shows the set of all points in $\mb{R}^2$ corresponding to the subset $S = \left\{ \bmxc x \\ 2 x\emx\right\} \subset \mb{R}^2$. (b) Shows that the set $S$ is closed under scalar multiplication. Take any vecotr from the line, and scale it and it remains on that blue line. (c) Shows that $S$ is closed under vector addition. If we take any two vectors from the blue line and add them, the resulting vector remains in the blue line.}
 \end{figure}
 
-\section{Linear combinations and others}
+\section{Linear combination}
 Linear combination is an \textit{algebraic operation} performed on a set of vectors. We can combine the two fundamental operations on vectors into a single operation called the \textit{linear combination} of a set of vectors. Given a set of vectors $\mf{v}_1, \mf{v}_2, \ldots, \mf{v}_m \in \mb{R}^n$ and scalars $c_1, c_2, \ldots, c_n \in \mb{R}$, the linear combination of the vectors is given by:
 \begin{equation}
     \mf{v} = c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_n \mf{v}_m \in \mb{R}^n
@@ -414,6 +401,24 @@ Now, let's assume that the set $V$ is linearly independent, that is no vector in
     \implies \frac{c_1}{c_m} \mf{v}_1 + \frac{c_2}{c_m} \mf{v}_2 + \cdots + \frac{c_{m-1}}{c_m}\mf{v}_{m-1} &= \mf{v}_m, \,\, c_m \neq 0
 \end{split} \]
 But this a contradiction because we have just expressed $\mf{v}_m$ is expressed as a linear combination of the vectors $\mf{v}_1, \mf{v}_2, \cdots \mf{v}_{m-1}$.
+
+\begin{boxedstuff}
+    \begin{example}
+        Consider the set of vectors $\lc \mf{v}_1, \mf{v}_2 \rc$, such that $\mf{v}_1 = \bmx 1 \\ 0 \emx, \mf{v}_2 = \bmx 0 \\ 1 \emx$ in $\mb{R}^2$. This set is linearly independent. Let's verify this algebraically. Let's assume that there exist scalars $c_1, c_2$ such that $c_1 \mf{v}_1 + c_2 \mf{v}_2 = \mf{0}$. This implies that, $c_1 \bmx 1 \\ 0 \emx + c_2 \bmx 0 \\ 1 \emx = \bmx c_1 \\ c_2 \emx = \bmx 0 \\ 0 \emx \implies c_1 = c_2 = 0$. Thus the set $\lc \mf{v}_1, \mf{v}_2 \rc$ is linearly independent. 
+    \end{example}
+
+    \begin{example}
+        Consider the set of vectors $\lc \mf{v}_1, \mf{v}_2 \rc$, such that $\mf{v}_1 = \bmx 1 \\ 0 \emx, \mf{v}_2 = \bmx 0 \\ 1 \emx, , \mf{v}_3 = \bmx 23 \\ -5 \emx$ in $\mb{R}^2$. This set is not linearly independent, i.e., its linear dependent. Let's assume that there exist scalars $c_1, c_2, c_3$ such that $c_1 \mf{v}_1 + c_2 \mf{v}_2 + c_3 \mf{v}_3 = \mf{0}$. This implies that, $c_1 \bmx 1 \\ 0 \emx + c_2 \bmx 0 \\ 1 \emx + c_3 \bmx 23 \\ -5 \emx = \bmx c_1 + 23c_3\\ c_2  - 5 c_3 \emx = \bmx 0 \\ 0 \emx \implies c_1 = -23c_3$ and $c_2 = 5c_3$. If we choose $c_3$ to be a non-zero value, we have a set of non-zero scalars such that linear combination of the set $\lc \mf{v}_1, \mf{v}_2, \mf{v}_3 \rc$ produces the zero vector. Thus, this set is linearly dependent.
+    \end{example}
+
+    \begin{example}
+        Consider the set of vectors $\lc \mf{v}_1 \rc$, $\mf{v}_1 = \bmx -1 \\ 1 \\ 1 \emx$ in $\mb{R}^3$. This set is linearly independent. Let's assume that there exist scalars $c_1$ such that $c_1 \mf{v}_1 = \mf{0}$. This implies that, $\bmx -c_1 \\ c_1 \\ c_1 \emx = \bmx 0 \\ 0 \\ 0 \emx \implies c_1 = 0$. Thus, the set $\lc \mf{v}_1 \rc$ is linearly independent.
+    \end{example}
+
+    \begin{example}
+        Consider the set $\lc \mf{0} \rc$ in $\mb{R}^3$. This set is linearly dependent. Here, $c_1 \mf{0} = \bmx 0 c_1 \\ 0 c_1 \\ 0 c_1 \emx = \mf{0}$. Any non-zero $c_1$ will produce the zero vector. Thus, the set $\lc \mf{v}_1 \rc$ is linearly dependent. In fact, any set that contains the zero vector is linearly dependent. \textcolor{blue}{(Why? Can you show this algebraically?)}
+    \end{example}
+\end{boxedstuff}
 
 \section{Span of a set of vectors}
 \secsum{
@@ -461,7 +466,7 @@ The size of a vector is an extension of the idea of the magnitude of a real numb
     \label{eq:magnitude-real}
 \end{equation}
 
-The ``magnitude'' or size of an element of a vector space (such as $\mb{R}^n$) is called the \textit{norm} of the vector. The norm of a vector is a function that maps a vector to a non-negative real number, and satisfies the following properties:
+The ``magnitude'' or size of an element of a vector space (such as $\mb{R}^n$) is called the \textit{norm} of the vector. The norm is a generalization of the magnitude of a real number to a vector. The norm of a vector is a function that maps a vector to a non-negative real number, and satisfies the following properties:
 \begin{itemize}
     \item \textbf{Non-negativity:} For any vector $\mf{x} \in \mb{R}^n$, $\norm{\mf{x}} \geq 0$.
     \item \textbf{Definiteness:} The norm of a vector is zero if and only if the vector is the zero vector, i.e., $\norm{\mf{x}} = 0$ if and only if $\mf{x} = \mf{0}$.
@@ -473,7 +478,9 @@ According to this definition, the magnitude of real numbers (Eq.~\ref{eq:magnitu
     \norm{\mf{x}}_2 = \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}
     \label{eq:euclidean-norm}
 \end{equation}
-We are well-versed with this as the length of a vector in $\mb{R}^2$ and $\mb{R}^3$. The subscript $2$ in Eq.~\ref{eq:euclidean-norm} is used to indicate that it is the 2-norm, which is a special case of a general class of norms in $\mb{R}^n$ -- the \textit{p-norm}. The \textit{p-norm} is defined as the following:
+We are well-versed with this as the length of a vector in $\mb{R}^2$ and $\mb{R}^3$. The properties of non-negativity, definiteness, and homogeneity are easy to verify. The triangle inequality is a bit more involved.
+
+The subscript $2$ in Eq.~\ref{eq:euclidean-norm} is used to indicate that it is the 2-norm, which is a special case of a general class of norms in $\mb{R}^n$ -- the \textit{p-norm}. The \textit{p-norm} is defined as the following:
 \begin{equation}
     \norm{\mf{x}}_p = \lp \sum_{i=1}^{n} \vert x_i \vert^p \rp^{1/p}, \,\, p \in \mb{Z}, \,\, p \geq 1
     \label{eq:p-norm}
@@ -484,6 +491,18 @@ Apart from the \textit{2-norm}, the \textit{1-norm} and the \textit{$\infty$-nor
     \label{eq:1-infinity-norm}
 \end{equation}
 The \textit{1-norm} is the sum of the absolute value of the elements of the vector, and the \textit{$\infty$-norm} is the maximum of the absolute value of the elements of the vector. The \textit{1-norm} is also called the \textit{Manhattan norm} or the \textit{Taxicab norm} because it measures the distance between two points in a city if you can only travel along the grid of streets.
+
+\begin{boxedstuff}
+    \begin{example}
+        Let's calculate the 1-norm, 2-norm, and $\infty$-norm of the some vectors: %$\mf{x}_1 = \bmxc 1 \\ 2 \\ 3 \emx$, $\mf{x}_2 = \bmxc 0 \\ 3 \\ 4 \emx$, $\mf{e}_1 = \bmxc 1 \\ 0 \\ 0 \emx$, $\mf{e}_2 = \bmxc 0 \\ 1 \\ 0 \emx$, .
+
+        \begin{enumerate}
+            \item $\mf{x}_1 = \bmxc 1 \\ -1 \\ 3 \emx \longrightarrow \lV \mf{x}_1 \rV_1 = 5, \quad \lV \mf{x}_1 \rV_2 = \sqrt{1 + 1 + 9} = \sqrt{11}, \quad \lV \mf{x}_1 \rV_{\infty} = 3$.
+            \item $\mf{e}_2 = \bmxc 0 \\ 1 \\ 0 \emx \longrightarrow \lV \mf{x}_1 \rV_1 = 1, \quad \lV \mf{x}_1 \rV_2 = 1, \quad \lV \mf{x}_1 \rV_{\infty} = 1$. All the $p$-norms of the unit vectors are $1$. No wonder we call them ``unit'' vectors.
+            \item $\lV \mf{0} \rV_1 = \lV \mf{0} \rV_2 = \lV \mf{0} \rV_{\infty} = 0$. All $p$-norms will produce 0, otherwise it is not a norm (remember the definiteness property?)
+        \end{enumerate}
+    \end{example}
+\end{boxedstuff}
 
 \begin{boxedstuff}
     \begin{problem}
@@ -558,7 +577,16 @@ The idea of how similar two or more vectors are is an important topic  in data a
 \subsection{Distance between two vectors}
 The logic here is that similar vectors correspond to points that are close together, while disimilar vectors are father away. We can make use of the norm to compute the distance between two vectors $\mf{x}, \mf{y} \in \mb{R}^n$. Since the the difference between these two vectors $\mf{x} - \mf{y}$ is also another vector, we can compute the distance between vectors $\mf{x}$ and $\mf{y}$ as the norm of the vector $\mf{x} - \mf{y}$ (Figure~\ref{fig:dist1}).
 \[ \text{Distance between } \mf{x} \text{ and } \mf{y} = d\pp{\mf{x}, \mf{y}} = \lV \mf{x} - \mf{y} \rV_p \]
-We could use any of the $p$ norms to compute this or come-up with a new norm depending on the application we are dealing with. Take look at the clusters of points shown in Figure~\ref{fig:dist-clusters}, we would agree that the different colored points each form a cluster, since the points of the same color are closer to each other than points from another color. 
+We could use any of the $p$-norms to compute this or come-up with a new norm depending on the application we are dealing with. Take look at the clusters of points shown in Figure~\ref{fig:dist-clusters}, we would agree that the different colored points each form a cluster, since the points of the same color are closer to each other than points from another color. 
+
+\begin{boxedstuff}
+    \begin{example}
+        \textbf{Test scores in ALADA}. The ALADA course has three segments: linear algebra, optimization, and probability/statistics. Let's assume that the final exam contains three sections with a maximum of 25 marks students. The scores from these three segments are stored in a $3$-vector of the form $\mf{x} = \bmxc x_1 \\ x_2 \\ x_3\emx \in \mb{R}^3$, where $x_1, x_2, x_3$ are the marks obtained for linear algebra, optimization, and probability/statistics section, respectively. Consider the scores from the 5 students that took the course:
+        \[ \mf{x}_1 = \bmxc 2 \\ 5 \\ 1 \emx, \quad \mf{x}_2 = \bmxc 20 \\ 3 \\ 4 \emx, \quad \mf{x}_3 = \bmxc 18 \\ 6 \\ 7 \emx, \quad \mf{x}_4 = \bmxc 12 \\ 24 \\ 23 \emx, \quad \mf{x}_5 = \bmxc 9 \\ 20 \\ 21 \emx, \quad \mf{x}_6 = \bmxc 24 \\ 23 \\ 22 \emx
+        \] 
+    \end{example}
+\end{boxedstuff}
+
 
 \begin{figure}[h]
     \centering

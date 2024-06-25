@@ -1,5 +1,5 @@
 % makeindex style file created by the glossaries package
-% for document 'aladanotes' on 2024-6-24
+% for document 'aladanotes' on 2024-6-25
 actual '?'
 encap '|'
 level '!'
@@ -27,5 +27,3 @@ heading_suffix "\}\\relax \\glsresetentrylist "
 symhead_positive "glssymbols"
 numhead_positive "glsnumbers"
 page_compositor "."
-suffix_2p ""
-suffix_3p ""
