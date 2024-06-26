@@ -582,11 +582,49 @@ We could use any of the $p$-norms to compute this or come-up with a new norm dep
 \begin{boxedstuff}
     \begin{example}
         \textbf{Test scores in ALADA}. The ALADA course has three segments: linear algebra, optimization, and probability/statistics. Let's assume that the final exam contains three sections with a maximum of 25 marks students. The scores from these three segments are stored in a $3$-vector of the form $\mf{x} = \bmxc x_1 \\ x_2 \\ x_3\emx \in \mb{R}^3$, where $x_1, x_2, x_3$ are the marks obtained for linear algebra, optimization, and probability/statistics section, respectively. Consider the scores from the 5 students that took the course:
-        \[ \mf{x}_1 = \bmxc 2 \\ 5 \\ 1 \emx, \quad \mf{x}_2 = \bmxc 20 \\ 3 \\ 4 \emx, \quad \mf{x}_3 = \bmxc 18 \\ 6 \\ 7 \emx, \quad \mf{x}_4 = \bmxc 12 \\ 24 \\ 23 \emx, \quad \mf{x}_5 = \bmxc 9 \\ 20 \\ 21 \emx, \quad \mf{x}_6 = \bmxc 24 \\ 23 \\ 22 \emx
-        \] 
+        \[ \mf{x}_1 = \bmxc 2 \\ 5 \\ 1 \emx, \quad \mf{x}_2 = \bmxc 3 \\ 3 \\ 4 \emx, \quad \mf{x}_3 = \bmxc 8 \\ 20 \\ 22 \emx, \quad \mf{x}_4 = \bmxc 9 \\ 20 \\ 21 \emx, \quad \mf{x}_5 = \bmxc 24 \\ 24 \\ 23 \emx, \quad \mf{x}_6 = \bmxc 24 \\ 23 \\ 22 \emx
+        \]
+        The distance between the scores of these students tells us something about the ability of the students in the course. Let $d_{ij} = \lV \mf{x}_i - \mf{x}_j \rV_2$ be the Euclidean distance between the scores of student $i$ and $j$; notice that $d_{ij} = d_{ji}$. The distance between the different scores is given by the following table. \\
+        \begin{small}
+            \begin{center}
+            \begin{tabular}{lc|cccccc|}
+                \cline{3-8}
+                & \multicolumn{1}{l|}{} & \multicolumn{6}{c|}{$\mathbf{x}_i$} \\ \cline{3-8} 
+                &  & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{3} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{5} & 6 \\ \hline
+                \multicolumn{1}{|l|}{\multirow{6}{*}{$\mathbf{x}_j$}} & 1 & \multicolumn{1}{c|}{0.0} & \multicolumn{1}{c|}{3.7} & \multicolumn{1}{c|}{26.5} & \multicolumn{1}{c|}{26.0} & \multicolumn{1}{c|}{36.5} & 35.3 \\ \cline{2-8} 
+                \multicolumn{1}{|l|}{} & 2 & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{12}$}} & \multicolumn{1}{c|}{0.0} & \multicolumn{1}{c|}{25.3} & \multicolumn{1}{c|}{24.8} & \multicolumn{1}{c|}{35.3} & 34.1 \\ \cline{2-8} 
+                \multicolumn{1}{|l|}{} & 3 & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{13}$}} & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{23}$}} & \multicolumn{1}{c|}{0.0} & \multicolumn{1}{c|}{1.4} & \multicolumn{1}{c|}{16.5} & 16.3 \\ \cline{2-8} 
+                \multicolumn{1}{|l|}{} & 4 & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{14}$}} & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{24}$}} & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{34}$}} & \multicolumn{1}{c|}{0.0} & \multicolumn{1}{c|}{15.7} & 15.3 \\ \cline{2-8} 
+                \multicolumn{1}{|l|}{} & 5 & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{15}$}} & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{25}$}} & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{35}$}} & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{45}$}} & \multicolumn{1}{c|}{0.0} & 1.4 \\ \cline{2-8} 
+                \multicolumn{1}{|l|}{} & 6 & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{16}$}} & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{26}$}} & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{36}$}} & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{46}$}} & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{56}$}} & 0.0 \\ \hline
+                \end{tabular}
+            \end{center}
+        \end{small}
+        
+        \noindent The following observations can be made from the table:
+        \begin{itemize}
+            \item Students 1 and 2 have similar scores, compared to the other students.
+            \item Students 3 and 4 have very similar scores, compared to the other students.
+            \item Students 5 and 6 have very similar scores, compared to the other students.
+            \item Students 1 and 2, are closer to 3 and 4 than to 5 and 6.
+        \end{itemize}
+
+        \noindent Notice that you could have also used the other norms to creata  table similar to the above one. Its left as an exercise for you generate a similar table using the $1$-norm and the $\infty$-norm to define the distance between the scores of the students.
+
+        \textbf{Using norms instead of norms of differences}. Another way to understand the score vectors is to directly compute the norms of $\mf{x}_i$ and see what information they convey about the students' performance in the ALADA final exam.
+        \begin{small}
+            \begin{center}
+                    \begin{tabular}{|c|c|c|c|c|c|}
+                    \hline
+                    $\lV \mf{x}_1 \rV_2$ & $\lV \mf{x}_2 \rV_2$ & $\lV \mf{x}_3 \rV_2$ & $\lV \mf{x}_4 \rV_2$ & $\lV \mf{x}_5 \rV_2$ & $\lV \mf{x}_6 \rV_2$ \\ \hline
+                    5.5 & 5.8 & 30.8 & 30.4 & 41.0 & 39.9 \\ \hline
+                    \end{tabular}
+            \end{center}
+        \end{small}
+        The size of the score vectors tells us that students 1 and 2 performed worst among the six students, while students 5 and 6 performed the best; the performacne of students 3 and 4 was somehwere in the middle. \textcolor{blue}{Would we have reached similar conclusions if we had used the $1$-norm or the $\infty$-norm to compute the norms of the score vectors?}
+        \label{example:alada-scores}
     \end{example}
 \end{boxedstuff}
-
 
 \begin{figure}[h]
     \centering
@@ -632,6 +670,28 @@ The standard inner product of two vectors $\mf{x}$ and $\mf{y}$ is related to th
 The angle $\theta$ between the two vectors $\mf{x}$ and $\mf{y}$ can be computed as:
 \[ \theta = \cos^{-1}\pp{\frac{\mf{x}^\top \mf{y}}{\lV \mf{x} \rV_2 \lV \mf{y} \rV_2}}, \,\, \lV \mf{x} \rV_2 \neq 0, \lV \mf{y} \rV_2 \neq 0 \]
 If the 2-norms of the $\mf{x}$ and $\mf{y}$, then $\mf{x}^\top\mf{y}$ is simply the cosine of the angle between the vectors.
+
+\begin{boxedstuff}
+    \begin{example}
+        Let's look at the data from Example~\ref{example:alada-scores}, but this time using the angle between the vectors to understand the performance of the students in the ALADA final exam. The angle between the scores (in degrees) of the students is given by the following table. Let $\theta_{ij} = \cos^{-1}\pp{\frac{\mf{x}_i^\top\mf{x}_j}{\lV \mf{x}_i \rV_2 \lV \mf{x}_j \rV_2}}$ be the angle between the scores of student $i$ and $j$; notice that $\theta_{ij} = \theta_{ji}$.
+        \begin{small}
+            \begin{center}
+            \begin{tabular}{lc|cccccc|}
+                \cline{3-8}
+                & \multicolumn{1}{l|}{} & \multicolumn{6}{c|}{$\mathbf{x}_i$} \\ \cline{3-8} 
+                &  & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{3} & \multicolumn{1}{c|}{4} & \multicolumn{1}{c|}{5} & 6 \\ \hline
+                \multicolumn{1}{|l|}{\multirow{6}{*}{$\mathbf{x}_j$}} & 1 & \multicolumn{1}{c|}{0.0} & \multicolumn{1}{c|}{38.5} & \multicolumn{1}{c|}{35.1} & \multicolumn{1}{c|}{33.3} & \multicolumn{1}{c|}{31.7} & 32.1 \\ \cline{2-8} 
+                \multicolumn{1}{|l|}{} & 2 & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{12}$}} & \multicolumn{1}{c|}{0.0} & \multicolumn{1}{c|}{16.7} & \multicolumn{1}{c|}{15.0} & \multicolumn{1}{c|}{9.2} & 9.9 \\ \cline{2-8} 
+                \multicolumn{1}{|l|}{} & 3 & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{13}$}} & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{23}$}} & \multicolumn{1}{c|}{0.0} & \multicolumn{1}{c|}{2.5} & \multicolumn{1}{c|}{21.1} & 22.2 \\ \cline{2-8} 
+                \multicolumn{1}{|l|}{} & 4 & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{14}$}} & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{24}$}} & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{34}$}} & \multicolumn{1}{c|}{0.0} & \multicolumn{1}{c|}{18.7} & 19.9 \\ \cline{2-8} 
+                \multicolumn{1}{|l|}{} & 5 & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{15}$}} & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{25}$}} & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{35}$}} & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{45}$}} & \multicolumn{1}{c|}{0.0} & 1.2 \\ \cline{2-8} 
+                \multicolumn{1}{|l|}{} & 6 & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{16}$}} & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{26}$}} & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{36}$}} & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{46}$}} & \multicolumn{1}{c|}{\textcolor{gray}{$\theta_{56}$}} & 0.0 \\ \hline
+                \end{tabular}
+            \end{center}
+        \end{small}
+    \end{example}
+    It looks like the angles do not do a good job of capturing the similarity between the scores of the students like the distance between the scores, in particular $\theta_{12}$ is quite large, while $\theta_{34}$ and $\theta_{56}$ are quite small. \textcolor{blue}{Why do you think this is so?}
+\end{boxedstuff}
 
 \section{Standard and other inner products}
 $\mf{x}^\top\mf{y}$ is the standard inner product, which of course means there are non-standard inner products. But before we look at generalizing the concept of an inner product, let's look at some properties of the standard inner product.
@@ -813,6 +873,17 @@ An interesting fact about linear functions is that every possible $f: \mb{R}^n \
 \]
 
 Here is another interesting consequence of linearity. If we know the value of a linear function for a set of vectors $X = \lc \mf{x}_1, \mf{x}_2, \cdots \mf{x}_k \rc$, then know the output of the function for the set $\text{span}\pp{X}$. Can you think of why it is so?
+
+\section{Applications}
+\secsum{
+    The concepts convered in this chapter are enough to understand the following important and useful applications:
+    \begin{itemize}
+        \item k-nearest neighbors (k-NN) classification algorithm
+        \item k-means clustering algorithm
+    \end{itemize}
+}
+
+
 
 \section{Exercise}
 \vspace{-0.5cm}
