@@ -141,7 +141,7 @@ This is the most important operation involving matrices. Understanding matrix mu
 Consder two matrices $\mf{A} \in \mb{R}^{n \times m}$ and $\mf{B} \in \mb{R}^{p \times q}$. A matric multiplication operation $\mf{A}\mf{B}$ is defined if and only if the number of columns of $\mf{A}$ is equal to the number of rows of $\mf{B}$, i.e. $m = p$. The result of the matrix multiplication operation is a matrix $\mf{C} \in \mb{R}^{n \times q}$, where $\mf{C} = \mf{A}\mf{B}$. The elements of the resulting matrix $\mf{C}$ are defined as:
 \begin{equation}
     c_{ij} = \sum_{k=1}^{m} a_{ik}b_{kj}, \,\, \forall i \in \lc 1, \ldots n\rc, \,\, j \in \lc 1, \ldots q\rc
-    \label{eq:ch02-mat-mult-ip}
+    \label{eq:ch02-mat-mult}
 \end{equation}
 This for sure looks confusing and makes little sense. It turns out the matrix multiplication operation is a natural operation representing composition of linear transformation, and all matrices represent linear transformations. 
 
@@ -161,3 +161,93 @@ This for sure looks confusing and makes little sense. It turns out the matrix mu
     We will not discuss the Hadamard product in this course, but it is good to know that this operation exists.
     We will not discuss the Hadamard product in this course, but it is good to know that this operation exists.
 \end{boxedstuff}
+
+The definition of matrix multiplication in Eq.~\ref{eq:ch02-mat-mult-ip} is hardly illuminating. Its hard to see what is going on. Before we dive a littel deeper into matrix multiplication, we will first define some coventions we will follow in the course:
+\begin{itemize}
+    \item All $n$-vectors are will be column vectors. Row vectors will be represented as the transpose of a column vector.
+    \item For a matrix $\mf{A} \in \mb{R}^{n \times m}$, the columns of the matrix will be represented as $\mf{a}_1, \mf{a}_2, \ldots \mf{a}_m$, where each vector is from $\mb{R}^n$. Then, we can write the matrix as the following,
+    \begin{equation}
+        \mf{A} = \bmxc \mf{a}_1 & \mf{a}_2 & \ldots & \mf{a}_m \emx
+        \label{eq:ch02-mat-col-rep}
+    \end{equation}
+    We represent the rows of the matrix $\mf{A}$ as $\tilde{\mf{a}}^\top_1, \tilde{\mf{a}}^\top_2, \ldots \tilde{\mf{a}}^\top_n$, where each vector $\tilde{\mf{a}}_i$ is a column vector from $\mb{R}^m$. We will reserve the tilde notation for the rows of a matrix. Then, we can write the matrix as the following,
+    \begin{equation}
+        \mf{A} = \bmxc \tilde{\mf{a}}_1 & \tilde{\mf{a}}_2 & \ldots & \tilde{\mf{a}}_n \emx^\top = \bmxc \tilde{\mf{a}}_1^\top \\ \tilde{\mf{a}}_2^\top \\ \vdots \\ \tilde{\mf{a}}_n^\top \emx
+        \label{eq:ch02-mat-row-rep}
+    \end{equation}
+\end{itemize}
+
+\begin{boxedstuff}
+    \begin{problem}
+        \textbf{Elements of a row and column of a matrix $\mf{A}$} Consider a matrix $\mf{A} \in \mb{R}^{n \times m}$ with elements $a_{ij}$. Can you write down the elements of the $k^{th}$ row and the $l^{th}$ row of the matrix $\mf{A}$?.
+    \end{problem}
+\end{boxedstuff}
+We will first start with a simplified versions of the matric multiplication problem before tackling the most general problem. It is left as an exercise for you to verify that the following four simplified version comply with Eq.~\ref{eq:ch02-mat-mult}.
+\begin{itemize}
+    \item \textbf{Inner product:} We have already seen this in the previous chapter. Consider two column vectors $\mf{x}, \mf{y} \in \mb{R}^n$. We can this of these two as $n \times 1$ matrices. The inner product is a product between a row matrix and a column matrix. It is defined as follows, 
+    \[ \mf{x}^\top\mf{y} = \sum_{i=1}^{n} x_iy_i \]
+    Note that the matrices $\mf{x}^\top \in \mb{R}^{1 \times n}$ and $\mf{y} \in \mb{R}^{n \times 1}$. Thus, matrix multiplication is defined.
+    
+    \item \textbf{Post-multiplying a matrix $\mf{A}$ by a column vector $\mf{x}$:} Consider a matrix $\mf{A} \in \mb{R}^{n \times m}$ and a column vector $\mf{x} \in \mb{R}^m$. The product $\mf{A}\mf{x}$ produces a column vector $\mf{y} \in \mb{R}^n$.
+    \begin{equation}
+        \mf{y} = \mf{A}\mf{x} = \sum_{i=1}^n x_i\mf{a}_i = x_1 \mf{a}_1 + x_2 \mf{a}_2 + \cdots + x_m\mf{a}_m
+        \label{eq:ch02-mat-post-mult-col-vec}
+    \end{equation}
+    The above equation has a nice interpreation. The vector $\mf{y}$ is the linear combination of the columns of $\mf{A}$, where the mixture for the linear combination come from the elements of the vector $\mf{x}$. This means that post-multiplying a matrix $\mf{A}$ by a column vector is a process of generating a vector from the span of the set formed by the columns of the matrix $\mf{A}$ (recall span of a set of vector from Section~\ref{sec:ch01-span}). We will now show how Eq.~\ref{eq:ch02-mat-post-mult-col-vec} is the consequence of Eq.~\ref{eq:ch02-mat-mult}. From, Eq.~\ref{eq:ch02-mat-mult}, we have:
+    \[ \begin{split}
+        \mf{y} &= \mf{A}\mf{x} = \bmxc \sum_{i=1}^m a_{1i}x_i \\ \sum_{i=1}^m a_{2i}x_i \\ \vdots \\ \sum_{i=1}^m a_{ni}x_i \emx = \bmxc a_{11}x_1 + a_{12}x_2 + \cdots + a_{1m}x_m \\ a_{21}x_1 + a_{22}x_2 + \cdots + a_{2m}x_m \\ \vdots \\ a_{n1}x_1 + a_{n2}x_2 + \cdots + a_{nm}x_m \emx = \bmxc a_{11}x_1 \\ a_{21}x_1 \\ \vdots \\ a_{n1}x_1\emx + \bmxc a_{12}x_2 \\ a_{22}x_2 \\ \vdots \\ a_{n2}x_2\emx + \cdots + \bmxc a_{1m}x_m \\ a_{2m}x_m \\ \vdots \\ a_{nm}x_m \emx \\
+        &= x_1 \bmxc a_{11} \\ a_{21} \\ \vdots \\ a_{n1}\emx + x_2 \bmxc a_{12} \\ a_{22} \\ \vdots \\ a_{n2}\emx + \cdots + x_m\bmxc a_{1m} \\ a_{2m} \\ \vdots \\ a_{nm} \emx = x_1 \mf{a}_1 + x_2 \mf{a}_2 + \cdots + x_m\mf{a}_m
+    \end{split} \]
+    
+    \item \textbf{Pre-multiplying a matrix $\mf{A}$ by a row vector $\mf{x}^\top$:} Consider a matrix $\mf{A} \in \mb{R}^{n \times m}$ and a row vector $\mf{x}^\top \in \mb{R}^{1 \times n}$. The product $\mf{x}^\top\mf{A}$ produces a row vector $\mf{y} \in \mb{R}^{1 \times m}$. 
+    \begin{equation}
+        \mf{y} = \mf{x}^\top\mf{A} = \sum_{i=1}^m x_i\tilde{\mf{a}}_i^\top = x_1 \tilde{\mf{a}}_1^\top + x_2 \tilde{\mf{a}}_2^\top + \cdots + x_n\tilde{\mf{a}}_n^\top
+        \label{eq:ch02-mat-pre-mult-row-vec}
+    \end{equation}
+    
+    
+    
+    Consider a matrix $\mf{A} \in \mb{R}^{n \times m}$ and a column vector $\mf{x} \in \mb{R}^m$. The product $\mf{A}\mf{x}$ produces a column vector $\mf{y} \in \mb{R}^n$.
+    \begin{equation}
+        \mf{y} = \mf{A}\mf{x} = \sum_{i=1}^n x_i\mf{a}_i = x_1 \mf{a}_1 + x_2 \mf{a}_2 + \cdots + x_m\mf{a}_m
+        \label{eq:ch02-mat-post-mult-col-vec}
+    \end{equation}
+    The above equation has a nice interpreation. The vector $\mf{y}$ is the linear combination of the columns of $\mf{A}$, where the mixture for the linear combination come from the elements of the vector $\mf{x}$. This means that post-multiplying a matrix $\mf{A}$ by a column vector is a process of generating a vector from the span of the set formed by the columns of the matrix $\mf{A}$ (recall span of a set of vector from Section~\ref{sec:ch01-span}). We will now show how Eq.~\ref{eq:ch02-mat-post-mult-col-vec} is the consequence of Eq.~\ref{eq:ch02-mat-mult}. From, Eq.~\ref{eq:ch02-mat-mult}, we have:
+    \[ \begin{split}
+        \mf{y} &= \mf{A}\mf{x} = \bmxc \sum_{i=1}^m a_{1i}x_i \\ \sum_{i=1}^m a_{2i}x_i \\ \vdots \\ \sum_{i=1}^m a_{ni}x_i \emx = \bmxc a_{11}x_1 + a_{12}x_2 + \cdots + a_{1m}x_m \\ a_{21}x_1 + a_{22}x_2 + \cdots + a_{2m}x_m \\ \vdots \\ a_{n1}x_1 + a_{n2}x_2 + \cdots + a_{nm}x_m \emx = \bmxc a_{11}x_1 \\ a_{21}x_1 \\ \vdots \\ a_{n1}x_1\emx + \bmxc a_{12}x_2 \\ a_{22}x_2 \\ \vdots \\ a_{n2}x_2\emx + \cdots + \bmxc a_{1m}x_m \\ a_{2m}x_m \\ \vdots \\ a_{nm}x_m \emx \\
+        &= x_1 \bmxc a_{11} \\ a_{21} \\ \vdots \\ a_{n1}\emx + x_2 \bmxc a_{12} \\ a_{22} \\ \vdots \\ a_{n2}\emx + \cdots + x_m\bmxc a_{1m} \\ a_{2m} \\ \vdots \\ a_{nm} \emx = x_1 \mf{a}_1 + x_2 \mf{a}_2 + \cdots + x_m\mf{a}_m
+    \end{split} \]
+
+    \item \textbf{Outer product:}
+\end{itemize}
+
+
+Consider two matrices $\mf{A} \in \mb{R}^{n \times p}$ and $\mf{B} \in \mb{R}^{p \times m}$. These two matrices can be multiplied to get a matrix $\mf{C} = \mf{A}\mf{B} \in \mb{R}^{n \times m}$. Now, we are ready to look at the four views, which are described in the following subsections. 
+
+\subsubsection{Inner product view}
+The $ij^{th}$ element of $\mf{C} = \mf{A}\mf{B}$ is given by the inner product of the $i^{th}$ row of $\mf{A}$ and the $j^{th}$ column of $\mf{B}$.
+\begin{equation}
+    c_{ij} = \tilde{\mf{a}}_i^\top \mf{b}_j = \sum_{k=1}^{p} a_{ik}b_{kj} \implies \mf{C} = \bmxc \tilde{\mf{a}}_1^\top\mf{b}_1 & \tilde{\mf{a}}_1^\top\mf{b}_2 & \ldots & \tilde{\mf{a}}_1^\top\mf{b}_m \\
+    \tilde{\mf{a}}_2^\top\mf{b}_1 & \tilde{\mf{a}}_2^\top\mf{b}_2 & \ldots & \tilde{\mf{a}}_2^\top\mf{b}_m \\
+    \vdots & \vdots & \ddots & \vdots \\
+    \tilde{\mf{a}}_n^\top\mf{b}_1 & \tilde{\mf{a}}_n^\top\mf{b}_2 & \ldots & \tilde{\mf{a}}_n^\top\mf{b}_m
+    \emx
+    \label{eq:ch02-mat-mult-inner-prod}
+\end{equation}
+
+\subsubsection{Column view}
+The columns of the matrix $\mf{C} = \mf{A}\mf{B}$ are the linear combinations of the columns of the matrix $\mf{A}$, where the mixture for the linear combination come from the columns of the matrix $\mf{B}$.
+\begin{equation}
+    \mf{c}_i = \mf{A}\mf{b}_i
+    % \mf{C} = \bmxc \mf{a}_1 & \mf{a}_2 & \ldots & \mf{a}_p \emx \bmxc \mf{b}_1 & \mf{b}_2 & \ldots & \mf{b}_m \emx = \bmxc \mf{a}_1\mf{b}_1 & \mf{a}_1\mf{b}_2 & \ldots & \mf{a}_1\mf{b}_m \\
+    % \mf{a}_2\mf{b}_1 & \mf{a}_2\mf{b}_2 & \ldots & \mf{a}_2\mf{b}_m \\
+    % \vdots & \vdots & \ddots & \vdots \\
+    % \mf{a}_n\mf{b}_1 & \mf{a}_n\mf{b}_2 & \ldots & \mf{a}_n\mf{b}_m
+    % \emx
+    \label{eq:ch02-mat-mult-col-view}
+\end{equation}
+
+
+\subsubsection{Row view}
+
+\subsubsection{Outer product view}
