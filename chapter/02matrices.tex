@@ -198,31 +198,61 @@ We will first start with a simplified versions of the matric multiplication prob
         \mf{y} &= \mf{A}\mf{x} = \bmxc \sum_{i=1}^m a_{1i}x_i \\ \sum_{i=1}^m a_{2i}x_i \\ \vdots \\ \sum_{i=1}^m a_{ni}x_i \emx = \bmxc a_{11}x_1 + a_{12}x_2 + \cdots + a_{1m}x_m \\ a_{21}x_1 + a_{22}x_2 + \cdots + a_{2m}x_m \\ \vdots \\ a_{n1}x_1 + a_{n2}x_2 + \cdots + a_{nm}x_m \emx = \bmxc a_{11}x_1 \\ a_{21}x_1 \\ \vdots \\ a_{n1}x_1\emx + \bmxc a_{12}x_2 \\ a_{22}x_2 \\ \vdots \\ a_{n2}x_2\emx + \cdots + \bmxc a_{1m}x_m \\ a_{2m}x_m \\ \vdots \\ a_{nm}x_m \emx \\
         &= x_1 \bmxc a_{11} \\ a_{21} \\ \vdots \\ a_{n1}\emx + x_2 \bmxc a_{12} \\ a_{22} \\ \vdots \\ a_{n2}\emx + \cdots + x_m\bmxc a_{1m} \\ a_{2m} \\ \vdots \\ a_{nm} \emx = x_1 \mf{a}_1 + x_2 \mf{a}_2 + \cdots + x_m\mf{a}_m
     \end{split} \]
-    
-    \item \textbf{Pre-multiplying a matrix $\mf{A}$ by a row vector $\mf{x}^\top$:} Consider a matrix $\mf{A} \in \mb{R}^{n \times m}$ and a row vector $\mf{x}^\top \in \mb{R}^{1 \times n}$. The product $\mf{x}^\top\mf{A}$ produces a row vector $\mf{y} \in \mb{R}^{1 \times m}$. 
+
+    \item \textbf{Pre-multiplying a matrix $\mf{A}$ by a row vector $\mf{x}^\top$:} Consider a matrix $\mf{A} \in \mb{R}^{n \times m}$ and a row vector $\mf{x}^\top \in \mb{R}^{1 \times n}$. The product $\mf{x}^\top\mf{A}$ produces a row vector $\mf{y}^\top$, with $\mf{y} \in \mb{R}^{1 \times m}$. 
     \begin{equation}
-        \mf{y} = \mf{x}^\top\mf{A} = \sum_{i=1}^m x_i\tilde{\mf{a}}_i^\top = x_1 \tilde{\mf{a}}_1^\top + x_2 \tilde{\mf{a}}_2^\top + \cdots + x_n\tilde{\mf{a}}_n^\top
+        \mf{y}^\top = \mf{x}^\top\mf{A} = \sum_{i=1}^m x_i\tilde{\mf{a}}_i^\top = x_1 \tilde{\mf{a}}_1^\top + x_2 \tilde{\mf{a}}_2^\top + \cdots + x_n\tilde{\mf{a}}_n^\top
         \label{eq:ch02-mat-pre-mult-row-vec}
     \end{equation}
-    
-    
-    
-    Consider a matrix $\mf{A} \in \mb{R}^{n \times m}$ and a column vector $\mf{x} \in \mb{R}^m$. The product $\mf{A}\mf{x}$ produces a column vector $\mf{y} \in \mb{R}^n$.
-    \begin{equation}
-        \mf{y} = \mf{A}\mf{x} = \sum_{i=1}^n x_i\mf{a}_i = x_1 \mf{a}_1 + x_2 \mf{a}_2 + \cdots + x_m\mf{a}_m
-        \label{eq:ch02-mat-post-mult-col-vec}
-    \end{equation}
-    The above equation has a nice interpreation. The vector $\mf{y}$ is the linear combination of the columns of $\mf{A}$, where the mixture for the linear combination come from the elements of the vector $\mf{x}$. This means that post-multiplying a matrix $\mf{A}$ by a column vector is a process of generating a vector from the span of the set formed by the columns of the matrix $\mf{A}$ (recall span of a set of vector from Section~\ref{sec:ch01-span}). We will now show how Eq.~\ref{eq:ch02-mat-post-mult-col-vec} is the consequence of Eq.~\ref{eq:ch02-mat-mult}. From, Eq.~\ref{eq:ch02-mat-mult}, we have:
-    \[ \begin{split}
-        \mf{y} &= \mf{A}\mf{x} = \bmxc \sum_{i=1}^m a_{1i}x_i \\ \sum_{i=1}^m a_{2i}x_i \\ \vdots \\ \sum_{i=1}^m a_{ni}x_i \emx = \bmxc a_{11}x_1 + a_{12}x_2 + \cdots + a_{1m}x_m \\ a_{21}x_1 + a_{22}x_2 + \cdots + a_{2m}x_m \\ \vdots \\ a_{n1}x_1 + a_{n2}x_2 + \cdots + a_{nm}x_m \emx = \bmxc a_{11}x_1 \\ a_{21}x_1 \\ \vdots \\ a_{n1}x_1\emx + \bmxc a_{12}x_2 \\ a_{22}x_2 \\ \vdots \\ a_{n2}x_2\emx + \cdots + \bmxc a_{1m}x_m \\ a_{2m}x_m \\ \vdots \\ a_{nm}x_m \emx \\
-        &= x_1 \bmxc a_{11} \\ a_{21} \\ \vdots \\ a_{n1}\emx + x_2 \bmxc a_{12} \\ a_{22} \\ \vdots \\ a_{n2}\emx + \cdots + x_m\bmxc a_{1m} \\ a_{2m} \\ \vdots \\ a_{nm} \emx = x_1 \mf{a}_1 + x_2 \mf{a}_2 + \cdots + x_m\mf{a}_m
-    \end{split} \]
+    The row vector $\mf{y}^\top$ is a linear combination of the rows of the matrix $\mf{A}$, where the miscture fot the linear combination comes from the elements of the row vector $\mf{x}^\top$. Pre-multiplying a matrix by a row vector is a process of generating a vector from the span of the set formed by the rows of the matrix $\mf{A}$. We will leave it as a exercise for you to show how how Eq.~\ref{eq:ch02-mat-pre-mult-row-vec} is the consequence of Eq.~\ref{eq:ch02-mat-mult}.
 
-    \item \textbf{Outer product:}
+    \item \textbf{Outer product:} The outer product, like the inner product, is a product between a row matrix and a column matrix, except in the reverse order. Consider two column vectors $\mf{x}, \mf{y} \in \mb{R}^n$. The outer product is defined as follows,
+    \begin{equation}
+        \mf{x}\mf{y}^\top = \bmxc x_1 \\ x_2 \\ \vdots \\ x_n \emx \bmxc y_1 & y_2 & \ldots & y_n \emx = \bmxc x_1y_1 & x_1y_2 & \ldots & x_1y_n \\ x_2y_1 & x_2y_2 & \ldots & x_2y_n \\ \vdots & \vdots & \ddots & \vdots \\ x_ny_1 & x_ny_2 & \ldots & x_ny_n \emx \in \mb{R}^{n \times n}
+        \label{eq:ch02-mat-outer-prod}
+    \end{equation}
+    While the inner product produces a scalar, the outer product produces a matrix. The outer product is a very useful operation in many applications, as we will see in the multiple occasions in this course.
 \end{itemize}
 
+\begin{boxedstuff}
+    \begin{problem}
+        \textbf{Outer product to produce a rectangular matrix}. In the Eq.~\ref{eq:ch02-mat-outer-prod}, the outer product operation produces a square matrix. Can the outer product operation ever produce a rectangular matrix of shape $n \times m$. If yes, how? If no, explain why not.
+    \end{problem}
+\end{boxedstuff}
+We now look at some numerical examples to get a handle on the ideas discussed above.
 
-Consider two matrices $\mf{A} \in \mb{R}^{n \times p}$ and $\mf{B} \in \mb{R}^{p \times m}$. These two matrices can be multiplied to get a matrix $\mf{C} = \mf{A}\mf{B} \in \mb{R}^{n \times m}$. Now, we are ready to look at the four views, which are described in the following subsections. 
+\begin{boxedstuff}
+    \begin{example}
+        \textbf{Inner product} Let $\mf{x} = \bmxc 1 \\ 3 \\ 4 \emx$ and $\mf{y} = \bmx -1 \\ 2 \\ 1 \emx$. The inner product of these two vectors or column matrices is as follows:
+        \[ \mf{x}^\top\mf{y} = \bmxc 1 & 3 & 4 \emx \bmxc -1 \\ 2 \\ 1 \emx = 1 \cdot \pp{-1} + 3 \cdot 2 + 4 \cdot 1 = -1 + 6 + 4 = 9\]
+        \label{example:ch02-mat-mul-inn-prod}
+    \end{example}
+
+    \begin{example}
+        \textbf{Post-mulitplying a matrix by a column vector} Let $\mf{x} = \bmxc 1 \\ 3 \emx$ and $\mf{A} = \bmx 2 & -1 \\ 1 & 1 \emx$. The product $\mf{A}\mf{x}$ is given as follows:
+        \[ \mf{y} = \mf{A}\mf{x} = \bmx 2 & -1 \\ 1 & 1 \emx \bmxc 1 \\ 3 \emx = \bmxc 2 \cdot 1 + -1 \cdot 3 \\ 1 \cdot 1 + 1 \cdot 3 \emx = \bmx -1 \\ 4 \emx = 1\bmx 2 \\ 1\emx + 3\bmx -1 \\ 1\emx \]
+        \label{example:ch02-mat-post-mul-col-vec}
+    \end{example}
+
+    \begin{example}
+        \textbf{Pre-mulitplying a matrix by a row vector} Let $\mf{x}^\top = \bmxc 1 & 3 \emx$ and $\mf{A} = \bmx 2 & -1 \\ 1 & 1 \emx$. The product $\mf{A}\mf{x}$ is given as follows:
+        \[ \mf{y}^\top = \mf{x}^\top\mf{A} = \bmxc 1 & 3 \emx \bmx 2 & -1 \\ 1 & 1 \emx = \bmxc 1 \cdot 2 + 3 \cdot 1 & 1 \cdot \pp{-1} + 3 \cdot 1 \emx = \bmx 5 & 2 \emx = 1\bmx 2 & -1\emx + 3\bmx 1 & 1 \emx \]
+        \label{example:ch02-mat-pre-mul-row-vec}
+    \end{example}
+
+    \begin{example}
+        \textbf{Outer product} Let $\mf{x} = \bmxc 1 \\ 3 \\ 4 \emx$ and $\mf{y} = \bmx -1 \\ 2 \\ 1 \emx$. The outer product of these two vectors or column matrices is as follows:
+        \[ \mf{x}\mf{y}^\top = \bmxc 1 \\ 3 \\ 4 \emx \bmxc -1 & 2 & 1 \emx = \bmxc 1 \cdot \pp{-1} & 1 \cdot 2 & 1 \cdot 1 \\ 3 \cdot \pp{-1} & 3 \cdot 2 & 3 \cdot 1 \\ 4 \cdot \pp{-1} & 4 \cdot 2 & 4 \cdot 1 \emx = \bmxc -1 & 2 & 1 \\ -3 & 6 & 3 \\ -4 & 8 & 4 \emx \]
+        \label{example:ch02-mat-outer-prod}
+    \end{example}
+\end{boxedstuff}
+
+Now we are ready to handle the general matrix multiplication problem. Consider two matrices $\mf{A} \in \mb{R}^{n \times p}$ and $\mf{B} \in \mb{R}^{p \times m}$. These two matrices can be multiplied to get a matrix $\mf{C} = \mf{A}\mf{B} \in \mb{R}^{n \times m}$. We can write the matrices $\mf{A}$ and $\mf{B}$ as follows:
+\begin{equation}
+    \mf{A} = \bmxc \mf{a}_1 & \mf{a}_2 & \ldots & \mf{a}_p \emx = \bmxc \tilde{\mf{a}}_1^\top \\ \tilde{\mf{a}}_2^\top \\ \vdots \\ \tilde{\mf{a}}_n^\top \emx , \quad \quad\mf{B} = \bmxc \mf{b}_1 & \mf{b}_2 & \ldots & \mf{b}_m \emx = \bmxc \tilde{\mf{b}}_1^\top \\ \tilde{\mf{b}}_2^\top \\ \vdots \\ \tilde{\mf{b}}_p^\top \emx
+    \label{eq:ch02-mat-AB-view}
+\end{equation}
+There four ways to view the matrix multiplication operation: inner-product view, column view, row view, and the outer-product view.
 
 \subsubsection{Inner product view}
 The $ij^{th}$ element of $\mf{C} = \mf{A}\mf{B}$ is given by the inner product of the $i^{th}$ row of $\mf{A}$ and the $j^{th}$ column of $\mf{B}$.
@@ -234,20 +264,63 @@ The $ij^{th}$ element of $\mf{C} = \mf{A}\mf{B}$ is given by the inner product o
     \emx
     \label{eq:ch02-mat-mult-inner-prod}
 \end{equation}
+In fact, there is beautiful way of looking at this. If we express $\mf{A}$ as a block column and $\mf{B}$ as a block row, then we have an outer-product between the block column and the block row.
+\begin{equation}
+    \mf{C} = \mf{A}\mf{B} = \bmxc \tilde{\mf{a}}_1^\top \\ \tilde{\mf{a}}_2^\top \\ \vdots \\ \tilde{\mf{a}}_n^\top \emx \bmx \mf{b}_1 & \mf{b}_2 & \ldots & \mf{b}_m \emx = \bmxc \tilde{\mf{a}}_1^\top\mf{b}_1 & \tilde{\mf{a}}_1^\top\mf{b}_2 & \ldots & \tilde{\mf{a}}_1^\top\mf{b}_m \\
+    \tilde{\mf{a}}_2^\top\mf{b}_1 & \tilde{\mf{a}}_2^\top\mf{b}_2 & \ldots & \tilde{\mf{a}}_2^\top\mf{b}_m \\
+    \vdots & \vdots & \ddots & \vdots \\
+    \tilde{\mf{a}}_n^\top\mf{b}_1 & \tilde{\mf{a}}_n^\top\mf{b}_2 & \ldots & \tilde{\mf{a}}_n^\top\mf{b}_m
+    \emx
+    \label{eq:ch02-mat-mult-inner-prod-vec}
+\end{equation}
+Note that each entry of this block outer-product matrix is an inner product of of two vectors from $\mb{R}^p$.
 
 \subsubsection{Column view}
 The columns of the matrix $\mf{C} = \mf{A}\mf{B}$ are the linear combinations of the columns of the matrix $\mf{A}$, where the mixture for the linear combination come from the columns of the matrix $\mf{B}$.
 \begin{equation}
-    \mf{c}_i = \mf{A}\mf{b}_i
-    % \mf{C} = \bmxc \mf{a}_1 & \mf{a}_2 & \ldots & \mf{a}_p \emx \bmxc \mf{b}_1 & \mf{b}_2 & \ldots & \mf{b}_m \emx = \bmxc \mf{a}_1\mf{b}_1 & \mf{a}_1\mf{b}_2 & \ldots & \mf{a}_1\mf{b}_m \\
-    % \mf{a}_2\mf{b}_1 & \mf{a}_2\mf{b}_2 & \ldots & \mf{a}_2\mf{b}_m \\
-    % \vdots & \vdots & \ddots & \vdots \\
-    % \mf{a}_n\mf{b}_1 & \mf{a}_n\mf{b}_2 & \ldots & \mf{a}_n\mf{b}_m
-    % \emx
+    \mf{c}_i = \mf{A}\mf{b}_i \implies \bmx \mf{c}_1 & \mf{c}_2 & \cdots & \mf{c}_m \emx = \mf{A} \bmx \mf{b}_1 & \mf{b}_2 & \cdots & \mf{b}_m \emx = \bmx \mf{A}\mf{b}_1 & \mf{A}\mf{b}_2 & \cdots & \mf{A}\mf{b}_m \emx
     \label{eq:ch02-mat-mult-col-view}
 \end{equation}
 
-
 \subsubsection{Row view}
+The rows of the matrix $\mf{C} = \mf{A}\mf{B}$ are the linear combinations of the rows of the matrix $\mf{B}$, where the mixture for the linear combination come from the rows of the matrix $\mf{A}$.
+\begin{equation}
+    \tilde{\mf{c}}_i^\top = \mf{a}_i^\top\mf{B} \implies \bmxc \tilde{\mf{c}}_1^\top \\ \tilde{\mf{c}}_2^\top \\ \vdots \\ \tilde{\mf{c}}_n^\top \emx = \bmxc \mf{a}_1^\top \\ \mf{a}_2^\top \\ \vdots \\ \mf{a}_n^\top \emx \mf{B} = \bmxc \mf{a}_1^\top\mf{B} \\ \mf{a}_2^\top\mf{B} \\ \vdots \\ \mf{a}_n^\top\mf{B} \emx
+    \label{eq:ch02-mat-mult-row-view}
+\end{equation}
 
 \subsubsection{Outer product view}
+The outer-product view is complementary to the inner-product view. If we express the matrices $\mf{A}$ and $\mf{B}$ as block column and block row matrix, then the matrix $\mf{C} = \mf{A}\mf{B}$ is the outer-product of the block column and the block row.
+\begin{equation}
+    \mf{C} = \mf{A}\mf{B} = \bmxc \mf{a}_1 & \mf{a}_2 & \ldots & \mf{a}_p \emx \bmxc \tilde{\mf{b}}_1^\top \\ \tilde{\mf{b}}_2^\top \\ \ldots \\ \tilde{\mf{b}}_p^\top \emx = \mf{a}_1\tilde{\mf{b}}_1^\top + \mf{a}_2\tilde{\mf{b}}_2^\top + \cdots + \mf{a}_p\tilde{\mf{b}}_p^\top
+    \label{eq:ch02-mat-mult-outer-prod}
+\end{equation}
+In this view, we see that matrix mulitplication can be viewed the inner-product of a block row matrix with a block column matrix, while the individual elements of the inner-product sum are the outer-products.
+
+Each of these four views will be useful under different circumstances to help interpret the meaning of the matrix mulitplication operation. We will now look at some numerical examples for the four views to get comfortable with them.
+
+\begin{boxedstuff}
+    \begin{example}
+        \textbf{Matrix multiplication: Inner product view} Let $\mf{A} = \bmx 1 & 2 \\ 3 & 4 \emx$ and $\mf{B} = \bmx 5 & 6 \\ 7 & 8 \emx$. The matrix multiplication $\mf{C} = \mf{A}\mf{B}$ is given as follows:
+        \[ \mf{C} = \mf{A}\mf{B} = \bmxc 1 & 2 \\ 3 & 4 \emx \bmxc 5 & 6 \\ 7 & 8 \emx = \bmxc 1 \cdot 5 + 2 \cdot 7 & 1 \cdot 6 + 2 \cdot 8 \\ 3 \cdot 5 + 4 \cdot 7 & 3 \cdot 6 + 4 \cdot 8 \emx = \bmxc 19 & 22 \\ 43 & 50 \emx \]
+        \label{example:ch02-mat-mult-inner-prod}
+    \end{example}
+
+    \begin{example}
+        \textbf{Matrix multiplication: Column view} Let $\mf{A} = \bmx 1 & 2 \\ 3 & 4 \emx$ and $\mf{B} = \bmx 5 & 6 \\ 7 & 8 \emx$. The matrix multiplication $\mf{C} = \mf{A}\mf{B}$ is given as follows:
+        \[ \mf{C} = \mf{A}\mf{B} = \bmxc 1 & 2 \\ 3 & 4 \emx \bmx 5 & 6 \\ 7 & 8 \emx = \bmx 1 \cdot 5 + 2 \cdot 7 & 1 \cdot 6 + 2 \cdot 8 \\ 3 \cdot 5 + 4 \cdot 7 & 3 \cdot 6 + 4 \cdot 8 \emx = \bmx 19 & 22 \\ 43 & 50 \emx \]
+        \label{example:ch02-mat-mult-col-view}
+    \end{example}
+
+    \begin{example}
+        \textbf{Matrix multiplication: Row view} Let $\mf{A} = \bmx 1 & 2 \\ 3 & 4 \emx$ and $\mf{B} = \bmx 5 & 6 \\ 7 & 8 \emx$. The matrix multiplication $\mf{C} = \mf{A}\mf{B}$ is given as follows:
+        \[ \mf{C} = \mf{A}\mf{B} = \bmxc 1 & 2 \\ 3 & 4 \emx \bmx 5 & 6 \\ 7 & 8 \emx = \bmxc 1 \cdot 5 + 2 \cdot 6 & 1 \cdot 5 + 2 \cdot 6 \\ 3 \cdot 5 + 4 \cdot 6 & 3 \cdot 5 + 4 \cdot 6 \emx = \bmxc 17 & 17 \\ 39 & 39 \emx \]
+        \label{example:ch02-mat-mult-row-view}
+    \end{example}
+
+    \begin{example}
+        \textbf{Matrix multiplication: Outer product view} Let $\mf{A} = \bmx 1 & 2 \\ 3 & 4 \emx$ and $\mf{B} = \bmx 5 & 6 \\ 7 & 8 \emx$. The matrix multiplication $\mf{C} = \mf{A}\mf{B}$ is given as follows:
+        \[ \mf{C} = \mf{A}\mf{B} = \bmxc 1 & 2 \\ 3 & 4 \emx \bmxc 5 & 6 \\ 7 & 8 \emx = \bmxc 1 \cdot 5 & 1 \cdot 6 \\ 3 \cdot 5 & 3 \cdot 6 \emx + \bmxc 2 \cdot 7 & 2 \cdot 8 \\ 4 \cdot 7 & 4 \cdot 8 \emx = \bmxc 5 & 6 \\ 15 & 18 \emx + \bmxc 14 & 16 \\ 28 & 32 \emx = \bmxc 19 & 22 \\ 43 & 50 \emx \]
+        \label{example:ch02-mat-mult-outer-prod}
+    \end{example}
+\end{boxedstuff}
