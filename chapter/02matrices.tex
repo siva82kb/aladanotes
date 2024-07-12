@@ -252,9 +252,9 @@ Now we are ready to handle the general matrix multiplication problem. Consider t
     \mf{A} = \bmxc \mf{a}_1 & \mf{a}_2 & \ldots & \mf{a}_p \emx = \bmxc \tilde{\mf{a}}_1^\top \\ \tilde{\mf{a}}_2^\top \\ \vdots \\ \tilde{\mf{a}}_n^\top \emx , \quad \quad\mf{B} = \bmxc \mf{b}_1 & \mf{b}_2 & \ldots & \mf{b}_m \emx = \bmxc \tilde{\mf{b}}_1^\top \\ \tilde{\mf{b}}_2^\top \\ \vdots \\ \tilde{\mf{b}}_p^\top \emx
     \label{eq:ch02-mat-AB-view}
 \end{equation}
-There four ways to view the matrix multiplication operation: inner-product view, column view, row view, and the outer-product view.
+There four ways to interpret the matrix multiplication operation: inner-product interpretation, column interpretation, row interpretation, and the outer-product interpretation.
 
-\subsubsection{Inner product view}
+\subsubsection{Inner product interpretation}
 The $ij^{th}$ element of $\mf{C} = \mf{A}\mf{B}$ is given by the inner product of the $i^{th}$ row of $\mf{A}$ and the $j^{th}$ column of $\mf{B}$.
 \begin{equation}
     c_{ij} = \tilde{\mf{a}}_i^\top \mf{b}_j = \sum_{k=1}^{p} a_{ik}b_{kj} \implies \mf{C} = \bmxc \tilde{\mf{a}}_1^\top\mf{b}_1 & \tilde{\mf{a}}_1^\top\mf{b}_2 & \ldots & \tilde{\mf{a}}_1^\top\mf{b}_m \\
@@ -275,21 +275,21 @@ In fact, there is beautiful way of looking at this. If we express $\mf{A}$ as a 
 \end{equation}
 Note that each entry of this block outer-product matrix is an inner product of of two vectors from $\mb{R}^p$.
 
-\subsubsection{Column view}
+\subsubsection{Column interpretation}
 The columns of the matrix $\mf{C} = \mf{A}\mf{B}$ are the linear combinations of the columns of the matrix $\mf{A}$, where the mixture for the linear combination come from the columns of the matrix $\mf{B}$.
 \begin{equation}
     \mf{c}_i = \mf{A}\mf{b}_i \implies \bmx \mf{c}_1 & \mf{c}_2 & \cdots & \mf{c}_m \emx = \mf{A} \bmx \mf{b}_1 & \mf{b}_2 & \cdots & \mf{b}_m \emx = \bmx \mf{A}\mf{b}_1 & \mf{A}\mf{b}_2 & \cdots & \mf{A}\mf{b}_m \emx
-    \label{eq:ch02-mat-mult-col-view}
+    \label{eq:ch02-mat-mult-col-interp}
 \end{equation}
 
-\subsubsection{Row view}
+\subsubsection{Row interpretation}
 The rows of the matrix $\mf{C} = \mf{A}\mf{B}$ are the linear combinations of the rows of the matrix $\mf{B}$, where the mixture for the linear combination come from the rows of the matrix $\mf{A}$.
 \begin{equation}
     \tilde{\mf{c}}_i^\top = \mf{a}_i^\top\mf{B} \implies \bmxc \tilde{\mf{c}}_1^\top \\ \tilde{\mf{c}}_2^\top \\ \vdots \\ \tilde{\mf{c}}_n^\top \emx = \bmxc \mf{a}_1^\top \\ \mf{a}_2^\top \\ \vdots \\ \mf{a}_n^\top \emx \mf{B} = \bmxc \mf{a}_1^\top\mf{B} \\ \mf{a}_2^\top\mf{B} \\ \vdots \\ \mf{a}_n^\top\mf{B} \emx
-    \label{eq:ch02-mat-mult-row-view}
+    \label{eq:ch02-mat-mult-row-interp}
 \end{equation}
 
-\subsubsection{Outer product view}
+\subsubsection{Outer product interpretation}
 The outer-product view is complementary to the inner-product view. If we express the matrices $\mf{A}$ and $\mf{B}$ as block column and block row matrix, then the matrix $\mf{C} = \mf{A}\mf{B}$ is the outer-product of the block column and the block row.
 \begin{equation}
     \mf{C} = \mf{A}\mf{B} = \bmxc \mf{a}_1 & \mf{a}_2 & \ldots & \mf{a}_p \emx \bmxc \tilde{\mf{b}}_1^\top \\ \tilde{\mf{b}}_2^\top \\ \ldots \\ \tilde{\mf{b}}_p^\top \emx = \mf{a}_1\tilde{\mf{b}}_1^\top + \mf{a}_2\tilde{\mf{b}}_2^\top + \cdots + \mf{a}_p\tilde{\mf{b}}_p^\top
@@ -301,26 +301,145 @@ Each of these four views will be useful under different circumstances to help in
 
 \begin{boxedstuff}
     \begin{example}
-        \textbf{Matrix multiplication: Inner product view} Let $\mf{A} = \bmx 1 & 2 \\ 3 & 4 \emx$ and $\mf{B} = \bmx 5 & 6 \\ 7 & 8 \emx$. The matrix multiplication $\mf{C} = \mf{A}\mf{B}$ is given as follows:
-        \[ \mf{C} = \mf{A}\mf{B} = \bmxc 1 & 2 \\ 3 & 4 \emx \bmxc 5 & 6 \\ 7 & 8 \emx = \bmxc 1 \cdot 5 + 2 \cdot 7 & 1 \cdot 6 + 2 \cdot 8 \\ 3 \cdot 5 + 4 \cdot 7 & 3 \cdot 6 + 4 \cdot 8 \emx = \bmxc 19 & 22 \\ 43 & 50 \emx \]
-        \label{example:ch02-mat-mult-inner-prod}
-    \end{example}
-
-    \begin{example}
-        \textbf{Matrix multiplication: Column view} Let $\mf{A} = \bmx 1 & 2 \\ 3 & 4 \emx$ and $\mf{B} = \bmx 5 & 6 \\ 7 & 8 \emx$. The matrix multiplication $\mf{C} = \mf{A}\mf{B}$ is given as follows:
-        \[ \mf{C} = \mf{A}\mf{B} = \bmxc 1 & 2 \\ 3 & 4 \emx \bmx 5 & 6 \\ 7 & 8 \emx = \bmx 1 \cdot 5 + 2 \cdot 7 & 1 \cdot 6 + 2 \cdot 8 \\ 3 \cdot 5 + 4 \cdot 7 & 3 \cdot 6 + 4 \cdot 8 \emx = \bmx 19 & 22 \\ 43 & 50 \emx \]
-        \label{example:ch02-mat-mult-col-view}
-    \end{example}
-
-    \begin{example}
-        \textbf{Matrix multiplication: Row view} Let $\mf{A} = \bmx 1 & 2 \\ 3 & 4 \emx$ and $\mf{B} = \bmx 5 & 6 \\ 7 & 8 \emx$. The matrix multiplication $\mf{C} = \mf{A}\mf{B}$ is given as follows:
-        \[ \mf{C} = \mf{A}\mf{B} = \bmxc 1 & 2 \\ 3 & 4 \emx \bmx 5 & 6 \\ 7 & 8 \emx = \bmxc 1 \cdot 5 + 2 \cdot 6 & 1 \cdot 5 + 2 \cdot 6 \\ 3 \cdot 5 + 4 \cdot 6 & 3 \cdot 5 + 4 \cdot 6 \emx = \bmxc 17 & 17 \\ 39 & 39 \emx \]
-        \label{example:ch02-mat-mult-row-view}
-    \end{example}
-
-    \begin{example}
-        \textbf{Matrix multiplication: Outer product view} Let $\mf{A} = \bmx 1 & 2 \\ 3 & 4 \emx$ and $\mf{B} = \bmx 5 & 6 \\ 7 & 8 \emx$. The matrix multiplication $\mf{C} = \mf{A}\mf{B}$ is given as follows:
-        \[ \mf{C} = \mf{A}\mf{B} = \bmxc 1 & 2 \\ 3 & 4 \emx \bmxc 5 & 6 \\ 7 & 8 \emx = \bmxc 1 \cdot 5 & 1 \cdot 6 \\ 3 \cdot 5 & 3 \cdot 6 \emx + \bmxc 2 \cdot 7 & 2 \cdot 8 \\ 4 \cdot 7 & 4 \cdot 8 \emx = \bmxc 5 & 6 \\ 15 & 18 \emx + \bmxc 14 & 16 \\ 28 & 32 \emx = \bmxc 19 & 22 \\ 43 & 50 \emx \]
-        \label{example:ch02-mat-mult-outer-prod}
+        \textbf{Four interpretations of matrix multiplication} Let $\mf{A} = \bmx 1 & 2 \\ 3 & 4 \emx$ and $\mf{B} = \bmx 5 & 6 \\ 7 & 8 \emx$. The matrix multiplication $\mf{C} = \mf{A}\mf{B}$ is given as follows:
+        \begin{itemize}
+            \item \textbf{Inner product interpretation:}
+            \[ \begin{split}
+                \mf{C} &= \mf{A}\mf{B} = \bmxc 1 & 2 \\ 3 & 4 \emx \bmxc 5 & 6 \\ 7 & 8 \emx = \bmxc 
+                \bmxc 1 & 2 \emx \bmx 5 \\ 7 \emx & \bmxc 1 & 2 \emx \bmx 6 \\ 8 \emx \\ 
+                \bmxc 3 & 4 \emx \bmx 5 \\ 7 \emx & \bmxc 3 & 4 \emx \bmx 6 \\ 8 \emx \emx = \bmxc 1 \cdot 5 + 2 \cdot 7 & 1 \cdot 6 + 2 \cdot 8 \\ 3 \cdot 5 + 4 \cdot 7 & 3 \cdot 6 + 4 \cdot 8 \emx = \bmxc 19 & 22 \\ 43 & 50 \emx
+            \end{split} \]
+    
+            \item \textbf{Column interpretation:}
+            \[ \begin{split}
+                \mf{C} &= \mf{A}\mf{B} = \bmxc 1 & 2 \\ 3 & 4 \emx \bmx 5 & 6 \\ 7 & 8 \emx = \bmx 
+                5\bmx 1 \\ 3\emx + 7\bmx 2 \\ 4\emx & 6\bmx 1 \\ 3\emx + 8\bmx 2 \\ 4\emx \emx = \bmxc 19 & 22 \\ 43 & 50 \emx
+            \end{split} \]
+            
+            \item \textbf{Row interpretation} 
+            \[ \begin{split}
+                \mf{C} &= \mf{A}\mf{B} = \bmxc 1 & 2 \\ 3 & 4 \emx \bmx 5 & 6 \\ 7 & 8 \emx = \bmx 
+                1\bmx 5 & 6\emx + 2\bmx 7 & 8\emx \\ 
+                3\bmx 5 & 6\emx + 4\bmx 7 & 8\emx \emx = \bmxc 19 & 22 \\ 43 & 50 \emx
+            \end{split} \]
+            
+            \item \textbf{Outer product interpretation} 
+            \[ \begin{split}
+                \mf{C} &= \mf{A}\mf{B} = \bmxc 1 & 2 \\ 3 & 4 \emx \bmx 5 & 6 \\ 7 & 8 \emx = \bmx1 \\ 3\emx\bmx 5 & 6\emx + \bmx2 \\ 4\emx\bmx 7 & 8\emx = \bmxc 5 & 6 \\ 15 & 18 \emx + \bmxc 14 & 16 \\ 28 & 32 \emx = \bmxc 19 & 22 \\ 43 & 50 \emx
+            \end{split} \]
+        \end{itemize}
+        \label{example:ch02-mat-mult}
     \end{example}
 \end{boxedstuff}
+
+\subsubsection{Properties of matrix multiplication}
+We will not demonstrate any of these properties, but we will list them here for your reference. It is left as an exercise for you to demonstrate these properties. Here are some of the properties of matrix multiplication:
+\begin{itemize}
+    \item \textbf{Non-commutative property:} $\mf{A}\mf{B} \neq \mf{B}\mf{A}$. You could simply use the matrices in Example~\ref{example:ch02-mat-mult} to verify that this is true. \textcolor{red}{Can give an example of two matrices where their product does commute?}.
+    \item \textbf{Dsitributive}: $\mf{A}\pp{\mf{B} + \mf{C}} = \mf{A}\mf{B} + \mf{A}\mf{C}$ and $\pp{\mf{A} + \mf{B}}\mf{C} = \mf{A}\mf{C} + \mf{B}\mf{C}$.
+    \item \textbf{Associative}: $\mf{A}\pp{\mf{B}\mf{C}} = \pp{\mf{A}\mf{B}}\mf{C}$
+    \item \textbf{Transpose of the product:} $\pp{\mf{A}\mf{B}}^\top = \mf{B}^\top\mf{A}^\top$.
+    \item \textbf{Identity matrix:} $\mf{I}_n\mf{A} = \mf{A}\mf{I}_m = \mf{A}$
+    \item \textbf{Scalar multiplication:} $\pp{\alpha\mf{A}}\mf{B} = \alpha\pp{\mf{A}\mf{B}} = \mf{A}\pp{\alpha\mf{B}}$
+\end{itemize}
+
+\section{Rank of a matrix}
+The rank of a matrix is a very important concept in linear algebra. There are different ways of defining it, but we will use a geometric definition that is easy to wrap our head around.  
+
+The \textit{rank of a matrix} $\mf{A} \in \mb{R}^{n \times m}$ is the dimension of the subspace spanned by the set of columns of $\mf{A}$ or the set of rows of $\mf{A}$.
+\begin{equation}
+    \begin{split}
+    \text{rank}\pp{\mf{A}} &= \text{dim}\pp{\text{span}\pp{\lc \mf{a}_1, \mf{a}_2, \ldots, \mf {a}_m} \rc} \longrightarrow \text{Column rank}\\ 
+    &= \text{dim}\pp{\text{span}\pp{\lc \tilde{\mf{a}}_1, \tilde{\mf{a}}_2, \ldots, \tilde{\mf{a}}_n} \rc} \longrightarrow \text{Row rank} \\
+    \leq \min\pp{n, m}
+    \end{split}
+    \label{eq:ch02-mat-rank}
+\end{equation}
+
+This is also equivalent to saying it is the smallest number of columns or rows of $\mf{A}$ that form  a linearly independent set; basically, the number of linearly independent columns or rows of the matrix $\mf{A}$. A matrix $\mf{A} \in \mb{R}^{n \times m}$ is said to be a \textbf{full rank matrix} if $\text{rank}\pp{\mf{A}} = \min\pp{n, m}$. A matrix is said to be \textbf{rank deficient} if $\text{rank}\pp{\mf{A}} < \min\pp{n, m}$.
+
+\section{Matrix inverse}
+We will talk about matrix inverses in more detail in Chapter \hl{xxx}, but we will conclude this chapter with a provide brief discussion of this concept. Consider a square matrix $\mf{A} \in \mb{R}^{n \times n}$ that is full rank (if so, what is the rank of $\mf{A}$?). A matrix $\mf{B} \in \mb{R}^{n \times n}$ is called the \textit{inverse} of the matrix $\mf{A}$ if and only if $\mf{A}\mf{B} = \mf{B}\mf{A} = \mf{I}_n$. This matrix $\mf{B}$ is denoted by $\mf{A}^{-1}$. 
+
+All full rank square matrices have a unique inverse. These matrices are said to be \textit{invertible} or \textit{non-singular}, which rank deficient square matrices are said to \textit{non-invertible} or \textit{singular}. For a non-singular matrix $\mf{A}$, $\mf{A}$ and $\mf{A}^{-1}$ are inverses of each other. Because both pre- and post-multiplying $\mf{A}^{-1}$ with $\mf{A}$ gives us the identity matrix, we say $\mf{A}^{-1}$ is both the left and right inverse of $\mf{A}$. We will see in Chapter \hl{xxx} that full rectangular matrices can either have non-unique left or right inverses, and not both.
+
+The inverse of matrix follows the following two properites, which you are en encouraged to demonstrate:
+\begin{itemize}
+    \item $\pp{\mf{A}^{-1}}^{-1} = \mf{A}$
+    \item $\pp{\mf{A}\mf{B}}^{-1} = \mf{B}^{-1}\mf{A}^{-1}$
+    \item $\pp{\mf{A}^{-1}}^{\top} = \pp{\mf{A}^{\top}}^{-1}$
+\end{itemize}
+
+\section{Exercise}
+\vspace{-0.5cm}
+\begin{center}
+    \rule{\textwidth}{1pt}
+\end{center}
+
+\begin{enumerate}
+    \item Elements of the matrix $\mf{C} \in \mb{R}^{m \times n}$ obtained as the product of two matrices $\mf{A} \in \mb{R}^{m \times p}$ and $\mf{B} \in \mb{R}^{p \times n}$ is given by,
+    \[ c_{ij} = \sum_{k=1}^{p}a_{ik}b_{kj} \]
+    We had discussed four different ways to think of matrix multiplication. By algebraically manipulating the previous equation, arrive at these four views (inner product view, column view, row view and outer product view)?
+    
+    \item \textbf{Computational cost of different operations.} What is the computational cost of the following matrix operations? Computational cost refers to the number of arithmetic operations  required to carry out a particular matrix operation. Computational cost is a measure of the efficiency of an algorithm. For example, consider the operation of vector addition, $\mf{a} + \mf{b}$, where $\mf{a}, \mf{b} \in \mb{R}^n$. This requires $n$ addition/subtraction operations and zero multiplication/division operations.
+    \begin{enumerate}
+        \item Matrix multiplication: $\mf{AB}$, where $\mf{A}, \mf{B} \in \mb{R}^{n \times n}$
+        \item Inner product: $\mf{u}^\top\mf{v}$
+    \end{enumerate} 
+    Report the counts for the addition/subtraction and multiplication/division operations separately.
+    
+    \item Show that $\ct{\mf{A}\mf{B}}^\top = \mf{B}^\top\mf{A}^\top$.
+    
+    \item Derive the inverse of the matrix $\mf{A} = \begin{bmatrix}a & b\\c & d\end{bmatrix}$.
+    
+    \item Consider the following matrix,
+    \[ \mf{A} = \bmx \frac{\sqrt{3}}{2} & -\frac{1}{2}\\\frac{1}{2} & \frac{\sqrt{3}}{2} \emx \bmx 0.1 & 0\\0 & 0.9 \emx \bmx \frac{\sqrt{3}}{2} & \frac{1}{2}\\-\frac{1}{2} & \frac{\sqrt{3}}{2} \emx \]
+    Find out the expression for $\mf{A}_n = \mf{A}^n$. What is $\mf{A}_\infty = \lim_{n\to\infty} \mf{A}^n$?
+
+    \item Prove that a matrix $\mf{M} \in \mathbb{R}^{n \times n}$ can always be written as a sum of a symmetric matrix $\mf{S}$ and a skew-symmetric matrix $\mf{A}$.
+    \[ \mf{M} = \mf{S} + \mf{A}, \,\,\, \mf{S}^\top = \mf{S} \, \text{ and } \, \mf{A}^\top = -\mf{A} \]
+
+    \item The trace of a matrix $\mf{A} \in \mb{R}^{n \times n}$ is defined as, $trace\left(\mf{A}\right) = \sum_{i=1}^{n}a_{ii}$. Prove the following,
+    \begin{enumerate}
+        \item $trace\left(\mf{A}\right)$ is a linear function of $\mf{A}$.
+        \item $trace\left(\mf{AB}\right) = trace\left(\mf{BA}\right)$
+        \item $trace\left(\mf{A}^\top\mf{A}\right) = 0 \implies \mf{A} = 0$
+    \end{enumerate}
+
+    \item Prove that the rank of an outer product $\mf{x}\mf{y}^\top$ is 1, where $\mf{x},\mf{y} \in \mb{R}^n$ and $\mf{x}, \mf{y} \neq \mf{0}$.  \textbf{[Marks: 1]}
+
+    \item Consider upper triangular and lower triangular matrices $\mf{U}$ and $\mf{L}$, respectively.
+    \begin{enumerate}
+        \item Is the product of two upper triangular matrices $\mf{U}_1\mf{U}_2$ upper triangular?
+        \item Is the product of two lower triangular matrices $\mf{L}_1\mf{L}_2$ upper triangular?
+        \item What is the $trace\lp \mf{L}\mf{U} \rp$?
+    \end{enumerate}
+
+    \item For a $n \times n$ square matrix $\mf{A}$, prove that if $\mf{A}\mf{X} = \mf{I}$, then $\mf{X}\mf{A} = \mf{I}$ and $\mf{X} = \mf{A}^{-1}$.
+
+    \item Prove the following for the non-singular square matrices $\mf{A}$ and $\mf{B}$:
+    \begin{enumerate}
+        \item $\mf{A}\mf{B}$ is non-singular.
+        \item $\ct{\mf{A}^{-1}}^{-1} = \mf{A}$.
+        \item $\ct{\mf{A}\mf{B}}^{-1} = \mf{B}^{-1}\mf{A}^{-1}$
+        \item $\ct{\mf{A}^\top}^{-1} = \ct{\mf{A}^{-1}}^\top$
+    \end{enumerate}
+
+    \item Consider the following upper-triangular matrix, 
+    \[ \mf{U} = \begin{bmatrix}
+    u_{11} & u_{12} & u_{13} & \cdots & u_{1n}\\
+    0 & u_{22} & u_{23} & \cdots & u_{2n}\\
+    0 & 0 & u_{33} & \cdots & u_{3n}\\
+    \vdots & \vdots & \vdots & \ddots & \vdots\\
+    0 & 0 & 0 & \cdots & u_{nn}\\\end{bmatrix} \]
+    where, $u_{ii} \neq 0, \,\,\, 1 \leq i \leq n$. Do the columns of this matrix form a linearly independent set? Explain your answer.
+
+    \item Verify that $\mf{A}$ and $\mf{B}$ are inverses of each other,
+    \begin{enumerate}
+        \item $\mf{A} = \mf{I} - \mf{u}\mf{v}^\top$ and $\mf{B} = \mf{I} + \mf{u}\mf{v}^\top / \lp 1 - \mf{v}^\top\mf{u} \rp$
+        \item $\mf{A} = \mf{C} - \mf{u}\mf{v}^\top$ and $\mf{B} = \mf{C}^{-1} + \mf{C}^{-1}\mf{u}\mf{v}^\top\mf{C}^{-1} / \lp 1 - \mf{v}^\top\mf{C}^{-1}\mf{u} \rp$
+        \item $\mf{A} = \mf{I} - \mf{U}\mf{V}$ and $\mf{B} = \mf{I}_{n} + \mf{U}\lp \mf{I}_m - \mf{V}\mf{U}\rp^{-1}\mf{V}$
+        \item $\mf{A} = \mf{C} - \mf{U}\mf{D}^{-1}\mf{V}$ and $\mf{B} = \mf{C}^{-1} + \mf{C}^{-1}\mf{U}\lp \mf{D} - \mf{V}\mf{C}^{-1}\mf{U}\rp^{-1}\mf{V}\mf{C}^{-1}$
+    \end{enumerate}
+    where, $\mf{A}, \mf{B}, \mf{C} \in \mb{R}^{n \times n}$, $\mf{u}, \mf{v} \in \mb{R}^n$, $\mf{U} \in \mb{R}^{n \times m}$, $\mf{V} \in \mb{R}^{m \times n}$ and $\mf{D} \in \mb{R}^{m \times m}$.
+\end{enumerate}
