@@ -57,7 +57,7 @@ We now look at some examples of $n$-vectors that we come aross in applications.
 \end{boxedstuff}
 
 \section{Visualizing $n$-vectors}
-The $n$-vectors can be visualized as points in $n$-dimensional space. For example, A 1-vector or just single real number or a \textit{scalar} can be thought of as a point on the real line. The 1-vector $x = 2.45$ is shown in Figure~\ref{fig:ch01-1-vector} is the red point. But we will find it useful to visualize a 1-vector as an arrow starting at the origin and ending at the point on the real line. The arrow is shown in blue in Figure~\ref{fig:ch01-1-vector}. 
+The $n$-vectors can be visualized as points in $n$-dimensional space. For example, A 1-vector or just single real number or a \textit{scalar} can be thought of as a point on the real line. The 1-vector $x = 2.45$ is shown in Figure~\ref{fig:ch01-1-vector} is the black point. But we will find it useful to visualize a 1-vector as an arrow starting at the origin and ending at the point on the real line. The arrow is shown in blue in Figure~\ref{fig:ch01-1-vector}. 
 
 \begin{figure}[b]
     \centering
@@ -132,17 +132,8 @@ The elements of $\mb{R}^2$ are points on the plane, and we can visualize them as
     \label{fig:ch01-combined}
 \end{figure}
 
-\section{Some Commonly Used $n$-vectors}
-We will now define a some commonly used $n$-vectors that we will use in the course. 
-\begin{itemize}
-    \item \textbf{Zero vector:} The $n$-vector whose components are all zeros is called the \textit{zero vector}. $\mf{0} = \bmxc 0 \\ 0 \\ \vdots \\ 0\emx$
-    \item \textbf{One vector:} The $n$-vector whose components are all ones is called the \textit{one vector}. $\mf{1} = \bmxc 1 \\ 1 \\ \vdots \\ 1\emx$
-    \item \textbf{Unit vectors:} The $n$-vectors whose components are all zeros except for one component which is 1. These are called the \textit{standard basis vectors} and are denoted by $\mf{e}_1, \mf{e}_2, \ldots, \mf{e}_n$. The $n$-vector $\mf{e}_i$ has all components as zeros except for the $i^{th}$ component which is 1. For example, the unit vectors in $\mb{R}^2$ are:
-    \[ \mf{e}_1 = \bmx 1 \\ 0\emx \quad \mf{e}_2 = \bmx 0 \\ 1 \emx  \]
-\end{itemize}
-
 \section{Operations on $n$-vectors}
-There are many operations we can perform on $n$-vectors, but we will only focus on two operations for this:
+There are many operations we can perform on $n$-vectors, but we will only focus on two operations for this course:
 \begin{itemize}
     \item \textbf{Scalar multiplication:} Given a scalar $c \in \mb{R}$ and an $n$-vector $\mf{x}$. The scalar multiplication operation produces another $n$-vector $c\mf{x}$ whose components are $cx_1, cx_2, \ldots, cx_n$. 
     \[ \mf{x} = \bmx 1 \\ 2\emx \longrightarrow 2 \mf{x} = \bmx  2\ct{1} \\ 2\ct{2} \emx = \bmx  2 \\ 8.2 \emx \]
@@ -235,12 +226,12 @@ These properties are satisfied by the set $\mb{R}^n$ of $n$-vectors, and hence $
 \end{boxedstuff}
 
 \section{Subspaces -- ``Little'' Vector Spaces}
-These are little subspaces in the sense that they are subsets of a larger vector space that are themselves vector spaces. More formally, a subspace $U$ of a vector space $V$ is a subset of $V$ that is itself a vector space. The subspace $U$ of the vector space $V$ must satisfy the following properties:
+These are little vector spaces in the sense that they are subsets of a larger vector space that are themselves vector spaces. More formally, a subspace $U$ of a vector space $V$ is a subset of $V$ that is itself a vector space. The subspace $U$ of the vector space $V$ must satisfy the following properties:
 \begin{itemize}
     \item \textbf{Closure under addition:} For any two vectors $\mf{x}, \mf{y} \in U$, the sum $\mf{x} + \mf{y} \in U$.
     \item \textbf{Closure under scalar multiplication:} For any scalar $c \in \mb{R}$ and any vector $\mf{x} \in U$, the product $c\mf{x} \in U$.
 \end{itemize}
-One immediate consequence of the above definition is that hte zero element of the vector space $V$ must be present in every subspace of $V$. If the zero element is not in a subset, then it cannot be a subspace. Geometrically subspace are flat structures (or surfaces or manifolds) in $\mb{R}^n$ (or the parent vector space) that contain the origin, and extends infinitely. Let's look at some examples of subspaces of $\mb{R}^2$ and $\mb{R}^3$, which are easier to visualize.
+One immediate consequence of the above definition is that the zero element of the vector space $V$ must be present in every subspace of $V$. If the zero element is not in a subset, then it cannot be a subspace. Geometrically subspace are flat structures (or surfaces or manifolds) in $\mb{R}^n$ (or the parent vector space) that contain the origin, and extends infinitely. Let's look at some examples of subspaces of $\mb{R}^2$ and $\mb{R}^3$, which are easier to visualize.
 
 \begin{boxedstuff}
 \begin{example}
@@ -295,12 +286,12 @@ One immediate consequence of the above definition is that hte zero element of th
         \item First, let's check if $S$ contains the zero vector. If it does not contain the zero vector, then it cannot be a subspace. The elements from $S$ are of the form $\bmxc x \\ m x + c\emx$, thus if we choose $x = 0$, then we get $\bmx 0 \\ c \emx \in S$. So, $S$ does not contain the zero vector, which implies that $S$ is not a subspace space of $\mb{R}^2$. We need not check the other two conditions; but we will test them just to see which of these two fails.
         \item Scaling the element $\bmxc x \\ m x + c \emx \in S$ by a scalar $d$ we get,
         \[ d \bmxc x \\ m x + c\emx = \bmxc d x \\ d m x + d c \emx = \bmxc d x \\ m \pp{d x} + dc \emx \neq \bmxc y \\ m y + c\emx, \quad \text{where} \,\, y = d x \in \mb{R} \]
-        This means that $d \bmxc x \\ m x + c\emx \notin S$. Thus, the set $S$ is closed under scalar multiplication. Another confirmation that it is not a subspace. This can be seen in Figure~\ref{fig:ch01-nosubspace1-scale}, which shows that when we choose an elment from $\mf{x}$ (red arrow) from $S$ (blue line), the scaled version of this vector leaves the set $S$, i.e., the tip of the green arrow does not stay on the blue line.
+        This means that $d \bmxc x \\ m x + c\emx \notin S$. Thus, the set $S$ is not closed under scalar multiplication. Another confirmation that it is not a subspace. This can be seen in Figure~\ref{fig:ch01-nosubspace1-scale}, which shows that when we choose an elment from $\mf{x}$ (red arrow) from $S$ (blue line), the scaled version of this vector leaves the set $S$, i.e., the tip of the green arrow does not stay on the blue line.
         \item Let's verify vector addition. Adding two elements $\bmxc x_1 \\ m x_1 + c\emx, \bmxc x_2 \\ m x_2 + c\emx \in S$ we get,
         \[ \bmxc x_1 \\ m x_1 + c\emx + \bmxc x_2 \\ m x_2 + c\emx = \bmxc x_1 + x_2 \\ m x_1 + m x_2 + 2c \emx \neq \bmxc y_1 \\ m y_1 + c\emx, \quad \text{where} \,\, y_1 = x_1 + x_2 \in \mb{R} \]
-        This means that $\bmxc x_1 \\ m x_1 + c\emx + \bmxc x_2 \\ m x_2 + c\emx \notin S$. Thus the set $S$ is closed under vector addition. We see this geometrically in Figure~\ref{fig:ch01-nosubspace1-addition}, where the sum of two vectors in $S$ does not stay in the set $S$. Even though the tips of the green and red arrow are on the blue line, the tip of the black arrow is not on the blue line.
+        This means that $\bmxc x_1 \\ m x_1 + c\emx + \bmxc x_2 \\ m x_2 + c\emx \notin S$. Thus the set $S$ is not closed under vector addition. We see this geometrically in Figure~\ref{fig:ch01-nosubspace1-addition}, where the sum of two vectors in $S$ does not stay in the set $S$. Even though the tips of the green and red arrow are on the blue line, the tip of the black arrow is not on the blue line.
     \end{enumerate}
-    Since, the subset $S$ is closed under both vector addition and scalar multiplication, it is a subspace of $\mb{R}^2$.
+    Since, the subset $S$ is not closed under both vector addition and scalar multiplication, it is not a subspace of $\mb{R}^2$.
     \label{example:nosubspace-straight-line}
 \end{example}
 \end{boxedstuff}
@@ -379,14 +370,14 @@ Notice that the linear cominations of single vector $\mf{v}_1$ are simply differ
         \item Linearly independent set does not have any redundancy.
     \end{itemize}
 }
-Linear independece is a \textit{property} of a set of vectors; a set of vector is either linearly independent or linearly dependent. The concept of linear independence is easy to understand the but the algebraic condition for independence can seem a bit unintuitive. A set of vectors is said to be \text{linearly independent} if no vector in the set can be expressed as a linear combination of the other vectors in the set. This means that there is some unique  information contained in each element of the set, which cannot be obtained from the other elements of the set, i.e., there is no redundancy, so to speak. 
+Linear independece is a \textit{property} of a set of vectors; a set of vector is either linearly independent or linearly dependent. The concept of linear independence is easy to understand but the algebraic condition for independence can seem a bit unintuitive. A set of vectors is said to be \text{linearly independent} if no vector in the set can be expressed as a linear combination of the other vectors in the set. This means that there is some unique  information contained in each element of the set, which cannot be obtained from the other elements of the set, i.e., there is no redundancy, so to speak. 
 
 More formally, a set of vectors $V = \lc \mf{v}_i \rc_{i=1}^{m}$ is said to be linearly independent if and only if the only way to produce the zero vector $\mf{0}$ through the linear combination of the set $V$ is by setting all the scalars to zero, i.e.,
 \begin{equation}
     c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_n \mf{v}_m = \mf{0} \quad \text{if and only if} \quad c_1 = c_2 = \cdots = c_m = 0
     \label{eq:linear-indep}
 \end{equation}
-To understand this better, let's assume that the set $V$ is linear dependent and let's assume that the vector $\mf{v}_m$ can be represented as the linear combination of the vectors $\mf{v}_1, \mf{v}-2, \cdots \mf{v}_{m-1}$. This means that there exist a set of scalar $\alpha_i, \,\, 1 \leq i \leq m-1$, such that
+To understand this better, let's assume that the set $V$ is linear dependent and let's assume that the vector $\mf{v}_m$ can be represented as the linear combination of the vectors $\mf{v}_1, \mf{v}_2, \cdots \mf{v}_{m-1}$. This means that there exist a set of scalar $\alpha_i, \,\, 1 \leq i \leq m-1$, such that
 \[ \alpha_1 \mf{v}_1 + \alpha_2 \mf{v}_2 + \cdots + \alpha_{m-1}\mf{v}_{m-1} = \mf{v}_m \]
 Multiplying both sides by a scalar $c_m \neq 0$ we get,
 \[ \begin{split}
@@ -425,7 +416,7 @@ But this a contradiction because we have just expressed $\mf{v}_m$ is expressed 
     \begin{itemize}
         \item The span of a set of vectors $V$ is another set.
         \item It is generated through the linear combination of the elements of $V$.
-        \item The span of a set of vector $V$ is a subsapce of the originak vectors space the elements of $V$ are from.
+        \item The span of a set of vector $V$ is a subsapce of the original vectors space the elements of $V$ are from.
     \end{itemize}
 }
 So, linear combinations of a set of vectors $V = \lc \mf{v}_i \rc_{i=1}^{m}$ ($\mf{v}_i \in \mb{R}^n$) is a way of generating new vectors not in that set. All we need to do is choose a random set of real numbers $\lc c_i \rc_{i=1}^{m}$, and ``mix'' the vectors $\mf{v}_i$ from the set using these as weights. Clearly there are infinite number of vectors we could generate through this process, and we can put them all together in a set. And this set has a name -- the \textit{span} of the set $V$. The span of a set of vectors $V = \lc \mf{v}_i \rc_{i=1}^{m}$ is denoted by $\text{span}\lp V \rp$ and is defined as:
@@ -433,9 +424,9 @@ So, linear combinations of a set of vectors $V = \lc \mf{v}_i \rc_{i=1}^{m}$ ($\
     \text{span}\lp V \rp = \lc c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_n \mf{v}_m \, : \, c_i \in \mb{R} \rc \subseteq \mb{R}^n
     \label{eq:span-vec}
 \end{equation}
-Its clear that this will be a subset of $\mb{R}^n$, but it turns out it is also a subspace of $\mb{R}^n$. Why? Can you verify this fact algebraically? (\textit{Hint}: Just follow the steps in Examples~\ref{example:subspace-straight-line}-\ref{example:nosubspace-parabola}).
+Its clear that this will be a subset of $\mb{R}^n$, but it turns out that it is also a subspace of $\mb{R}^n$. Why? Can you verify this fact algebraically? (\textit{Hint}: Just follow the steps in Examples~\ref{example:subspace-straight-line}-\ref{example:nosubspace-parabola}).
 
-Geometrically, this means that the $\text{span}\pp{V}$ will be a flat surface in $\mb{R}^n$. Which means that the linear combination operation generates vectors that lie on a flat surface spanned by the vectors emmployed in the linear combination.
+Geometrically, this means that the $\text{span}\pp{V}$ will be a flat surface in $\mb{R}^n$. Which means that the linear combination operation generates vectors that lie on a flat surface spanned by the vectors employed in the linear combination.
 
 \begin{figure}[h]
     \centering
@@ -473,7 +464,7 @@ The ``magnitude'' or size of an element of a vector space (such as $\mb{R}^n$) i
     \item \textbf{Homogeneity:} Scaling a vector by a scalar $c$, scales the norm of the vector by $\vert c \vert$. For any vector $\mf{x} \in \mb{R}^n$ and any scalar $c \in \mb{R}$, $\norm{c\mf{x}} = \vert c \vert \norm{\mf{x}}$.
     \item \textbf{Triangle inequality:} For any vectors $\mf{x}, \mf{y} \in \mb{R}^n$, $\norm{\mf{x} + \mf{y}} \leq \norm{\mf{x}} + \norm{\mf{y}}$.
 \end{itemize}
-According to this definition, the magnitude of real numbers (Eq.~\ref{eq:magnitude-real}) is a norm of the vector $\mb{R}$. The most common norm of a vector is the \textit{Euclidean norm} or the \textit{2-norm} of a vector. The Euclidean norm of a vector $\mf{x} = \bmxc x_1 \\ x_2 \\ \vdots \\ x_n \emx$ is defined as:
+According to this definition, the magnitude of real numbers (Eq.~\ref{eq:magnitude-real}) is a norm of the vector space $\mb{R}$. The most common norm of a vector is the \textit{Euclidean norm} or the \textit{2-norm} of a vector. The Euclidean norm of a vector $\mf{x} = \bmxc x_1 \\ x_2 \\ \vdots \\ x_n \emx$ is defined as:
 \begin{equation}
     \norm{\mf{x}}_2 = \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}
     \label{eq:euclidean-norm}
@@ -581,7 +572,7 @@ We could use any of the $p$-norms to compute this or come-up with a new norm dep
 
 \begin{boxedstuff}
     \begin{example}
-        \textbf{Test scores in ALADA}. The ALADA course has three segments: linear algebra, optimization, and probability/statistics. Let's assume that the final exam contains three sections with a maximum of 25 marks students. The scores from these three segments are stored in a $3$-vector of the form $\mf{x} = \bmxc x_1 \\ x_2 \\ x_3\emx \in \mb{R}^3$, where $x_1, x_2, x_3$ are the marks obtained for linear algebra, optimization, and probability/statistics section, respectively. Consider the scores from the 5 students that took the course:
+        \textbf{Test scores in ALADA}. The ALADA course has three segments: linear algebra, optimization, and probability/statistics. Let's assume that the final exam contains three sections with a maximum of 25 marks students. The scores from these three segments are stored in a $3$-vector of the form $\mf{x} = \bmxc x_1 \\ x_2 \\ x_3\emx \in \mb{R}^3$, where $x_1, x_2, x_3$ are the marks obtained for linear algebra, optimization, and probability/statistics section, respectively. Consider the scores from the 6 students that took the course:
         \[ \mf{x}_1 = \bmxc 2 \\ 5 \\ 1 \emx, \quad \mf{x}_2 = \bmxc 3 \\ 3 \\ 4 \emx, \quad \mf{x}_3 = \bmxc 8 \\ 20 \\ 22 \emx, \quad \mf{x}_4 = \bmxc 9 \\ 20 \\ 21 \emx, \quad \mf{x}_5 = \bmxc 24 \\ 24 \\ 23 \emx, \quad \mf{x}_6 = \bmxc 24 \\ 23 \\ 22 \emx
         \]
         The distance between the scores of these students tells us something about the ability of the students in the course. Let $d_{ij} = \lV \mf{x}_i - \mf{x}_j \rV_2$ be the Euclidean distance between the scores of student $i$ and $j$; notice that $d_{ij} = d_{ji}$. The distance between the different scores is given by the following table. \\
@@ -621,7 +612,7 @@ We could use any of the $p$-norms to compute this or come-up with a new norm dep
                     \end{tabular}
             \end{center}
         \end{small}
-        The size of the score vectors tells us that students 1 and 2 performed worst among the six students, while students 5 and 6 performed the best; the performacne of students 3 and 4 was somehwere in the middle. \textcolor{blue}{Would we have reached similar conclusions if we had used the $1$-norm or the $\infty$-norm to compute the norms of the score vectors?}
+        The size of the score vectors tells us that students 1 and 2 performed worst among the six students, while students 5 and 6 performed the best; the performance of students 3 and 4 was somehwere in the middle. \textcolor{blue}{Would we have reached similar conclusions if we had used the $1$-norm or the $\infty$-norm to compute the norms of the score vectors?}
         \label{example:alada-scores}
     \end{example}
 \end{boxedstuff}
@@ -646,7 +637,7 @@ We could use any of the $p$-norms to compute this or come-up with a new norm dep
 \subsection{Angle between two vectors}
 This approach is based on the idea that the direction of the vector repesenting a point contains information about the point. Thus, vectors that point in a similar direction could be considered similar. But how do we measure the angle between two vectors in $\mb{R}^n$? This is where the concept of the \textit{standard inner product} (or the dot product from vectors from high school math and physics). The standard inner product of two vectors $\mf{x}, \mf{y} \in \mb{R}^n$ is defined as:
 \[ \mf{x}^\top\mf{y} = \sum_{i=1}^{n} x_i y_i \]
-The superscript `$\top$' represents the transpose operation. We will not worry about what it means in the next chapter. The standard inner product takes in two vectors $\mf{x}, \mf{y} \in \mb{R}^n$ and returns a scalar value $\mb{R}$; it can be both positive and negative. We compute it by simply taking the two vectors $\mf{x} = \bmxc x_1 \\ \vdots \\ x_n \emx$ and $\mf{y} = \bmxc y_1 \\ \vdots \\ y_n \emx$, and multiply the two of them element-wise $x_i y_i, \, 1 \leq i \leq n$ and add the $n$ products together $\sum_{i=1}^n x_i y_i$ to obtain the inner product.
+The superscript `$\top$' represents the transpose operation. We will not worry about what it means until the next chapter. The standard inner product takes in two vectors $\mf{x}, \mf{y} \in \mb{R}^n$ and returns a scalar value $\mb{R}$; it can be both positive and negative. We compute it by simply taking the two vectors $\mf{x} = \bmxc x_1 \\ \vdots \\ x_n \emx$ and $\mf{y} = \bmxc y_1 \\ \vdots \\ y_n \emx$, and multiply the two of them element-wise $x_i y_i, \, 1 \leq i \leq n$ and add the $n$ products together $\sum_{i=1}^n x_i y_i$ to obtain the inner product.
 
 \begin{figure}[h]
     \centering
@@ -753,7 +744,7 @@ We will come across other inner products in due course, but we will stick to the
 \end{wrapfigure}
 The concept of orthogonality is a generalization of the concept of perpendicularity in $\mb{R}^2$ and $\mb{R}^3$. Two vectors $\mf{x}, \mf{y} \in \mb{R}^n$ are said to be orthogonal if their standard inner product is zero, i.e., $\mf{x}^\top\mf{y} = 0$.
 
-Geometrically, when two vectors $\mf{x}$ and $\mf{y}$ are orthogonal, then when we move along the direction of one vector, we are not moving along the direction of the other vector. If directions of vector convey some information about something, then vectors that are orthogonal to each other are vectors that convey mutually exclusive information,i.e. the two vectors share nothing in commong. The concept of orthogonality is a very important concept in linear algebra and we will encounter it again and again.
+Geometrically, when two vectors $\mf{x}$ and $\mf{y}$ are orthogonal, then when we move along the direction of one vector, we are not moving along the direction of the other vector. If directions of vector convey some information about something, then vectors that are orthogonal to each other are vectors that convey mutually exclusive information,i.e. the two vectors share nothing in common. The concept of orthogonality is a very important concept in linear algebra and we will encounter it again and again.
 
 Note that this definition of orthogonality also implied that $\mf{0}$ is othorognal to all vectors!
 
@@ -826,7 +817,7 @@ Among the infinite number of basis for a vector space, there is a special class 
 \begin{equation}
     \mf{v}_i^\top\mf{v}_j = \begin{cases} 1, & i = j \\ 0, & i \neq j \end{cases}
 \end{equation}
-This means that all basis vector have unit 2-norm, and are orthogonal to each other. We will come across orthonormal basis often in this course, and for a good reason. Orthonormal basis and easy to work with and its easy to compute the representation of a vector in an orthonormal basis. Let $V$ be an orthonormal basis for $\mb{R}^n$, and let $\mf{w} \in \mb{r}^n$ with the following representation,
+This means that all basis vector have unit 2-norm, and are orthogonal to each other. We will come across orthonormal basis often in this course, and for a good reason. Orthonormal basis is easy to work with and its easy to compute the representation of a vector in an orthonormal basis. Let $V$ be an orthonormal basis for $\mb{R}^n$, and let $\mf{w} \in \mb{R}^n$ with the following representation,
 \[ \mf{w} = \sum_{i=1}^n \alpha_i \mf{v}_i \]
 Then, the coefficients $\alpha_i$ can be computed as the following:
 \[ \mf{v}_j^\top\mf{w} =  \sum_{i=1}^n \alpha_i \mf{v}_j^\top\mf{v}_i = \alpha_j, \,\,\, \text{because } \mf{v}_i^\top\mf{v}_j = \begin{cases} 1, & i = j \\ 0, & i \neq j \end{cases} \]
@@ -886,7 +877,7 @@ Here is another interesting consequence of linearity. If we know the value of a 
 We will now look two applications in data analysis based on the concepts we have discussed in this chapter. We will present the bare-bones version of two commonly used algorithms in data analysis -- the k-nearest neighbors (k-NN) classification algorithm and the k-means clustering algorithm. Numerous variations and improvements of these algorithms exist, which are beyond the scope of this course.
 
 \subsection{k-nearest neighbors (k-NN) classification and regression algorithms}
-The k-NN algorithm is a simple and intuitive algorithm for classification and regression problems. But before that, what are classification and regression problems? Both of them are problems were we one is interested in finding a function or a map from a set of features (or inputs) to a target value. The features are often the form of $n$-vectors, and the target value is a scalar value. Classificaiton and regression problems differ in the nature of the target value. In a classification problem, the target value is a class label (from set of finite values), while in a regression problem, the target value is a real-valued number (from an interval on the real line).
+The k-NN algorithm is a simple and intuitive algorithm for classification and regression problems. But before that, what are classification and regression problems? Both of them are problems where one is interested in finding a function or a map from a set of features (or inputs) to a target value. The features are often the form of $n$-vectors, and the target value is a scalar value. Classificaiton and regression problems differ in the nature of the target value. In a classification problem, the target value is a class label (from set of finite values), while in a regression problem, the target value is a real-valued number (from an interval on the real line).
 
 \begin{boxedstuff}
     \vspace{4mm}
@@ -907,7 +898,7 @@ The k-NN algorithm is a simple and intuitive algorithm for classification and re
         \end{itemize}
     \end{example}
     \begin{example}
-        \textbf{Spam email detection}: This is a classifier that we see in action on a daily basis. Our email managers/service provides automatically send certain emails to the spam folder to weed out the unless emails from the useful ones. Given an email, the goal of such a classifier is to determine whether the email is spam or not.
+        \textbf{Spam email detection}: This is a classifier that we see in action on a daily basis. Our email managers/service provides automatically send certain emails to the spam folder to weed out the usless emails from the useful ones. Given an email, the goal of such a classifier is to determine whether the email is spam or not.
         \begin{itemize}
             \item \textbf{Inputs}: Features extracted from the email content, sender, subject, etc.
             \item \textbf{Output}: Spam label (e.g., spam, not spam)
