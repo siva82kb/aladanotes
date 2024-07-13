@@ -379,12 +379,12 @@ More formally, a set of vectors $V = \lc \mf{v}_i \rc_{i=1}^{m}$ is said to be l
 \end{equation}
 To understand this better, let's assume that the set $V$ is linear dependent and let's assume that the vector $\mf{v}_m$ can be represented as the linear combination of the vectors $\mf{v}_1, \mf{v}_2, \cdots \mf{v}_{m-1}$. This means that there exist a set of scalar $\alpha_i, \,\, 1 \leq i \leq m-1$, such that
 \[ \alpha_1 \mf{v}_1 + \alpha_2 \mf{v}_2 + \cdots + \alpha_{m-1}\mf{v}_{m-1} = \mf{v}_m \]
-Multiplying both sides by a scalar $c_m \neq 0$ we get,
+We can rewrite this as the following,
 \[ \begin{split}
-    c_m\alpha_1 \mf{v}_1 + c_m\alpha_2 \mf{v}_2 + \cdots + c_m\alpha_{m-1}\mf{v}_{m-1} &= c_m\mf{v}_m \\
+    \alpha_1 \mf{v}_1 + \alpha_2 \mf{v}_2 + \cdots + \alpha_{m-1}\mf{v}_{m-1} - \mf{v}_m = \mf{0} \\
     \implies c_m\alpha_1 \mf{v}_1 + c_m\alpha_2 \mf{v}_2 + \cdots + c_m\alpha_{m-1}\mf{v}_{m-1} - c_m\mf{v}_m &= \mf{0}
 \end{split} \]
-This implies that there exist a set of scalar $c_i = c_m\alpha_i, \,\, 1 \leq i \leq m-1$, and $c_m$ such that $c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_m \mf{v}_m = \mf{0}$, where not all $c_i$ are zero. So when a set is linearly dependent, then there are scalars $c_i$, not all zero, such that the linear combination of the vectors from $V$ with these scalars produces the zero vector.
+This implies that there exist a set of scalar $c_i = \alpha_i, \,\, 1 \leq i \leq m-1$, and $c_m = -1$ such that $\sum_{i=1}^nc_i \mf{v}_i = \mf{0}$, where not all $c_i$ are zero. So when a set is linearly dependent, then there are scalars $c_i$, not all zero, such that the linear combination of the vectors from $V$ with these scalars produces the zero vector.
 
 Now, let's assume that the set $V$ is linearly independent, that is no vector in the set $V$ can be expressed as a linear combination of other vectors in that set. And let's assume that there are scalars $c_i$, not all zero, such that the linear combination of the vectors from $V$ with these scalars produces the zero vector, i.e.,
 \[ \begin{split}
@@ -845,7 +845,7 @@ The dimension of a vector space also tells us that the maximum number of linearl
     \end{example}
 \end{boxedstuff}
 
-\section{Linear functions}
+\section{Linear functions}\label{sec:ch01-lin-func}
 We will conclude this chapter with a brief introduction to linear functions. A function $f: \mb{R}^n \to \mb{R}$ is said to be linear if it satisfies the following property $\forall \mf{x}, \mf{y} \in \mb{R}^n$ and $\forall \alpha, \beta \in \mb{R}$:
 \begin{equation}
     f\pp{\alpha \mf{x} + \beta \mf{y}} = \alpha f\pp{\mf{x}} + \beta f\pp{\mf{y}}
