@@ -14,6 +14,79 @@
 I concede that the first two chapters were a bit dry. Hopefully, you will find topics from now on a bit more interest. Linear algebra is the study of linear transformations. We already saw an example of a linear transformation in Section~\ref{sec:ch01-lin-func}. We will look at linear transformations in in their general form and see how matrices can be used to represent and understand them.
 
 \section{What is a linear transformation?}\label{sec:ch03-lin-trans-def}
+A \textit{linear transformation} or \textit{linear map} $T$ is a function between between two vector spaces that preserves the operations of vector addition and scalar multiplication. In this course, we will particularly be interested in linear transformation from $\mb{R}^m$ to $\mb{R}^n$, i.e. $T: \mb{R}^m \to \mb{R}^n$. It satisfies the following two properties:
+\begin{enumerate}
+    \item \textbf{Additivity:} For all $\mf{x}, \mf{y} \in \mb{R}^m$, $T(\mf{x} + \mf{y}) = T(\mf{x}) + T(\mf{y})$.
+    \item \textbf{Homogeneity:} For all $\mf{x} \in \mb{R}^m$ and $c \in \mb{R}$, $T(c\mf{x}) = cT(\mf{x})$.
+\end{enumerate}
+Note that linear transformations allow us to move the transformation operation into the paranthesis for the addition or scalar multiplication of the arguments. The above properties also imply the following:
+\begin{itemize}
+    \item \textbf{Superposition:} For all $\mf{x}, \mf{y} \in \mb{R}^m$ and $c, d \in \mb{R}$, $T\pp{c\mf{x} + d\mf{y}} = T\pp{c\mf{x}} + T\pp{d\mf{y}} = cT\pp{\mf{x}} + dT\pp{\mf{y}}$.
+    \item \textbf{Zero input:} $T(\mf{0}_m) = \mf{0}_n$, where $\mf{0}_m \in \mb{R}^m$ and $\mf{0}_n \in \mb{R}^n$. 
+\end{itemize}
 
+The linear functions we considered in Section~\ref{sec:ch01-lin-func} are special cases of linear transformations, where $n = 1$. We will now look at some examples of transformations that are linear and some that are not.
+
+\begin{boxedstuff}
+\begin{example}
+Consider the transformation $T: \mb{R}^2 \to \mb{R}^2$ defined by $T\pp{\bmx x_1 \\ x_2 \emx} = \bmx 2x_1 \\ 3x_2 \emx$. This transformation is linear because it satisfies the properties of additivity and homogeneity. For example, $T\pp{\alpha \bmx x_1 \\ x_2 \emx + \beta \bmx y_1 \\ y_2 \emx} = T\pp{\bmx \alpha x_1 + \beta y_1 \\ \alpha x_2 + \beta y_2 \emx} = \bmx 2\pp{\alpha x_1 + \beta y_1} \\ 3\pp{\alpha x_2 + \beta y_2} \emx = \alpha \bmx 2x_1 \\ 3x_2 \emx + \beta \bmx 2y_1 \\ 3y_2 \emx = \alpha T\pp{\bmx x_1 \\ x_2 \emx} + \beta T\pp{ \bmx y_1 \\ y_2 \emx}$.
+\end{example}
+
+\begin{example}
+Consider the transformation $T: \mb{R}^2 \to \mb{R}^2$ defined by $T\pp{\bmx x_1 \\ y \emx} = \bmx x^2 \\ y^2 \emx$. This transformation is not linear because it does not satisfy the property of homogeneity. For example, $T\pp{2\bmx 1 \\ 2 \emx} = T\pp{\bmx 2 \\ 4 \emx} = \bmx 4 \\ 16 \emx \neq 2\bmx 1 \\ 4 \emx = 2T\pp{\bmx 1 \\ 2 \emx}$.
+\end{example}
+\end{boxedstuff}
+
+Now you can try your hand at the following exercises. Note that to should $T: \mb{R}^m \to \mb{R}^n$ is not a linear transformation, you only need to shown an example that does not satisfied additivity and homogeneity. However, to show that it is linear, you need to demonstrate that $T$ satisfies both properties for all vectors in $\mb{R}^m$. The proof of linearity can be a bit more involved than showing non-linearity.
+\begin{boxedstuff}
+\begin{problem}
+Which of the following transformations are linear?
+\begin{enumerate}
+    \item $T: \mb{R}^2 \to \mb{R}^2$, $T\pp{\bmx x_1 \\ x_2 \emx} = \bmx x_1 + x_2 \\ x_1 - x_2 \emx$
+    \item $T: \mb{R}^2 \to \mb{R}^3$, $T\pp{\bmx x_1 \\ x_2 \emx} = \bmxc x_1 + 1 \\ x_2 + 2 \\ 3x_1 + 2x_2 - 1\emx$
+    \item $T: \mb{R}^3 \to \mb{R}^2$, $T\pp{\bmx x_1 \\ x_2 \\ x_3\emx} = \bmx 0 \\ 0 \emx$
+\end{enumerate}
+\end{problem}
+
+\end{boxedstuff}
 
 \section{Matrices represent linear transformations}\label{sec:ch03-mat-lin-trans}
+In Section~\ref{sec:ch01-lin-func}, we say that any linear function $f: \mb{R}^m \to \mb{R}$ can be represented by a fixed $\mf{w} \in \mb{R}^m$, and $f\pp{\mf{x}} = \mf{w}^\top\mf{x}$. We can extend this idea to linear transformations from $\mb{R}^m$ to $\mb{R}^n$. Any linear transformation $T: \mb{R}^m \to \mb{R}^n$ can be represented by a fixed $n \times m$ matrix $\mf{A} \in \mb{R}^{n \times m}$, such that $T\pp{\mf{x}} = \mf{A}\mf{x}$; $\mf{A}$ is the \textit{matrix representation} of the linear transformation $T$.
+\begin{equation}
+    \begin{split}
+        \mf{y} = T\pp{\mf{x}} = \mf{A}\mf{x} &= \bmxc a_{11} & a_{12} & \cdots & a_{1m}\\ a_{21} & a_{22} & \cdots & a_{2m}\\ \vdots & \vdots & \ddots & \vdots\\ a_{n1} & a_{n2} & \cdots & a_{nm} \emx \bmxc x_1 \\ x_2 \\ \vdots \\ x_m\emx \\
+        \bmxc y_1 \\ y_2 \\ \vdots \\ y_n \emx &= \bmxc a_{11}x_1 + a_{12}x_2 + \cdots + a_{1m}x_m \\ 
+        a_{21}x_1 + a_{22}x_2 + \cdots + a_{2m}x_m \\
+        \vdots \\
+        a_{n1}x_1 + a_{n2}x_2 + \cdots + a_{nm}x_m\emx 
+    \end{split}
+    \label{eq:ch03-lin-trans-mat-rep}
+\end{equation}
+This shows that all linear transformation are essentially a set of simultaneous linear equations.
+
+Let's assume that I give you a Python/Julia function, which takes in vectors from $\mb{R}^m$, does some computation, and returns vectors from $\mb{R}^n$. I also tell to you that this function is linear. You do not want to us this function and believe that if you know the matrix corresponding to this linear transformation, then you can easily do yourself what the function does. But, how can you find the matrix corresponding this function? Remember, in the case of linear functions how we identified the entries of $\mf{w} \in \mb{R}^m$ (Section~\ref{sec:ch01-lin-func})? We had used the unit vectors of $\mb{R}^m$ to get  the $w_i$s. How could we possibly find out the elements of the matrix $\mf{A}$? Turns our, we have the exact same thing and the elements of $\mf{A}$ will be revealed to us by the output of the linear transformation. If $\mf{a}_i$ is the $i^{th}$ column of $\mf{A}$, then 
+$\mf{a}_i = T\pp{\mf{e}_i}, \,\, \mf{e}_i \in \mb{R}^m$. \textcolor{red}{Can you explain why?}
+
+\section{Matrix multiplication and linear transformations}\label{sec:ch03-mat-mult-lin-trans}
+
+
+\section{System of linear equations}\label{sec:ch03-sys-lin-eqn}
+
+\subsection{Linear equations in control problems}
+
+
+\subsection{Linear equations in estimation problems}
+
+
+\section{Geometry of linear equations}
+
+
+\section{Solutions of linear equations}
+
+
+\section{Revisiting linear independence}
+
+\section{Four fundamental subspaces of $\mf{A}$}
+
+
+\section{Applications}
