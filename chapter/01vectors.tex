@@ -136,7 +136,7 @@ The elements of $\mb{R}^2$ are points on the plane, and we can visualize them as
 There are many operations we can perform on $n$-vectors, but we will only focus on two operations for this course:
 \begin{itemize}
     \item \textbf{Scalar multiplication:} Given a scalar $c \in \mb{R}$ and an $n$-vector $\mf{x}$. The scalar multiplication operation produces another $n$-vector $c\mf{x}$ whose components are $cx_1, cx_2, \ldots, cx_n$. 
-    \[ \mf{x} = \bmx 1 \\ 2\emx \longrightarrow 2 \mf{x} = \bmx  2\ct{1} \\ 2\ct{2} \emx = \bmx  2 \\ 8.2 \emx \]
+    \[ \mf{x} = \bmx 1 \\ 2\emx \longrightarrow 2 \mf{x} = \bmx  2\ct{1} \\ 2\ct{2} \emx = \bmx  2 \\ 4 \emx \]
 
     The geometric interpretation of scalar multiplication is shown in Figure~\ref{fig:ch01-scalar-mult}. Scalar multiplication stretches or shrinks the vector without rotating it. When the scalar is positive, the direction of the scaled vector is the same as the original vector, and when the scalar is negative, the direction is opposite. When the scalar is zero, the scaled vector is the zero vector $\mf{0}$. 
     \begin{figure}[h!]
@@ -146,7 +146,7 @@ There are many operations we can perform on $n$-vectors, but we will only focus 
         \label{fig:ch01-scalar-mult}
     \end{figure}
     
-    \item \textbf{Vector Addition:} Given two $n$-vectors $\mf{x}$ and $\mf{y}$, the vector addition operation, represented by $\mf{x} + \mf{y}$, producs another $n$-vector whose components are $x_1 + y_1, x_2 + y_2, \ldots, x_n + y_n$.
+    \item \textbf{Vector Addition:} Given two $n$-vectors $\mf{x}$ and $\mf{y}$, the vector addition operation, represented by $\mf{x} + \mf{y}$, produces another $n$-vector whose components are $x_1 + y_1, x_2 + y_2, \ldots, x_n + y_n$.
     \[ \mf{x} = \bmxc 1 \\ 3 \emx, \mf{y} = \bmxc 2 \\ 1 \emx \longrightarrow \mf{x} + \mf{y} = \bmxc 1 + 2 \\ 3 + 1 \emx = \bmxc 3 \\ 4 \emx \]
     
     \begin{figure}[h!]
@@ -271,7 +271,7 @@ One immediate consequence of the above definition is that the zero element of th
         \caption{Vector addition.}
         \label{fig:ch01-subspace1-addition}
     \end{subfigure}
-    \caption{Example of a subspace of $\mb{R}^2$. (a) Shows the set of all points in $\mb{R}^2$ corresponding to the subset $S = \left\{ \bmxc x \\ 2 x\emx\right\} \subset \mb{R}^2$. (b) Shows that the set $S$ is closed under scalar multiplication. Take any vecotr from the line, and scale it and it remains on that blue line. (c) Shows that $S$ is closed under vector addition. If we take any two vectors from the blue line and add them, the resulting vector remains in the blue line.}
+    \caption{Example of a subspace of $\mb{R}^2$. (a) Shows the set of all points in $\mb{R}^2$ corresponding to the subset $S = \left\{ \bmxc x \\ 2 x\emx\right\} \subset \mb{R}^2$. (b) Shows that the set $S$ is closed under scalar multiplication. Take any vector from the line, and scale it, and it remains on that blue line. (c) Shows that $S$ is closed under vector addition. If we take any two vectors from the blue line and add them, the resulting vector remains in the blue line.}
 \end{figure}    
     
 \begin{boxedstuff}
@@ -280,18 +280,18 @@ One immediate consequence of the above definition is that the zero element of th
     \[ S = \lc \mf{x} \, : \, x = \bmxc x \\ m x + c \emx \in \mb{R}^2, \, m, c \in \mb{R} \rc \]
     This is shown in the Figure~\ref{fig:ch01-nosubspace1}.
 
-    How do we verfiy this is a subspace of $\mb{R}^2$? The definition above shows that any $x$ in $S$ comes from $\mb{R}^2$, which means its a subset of $\mb{R}^2$. Figure~\ref{fig:ch01-nosubspace1} shows the set $S$ for $m = -\frac{1}{2}$ and $c = 1$.
+    How do we verify this is a subspace of $\mb{R}^2$? The definition above shows that any $x$ in $S$ comes from $\mb{R}^2$, which means it is a subset of $\mb{R}^2$. Figure~\ref{fig:ch01-nosubspace1} shows the set $S$ for $m = -\frac{1}{2}$ and $c = 1$.
     \noindent How do we verify if $S$ is a subspace of $\mb{R}^2$? We need to now verify that $S$ satisfies the properties of a vector space.
     \begin{enumerate}
-        \item First, let's check if $S$ contains the zero vector. If it does not contain the zero vector, then it cannot be a subspace. The elements from $S$ are of the form $\bmxc x \\ m x + c\emx$, thus if we choose $x = 0$, then we get $\bmx 0 \\ c \emx \in S$. So, $S$ does not contain the zero vector, which implies that $S$ is not a subspace space of $\mb{R}^2$. We need not check the other two conditions; but we will test them just to see which of these two fails.
+        \item First, let's check if $S$ contains the zero vector. If it does not contain the zero vector, then it cannot be a subspace. The elements from $S$ are of the form $\bmxc x \\ m x + c\emx$, thus if we choose $x = 0$, then we get $\bmx 0 \\ c \emx \in S$. So, $S$ does not contain the zero vector, which implies that $S$ is not a subspace space of $\mb{R}^2$. We need not check the other two conditions, but we will test them just to see which of these two fails.
         \item Scaling the element $\bmxc x \\ m x + c \emx \in S$ by a scalar $d$ we get,
         \[ d \bmxc x \\ m x + c\emx = \bmxc d x \\ d m x + d c \emx = \bmxc d x \\ m \pp{d x} + dc \emx \neq \bmxc y \\ m y + c\emx, \quad \text{where} \,\, y = d x \in \mb{R} \]
-        This means that $d \bmxc x \\ m x + c\emx \notin S$. Thus, the set $S$ is not closed under scalar multiplication. Another confirmation that it is not a subspace. This can be seen in Figure~\ref{fig:ch01-nosubspace1-scale}, which shows that when we choose an elment from $\mf{x}$ (red arrow) from $S$ (blue line), the scaled version of this vector leaves the set $S$, i.e., the tip of the green arrow does not stay on the blue line.
+        This means that $d \bmxc x \\ m x + c\emx \notin S$. Thus, the set $S$ is not closed under scalar multiplication. Another confirmation that it is not a subspace. This can be seen in Figure~\ref{fig:ch01-nosubspace1-scale}, which shows that when we choose an element from $\mf{x}$ (red arrow) from $S$ (blue line), the scaled version of this vector leaves the set $S$, i.e., the tip of the green arrow does not stay on the blue line.
         \item Let's verify vector addition. Adding two elements $\bmxc x_1 \\ m x_1 + c\emx, \bmxc x_2 \\ m x_2 + c\emx \in S$ we get,
         \[ \bmxc x_1 \\ m x_1 + c\emx + \bmxc x_2 \\ m x_2 + c\emx = \bmxc x_1 + x_2 \\ m x_1 + m x_2 + 2c \emx \neq \bmxc y_1 \\ m y_1 + c\emx, \quad \text{where} \,\, y_1 = x_1 + x_2 \in \mb{R} \]
-        This means that $\bmxc x_1 \\ m x_1 + c\emx + \bmxc x_2 \\ m x_2 + c\emx \notin S$. Thus the set $S$ is not closed under vector addition. We see this geometrically in Figure~\ref{fig:ch01-nosubspace1-addition}, where the sum of two vectors in $S$ does not stay in the set $S$. Even though the tips of the green and red arrow are on the blue line, the tip of the black arrow is not on the blue line.
+        This means that $\bmxc x_1 \\ m x_1 + c\emx + \bmxc x_2 \\ m x_2 + c\emx \notin S$. Thus, the set $S$ is not closed under vector addition. We see this geometrically in Figure~\ref{fig:ch01-nosubspace1-addition}, where the sum of two vectors in $S$ does not stay in the set $S$. Even though the tips of the green and red arrows are on the blue line, the tip of the black arrow is not on the blue line.
     \end{enumerate}
-    Since, the subset $S$ is not closed under both vector addition and scalar multiplication, it is not a subspace of $\mb{R}^2$.
+    Since the subset $S$ is not closed under both vector addition and scalar multiplication, it is not a subspace of $\mb{R}^2$.
     \label{example:nosubspace-straight-line}
 \end{example}
 \end{boxedstuff}
@@ -314,7 +314,8 @@ One immediate consequence of the above definition is that the zero element of th
         \caption{Vector addition.}
         \label{fig:ch01-nosubspace1-addition}
     \end{subfigure}
-    \caption{Example of a subspace of $\mb{R}$. (a) Shows the set of all points in $\mb{R}^2$ corresponding to the subset $S = \left\{ \bmxc x \\ 2 x\emx\right\} \subset \mb{R}^2$. (b) Shows that the set $S$ is closed under scalar multiplication. Take any vecotr from the line, and scale it and it remains on that blue line. (c) Shows that $S$ is closed under vector addition. If we take any two vectors from the blue line and add them, the resulting vector remains in the blue line.}
+    % caption needs to be modified
+    \caption{Example of not a subspace of $\mb{R}$. (a) Shows the set of all points in $\mb{R}^2$ corresponding to the subset $S = \left\{ \bmxc x \\ 2 x\emx\right\} \subset \mb{R}^2$. (b) Shows that the set $S$ is closed under scalar multiplication. Take any vector from the line, and scale it, and it remains on that blue line. (c) Shows that $S$ is closed under vector addition. If we take any two vectors from the blue line and add them, the resulting vector remains in the blue line.}
 \end{figure}
 
 \begin{boxedstuff}
@@ -354,7 +355,7 @@ Linear combination is an \textit{algebraic operation} performed on a set of vect
     \mf{v} = c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_n \mf{v}_m \in \mb{R}^n
     \label{eq:linear-comb}
 \end{equation}
-Notice that the linear cominations of single vector $\mf{v}_1$ are simply different scaled versions of the vector $c_1 \mf{v}_1$. Linear cominations are the bread-and-butter of linear algebra and we will encounter them again and again. An informal way to think of a linear combination of a set of vectors as process of mixing the set of vectors together with the corresponding scalar $c_i$ determining the amount of a vector in the mixture. There are other types of combinations of vectors, which we will not discuss further in this book.
+Notice that the linear combinations of single vector $\mf{v}_1$ are simply differently scaled versions of the vector $c_1 \mf{v}_1$. Linear combinations are the bread-and-butter of linear algebra, and we will encounter them again and again. An informal way to think of a linear combination of a set of vectors is the process of mixing the set of vectors together with the corresponding scalar $c_i$, determining the amount of a vector in the mixture. There are other types of combinations of vectors, which we will not discuss further in this book.
 \begin{itemize}
     \item \textbf{Affine combination:} $\mf{v} = c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_n \mf{v}_m, \quad \sum_{i=1}^{m} c_i = 1$
     \item \textbf{Convex combinations:} $\mf{v} = c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_n \mf{v}_m, \quad c_i \geq 0, \,\, \sum_{i=1}^{m} c_i = 1$
@@ -365,19 +366,19 @@ Notice that the linear cominations of single vector $\mf{v}_1$ are simply differ
 \secsum{
     \begin{itemize}
         \item Linear independence is a property of a set of vectors.
-        \item A set is either linear independent or its not.
-        \item No element of a linearly independent set can be represented as linear combination of the other elements in the set.
+        \item A set is either linear independent or it's not.
+        \item No element of a linearly independent set can be represented as a linear combination of the other elements in the set.
         \item Linearly independent set does not have any redundancy.
     \end{itemize}
 }
-Linear independece is a \textit{property} of a set of vectors; a set of vector is either linearly independent or linearly dependent. The concept of linear independence is easy to understand but the algebraic condition for independence can seem a bit unintuitive. A set of vectors is said to be \text{linearly independent} if no vector in the set can be expressed as a linear combination of the other vectors in the set. This means that there is some unique  information contained in each element of the set, which cannot be obtained from the other elements of the set, i.e., there is no redundancy, so to speak. 
+Linear independence is a \textit{property} of a set of vectors; a set of vectors is either linearly independent or linearly dependent. The concept of linear independence is easy to understand, but the algebraic condition for independence can seem a bit unintuitive. A set of vectors is said to be \text{linearly independent} if no vector in the set can be expressed as a linear combination of the other vectors in the set. This means that there is some unique  information contained in each element of the set, which cannot be obtained from the other elements of the set, i.e., there is no redundancy, so to speak. 
 
 More formally, a set of vectors $V = \lc \mf{v}_i \rc_{i=1}^{m}$ is said to be linearly independent if and only if the only way to produce the zero vector $\mf{0}$ through the linear combination of the set $V$ is by setting all the scalars to zero, i.e.,
 \begin{equation}
     c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_n \mf{v}_m = \mf{0} \quad \text{if and only if} \quad c_1 = c_2 = \cdots = c_m = 0
     \label{eq:linear-indep}
 \end{equation}
-To understand this better, let's assume that the set $V$ is linear dependent and let's assume that the vector $\mf{v}_m$ can be represented as the linear combination of the vectors $\mf{v}_1, \mf{v}_2, \cdots \mf{v}_{m-1}$. This means that there exist a set of scalar $\alpha_i, \,\, 1 \leq i \leq m-1$, such that
+To understand this better, let's assume that the set $V$ is linearly dependent, and let's assume that the vector $\mf{v}_m$ can be represented as the linear combination of the vectors $\mf{v}_1, \mf{v}_2, \cdots \mf{v}_{m-1}$. This means that there exist a set of scalar $\alpha_i, \,\, 1 \leq i \leq m-1$, such that
 \[ \alpha_1 \mf{v}_1 + \alpha_2 \mf{v}_2 + \cdots + \alpha_{m-1}\mf{v}_{m-1} = \mf{v}_m \]
 We can rewrite this as the following,
 \[ \begin{split}
@@ -391,7 +392,7 @@ Now, let's assume that the set $V$ is linearly independent, that is no vector in
     c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_m \mf{v}_m &= \mf{0} \\
     \implies \frac{c_1}{c_m} \mf{v}_1 + \frac{c_2}{c_m} \mf{v}_2 + \cdots + \frac{c_{m-1}}{c_m}\mf{v}_{m-1} &= \mf{v}_m, \,\, c_m \neq 0
 \end{split} \]
-But this a contradiction because we have just expressed $\mf{v}_m$ is expressed as a linear combination of the vectors $\mf{v}_1, \mf{v}_2, \cdots \mf{v}_{m-1}$.
+But this a contradiction because we have just expressed $\mf{v}_m$ as a linear combination of the vectors $\mf{v}_1, \mf{v}_2, \cdots \mf{v}_{m-1}$.
 
 \begin{boxedstuff}
     \begin{example}
@@ -399,7 +400,7 @@ But this a contradiction because we have just expressed $\mf{v}_m$ is expressed 
     \end{example}
 
     \begin{example}
-        Consider the set of vectors $\lc \mf{v}_1, \mf{v}_2 \rc$, such that $\mf{v}_1 = \bmx 1 \\ 0 \emx, \mf{v}_2 = \bmx 0 \\ 1 \emx, , \mf{v}_3 = \bmx 23 \\ -5 \emx$ in $\mb{R}^2$. This set is not linearly independent, i.e., its linear dependent. Let's assume that there exist scalars $c_1, c_2, c_3$ such that $c_1 \mf{v}_1 + c_2 \mf{v}_2 + c_3 \mf{v}_3 = \mf{0}$. This implies that, $c_1 \bmx 1 \\ 0 \emx + c_2 \bmx 0 \\ 1 \emx + c_3 \bmx 23 \\ -5 \emx = \bmx c_1 + 23c_3\\ c_2  - 5 c_3 \emx = \bmx 0 \\ 0 \emx \implies c_1 = -23c_3$ and $c_2 = 5c_3$. If we choose $c_3$ to be a non-zero value, we have a set of non-zero scalars such that linear combination of the set $\lc \mf{v}_1, \mf{v}_2, \mf{v}_3 \rc$ produces the zero vector. Thus, this set is linearly dependent.
+        Consider the set of vectors $\lc \mf{v}_1, \mf{v}_2 \rc$, such that $\mf{v}_1 = \bmx 1 \\ 0 \emx, \mf{v}_2 = \bmx 0 \\ 1 \emx, , \mf{v}_3 = \bmx 23 \\ -5 \emx$ in $\mb{R}^2$. This set is not linearly independent, i.e., its linear dependent. Let's assume that there exist scalars $c_1, c_2, c_3$ such that $c_1 \mf{v}_1 + c_2 \mf{v}_2 + c_3 \mf{v}_3 = \mf{0}$. This implies that, $c_1 \bmx 1 \\ 0 \emx + c_2 \bmx 0 \\ 1 \emx + c_3 \bmx 23 \\ -5 \emx = \bmx c_1 + 23c_3\\ c_2  - 5 c_3 \emx = \bmx 0 \\ 0 \emx \implies c_1 = -23c_3$ and $c_2 = 5c_3$. If we choose $c_3$ to be a non-zero value, we have a set of non-zero scalars such that a linear combination of the set $\lc \mf{v}_1, \mf{v}_2, \mf{v}_3 \rc$ produces the zero vector. Thus, this set is linearly dependent.
     \end{example}
 
     \begin{example}
@@ -416,17 +417,17 @@ But this a contradiction because we have just expressed $\mf{v}_m$ is expressed 
     \begin{itemize}
         \item The span of a set of vectors $V$ is another set.
         \item It is generated through the linear combination of the elements of $V$.
-        \item The span of a set of vector $V$ is a subsapce of the original vectors space the elements of $V$ are from.
+        \item The span of a set of vectors $V$ is a subspace of the original vector space the elements of $V$ are from.
     \end{itemize}
 }
-So, linear combinations of a set of vectors $V = \lc \mf{v}_i \rc_{i=1}^{m}$ ($\mf{v}_i \in \mb{R}^n$) is a way of generating new vectors not in that set. All we need to do is choose a random set of real numbers $\lc c_i \rc_{i=1}^{m}$, and ``mix'' the vectors $\mf{v}_i$ from the set using these as weights. Clearly there are infinite number of vectors we could generate through this process, and we can put them all together in a set. And this set has a name -- the \textit{span} of the set $V$. The span of a set of vectors $V = \lc \mf{v}_i \rc_{i=1}^{m}$ is denoted by $\text{span}\lp V \rp$ and is defined as:
+So, linear combinations of a set of vectors $V = \lc \mf{v}_i \rc_{i=1}^{m}$ ($\mf{v}_i \in \mb{R}^n$) is a way of generating new vectors not in that set. All we need to do is choose a random set of real numbers $\lc c_i \rc_{i=1}^{m}$, and ``mix'' the vectors $\mf{v}_i$ from the set using these as weights. Clearly, there are an infinite number of vectors we could generate through this process, and we can put them all together in a set. And this set has a name -- the \textit{span} of the set $V$. The span of a set of vectors $V = \lc \mf{v}_i \rc_{i=1}^{m}$ is denoted by $\text{span}\lp V \rp$ and is defined as:
 \begin{equation}
     \text{span}\lp V \rp = \lc c_1 \mf{v}_1 + c_2 \mf{v}_2 + \cdots + c_n \mf{v}_m \, : \, c_i \in \mb{R} \rc \subseteq \mb{R}^n
     \label{eq:span-vec}
 \end{equation}
-Its clear that this will be a subset of $\mb{R}^n$, but it turns out that it is also a subspace of $\mb{R}^n$. Why? Can you verify this fact algebraically? (\textit{Hint}: Just follow the steps in Examples~\ref{example:subspace-straight-line}-\ref{example:nosubspace-parabola}).
+It's clear that this will be a subset of $\mb{R}^n$, but it turns out that it is also a subspace of $\mb{R}^n$. Why? Can you verify this fact algebraically? (\textit{Hint}: Just follow the steps in Examples~\ref{example:subspace-straight-line}-\ref{example:nosubspace-parabola}).
 
-Geometrically, this means that the $\text{span}\pp{V}$ will be a flat surface in $\mb{R}^n$. Which means that the linear combination operation generates vectors that lie on a flat surface spanned by the vectors employed in the linear combination.
+Geometrically, this means that the $\text{span}\pp{V}$ will be a flat surface in $\mb{R}^n$. This means that the linear combination operation generates vectors that lie on a flat surface spanned by the vectors employed in the linear combination.
 
 \begin{figure}[h]
     \centering
@@ -457,7 +458,7 @@ The size of a vector is an extension of the idea of the magnitude of a real numb
     \label{eq:magnitude-real}
 \end{equation}
 
-The ``magnitude'' or size of an element of a vector space (such as $\mb{R}^n$) is called the \textit{norm} of the vector. The norm is a generalization of the magnitude of a real number to a vector. The norm of a vector is a function that maps a vector to a non-negative real number, and satisfies the following properties:
+The ``magnitude'' or size of an element of a vector space (such as $\mb{R}^n$) is called the \textit{norm} of the vector. The norm is a generalization of the magnitude of a real number to a vector. The norm of a vector is a function that maps a vector to a non-negative real number and satisfies the following properties:
 \begin{itemize}
     \item \textbf{Non-negativity:} For any vector $\mf{x} \in \mb{R}^n$, $\norm{\mf{x}} \geq 0$.
     \item \textbf{Definiteness:} The norm of a vector is zero if and only if the vector is the zero vector, i.e., $\norm{\mf{x}} = 0$ if and only if $\mf{x} = \mf{0}$.
@@ -497,7 +498,7 @@ The \textit{1-norm} is the sum of the absolute value of the elements of the vect
 
 \begin{boxedstuff}
     \begin{problem}
-        Why does the $\infty$-norm measure have this weird looking definition compared to the other $p$-norms?
+        Why does the $\infty$-norm measure have this weird-looking definition compared to the other $p$-norms?
         \begin{solution}
             Consider the vector $\mf{x} \in \mb{R}^n$, and $x_{max} = \max_{0 \leq i \leq n} \vert x_i \vert$; let's also assume that the $j^{th}$ element of $\mf{x}$ has the maximum absolute value, i.e. $x_{max} = \vert x_j \vert$. The $p$-norm is defined as the following:
             \[ \begin{split} 
@@ -512,7 +513,7 @@ The \textit{1-norm} is the sum of the absolute value of the elements of the vect
 \subsection{Geometry of the p-norms}
 In the case of real numbers, the set of all numbers with a magnitude of $1$ is the set $\lc -1, 1 \rc$. We can plot these points in the real line as below.
 
-% Figure showing the loucs of all points with magnitude 1
+% Figure showing the locus of all points with magnitude 1
 % on the real line.
 \begin{figure}[h]
     \centering
@@ -521,7 +522,7 @@ In the case of real numbers, the set of all numbers with a magnitude of $1$ is t
     \label{fig:ch01-real-line-1-norm}
 \end{figure}
 
-In $\mb{R}^2$, the set of all vectors from $\mb{R}^2$ with a \textit{2-norm} of $1$ is the unit circle. The following figure shows the set of all points in $\mb{R}^2$ with unit 1, 2, $p$, and $\infty$ norm.
+In $\mb{R}^2$, the set of all vectors from $\mb{R}^2$ with a \textit{2-norm} of $1$ is the unit circle. The following figure shows the set of all points in $\mb{R}^2$ with units 1, 2, $p$, and $\infty$ norm.
 \begin{figure}[h]
     \centering
     \begin{subfigure}[b]{0.24\textwidth}
@@ -563,16 +564,16 @@ In $\mb{R}^2$, the set of all vectors from $\mb{R}^2$ with a \textit{2-norm} of 
 \end{boxedstuff}
 
 \section{How similar are two vectors?}\label{sec:ch01-similar-vecs}
-The idea of how similar two or more vectors are is an important topic  in data analysis, in particular in classification problems in machine learning. Vectors that are ``similar'' somehow belong to the same ``category'' or ``class'', while vectors that are ``dissimilar'' belong to different categories or classes. There are various ways to measure the similarity between two vectors. We will look at two methods in this section where similarity is mesasured by computing the distance between two vectors or by computing the angle between two vectors.
+The idea of how similar two or more vectors are is an important topic  in data analysis, in particular in classification problems in machine learning. Vectors that are ``similar'' somehow belong to the same ``category'' or ``class'', while vectors that are ``dissimilar'' belong to different categories or classes. There are various ways to measure the similarity between two vectors. We will look at two methods in this section where similarity is measured by computing the distance between two vectors or by computing the angle between two vectors.
 
 \subsection{Distance between two vectors}
-The logic here is that similar vectors correspond to points that are close together, while disimilar vectors are father away. We can make use of the norm to compute the distance between two vectors $\mf{x}, \mf{y} \in \mb{R}^n$. Since the the difference between these two vectors $\mf{x} - \mf{y}$ is also another vector, we can compute the distance between vectors $\mf{x}$ and $\mf{y}$ as the norm of the vector $\mf{x} - \mf{y}$ (Figure~\ref{fig:ch01-dist1}).
+The logic here is that similar vectors correspond to points that are close together, while dissimilar vectors are farther away. We can make use of the norm to compute the distance between two vectors $\mf{x}, \mf{y} \in \mb{R}^n$. Since the difference between these two vectors $\mf{x} - \mf{y}$ is also another vector, we can compute the distance between vectors $\mf{x}$ and $\mf{y}$ as the norm of the vector $\mf{x} - \mf{y}$ (Figure~\ref{fig:ch01-dist1}).
 \[ \text{Distance between } \mf{x} \text{ and } \mf{y} = d\pp{\mf{x}, \mf{y}} = \lV \mf{x} - \mf{y} \rV_p \]
-We could use any of the $p$-norms to compute this or come-up with a new norm depending on the application we are dealing with. Take look at the clusters of points shown in Figure~\ref{fig:ch01-dist-clusters}, we would agree that the different colored points each form a cluster, since the points of the same color are closer to each other than points from another color. 
+We could use any of the $p$-norms to compute this or come up with a new norm depending on the application we are dealing with. Take a look at the clusters of points shown in Figure~\ref{fig:ch01-dist-clusters}, we would agree that the different colored points each form a cluster, since the points of the same color are closer to each other than points from another color. 
 
 \begin{boxedstuff}
     \begin{example}
-        \textbf{Test scores in ALADA}. The ALADA course has three segments: linear algebra, optimization, and probability/statistics. Let's assume that the final exam contains three sections with a maximum of 25 marks students. The scores from these three segments are stored in a $3$-vector of the form $\mf{x} = \bmxc x_1 \\ x_2 \\ x_3\emx \in \mb{R}^3$, where $x_1, x_2, x_3$ are the marks obtained for linear algebra, optimization, and probability/statistics section, respectively. Consider the scores from the 6 students that took the course:
+        \textbf{Test scores in ALADA}. The ALADA course has three segments: linear algebra, optimization, and probability/statistics. Let's assume that the final exam contains three sections with a maximum of 25 marks students. The scores from these three segments are stored in a $3$-vector of the form $\mf{x} = \bmxc x_1 \\ x_2 \\ x_3\emx \in \mb{R}^3$, where $x_1, x_2, x_3$ are the marks obtained for linear algebra, optimization, and probability/statistics section, respectively. Consider the scores from the 6 students who took the course:
         \[ \mf{x}_1 = \bmxc 2 \\ 5 \\ 1 \emx, \quad \mf{x}_2 = \bmxc 3 \\ 3 \\ 4 \emx, \quad \mf{x}_3 = \bmxc 8 \\ 20 \\ 22 \emx, \quad \mf{x}_4 = \bmxc 9 \\ 20 \\ 21 \emx, \quad \mf{x}_5 = \bmxc 24 \\ 24 \\ 23 \emx, \quad \mf{x}_6 = \bmxc 24 \\ 23 \\ 22 \emx
         \]
         The distance between the scores of these students tells us something about the ability of the students in the course. Let $d_{ij} = \lV \mf{x}_i - \mf{x}_j \rV_2$ be the Euclidean distance between the scores of student $i$ and $j$; notice that $d_{ij} = d_{ji}$. The distance between the different scores is given by the following table. \\
@@ -594,13 +595,13 @@ We could use any of the $p$-norms to compute this or come-up with a new norm dep
         
         \noindent The following observations can be made from the table:
         \begin{itemize}
-            \item Students 1 and 2 have similar scores, compared to the other students.
-            \item Students 3 and 4 have very similar scores, compared to the other students.
-            \item Students 5 and 6 have very similar scores, compared to the other students.
-            \item Students 1 and 2, are closer to 3 and 4 than to 5 and 6.
+            \item Students 1 and 2 have similar scores compared to the other students.
+            \item Students 3 and 4 have very similar scores compared to the other students.
+            \item Students 5 and 6 have very similar scores compared to the other students.
+            \item Students 1 and 2 are closer to 3 and 4 than to 5 and 6.
         \end{itemize}
 
-        \noindent Notice that you could have also used the other norms to creata  table similar to the above one. Its left as an exercise for you generate a similar table using the $1$-norm and the $\infty$-norm to define the distance between the scores of the students.
+        \noindent Notice that you could have also used the other norms to create a table similar to the above one. It's left as an exercise for you to generate a similar table using the $1$-norm and the $\infty$-norm to define the distance between the scores of the students.
 
         \textbf{Using norms instead of norms of differences}. Another way to understand the score vectors is to directly compute the norms of $\mf{x}_i$ and see what information they convey about the students' performance in the ALADA final exam.
         \begin{small}
@@ -612,7 +613,7 @@ We could use any of the $p$-norms to compute this or come-up with a new norm dep
                     \end{tabular}
             \end{center}
         \end{small}
-        The size of the score vectors tells us that students 1 and 2 performed worst among the six students, while students 5 and 6 performed the best; the performance of students 3 and 4 was somehwere in the middle. \textcolor{blue}{Would we have reached similar conclusions if we had used the $1$-norm or the $\infty$-norm to compute the norms of the score vectors?}
+        The size of the score vectors tells us that students 1 and 2 performed worst among the six students, while students 5 and 6 performed the best; the performance of students 3 and 4 was somewhere in the middle. \textcolor{blue}{Would we have reached similar conclusions if we had used the $1$-norm or the $\infty$-norm to compute the norms of the score vectors?}
         \label{example:alada-scores}
     \end{example}
 \end{boxedstuff}
@@ -621,21 +622,21 @@ We could use any of the $p$-norms to compute this or come-up with a new norm dep
     \centering
     \begin{subfigure}[b]{0.35\textwidth}
         \includegraphics[width=0.95\linewidth]{figure/chapter01/dist-demo.pdf}
-        \caption{Distance between two vectors $\mf{x}$ and $\mf{y}$ in $\mb{R}^2$. This figures depicts the 2-norm, but any $p$-norm or valid norm function could be used to quantify the distance between two vectors or points.}
+        \caption{Distance between two vectors $\mf{x}$ and $\mf{y}$ in $\mb{R}^2$. This figure depicts the 2-norm, but any $p$-norm or valid norm function could be used to quantify the distance between two vectors or points.}
         \label{fig:ch01-dist1}
     \end{subfigure}
     \hspace{0.05\textwidth}
     \begin{subfigure}[b]{0.4\textwidth}
         \centering
         \includegraphics[width=0.85\linewidth]{figure/chapter01/cluster-dist.pdf}
-        \caption{Distance between two vectors $\mf{x}$ and $\mf{y}$ in $\mb{R}^2$. This figures depicts the 2-norm, but any $p$-norm or valid norm function could be used to quantify the distance between two vectors or points.  could be used to quantify the distance between}
+        \caption{Distance between two vectors $\mf{x}$ and $\mf{y}$ in $\mb{R}^2$. This figure depicts the 2-norm, but any $p$-norm or valid norm function could be used to quantify the distance between two vectors or points.  could be used to quantify the distance between}
         \label{fig:ch01-dist-clusters}
     \end{subfigure}
     \caption{}
 \end{figure}
 
 \subsection{Angle between two vectors}
-This approach is based on the idea that the direction of the vector repesenting a point contains information about the point. Thus, vectors that point in a similar direction could be considered similar. But how do we measure the angle between two vectors in $\mb{R}^n$? This is where the concept of the \textit{standard inner product} (or the dot product from vectors from high school math and physics). The standard inner product of two vectors $\mf{x}, \mf{y} \in \mb{R}^n$ is defined as:
+This approach is based on the idea that the direction of the vector representing a point contains information about the point. Thus, vectors that point in a similar direction could be considered similar. But how do we measure the angle between two vectors in $\mb{R}^n$? This is where the concept of the \textit{standard inner product} (or the dot product from vectors from high school math and physics). The standard inner product of two vectors $\mf{x}, \mf{y} \in \mb{R}^n$ is defined as:
 \[ \mf{x}^\top\mf{y} = \sum_{i=1}^{n} x_i y_i \]
 The superscript `$\top$' represents the transpose operation. We will not worry about what it means until the next chapter. The standard inner product takes in two vectors $\mf{x}, \mf{y} \in \mb{R}^n$ and returns a scalar value $\mb{R}$; it can be both positive and negative. We compute it by simply taking the two vectors $\mf{x} = \bmxc x_1 \\ \vdots \\ x_n \emx$ and $\mf{y} = \bmxc y_1 \\ \vdots \\ y_n \emx$, and multiply the two of them element-wise $x_i y_i, \, 1 \leq i \leq n$ and add the $n$ products together $\sum_{i=1}^n x_i y_i$ to obtain the inner product.
 
@@ -643,7 +644,7 @@ The superscript `$\top$' represents the transpose operation. We will not worry a
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
         \includegraphics[width=0.95\linewidth]{figure/chapter01/angle-demo.pdf}
-        \caption{Angle between two vectors $\mf{x}$ and $\mf{y}$ in $\mb{R}^2$. The standard inner product provides a measure of the cosine of the angle between the two vectoes.}
+        \caption{Angle between two vectors $\mf{x}$ and $\mf{y}$ in $\mb{R}^2$. The standard inner product provides a measure of the cosine of the angle between the two vectors.}
         \label{fig:ch01-angle1}
     \end{subfigure}
     \hspace{0.05\textwidth}
@@ -656,7 +657,7 @@ The superscript `$\top$' represents the transpose operation. We will not worry a
     \caption{}
 \end{figure}
 
-The standard inner product of two vectors $\mf{x}$ and $\mf{y}$ is related to the cosine of the angle $\theta$ between the two vectors, and the 2-norm of the two vectors.
+The standard inner product of two vectors $\mf{x}$ and $\mf{y}$ is related to the cosine of the angle $\theta$ between the two vectors and the 2-norm of the two vectors.
 \[ \mf{x}^\top\mf{y} = \sum_{i=1}^n x_i y_i = \lV \mf{x} \rV_2 \cdot \lV \mf{y} \rV_2 \cdot \cos\pp{\theta} \]
 The angle $\theta$ between the two vectors $\mf{x}$ and $\mf{y}$ can be computed as:
 \[ \theta = \cos^{-1}\pp{\frac{\mf{x}^\top \mf{y}}{\lV \mf{x} \rV_2 \lV \mf{y} \rV_2}}, \,\, \lV \mf{x} \rV_2 \neq 0, \lV \mf{y} \rV_2 \neq 0 \]
@@ -664,7 +665,7 @@ If the 2-norms of the $\mf{x}$ and $\mf{y}$, then $\mf{x}^\top\mf{y}$ is simply 
 
 \begin{boxedstuff}
     \begin{example}
-        Let's look at the data from Example~\ref{example:alada-scores}, but this time using the angle between the vectors to understand the performance of the students in the ALADA final exam. The angle between the scores (in degrees) of the students is given by the following table. Let $\theta_{ij} = \cos^{-1}\pp{\frac{\mf{x}_i^\top\mf{x}_j}{\lV \mf{x}_i \rV_2 \lV \mf{x}_j \rV_2}}$ be the angle between the scores of student $i$ and $j$; notice that $\theta_{ij} = \theta_{ji}$.
+        Let's look at the data from Example~\ref{example:alada-scores}, but this time using the angle between the vectors to understand the performance of the students in the ALADA final exam. The angle between the scores (in degrees) of the students is given in the following table. Let $\theta_{ij} = \cos^{-1}\pp{\frac{\mf{x}_i^\top\mf{x}_j}{\lV \mf{x}_i \rV_2 \lV \mf{x}_j \rV_2}}$ be the angle between the scores of student $i$ and $j$; notice that $\theta_{ij} = \theta_{ji}$.
         \begin{small}
             \begin{center}
             \begin{tabular}{lc|cccccc|}
@@ -701,18 +702,18 @@ The concept of an inner product is a general one. An inner product $\langle \cdo
     \item \textbf{Symmetry:} For any vectors $\mf{x}, \mf{y}$, $\langle \mf{x}, \mf{y} \rangle = \langle \mf{y}, \mf{x} \rangle$.
     \item \textbf{Linearity:} For any vectors $\mf{x}, \mf{y}$, $\mf{z}$, and any scalars $\alpha, \beta \in \mb{R}$, $\langle \alpha\mf{x} + \beta \mf{y}, \mf{z} \rangle = \alpha \langle \mf{x}, \mf{y}\rangle + \beta \langle \mf{y}, \mf{z}\rangle$.
 \end{itemize}
-We will come across other inner products in due course, but we will stick to the standard inner product for most problem in $\mb{R}^n$ in this course. A class of inner products in $\mb{R}^n$ is of the form $\langle \mf{x}, \mf{y}\rangle = \mf{x}^\top\mf{A}\mf{y}$, where $\mf{A}$ is a $n \times n$ \textit{positive definite} matrix. The standard inner product is a special case of this class of inner products where $\mf{A} = \mf{I}$, the identity matrix. That may sound like too much jargon for now, but we will come to these concepts in the upcoming chapters.
+We will come across other inner products in due course, but we will stick to the standard inner product for most problems in $\mb{R}^n$ in this course. A class of inner products in $\mb{R}^n$ is of the form $\langle \mf{x}, \mf{y}\rangle = \mf{x}^\top\mf{A}\mf{y}$, where $\mf{A}$ is a $n \times n$ \textit{positive definite} matrix. The standard inner product is a special case of this class of inner products where $\mf{A} = \mf{I}$, the identity matrix. That may sound like too much jargon for now, but we will come to these concepts in the upcoming chapters.
 
 \begin{boxedstuff}
 \begin{problem}
-    Consider the vector space $\mb{R}^n$. Is the the following a valid inner product of $\mb{R}^n$?
+    Consider the vector space $\mb{R}^n$. Is the following a valid inner product of $\mb{R}^n$?
     \[ \langle \mf{x}, \mf{y}\rangle = \sum_{i=1}^n w_1 x_i y_i, \,\, w_i \in \mb{R}, \,\, w_i > 0 \]
     \begin{solution}
         To find out if this is a valid inner product, we need to verify by if it satisfies the properties of an inner product. 
         \begin{itemize}
             \item \textbf{Positive definiteness}: The first property is positive definiteness, which is satisfied because $w_i > 0$.
             \[ \langle \mf{x}, \mf{x} \rangle = \sum_{i=1}^n w_i x_i^2 \geq 0, \,\, \text{since, } w_i > 0 \text{ and } x_i^2 \geq 0 \]
-            Notice, that if any of the $w_i$ is zero or negative, then $\langle \mf{x}, \mf{y} \rangle$ will not be a valid inner product (why?).
+            Notice that if any of the $w_i$ is zero or negative, then $\langle \mf{x}, \mf{y} \rangle$ will not be a valid inner product (why?).
             \item \textbf{Symmetry}: From the commutativity and associativity of multiplication of real numbers, we have $\langle \mf{x}, \mf{y} \rangle = \langle \mf{y}, \mf{x} \rangle$. 
         
             \item\textbf{Linearity}: This is also satisfied. You should verify this yourself.
@@ -721,10 +722,10 @@ We will come across other inner products in due course, but we will stick to the
     \end{solution}
 \end{problem}
 \begin{problem}
-    Consider the vector space $\mb{R}^n$. Is the the following a valid inner product of $\mb{R}^n$?
+    Consider the vector space $\mb{R}^n$. Is the following a valid inner product of $\mb{R}^n$?
     \[ \langle \mf{x}, \mf{y}\rangle = \sum_{i=1}^n w_i x_i y_i, \,\, w_i = \begin{cases} +1, & i \text{ is odd} \\  -1, & i \text{ is even}\end{cases} \]
     \begin{solution}
-        To find out if this is a valid inner product, we need to verify by if it satisfies the properties of an inner product. 
+        To find out if this is a valid inner product, we need to verify if it satisfies the properties of an inner product. 
         \begin{itemize}
             \item \textbf{Positive definiteness}: This is not satisfied. Can you provide an example where positive definiteness fails?
         \end{itemize}
@@ -744,15 +745,15 @@ We will come across other inner products in due course, but we will stick to the
 \end{wrapfigure}
 The concept of orthogonality is a generalization of the concept of perpendicularity in $\mb{R}^2$ and $\mb{R}^3$. Two vectors $\mf{x}, \mf{y} \in \mb{R}^n$ are said to be orthogonal if their standard inner product is zero, i.e., $\mf{x}^\top\mf{y} = 0$.
 
-Geometrically, when two vectors $\mf{x}$ and $\mf{y}$ are orthogonal, then when we move along the direction of one vector, we are not moving along the direction of the other vector. If directions of vector convey some information about something, then vectors that are orthogonal to each other are vectors that convey mutually exclusive information,i.e. the two vectors share nothing in common. The concept of orthogonality is a very important concept in linear algebra and we will encounter it again and again.
+Geometrically, when two vectors $\mf{x}$ and $\mf{y}$ are orthogonal, then when we move along the direction of one vector, we are not moving along the direction of the other vector. If directions of a vector convey some information about something, then vectors that are orthogonal to each other are vectors that convey mutually exclusive information,i.e., the two vectors share nothing in common. The concept of orthogonality is a very important concept in linear algebra and we will encounter it again and again.
 
-Note that this definition of orthogonality also implied that $\mf{0}$ is othorognal to all vectors!
+Note that this definition of orthogonality also implied that $\mf{0}$ is orthogonal to all vectors!
 
 \begin{boxedstuff}
     \begin{problem}
         Explain why the following statement about the unit vectors of $\mb{R}^n$ is true.
         \[ \mf{e}_i^\top\mf{e}_j = \begin{cases} 1, & i = j \\ 0, & i \neq j \end{cases} \]
-        All the unit vectors of $\mb{R}^n$ are orthogonal to each other, and have unit length.
+        All the unit vectors of $\mb{R}^n$ are orthogonal to each other and have unit length.
     \end{problem}
     \begin{problem}
         Show if two vectors $\mf{x}$ and $\mf{y}$ are orthogonal to each other, then the following is true.
@@ -761,14 +762,14 @@ Note that this definition of orthogonality also implied that $\mf{0}$ is othorog
 \end{boxedstuff}
 
 \section{Basis of a vector space}
-A set of vectors $V = \lc \mf{v}_1, \mf{v}_2,  \cdots \mf{v}_k \rc, \,\, \mf{v}_i \in \mb{R}^n$ is called a basis for $\mb{R}^n$ if it is a linearly independent set and if it spans $\mb{R}^n$. This effectively means the following two things. If $V$ is a basis for a vector space, then,
+A set of vectors $V = \lc \mf{v}_1, \mf{v}_2,  \cdots \mf{v}_k \rc, \,\, \mf{v}_i \in \mb{R}^n$ is called a basis for $\mb{R}^n$ if it is a linearly independent set and if it spans $\mb{R}^n$. This effectively means the following two things. If $V$ is a basis for a vector space, then
 \begin{enumerate}
     \item `` spans $\mb{R}^n$ '' $\longrightarrow$ It can be used to generate every element of $\mb{R}^n$ through a linear comibination operation.
     \item `` linearly independent '' $\longrightarrow$ There is a unique linear combination of the elements of $V$ that produces every element of $\mb{R}^n$.
 \end{enumerate}
 A basis is the smallest possible set for generating a vector space. 
 
-Note that although the above definition and description is done usign $\mb{R}^n$, the concept of a basis applies to any vector space and all its subspaces.
+Note that although the above definition and description are done using $\mb{R}^n$, the concept of a basis applies to any vector space and all its subspaces.
 
 \begin{boxedstuff}
     \begin{example}
@@ -776,11 +777,11 @@ Note that although the above definition and description is done usign $\mb{R}^n$
     \end{example}
 
     \begin{example}
-        Consider the set of vectors $V = \lc \mf{e}_1, 3\mf{e}_1\rc \subset \mb{R}^2$. This set $V$ does not form a basis for the subspace $S_1 = \lc \bmx \alpha \\ 0\emx \,\, : \,\, \alpha \in \mb{R} \rc$. The $\text{span}\pp{V} = S_1$ (verify this). But the set $V$ is linearly dependent, because $-3 \mf{e}_1 + 1\pp{3\mf{e}_1} = \mf{0}$, thus a non-zero set of coefficients result in the zero vector.
+        Consider the set of vectors $V = \lc \mf{e}_1, 3\mf{e}_1\rc \subset \mb{R}^2$. This set $V$ does not form a basis for the subspace $S_1 = \lc \bmx \alpha \\ 0\emx \,\, : \,\, \alpha \in \mb{R} \rc$. The $\text{span}\pp{V} = S_1$ (verify this). But the set $V$ is linearly dependent because $-3 \mf{e}_1 + 1\pp{3\mf{e}_1} = \mf{0}$, thus a non-zero set of coefficients results in the zero vector.
     \end{example}
 
     \begin{example}
-        Consider the set of vectors $V = \lc \mf{e}_1, \mf{e}_2\rc \subset \mb{R}^2$. This set $V$ is a basis for $\mb{R}^2$. The $\text{span}\pp{V} = \mb{R}^2$ (verify this). And this set $V$ is linearly independent, because $\beta_1 \mf{e}_1 + \beta_2\mf{e}_2 = \bmxc \beta_1 \\ \beta_2 \emx$, thus the only was we get the zero vector through the linear combination is if $\beta_1 = \beta_2 = 0$.
+        Consider the set of vectors $V = \lc \mf{e}_1, \mf{e}_2\rc \subset \mb{R}^2$. This set $V$ is a basis for $\mb{R}^2$. The $\text{span}\pp{V} = \mb{R}^2$ (verify this). And this set $V$ is linearly independent because $\beta_1 \mf{e}_1 + \beta_2\mf{e}_2 = \bmxc \beta_1 \\ \beta_2 \emx$, thus the only way we get the zero vector through the linear combination is if $\beta_1 = \beta_2 = 0$.
     \end{example}
 
     \begin{example}
@@ -788,7 +789,7 @@ Note that although the above definition and description is done usign $\mb{R}^n$
     \end{example}
 \end{boxedstuff}
 
-How many different basis does a vector space have? For instance, how many different basis does $\mb{R}^2$ have? For a set to be a basis, all we need to ensure is that the set spans $\mb{R}^2$ and is linearly independent. Thus, there are infinitely many basis for $\mb{R}^2$. For instance, the sets $\lc \alpha_1\mf{e}_1, \alpha_2\mf{e}_2 \rc$ with $0 \neq \alpha_1, \alpha_2 \in \mb{R}$ are all basis for $\mb{R}^2$. Since there are inifinite number of choices for $\alpha_1, \alpha_2$, we have an infite number of basis for $\mb{R}^2$. The same argument applies to $\mb{R}^n$.
+How many different basis does a vector space have? For instance, how many different basis does $\mb{R}^2$ have? For a set to be a basis, all we need to ensure is that the set spans $\mb{R}^2$ and is linearly independent. Thus, there are infinitely many basis for $\mb{R}^2$. For instance, the sets $\lc \alpha_1\mf{e}_1, \alpha_2\mf{e}_2 \rc$ with $0 \neq \alpha_1, \alpha_2 \in \mb{R}$ are all basis for $\mb{R}^2$. Since there are infinite numbers of choices for $\alpha_1, \alpha_2$, we have an infinite number of basis for $\mb{R}^2$. The same argument applies to $\mb{R}^n$.
 
 \begin{figure}[h]
     \centering
@@ -817,7 +818,7 @@ Among the infinite number of basis for a vector space, there is a special class 
 \begin{equation}
     \mf{v}_i^\top\mf{v}_j = \begin{cases} 1, & i = j \\ 0, & i \neq j \end{cases}
 \end{equation}
-This means that all basis vector have unit 2-norm, and are orthogonal to each other. We will come across orthonormal basis often in this course, and for a good reason. Orthonormal basis is easy to work with and its easy to compute the representation of a vector in an orthonormal basis. Let $V$ be an orthonormal basis for $\mb{R}^n$, and let $\mf{w} \in \mb{R}^n$ with the following representation,
+This means that all basis vectors have unit 2-norm and are orthogonal to each other. We will come across orthonormal basis often in this course, and for a good reason. An orthonormal basis is easy to work with, and it's easy to compute the representation of a vector in an orthonormal basis. Let $V$ be an orthonormal basis for $\mb{R}^n$, and let $\mf{w} \in \mb{R}^n$ with the following representation,
 \[ \mf{w} = \sum_{i=1}^n \alpha_i \mf{v}_i \]
 Then, the coefficients $\alpha_i$ can be computed as the following:
 \[ \mf{v}_j^\top\mf{w} =  \sum_{i=1}^n \alpha_i \mf{v}_j^\top\mf{v}_i = \alpha_j, \,\,\, \text{because } \mf{v}_i^\top\mf{v}_j = \begin{cases} 1, & i = j \\ 0, & i \neq j \end{cases} \]
@@ -825,10 +826,10 @@ Then, the coefficients $\alpha_i$ can be computed as the following:
 A special orthonormal basis for the $\mb{R}^n$ is the \textit{standard basis} $\lc \mf{e}_1, \mf{e}_2 \cdots \mf{e}_n\rc$.
 
 \section{Dimension of a vector space}
-Although there can be infinite number of basis for a vector space -- they all have the same number of elements or basis vectors. This number is called the \textit{dimension} of the vector space that they span. This is also sometimes called the 
+Although there can be an infinite number of basis for a vector space -- they all have the same number of elements or basis vectors. This number is called the \textit{dimension} of the vector space that they span. This is also sometimes called the 
 \textit{degrees of freedom} of the vector space. We represent the dimension of a vector space $V$ as $\text{dim}\pp{V}$, e.g. $\text{dim}\pp{\mb{R}^n} = n$.
 
-The dimension of a vector space also tells us that the maximum number of linearly independent vectors we can choose from that vector space. For instance, in $\mb{R}^n$ we can only choose $n$ vectors that can form a linearly independent set. If we already have a linearly independent set with $n$ elements, then adding even one more vector (any vector) to the set will make it linearly dependent. Proper subspaces of a vector space will have dimensions less than the vector space itself.
+The dimension of a vector space also tells us the maximum number of linearly independent vectors we can choose from that vector space. For instance, in $\mb{R}^n$ we can only choose $n$ vectors that can form a linearly independent set. If we already have a linearly independent set with $n$ elements, then adding even one more vector (any vector) to the set will make it linearly dependent. Proper subspaces of a vector space will have dimensions less than the vector space itself.
 
 \begin{boxedstuff}
     \begin{example}
@@ -856,7 +857,7 @@ This means that $f\pp{\mf{0}} = 0$ for all linear functions. if a function does 
 The standard inner product $\mf{w}^\top\mf{x}$ with a fixed  vector $\mf{w}$ is a linear function of $\mf{x}$,
 \[ f\pp{\mf{x}} = \mf{w}^\top \mf{x} = w_1x_1 + w_2x_2 + \cdots + w_nx_n \]
 
-An interesting fact about linear functions is that every possible $f: \mb{R}^n \to \mb{R}$ can be presented as a inner product operation with a fixed vector $\mf{w} \in \mb{R}^n$. This means the following: if $f$ is a linear function $\mb{R}^n$ to $\mb{R}$, then there exists a vector $\mf{w} \in \mb{R}^n$ such that $f\pp{\mf{x}} = \mf{w}^\top\mf{x}, \forall \mf{x} \in \mb{R}^n$. This might seem like a strange fact at first. Let's now look at how we could find the vector $\mf{w}$ if the function $f$ is linear. This is very simple. We first compute the value of the function for the $n$ unit vectors of $\mb{R}^n$, i.e. $f\pp{\mf{e}_1}, f\pp{\mf{e}_2}, \cdots f\pp{\mf{e}_n}$. Then, the vector $\mf{w}$ is simply the vector of these values, i.e. $\mf{w} = \bmxc f\pp{\mf{e}_1} \\ f\pp{\mf{e}_2} \\ \vdots \\ f\pp{\mf{e}_n} \emx = \bmxc w_1 \\ w_2 \\ \vdots \\ w_n \emx$. For any given vector $\mf{x}$, let the representation of $\mf{x}$ in the standard basis be $\mf{x} = \bmxc x_1 \\x_2 \\ \vdots \\ x_n\emx$; this simply means that $\mf{x} = \sum_{i=1}^n x_i\mf{e}_i$.
+An interesting fact about linear functions is that every possible $f: \mb{R}^n \to \mb{R}$ can be presented as an inner product operation with a fixed vector $\mf{w} \in \mb{R}^n$. This means the following: if $f$ is a linear function $\mb{R}^n$ to $\mb{R}$, then there exists a vector $\mf{w} \in \mb{R}^n$ such that $f\pp{\mf{x}} = \mf{w}^\top\mf{x}, \forall \mf{x} \in \mb{R}^n$. This might seem like a strange fact at first. Let's now look at how we could find the vector $\mf{w}$ if the function $f$ is linear. This is very simple. We first compute the value of the function for the $n$ unit vectors of $\mb{R}^n$, i.e. $f\pp{\mf{e}_1}, f\pp{\mf{e}_2}, \cdots f\pp{\mf{e}_n}$. Then, the vector $\mf{w}$ is simply the vector of these values, i.e. $\mf{w} = \bmxc f\pp{\mf{e}_1} \\ f\pp{\mf{e}_2} \\ \vdots \\ f\pp{\mf{e}_n} \emx = \bmxc w_1 \\ w_2 \\ \vdots \\ w_n \emx$. For any given vector $\mf{x}$, let the representation of $\mf{x}$ in the standard basis be $\mf{x} = \bmxc x_1 \\x_2 \\ \vdots \\ x_n\emx$; this simply means that $\mf{x} = \sum_{i=1}^n x_i\mf{e}_i$.
 \[ 
 \begin{split}
     f\pp{\mf{x}} = f\pp{\sum_{i=1}^nx_i\mf{e}_i} = \sum_{i=1}^nx_if\pp{\mf{e}_i} = \sum_{i=1}^nx_iw_i = \mf{w}^\top\mf{x}
@@ -874,10 +875,10 @@ Here is another interesting consequence of linearity. If we know the value of a 
     \end{itemize}
 }
 
-We will now look two applications in data analysis based on the concepts we have discussed in this chapter. We will present the bare-bones version of two commonly used algorithms in data analysis -- the k-nearest neighbors (k-NN) classification algorithm and the k-means clustering algorithm. Numerous variations and improvements of these algorithms exist, which are beyond the scope of this course.
+We will now look at two applications in data analysis based on the concepts we have discussed in this chapter. We will present the bare-bones version of two commonly used algorithms in data analysis -- the k-nearest neighbors (k-NN) classification algorithm and the k-means clustering algorithm. Numerous variations and improvements of these algorithms exist, which are beyond the scope of this course.
 
 \subsection{k-nearest neighbors (k-NN) classification and regression algorithms}
-The k-NN algorithm is a simple and intuitive algorithm for classification and regression problems. But before that, what are classification and regression problems? Both of them are problems where one is interested in finding a function or a map from a set of features (or inputs) to a target value. The features are often the form of $n$-vectors, and the target value is a scalar value. Classificaiton and regression problems differ in the nature of the target value. In a classification problem, the target value is a class label (from set of finite values), while in a regression problem, the target value is a real-valued number (from an interval on the real line).
+The k-NN algorithm is a simple and intuitive algorithm for classification and regression problems. But before that, what are classification and regression problems? Both of them are problems where one is interested in finding a function or a map from a set of features (or inputs) to a target value. The features are often in the form of $n$-vectors, and the target value is a scalar value. Classification and regression problems differ in the nature of the target value. In a classification problem, the target value is a class label (from a set of finite values), while in a regression problem, the target value is a real-valued number (from an interval on the real line).
 
 \begin{boxedstuff}
     \vspace{4mm}
@@ -891,14 +892,14 @@ The k-NN algorithm is a simple and intuitive algorithm for classification and re
         \end{itemize}
     \end{example}
     \begin{example}
-        \textbf{Treatment prognosis}: Let's assume there is a treatment that can be used for curing a particular disease. This treatment works well on a group of patients who recovery full after the treatment, while some only recover partially, and the rest do not recover at all. Given a patient with this disease, the goal of the treatment prognosis classifer is to predict the effectiveness of the treatment for patient. This classifier would take the features of the patient as input and predict the effectiveness of the treatment as one of three possible labels -- \textit{full recovery}, \textit{partial recover} or \textit{no recovery}.
+        \textbf{Treatment prognosis}: Let's assume there is a treatment that can be used for curing a particular disease. This treatment works well on a group of patients who recover fully after the treatment, while some only recover partially, and the rest do not recover at all. Given a patient with this disease, the goal of the treatment prognosis classifier is to predict the effectiveness of the treatment for the patient. This classifier would take the features of the patient as input and predict the effectiveness of the treatment as one of three possible labels -- \textit{full recovery}, \textit{partial recovery} or \textit{no recovery}.
         \begin{itemize}
             \item \textbf{Inputs}: Set of demographic data, clinical tests, imaging data, severity of the disease, etc.
             \item \textbf{Output}: Recovery label (e.g., full recovery, partial recovery, or no recovery)
         \end{itemize}
     \end{example}
     \begin{example}
-        \textbf{Spam email detection}: This is a classifier that we see in action on a daily basis. Our email managers/service provides automatically send certain emails to the spam folder to weed out the usless emails from the useful ones. Given an email, the goal of such a classifier is to determine whether the email is spam or not.
+        \textbf{Spam email detection}: This is a classifier that we see in action on a daily basis. Our email managers/service providers automatically send certain emails to the spam folder to weed out the useless emails from the useful ones. Given an email, the goal of such a classifier is to determine whether the email is spam or not.
         \begin{itemize}
             \item \textbf{Inputs}: Features extracted from the email content, sender, subject, etc.
             \item \textbf{Output}: Spam label (e.g., spam, not spam)
@@ -916,14 +917,14 @@ The k-NN algorithm is a simple and intuitive algorithm for classification and re
     \noindent{\large \textbf{Examples of regression problems}}
     \hrule
     \begin{example}
-        \textbf{Growth prediction}: We are interested in knowing the effect iof the addition of protien supplements to the daily diet of childen over a period of three months. The goal here is to develop a model that can predict the increase in height of the children after six months given the certain level of protien supplement in their diet.
+        \textbf{Growth prediction}: We are interested in knowing the effect of the addition of protein supplements to the daily diet of children over a period of three months. The goal here is to develop a model that can predict the increase in height of the children after six months given a certain level of protein supplement in their diet.
         \begin{itemize}
-            \item \textbf{Inputs}: Demographic details and amount of protien supplement in the diet.
+            \item \textbf{Inputs}: Demographic details and amount of protein supplement in the diet.
             \item \textbf{Output}: Increase in child's height after six months.
         \end{itemize}
     \end{example}
     \begin{example}
-        \textbf{Clinical score estimation}: There are clinical tests that are considered gold standard for know the health status of a patient. These gold standard tests are often time consuming, expensive, and difficult to administer on a regular basis. Thus, we are often interestd in estimating the outcome of this gold standard test using other clinically relevant variables that are easily measured.
+        \textbf{Clinical score estimation}: There are clinical tests that are considered the gold standard for knowing the health status of a patient. These gold standard tests are often time-consuming, expensive, and difficult to administer on a regular basis. Thus, we are often interested in estimating the outcome of this gold standard test using other clinically relevant variables that are easily measured.
         \begin{itemize}
             \item \textbf{Inputs}: A set of clinically relevant parameters that are easy to measure.
             \item \textbf{Output}: Estimate of the value of the gold standard test.
@@ -932,9 +933,9 @@ The k-NN algorithm is a simple and intuitive algorithm for classification and re
 \end{boxedstuff}
 
 \subsubsection{k-NN classification algorithm}
-The k-NN classifier is a very simple and intuitive algorithm. Let's assume that we have a dataset with $N$ data points/samples $\lp \mf{x}_i, y_i\rp, \,\, 1 \leq i \leq N$, where $\mf{x}_i$ is the vector of features and $y_i$ is the know label for the $i^{th}$ sample. The feature vector is an elements from $\mb{R}^n$, i.e. $\mf{x}_i \in \mb{R}^n$. The labels taken on values from a finite set with $L$ distinct labels, $y_i \in \lc 1, 2, \ldots, L\rc$. We would like to use this available dataset, which will often be called the \textit{training dataset}, to learn to correctly classify new samples that we may encounter in the future, where we have the feature vector $\mf{x}_{new}$ but we do not know the corresponding label $y_{new}$; we want a prediction of the label from the k-NN algorithm. 
+The k-NN classifier is a very simple and intuitive algorithm. Let's assume that we have a dataset with $N$ data points/samples $\lp \mf{x}_i, y_i\rp, \,\, 1 \leq i \leq N$, where $\mf{x}_i$ is the vector of features, and $y_i$ is the know label for the $i^{th}$ sample. The feature vector is an element from $\mb{R}^n$, i.e. $\mf{x}_i \in \mb{R}^n$. The labels are taken on values from a finite set with $L$ distinct labels, $y_i \in \lc 1, 2, \ldots, L\rc$. We would like to use this available dataset, which will often be called the \textit{training dataset}, to learn to correctly classify new samples that we may encounter in the future, where we have the feature vector $\mf{x}_{new}$ but we do not know the corresponding label $y_{new}$; we want a prediction of the label from the k-NN algorithm. 
 
-Although, the k-NN algorithm is called a \textit{supervised learning} algorithm, there is really no learning in this algorithm. The algorithm keeps the entire training dataset in its memory, and assign the label to a new feature vector to be the label of the most similar feature vectors from the training dataset. The similarity can be measured through a multitude of ways, but the most common way is to use the Euclidean distance between the feature vectors. The only (hyper)parameter required for the k-NN algorithm is the value of $k$, which is the number of nearest neighbors to consider. The label of the new feature vector is assigned by taking a vote from the $k$-nearest neighbors. The label with the highest number of votes is assigned to the new feature vector. The outline of the k-NN algorithm is given below in Algorithm~\ref{alg:ch01-knn-class}.
+Although the k-NN algorithm is called a \textit{supervised learning} algorithm, there is really no learning in this algorithm. The algorithm keeps the entire training dataset in its memory and assigns the label to a new feature vector to be the label of the most similar feature vectors from the training dataset. The similarity can be measured through a multitude of ways, but the most common way is to use the Euclidean distance between the feature vectors. The only (hyper)parameter required for the k-NN algorithm is the value of $k$, which is the number of nearest neighbors to consider. The label of the new feature vector is assigned by taking a vote from the $k$-nearest neighbors. The label with the highest number of votes is assigned to the new feature vector. The outline of the k-NN algorithm is given below in Algorithm~\ref{alg:ch01-knn-class}.
 
 \begin{boxedstuff}
 \begin{algorithm}[H]
@@ -960,17 +961,17 @@ Although, the k-NN algorithm is called a \textit{supervised learning} algorithm,
 \end{algorithm}
 \end{boxedstuff}
 
-This is depicted in Figure~\ref{fig:ch01-knn-demo}, which shows the example of a 3-class classification problem. The three classes are shown in different colors. The $k=5$ nearest neighbors of three test points are shown. The label of the test point is assigned based on the majority vote of the $k$ nearest neighbors; whenever there is a tie, a tie-breaking rule is applied to choose the label of the test point. Although, simple and intuitive, the k-NN is a computationally expensive algorithm, especially when the number of samples in the training dataset is large. The advantage, however, is that there is no training process required and there is only only hyperparameter to choose.
+This is depicted in Figure~\ref{fig:ch01-knn-demo}, which shows the example of a 3-class classification problem. The three classes are shown in different colors. The $k=5$ nearest neighbors of three test points are shown. The label of the test point is assigned based on the majority vote of the $k$ nearest neighbors; whenever there is a tie, a tie-breaking rule is applied to choose the label of the test point. Although simple and intuitive, the k-NN is a computationally expensive algorithm, especially when the number of samples in the training dataset is large. The advantage, however, is that there is no training process required, and there is only a hyperparameter to choose from.
 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{figure/chapter01/knn.pdf}
-    \caption{Demonstration of the k-NN classification algorithm. There are three classes or labels, which are shown in different colors. Three test points (black filled sqaure) are considered in the three plots shown in this figure. For each point the $k=5$ nearest neighbours are depicted through lines joining the test point with the nearest neighbours. The colors of the line also indicate the class of that neighbour.}
+    \caption{Demonstration of the k-NN classification algorithm. There are three classes of labels, which are shown in different colors. Three test points (black filled square) are considered in the three plots shown in this figure. For each point, the $k=5$ nearest neighbours are depicted through lines joining the test point with the nearest neighbours. The colors of the line also indicate the class of that neighbour.}
     \label{fig:ch01-knn-demo}
 \end{figure}
 
 \subsubsection{k-NN regression algorithm}
-The k-NN regression algorithm uses the same principle as the k-NN classification algorothm. The only difference is that the output of the algorithm is the average of the $y_i$ of the $k$ nearest neighbors. This algorithm is detailed in Algorithm~\ref{alg:ch01-knn-reg}.
+The k-NN regression algorithm uses the same principle as the k-NN classification algorithm. The only difference is that the output of the algorithm is the average of the $y_i$ of the $k$ nearest neighbors. This algorithm is detailed in Algorithm~\ref{alg:ch01-knn-reg}.
 
 \begin{boxedstuff}
     \begin{algorithm}[H]
@@ -1000,9 +1001,9 @@ The k-NN regression algorithm uses the same principle as the k-NN classification
 \end{figure}
 
 \subsection{k-mean clustering algorithm}
-The $k$-mean is a popular clustering algorithm, which unlike the k-NN algorithms, is an \textit{unsupervised learning} algorithm. In a \textit{supervised learning} algorithm, we have a dataset that has an output label or numerical value of interest, which can be used to learn the association between the given features and the output label/numerical value. However, we will often come across datasets where there is no such pre-existing output label or numerical value or it is unknown. In such cases, we are simply interested in interesting patterns (clusters or groups) in the data; we need to mathematically define what we mean by ``interesting'' to find such patterns. The k-means algorithm lumps data points into $k$ clusters or groups, where the elements of the cluster/group are considered to be similar; remember the discussion on measuring similarity between vectors in Section~\ref{sec:ch01-similar-vecs}.
+The $k$-mean is a popular clustering algorithm, which, unlike the k-NN algorithms, is an \textit{unsupervised learning} algorithm. In a \textit{supervised learning} algorithm, we have a dataset that has an output label or numerical value of interest, which can be used to learn the association between the given features and the output label/numerical value. However, we will often come across datasets where there is no such pre-existing output label or numerical value or it is unknown. In such cases, we are simply interested in interesting patterns (clusters or groups) in the data; we need to mathematically define what we mean by ``interesting'' to find such patterns. The k-means algorithm lumps data points into $k$ clusters or groups, where the elements of the cluster/group are considered to be similar; remember the discussion on measuring similarity between vectors in Section~\ref{sec:ch01-similar-vecs}.
 
-Let's assume that our dataset consists of $N$ samples, each of which is a feature vector, $\mf{x}_i \in \mb{R}^n, \, 1 \leq i \leq N$. We want to group the data points into $k$ clusters, with $k < N$. Given the data points $\mf{x}_1 \ldots \mf{x}_N$, the k-means algorithm produces two outputs:
+Let's assume that our dataset consists of $N$ samples, each of which is a feature vector, $\mf{x}_i \in \mb{R}^n, \, 1 \leq i \leq N$. We want to group the data points into $k$ clusters with $k < N$. Given the data points $\mf{x}_1 \ldots \mf{x}_N$, the k-means algorithm produces two outputs:
 \begin{enumerate}
     \item \textbf{Cluster means}: A set of $k$ points $\mf{m}_j \in \mb{R}^n, \, 1 \leq j \leq k$ that are supposed to be representatives of the $k$ clusters identified. You can think of $\mf{m}_j$ to be a typical member of the $j^{th}$ cluster.
     \item \textbf{Cluster assignment}: Each data point $\mf{x}_i$ is given a cluster assignment $j$, such that $\mf{x}_i$ is closest to $\mf{m}_j$. This is an $N$-tuple of the form $\lp c_i \rp_{i=1}^N$, with $1 \leq c_i \leq k$. If $c_i = j$, then the data point $\mf{x}_i$ belongs to the $j^{th}$ cluster.
@@ -1015,16 +1016,16 @@ Let's assume that our dataset consists of $N$ samples, each of which is a featur
     \label{fig:ch01-kmeans-demo}
 \end{figure}
 
-This is demonstrated in Figure~\ref{fig:ch01-kmeans-demo}, where the left plot shows the dataset with $N$ samples, each belonging to $\mb{R}^2$. The right plot shows three randomly chosen cluster means $\mf{m}_1, \mf{m}_2, \mf{m}_3$ and the cluster assignment of the data points to the closest $\mf{m}_j$. The three cluster means are shown in different colors and the corresponding data points in those clusters are shown in the same color (but a lighter shade). The goal for the k-means algorithm is to find the optimal cluster means and the clustern assignment such that the spread of points within each cluster is minimized across all clusters. We can measure this spread as the following,
+This is demonstrated in Figure~\ref{fig:ch01-kmeans-demo}, where the left plot shows the dataset with $N$ samples, each belonging to $\mb{R}^2$. The right plot shows three randomly chosen cluster means $\mf{m}_1, \mf{m}_2, \mf{m}_3$ and the cluster assignment of the data points to the closest $\mf{m}_j$. The three cluster means are shown in different colors and the corresponding data points in those clusters are shown in the same color (but a lighter shade). The goal for the k-means algorithm is to find the optimal cluster means and the cluster assignment such that the spread of points within each cluster is minimized across all clusters. We can measure this spread as the following,
 \begin{equation}
     J_{clust} = \frac{1}{N}\sum_{j=1}^k \sum_{i \in C_j} \lV \mf{x}_i - \mf{m}_j \rV_2^2
     \label{eq:ch01-kmeans-cost}
 \end{equation}
 where, $C_j = \lc i \, : \, 1 \leq i \leq N, \, c_i = j\rc$ is the set of indices of the data points that belong to the cluster $j$.
 
-Minimizing $J_{clust}$ for a given dataset is a computationally intensive problem. Note that the cluster means and the cluster assingments both depend on each other, and optimally choosing both of them to minimize $J_{clust}$ is not easy. 
+Minimizing $J_{clust}$ for a given dataset is a computationally intensive problem. Note that the cluster means and the cluster assignments both depend on each other, and optimally choosing both of them to minimize $J_{clust}$ is not easy. 
 
-The k-means simplifies the computational problem because, choosing the optimal cluster means for a fixed cluster assigment, and choosing the optimal cluster assingment for fixed cluster means is easy to do. The k-mean algorithm optmizes the cluster means and cluster assingments, while fixing the other, and iterates these steps until the cluster means and cluster assingments converge. This algorithm is detailed in Algorithm~\ref{alg:ch01-kmeans}.
+The k-means simplifies the computational problem because choosing the optimal cluster means for a fixed cluster assignment and choosing the optimal cluster assignment for fixed cluster means is easy to do. The k-mean algorithm optimizes the cluster means and cluster assignments while fixing the other and iterates these steps until the cluster means and cluster assignments converge. This algorithm is detailed in Algorithm~\ref{alg:ch01-kmeans}.
 
 \begin{boxedstuff}
     \begin{algorithm}[H]
@@ -1035,9 +1036,9 @@ The k-means simplifies the computational problem because, choosing the optimal c
     Choose a random set of $k$ cluster means $\mf{m}_1,\ldots,\mf{m}_k$\;
 
     \Repeat{until convergence}{
-        \textbf{Update cluster assignment}: For the current means find the best cluster assingment. $c_i = j$, such that $\lV \mf{x}_i - \mf{m}_j \rV_2 < \lV \mf{x}_i - \mf{m}_l\rV_2, \forall \,\, 1 \leq l \leq k, l \neq j$\;
+        \textbf{Update cluster assignment}: For the current means, find the best cluster assignment. $c_i = j$, such that $\lV \mf{x}_i - \mf{m}_j \rV_2 < \lV \mf{x}_i - \mf{m}_l\rV_2, \forall \,\, 1 \leq l \leq k, l \neq j$\;
         
-        \textbf{Update cluster means}: For the new cluster assignment, find the best cluster means. $\mf{m}_j = \frac{1}{\lv C_j \rv}\sum_{i \in C_j}$, where $C_j$ is the set of indices of data points for the $j^{th}$ cluster, and $\lv \cdot \rv$ is a function that returns the number of elements in a set\;
+        \textbf{Update cluster means}: For the new cluster assignment, find the best cluster means. $\mf{m}_j = \frac{1}{\lv C_j \rv}\sum_{i \in C_j}$, where $C_j$ is the set of indices of data points for the $j^{th}$ cluster and $\lv \cdot \rv$ is a function that returns the number of elements in a set\;
     }
     Return the cluster means $\mf{m}_1 \ldots \mf{m}_k$ and the cluster assignment $\lp c_i \rp_{i=1}^N$\;
     \caption{k-means Clustering Algorithm}
@@ -1046,7 +1047,7 @@ The k-means simplifies the computational problem because, choosing the optimal c
 \end{boxedstuff}
 
 
-This is demonstrated in Figure~\ref{fig:ch01-kmeans-demo}. The top left plot shows the dataset with $N$ samples without any cluster assignment; all data points are colored black. The top right plot shows the first step in the iteration where the cluster means were chosen randomly; these are shown in different colored filled triangles. The corresponding optimal cluster assingment of points that are closest to each mean are also depicted in this plot.
+This is demonstrated in Figure~\ref{fig:ch01-kmeans-demo}. The top left plot shows the dataset with $N$ samples without any cluster assignment; all data points are colored black. The top right plot shows the first step in the iteration where the cluster means were chosen randomly; these are shown in different colored filled triangles. The corresponding optimal cluster assignment of points that are closest to each mean is also depicted in this plot.
 
 \begin{figure}[h]
     \centering
@@ -1055,7 +1056,7 @@ This is demonstrated in Figure~\ref{fig:ch01-kmeans-demo}. The top left plot sho
     \label{fig:ch01-kmeans-algo}
 \end{figure}
 
-The bottom left plot shows trajectory of the cluster means as the k-means algorithm iterates repeating the process of updating the cluster means and cluster assingments. The two steps in of the $k$-means algorithm are guaranteed to reduce $J_{clust}$, and thus with each iteration the value of $J_{clust}$ for the current cluster means and cluster assingments will reduce. This is depicted in the bottom right polot, which shows the trend of $J_{clust}$ as a function of the iteration number.
+The bottom left plot shows the trajectory of the cluster means as the k-means algorithm iterates, repeating the process of updating the cluster means and cluster assignments. The two steps in of the $k$-means algorithm are guaranteed to reduce $J_{clust}$, and thus, with each iteration, the value of $J_{clust}$ for the current cluster means and cluster assignments will reduce. This is depicted in the bottom right plot, which shows the trend of $J_{clust}$ as a function of the iteration number.
 
 \section{Exercise}
 \vspace{-0.5cm}
@@ -1092,7 +1093,7 @@ The bottom left plot shows trajectory of the cluster means as the k-means algori
 
     \item If $S_1, S_2 \subseteq V$ are subspaces of a vectors space $V$ then, is $S_1 \cap S_2$ a subspace? Is $S_1 \cup S_2$ a subspace? Explain your answers.
     
-    \item Consider a vector $\mf{v} = \begin{bmatrix*}v_1 & v_2 & \cdots & v_n\end{bmatrix*}^\top$. Express the following in-terms of inner product between a constant vector $\mf{u}$ and the given vector $\mf{v}$, and in each case specify the vector $\mf{u}$.
+    \item Consider a vector $\mf{v} = \begin{bmatrix*}v_1 & v_2 & \cdots & v_n\end{bmatrix*}^\top$. Express the following in terms of the inner product between a constant vector $\mf{u}$ and the given vector $\mf{v}$, and in each case, specify the vector $\mf{u}$.
     \begin{enumerate}
         \item $\sum_{i=1}^n v_i$
         \item $\frac{1}{n}\sum_{i=1}^n v_i$
@@ -1109,11 +1110,11 @@ The bottom left plot shows trajectory of the cluster means as the k-means algori
     \item Consider a linear function $f: \mathbb{R}^n \rightarrow \mathbb{R}$. Prove that every linear function of this form can be represented in the following form.
     \[ y = f\left(\mf{x}\right) = \mf{w}^\top\mf{x} = \sum_{i=1}^{n}w_ix_i, \quad \quad \mf{x}, \mf{w} \in \mathbb{R}^n \]
 
-    \item An \textit{affine} function $f$ is defined as the sum of a linear function and a constant. It can in general be represented in the form, 
+    \item An \textit{affine} function $f$ is defined as the sum of a linear function and a constant. It can in general, be represented in the form, 
     \[ y = f\left(\mf{x}\right) = \mf{w}^\top\mf{x} + \beta, \quad \quad \mf{x}, \mf{w} \in \mathbb{R}^n, \, \beta \in \mathbb{R} \]
     Prove that affine functions are not linear. Prove that any affine function can be represented in the form $\mf{w}^\top\mf{x} + \beta$.
 
-    \item Consider a basis $B = \left\{\mf{b}_i\right\}_{i=1}^{n}$ of $\mb{R}^n$. Let the vectors $\mf{x}$ and $\mf{x}_b$ be the representations in the standard and $B$ basis respectively. 
+    \item Consider a basis $B = \left\{\mf{b}_i\right\}_{i=1}^{n}$ of $\mb{R}^n$. Let the vectors $\mf{x}$ and $\mf{x}_b$ be the representations in the standard and $B$ basis, respectively. 
     \[ \mf{x} = \begin{bmatrix*}x_1\\x_2\\\vdots\\x_n\end{bmatrix*} = \sum_{i=1}^{n}x_i\mf{e}_i \,\,\,\,\, \text{and} \,\,\,\,\, \mf{x}_b =  \begin{bmatrix*}x_{b1}\\x_{b2}\\\vdots\\x_{bn}\end{bmatrix*} = \sum_{i=1}^{n}x_{bi}\mf{b}_i \]
 
     Evaluate the $\left\lVert \mf{x}\right\rVert_2^2$ and $\left\lVert \mf{x}_b\right\rVert_2^2$. Determine what happens to $\left\lVert \mf{x}_b\right\rVert_2^2$ under the following conditions on the basis vectors: \textbf{[Marks: 2]}
@@ -1125,16 +1126,16 @@ The bottom left plot shows trajectory of the cluster means as the k-means algori
         \end{cases}$
     \end{enumerate}
 
-    \item \textcolor{blue}{\textbf{[Programming]}} Let's build a simple classifier using the concepts you've learned in this chapter. We will pretend that we are doing this for classifying or detecting the presence or absence of a disease called - \textit{vector space sickness}. We wish to diagnoze using two clinical tests - (1) \textit{Subspace assay} and (2) \textit{Basis balance scale}. Both these serious clinical tests generate numerical outcomes that can takeon any real number value.
+    \item \textcolor{blue}{\textbf{[Programming]}} Let's build a simple classifier using the concepts you've learned in this chapter. We will pretend that we are doing this to classify or detect the presence or absence of a disease called - \textit{vector space sickness}. We wish to diagnose using two clinical tests - (1) \textit{Subspace assay} and (2) \textit{Basis balance scale}. Both these serious clinical tests generate numerical outcomes that can take on any real number value.
     
-    The department has been conducting a large scale clinical study for the last 5-6 years collecting data from participants, from different background, with and without vector space sickness by administering the subspace assay and the basis balance test. The data from this study is stored as a CSV file with four columns: (a) \textcolor{blue}{\texttt{subjectno}} -- subject numbers, (b) \textcolor{blue}{\texttt{x1}} --  value of the subspace assay test, (c) \textcolor{blue}{\texttt{x2}} -- value of the basis balance scale, and (d) \textcolor{blue}{\texttt{vss}} -- presence (1) or absence (0) of the vector space sickness condition. Each row of this CSV file corresponds to a individual subject who participated in the study. Your goal here is to look at the data from this experiment and propose a classifier to determine if a person has vector space sickness if we are given their scores on the subspace assay and the basis balance scale clinical tests. A group of Master's students participated in the study. Unfortunately, almost half of these students were diagnosed with vector space sickness. This data is stored in \textcolor{blue}{\texttt{expt1.csv}}. Read this data, make a scatter plot in 2D (\texttt{x1} versus \texttt{x2}) with the data points for participants with vector space sickness in blue and the one without in red. Look at the data, and propose how you could use the measurements \texttt{x1} and \texttt{x2} to distinguish between participants from the two groups. Implement the classifier you've proposed and find out how well it performs in correctly classifying the two groups.
+    The department has been conducting a large-scale clinical study for the last 5-6 years, collecting data from participants from different backgrounds, with and without vector space sickness, by administering the subspace assay and the basis balance test. The data from this study is stored as a CSV file with four columns: (a) \textcolor{blue}{\texttt{subjectno}} -- subject numbers, (b) \textcolor{blue}{\texttt{x1}} --  value of the subspace assay test, (c) \textcolor{blue}{\texttt{x2}} -- value of the basis balance scale, and (d) \textcolor{blue}{\texttt{vss}} -- presence (1) or absence (0) of the vector space sickness condition. Each row of this CSV file corresponds to an individual subject who participated in the study. Your goal here is to look at the data from this experiment and propose a classifier to determine if a person has vector space sickness if we are given their scores on the subspace assay and the basis balance scale clinical tests. A group of Master's students participated in the study. Unfortunately, almost half of these students were diagnosed with vector space sickness. This data is stored in \textcolor{blue}{\texttt{expt1.csv}}. Read this data and make a scatter plot in 2D (\texttt{x1} versus \texttt{x2}) with the data points for participants with vector space sickness in blue and the one without in red. Look at the data and propose how you could use the measurements \texttt{x1} and \texttt{x2} to distinguish between participants from the two groups. Implement the classifier you've proposed and find out how well it performs in correctly classifying the two groups.
 
-    \item \textcolor{blue}{\textbf{[Programming]}} Consider a set of measurements made from adult male subjects, where their height, weight and BMI (body mass index) were recorded and stored as vectors of length three; the first element is the height in $cm$, second is the weight in $Kg$, and the last is the BMI. Consider the following four subjects,
+    \item \textcolor{blue}{\textbf{[Programming]}} Consider a set of measurements made from adult male subjects, where their height, weight, and BMI (body mass index) were recorded and stored as vectors of length three; the first element is the height in $cm$, second is the weight in $Kg$, and the last is the BMI. Consider the following four subjects,
     \[ \mf{s}_1 =  \begin{bmatrix*}[r]167\\102\\36.6\end{bmatrix*}; \,\,
     \mf{s}_2 =  \begin{bmatrix*}[r]180\\87\\26.9\end{bmatrix*} \,\, \mf{s}_3 =  \begin{bmatrix*}[r]177\\78\\24.9\end{bmatrix*}; \,\,
     \mf{s}_4 =  \begin{bmatrix*}[r]152\\76\\32.9\end{bmatrix*} \]
 
-    You can use the distance between these vectors $\left\lVert \mf{s}_i - \mf{s}_j\right\rVert_2$ as a measure of the similiarity between the four subjects. Generate a $4 \times 4$ table comparing the distance of each subject with respect to another subject; the diagonal elements of this table will be zero, and it will be symmetric about the main diagonal. 
+    You can use the distance between these vectors $\left\lVert \mf{s}_i - \mf{s}_j\right\rVert_2$ as a measure of the similarity between the four subjects. Generate a $4 \times 4$ table comparing the distance of each subject with respect to another subject; the diagonal elements of this table will be zero, and it will be symmetric about the main diagonal. 
 
     (a) Based on this table, how do the different subjects compare to each other?
 
