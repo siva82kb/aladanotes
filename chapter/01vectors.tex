@@ -4,27 +4,27 @@
 % \minitoc
 
 \section{$n$-Vectors}
-A collection of an ordered list of $n$ numbers is called an $n$-vector. We will use bold lower case alphabets to represent such vectors, and we will represent these as a column of numbers, which is referred to as a \textit{column vector}. We will look at \textit{row vectors} at a later stage. Consider the following example:
+A collection of an ordered list of $n$ numbers is called an $n$-vector. We will use bold lowercase alphabets to represent such vectors, and we will represent these as a column of numbers, which is referred to as a \textit{column vector}. We will look at \textit{row vectors} at a later stage. Consider the following example:
 \[ \mf{x} = \bmxc x_1 \\ x_2 \\ \vdots \\x_n \emx \]
 
 The elements of the $n$-vector $x_1, x_2, \ldots, x_n$ are called the \textit{components} of the vector $\mf{x}$; $x_i$ is the $i^{th}$ component of the vector $\mf{x}$. If these components are all real numbers, the set of all such $n$-vectors is the set $\mb{R}^n$.
 
-\noindent \textbf{Where do we come across such $n$-vectors?} In many places, such as in physics, engineering, economics, medicine, etc. Any application where we deal with multiple pieces of information that can be represented as a list of numbers can be represented as an $n$-vector. When we deal with systems with multiple inputs, multiple output, or multiple states, we can represent these as $n$-vectors. We talk about the state of a system in a later chapter.
+\noindent \textbf{Where do we come across such $n$-vectors?} In many places, such as in physics, engineering, economics, medicine, etc. Any application where we deal with multiple pieces of information that can be represented as a list of numbers can be represented as an $n$-vector. When we deal with systems with multiple inputs, multiple outputs, or multiple states, we can represent these as $n$-vectors. We talk about the state of a system in a later chapter.
 
 \subsection{Some common $n$-vectors}
 We will often come across some special $n$-vectors in this document course and in many applications. We will define some of these vectors here.
 \begin{itemize}
     \item \textbf{Zero vector:} The $n$-vector whose components are all zeros is called the \textit{zero vector}. $\mf{0} = \bmxc 0 \\ 0 \\ \vdots \\ 0\emx$
     \item \textbf{One vector:} The $n$-vector whose components are all ones is called the \textit{one vector}. $\mf{1} = \bmxc 1 \\ 1 \\ \vdots \\ 1\emx$
-    \item \textbf{Unit vectors:} The $n$-vectors whose components are all zeros except for one component which is 1. These are called the \textit{standard basis vectors} and are denoted by $\mf{e}_1, \mf{e}_2, \ldots, \mf{e}_n$. The $n$-vector $\mf{e}_i$ has all components as zeros except for the $i^{th}$ component which is 1. For example, the unit vectors in $\mb{R}^2$ are:
+    \item \textbf{Unit vectors:} The $n$-vectors whose components are all zeros except for one component, which is 1. These are called the \textit{standard basis vectors} and are denoted by $\mf{e}_1, \mf{e}_2, \ldots, \mf{e}_n$. The $n$-vector $\mf{e}_i$ has all components as zeros except for the $i^{th}$ component, which is 1. For example, the unit vectors in $\mb{R}^2$ are:
     \[ \mf{e}_1 = \bmx 1 \\ 0\emx \quad \mf{e}_2 = \bmx 0 \\ 1 \emx  \]
 \end{itemize}
 
-We now look at some examples of $n$-vectors that we come aross in applications.
+We now look at some examples of $n$-vectors that we come across in applications.
 
 \begin{boxedstuff}
     \begin{example}
-        \textbf{Basic clinical information during a hospital visit}. When a patient visits a hostpial, several clinically relevant variables are captured, for instance:
+        \textbf{Basic clinical information during a hospital visit}. When a patient visits a hospital, several clinically relevant variables are captured, for instance:
         \begin{small}
             \begin{center}
             \begin{tabular}{ccc}
@@ -48,7 +48,7 @@ We now look at some examples of $n$-vectors that we come aross in applications.
     \end{example}
 
     \begin{example}
-        \textbf{Time series data}. We often collect data over time, often at regular intervals. For example, consider the example of an attending nurse taking the temperature of a patient admitted to the hospital for an infectious disease. The nurse records the temperature of the patient every hour, without fail for the 48 hours the patient spent in the hosptial. This temperature record will have a total of 49 measurements, which can conveniently think of as a $n$-vector, in this case a $49$-vector. Instead of writing down the entire $49$-vector, we depict it as a time series plot.
+        \textbf{Time series data}. We often collect data over time, often at regular intervals. For example, consider the example of an attending nurse taking the temperature of a patient admitted to the hospital for an infectious disease. The nurse records the temperature of the patient every hour, without fail, for the 48 hours the patient spent in the hospital. This temperature record will have a total of 49 measurements, which can conveniently be thought of as a $n$-vector, in this case, a $49$-vector. Instead of writing down the entire $49$-vector, we depict it as a time series plot.
         \begin{center}
             \includegraphics[width=0.5\textwidth]{figure/chapter01/temp-ts.pdf}
             \captionof{figure}{Body temperature recorded at multiple time points.}
@@ -57,7 +57,7 @@ We now look at some examples of $n$-vectors that we come aross in applications.
 \end{boxedstuff}
 
 \section{Visualizing $n$-vectors}
-The $n$-vectors can be visualized as points in $n$-dimensional space. For example, A 1-vector or just single real number or a \textit{scalar} can be thought of as a point on the real line. The 1-vector $x = 2.45$ is shown in Figure~\ref{fig:ch01-1-vector} is the black point. But we will find it useful to visualize a 1-vector as an arrow starting at the origin and ending at the point on the real line. The arrow is shown in blue in Figure~\ref{fig:ch01-1-vector}. 
+The $n$-vectors can be visualized as points in $n$-dimensional space. For example, A 1-vector or just a single real number or a \textit{scalar} can be thought of as a point on the real line. The 1-vector $x = 2.45$ is shown in Figure~\ref{fig:ch01-1-vector} is the black point. But we will find it useful to visualize a 1-vector as an arrow starting at the origin and ending at the point on the real line. The arrow is shown in blue in Figure~\ref{fig:ch01-1-vector}. 
 
 \begin{figure}[b]
     \centering
@@ -75,7 +75,7 @@ The $n$-vectors can be visualized as points in $n$-dimensional space. For exampl
     \label{fig:ch01-1-vector}
 \end{figure}
 
-The elements of $\mb{R}^2$ are points on the plane, and we can visualize them as points in the plane. The 2-vectors $\mf{x} = \bmxc 2 \\ 3 \emx$ and $\mf{x} = \bmxc -3 \\ 1 \emx$ are shown in Figure~\ref{fig:ch01-2-vector}. A similar visualization is shown for $\mb{R}^3$ (Figure~\ref{fig:ch01-3-vector}), and for $\mb{R}^4$ and beyond you simply pretend that you can visualize things in your head like your instructor does.
+The elements of $\mb{R}^2$ are points on the plane, and we can visualize them as points in the plane. The 2-vectors $\mf{x} = \bmxc 2 \\ 3 \emx$ and $\mf{x} = \bmxc -3 \\ 1 \emx$ are shown in Figure~\ref{fig:ch01-2-vector}. A similar visualization is shown for $\mb{R}^3$ (Figure~\ref{fig:ch01-3-vector}), and for $\mb{R}^4$ and beyond, you simply pretend that you can visualize things in your head like your instructor does.
 
 \begin{figure}[t]
     \centering
@@ -138,7 +138,7 @@ There are many operations we can perform on $n$-vectors, but we will only focus 
     \item \textbf{Scalar multiplication:} Given a scalar $c \in \mb{R}$ and an $n$-vector $\mf{x}$. The scalar multiplication operation produces another $n$-vector $c\mf{x}$ whose components are $cx_1, cx_2, \ldots, cx_n$. 
     \[ \mf{x} = \bmx 1 \\ 2\emx \longrightarrow 2 \mf{x} = \bmx  2\ct{1} \\ 2\ct{2} \emx = \bmx  2 \\ 8.2 \emx \]
 
-    The geometric interpretation scalar multiplication is shown in Figure~\ref{fig:ch01-scalar-mult}. Scalar multiplication stretches or shrinks the vector without rotating it. When the scalar is positive the direction of the scaled vector is the same as the original vector, and when the scalar is negative the direction is opposite. When the scalar is zero, the scaled vector is the zero vector $\mf{0}$. 
+    The geometric interpretation of scalar multiplication is shown in Figure~\ref{fig:ch01-scalar-mult}. Scalar multiplication stretches or shrinks the vector without rotating it. When the scalar is positive, the direction of the scaled vector is the same as the original vector, and when the scalar is negative, the direction is opposite. When the scalar is zero, the scaled vector is the zero vector $\mf{0}$. 
     \begin{figure}[h!]
         \centering
         \includegraphics{figure/chapter01/vec-scale.pdf}
@@ -156,7 +156,7 @@ There are many operations we can perform on $n$-vectors, but we will only focus 
         \label{fig:ch01-vec-add}
     \end{figure}
 
-    The geometric interpretation the vector addition operation is shown in Figure~\ref{fig:ch01-vec-add}. Geometrically, the vector addition operation follows the parallelogram law of addition, where the resulting vector $\mf{x} + \mf{y}$ is a diagonal of the parallelogram formed by the two vectors $\mf{x}$ and $\mf{y}$. Another way to think about this, is that you first move along $\mf{x}$ to its end point, and starting from there then move along $\mf{y}$ to its end point or vice versa.
+    The geometric interpretation of the vector addition operation is shown in Figure~\ref{fig:ch01-vec-add}. Geometrically, the vector addition operation follows the parallelogram law of addition, where the resulting vector $\mf{x} + \mf{y}$ is a diagonal of the parallelogram formed by the two vectors $\mf{x}$ and $\mf{y}$. Another way to think about this is that you first move along $\mf{x}$ to its endpoint, and starting from there, then move along $\mf{y}$ to its endpoint or vice versa.
 
     You can add more than two vectors to obtain a new vector, like below:
     \[ \mf{w} = \mf{x} + \mf{y} + \mf{z} \]
@@ -165,7 +165,7 @@ There are many operations we can perform on $n$-vectors, but we will only focus 
 
 
 \section{Vector spaces}
-Vector spaces are \textit{sets} with some special properites. More specifically, a vector space is a set $V$ of elements called \textit{vectors} that are closed under two operations called \textit{addition} and \textit{scalar multiplication}. This simply means that if you perfom these operations using elements from the set $V$, the result is also an element of the set $V$. A vector space must satisfy the following properties:
+Vector spaces are \textit{sets} with some special properties. More specifically, a vector space is a set $V$ of elements called \textit{vectors} that are closed under two operations called \textit{addition} and \textit{scalar multiplication}. This simply means that if you perform these operations using elements from the set $V$, the result is also an element of the set $V$. A vector space must satisfy the following properties:
 \begin{itemize}
     \item \textbf{Closure under addition:} For any two vectors $\mf{x}, \mf{y} \in V$, the sum $\mf{x} + \mf{y} \in V$.
     \item \textbf{Closure under scalar multiplication:} For any scalar $c \in \mb{R}$ and any vector $\mf{x} \in V$, the product $c\mf{x} \in V$.
@@ -178,37 +178,37 @@ Vector spaces are \textit{sets} with some special properites. More specifically,
     \item \textbf{Associativity of scalar multiplication:} For any two scalars $c, d \in \mb{R}$ and any vector $\mf{x} \in V$, $(cd)\mf{x} = c(d\mf{x})$.
     \item \textbf{Multiplicative identity:} For any vector $\mf{x} \in V$, $1\mf{x} = \mf{x}$.
 \end{itemize}
-These properties are satisfied by the set $\mb{R}^n$ of $n$-vectors, and hence $\mb{R}^n$ is a vector space. Geometrically, the concept of a vector space corresponds to flat spaces that contain the origin. This will become more clear when we talk about subspaces. Notice that definition of the vector space given above does not make any specific mention of $n$-vectors. The definition is general and can be applied to any set of elements that satisfy the properties listed above. The following are some examples of vector spaces with the addition and scalar multiplication operations defined on them.
+These properties are satisfied by the set $\mb{R}^n$ of $n$-vectors, and hence $\mb{R}^n$ is a vector space. Geometrically, the concept of a vector space corresponds to flat spaces that contain the origin. This will become more clear when we talk about subspaces. Notice that the definition of the vector space given above does not make any specific mention of $n$-vectors. The definition is general and can be applied to any set of elements that satisfy the properties listed above. The following are some examples of vector spaces with the addition and scalar multiplication operations defined on them.
 
 \begin{boxedstuff}
 \begin{example}
     \textbf{Set of $m \times n$ matrices.} The set $M$ of all $m \times n$ matrices of real numbers is a vector space.
     \[ \mf{A} = \bmxc
         a_{11} & a_{12} & \cdots & a_{1n} \\
-        a_{11} & a_{12} & \cdots & a_{1n} \\
+        a_{21} & a_{22} & \cdots & a_{2n} \\
         \vdots & \vdots & \ddots & \vdots \\
-        a_{11} & a_{12} & \cdots & a_{1n}
+        a_{m1} & a_{m2} & \cdots & a_{mn}
     \emx, \,\, a_{ij} \in \mb{R} \]
 
     We define scalar multiplication and addition of matrices as follows:
     \[ c\mf{A} = \bmxc
         ca_{11} & ca_{12} & \cdots & ca_{1n} \\
-        ca_{11} & ca_{12} & \cdots & ca_{1n} \\
+        ca_{21} & ca_{22} & \cdots & ca_{2n} \\
         \vdots & \vdots & \ddots & \vdots \\
-        ca_{11} & ca_{12} & \cdots & ca_{1n}
+        ca_{m1} & ca_{m2} & \cdots & ca_{mn}
     \emx, \,\, c \in \mb{R} \]
     \[ \mf{A} + \mf{B} = \bmxc
         a_{11} + b_{11} & a_{12} + b_{12} & \cdots & a_{1n} + b_{1n} \\
-        a_{11} + b_{11} & a_{12} + b_{12} & \cdots & a_{1n} + b_{1n} \\
+        a_{21} + b_{21} & a_{22} + b_{22} & \cdots & a_{2n} + b_{2n} \\
         \vdots & \vdots & \ddots & \vdots \\
-        a_{11} + b_{11} & a_{12} + b_{12} & \cdots & a_{1n} + b_{1n}
+        a_{m1} + b_{m1} & a_{m2} + b_{m2} & \cdots & a_{mn} + b_{mn}
     \emx, \,\, \mf{A}, \mf{B} \in M
     \]
     Since each element of $c\mf{A}$ and $\mf{A} + \mf{B}$ is a real number, $M$ is a vector space.
     \label{example:matrix-vector-space}
 \end{example}
 \begin{example}
-    \textbf{Set of polynomials of order $\leq n$.} Now we look at strange example of a vector space. The set $P_n$ of all polynomials of degree at most $n$ with real coefficients, defined over an interval $[a, b]$.
+    \textbf{Set of polynomials of order $\leq n$.} Now, we will look at a strange example of a vector space. The set $P_n$ of all polynomials of degree at most $n$ with real coefficients, defined over an interval $[a, b]$.
     \[ p\lp x \rp = \sum_{k=0}^{n-1} a_k x^k, \,\, x \in [a, b], \, a_k \in \mb{R} \]
     The set $P_n$ contains all polynomials of the form shown above. We define scalar multiplication and addition of polynomials as follows:
     \[ c p\lp x \rp = c \sum_{k=0}^{n-1} a_k x^k = \sum_{k=0}^{n-1} ca_k x^k, \,\, p\lp x\rp \in P \]
@@ -231,13 +231,13 @@ These are little vector spaces in the sense that they are subsets of a larger ve
     \item \textbf{Closure under addition:} For any two vectors $\mf{x}, \mf{y} \in U$, the sum $\mf{x} + \mf{y} \in U$.
     \item \textbf{Closure under scalar multiplication:} For any scalar $c \in \mb{R}$ and any vector $\mf{x} \in U$, the product $c\mf{x} \in U$.
 \end{itemize}
-One immediate consequence of the above definition is that the zero element of the vector space $V$ must be present in every subspace of $V$. If the zero element is not in a subset, then it cannot be a subspace. Geometrically subspace are flat structures (or surfaces or manifolds) in $\mb{R}^n$ (or the parent vector space) that contain the origin, and extends infinitely. Let's look at some examples of subspaces of $\mb{R}^2$ and $\mb{R}^3$, which are easier to visualize.
+One immediate consequence of the above definition is that the zero element of the vector space $V$ must be present in every subspace of $V$. If the zero element is not in a subset, then it cannot be a subspace. Geometrically, subspaces are flat structures (or surfaces or manifolds) in $\mb{R}^n$ (or the parent vector space) that contain the origin and extends infinitely. Let's look at some examples of subspaces of $\mb{R}^2$ and $\mb{R}^3$, which are easier to visualize.
 
 \begin{boxedstuff}
 \begin{example}
     \textbf{A straight line through the origin.} We know that $\mb{R}^2$ is a vector space. Now consider the set of all points in $\mb{R}^2$ that lie on a straight line passing through the origin, defined as follows:
     \[ S = \lc \mf{x} \, : \, x = \bmx x_1 \\ x_2 \emx \in \mb{R}^2, \, x_1 = m \cdot x_2, \, m \in \mb{R} \rc \]
-    How do we verfiy this is a subspace of $\mb{R}^2$? The definition above shows that any $x$ in $S$ comes from $\mb{R}^2$, which means its a subset of $\mb{R}^2$. Figure~\ref{fig:ch01-subspace1} shows the set $S$ for $m = 2$.
+    How do we verify this is a subspace of $\mb{R}^2$? The definition above shows that any $x$ in $S$ comes from $\mb{R}^2$, which means it is a subset of $\mb{R}^2$. Figure~\ref{fig:ch01-subspace1} shows the set $S$ for $m = 2$.
     \noindent How do we verify if $S$ is a subspace of $\mb{R}^2$? We need to now verify that $S$ satisfies the properties of a vector space.
     \begin{enumerate}
         \item First, let's check if $S$ contains the zero vector. If it does not contain the zero vector, then it cannot be a subspace. The elements from $S$ are of the form $\bmxc x \\ m x\emx$, thus if we choose $x = 0$, then we get $\bmx 0 \\ 0 \emx \in S$. So, $S$ contains the zero vector. This means that $S$ can be a subspace space of $\mb{R}^2$.
