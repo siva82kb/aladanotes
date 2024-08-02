@@ -64,13 +64,65 @@ In Section~\ref{sec:ch01-lin-func}, we say that any linear function $f: \mb{R}^m
 \end{equation}
 This shows that all linear transformation are essentially a set of simultaneous linear equations.
 
-Let's assume that I give you a Python/Julia function, which takes in vectors from $\mb{R}^m$, does some computation, and returns vectors from $\mb{R}^n$. I also tell to you that this function is linear. You do not want to us this function and believe that if you know the matrix corresponding to this linear transformation, then you can easily do yourself what the function does. But, how can you find the matrix corresponding this function? Remember, in the case of linear functions how we identified the entries of $\mf{w} \in \mb{R}^m$ (Section~\ref{sec:ch01-lin-func})? We had used the unit vectors of $\mb{R}^m$ to get  the $w_i$s. How could we possibly find out the elements of the matrix $\mf{A}$? Turns our, we have the exact same thing and the elements of $\mf{A}$ will be revealed to us by the output of the linear transformation. If $\mf{a}_i$ is the $i^{th}$ column of $\mf{A}$, then 
+Let's assume that I give you a Python/Julia function, which takes in vectors from $\mb{R}^m$, does some computation, and returns vectors from $\mb{R}^n$. I also tell to you that this function is linear. You do not want to use this function. If you knew the matrix $\mf{A}$ corresponding to this linear transformation, then you can just do the function computation yourself. But, how can you find the matrix corresponding this function? Remember, in the case of linear functions how we identified the entries of $\mf{w} \in \mb{R}^m$ (Section~\ref{sec:ch01-lin-func})? We had used the unit vectors of $\mb{R}^m$ to get  the $w_i$s. How could we possibly find out the elements of the matrix $\mf{A}$? Turns out, we do the exact same thing, and the elements of $\mf{A}$ will be revealed to us by the output of the linear transformation. If $\mf{a}_i$ is the $i^{th}$ column of $\mf{A}$, then 
 $\mf{a}_i = T\pp{\mf{e}_i}, \,\, \mf{e}_i \in \mb{R}^m$. \textcolor{red}{Can you explain why?}
 
-\section{Matrix multiplication and linear transformations}\label{sec:ch03-mat-mult-lin-trans}
+% \begin{boxedstuff}
+%     \begin{problem}
+%         Consider the linear transformation $T: \mb{R}^m \to \mb{R}^n$,  with the corresponding matrix $\mf{A} = \bmx T\pp{\mf{e}_1} & T\pp{\mf{e}_2} & \cdots & T\pp{\mf{e}_m}\emx \in \mb{R}^{n \times m}$. Unfortunately, all you have is the following set $\lc \rc$ 
+%     \end{problem}
+% \end{boxedstuff}
 
+\section{Matrix multiplication and linear transformations}\label{sec:ch03-mat-mult-lin-trans}
+Consider the following two transformations $T_A$ and $T_B$: 
+\[ \begin{split}
+    \mf{y} & = \bmx y_1 \\ y_2 \emx = T_A\pp{\mf{x}} = \mf{A}\mf{x} = \bmx a_{11} & a_{12} \\ a_{21} & a_{22}\emx \bmx x_1 \\ x_2 \emx = \bmx a_{11}x_1 + a_{12}x_2 \\ a_{21}x_1 + a_{22}x_2 \emx\\
+    \mf{v} &= \bmx v_1 \\ v_2 \emx = T_B\pp{\mf{u}} = \mf{B}\mf{u} = \bmx b_{11} & b_{12} \\ b_{21} & b_{22}\emx \bmx u_1 \\ u_2 \emx = \bmx b_{11}u_1 + b_{12}u_2 \\ b_{21}u_1 + b_{22}u_2 \emx
+\end{split}
+\]
+Let $\mf{v} = T_C = T_A \circ T_B = T_A\pp{T_B\pp{\mf{x}}}$. We can write this as:
+\[ \mf{v} = T_C\pp{\mf{x}} = T_A\pp{T_B\pp{\mf{u}}} = T_A\pp{\mf{B}\mf{u}} = \mf{A}\mf{B}\mf{u} \]
+This implies that the matrix $\mf{A}\mf{B}$ corresponds to the transformation $T_C$. This is an important result. Matrix multiplication can be seen as the process of composing two linear transformations or applying two linear transoformation one after the other on a vector $\mf{x}$ (from right to left).
+\[ \begin{split}
+    \mf{v} = \bmx v_1 \\ v_2 \emx &= T_A\pp{T_B\pp{\mf{u}}} = T_A\pp{\bmx b_{11}u_1 + b_{21}u_2 \\ b_{21}u_1 + b_{22}u_2 \emx} = \bmx a_{11}b_{11}u_1 + a_{11}b_{21}u_2 + a_{12}b_{21}u_1 + a_{12}b_{22}u_2 \\ a_{21}b_{11}u_1 + a_{21}b_{21}u_2 + a_{22}b_{21}u_1 + a_{22}b_{22}u_2 \emx \\
+    &= \bmx \pp{a_{11}b_{11} + a_{12}b_{21}}u_1 + \pp{a_{11}b_{21} + a_{12}b_{22}}u_2 \\ \pp{a_{21}b_{11} + a_{22}b_{21}}u_1 + \pp{a_{21}b_{21} + a_{22}b_{22}}u_2 \emx = \bmx a_{11}b_{11} + a_{12}b_{21} + a_{11}b_{21} + a_{12}b_{22} \\ a_{21}b_{11} + a_{22}b_{21} + a_{21}b_{21} + a_{22}b_{22} \emx \bmx u_1 \\ u_2 \emx
+\end{split} \]
+The above equation shows how the strange definition of matrix multiplication comes out beautifully from the composition of linear transformations. Although, we have taken a simple example of $2 \times 2$ matrices, the same idea can be extended to matrices of any size, as long as the dimensions are compatible for multiplication.
+
+\begin{boxedstuff}
+    \begin{problem}
+        Consider the matrix multiplication, $\mf{C} = \mf{A}\mf{B}$ with $\mf{A} \in \mb{R}^{n \times p}$ and $\mf{B} \in \mb{R}^{p \times m}$. We know that this operation can be seen as the composition of two linear transformations. Using the idea of composition of linear transformations, show that the the $i^{th}$ column of the matrix $\mf{C}$ is given by the linear combination of the columns of $\mf{A}$ with the coefficients from the $i^{th}$ column of $\mf{B}$.
+    \end{problem}
+\end{boxedstuff}
 
 \section{System of linear equations}\label{sec:ch03-sys-lin-eqn}
+An important use of matrices and linear transformations is in solving systems of linear equations. Consider the following system of linear equations which we have seen from our high school years,
+\begin{equation}
+    \begin{split}
+        a_{11}x_1 + a_{12}x_2 + &\cdots + a_{1m}x_m = b_1\\
+        a_{21}x_1 + a_{22}x_2 + &\cdots + a_{2m}x_m = b_2\\
+        &\vdots\\
+        a_{n1}x_1 + a_{n2}x_2 + &\cdots + a_{nm}x_m = b_n
+    \end{split}
+    \label{eq:ch03-sys-lin-eqn}
+\end{equation}
+Here, the coefficients $a_{ij}$ and $b_{i}$ are known, and we are interested in solving for the unknowns $x_{j}$. We know how to solve these equations and also know the geometric associated with these equations. Each row represents a hyperplane in $\mb{R}^m$ and the solution, if it exists, is the set of all points in the intersection of the $n$ planes in $\mb{R}^m$.
+
+We can write the above system of linear equations in the matrix form as the following,
+\begin{equation}
+    \begin{split}
+        a_{11}x_1 + \cdots& + a_{1m}x_m = b_1\\
+        &\vdots\\
+        a_{n1}x_1 + \cdots& + a_{nm}x_m = b_n
+    \end{split} \longrightarrow \mf{A}\mf{x} = \mf{b}, \quad \mf{A \in \mb{R}^{n \times m}}, \mf{x} \in \mb{R}^m, \mf{b} \in \mb{R}^n
+\end{equation}
+The matrix representation offers a new geometrical view of the system of linear equations in Eq~\ref{eq:ch03-sys-lin-eqn}. The above geometrical interpreation of viewing each equation as a hyperplane in $\mb{R}^m$ is referred to as the \textit{row view}. The other geomtric view is the \textit{column view}, which can be easily seen from the following way of writing Eq.~\ref{eq:ch03-sys-lin-eqn}.
+\begin{equation}
+    \mf{A}\mf{x} = \mf{b} \longrightarrow x_1\mf{a}_1 + x_2\mf{a}_2 + \cdots + x_m \mf{a}_m = \mf{b}
+\end{equation}
+The vector $\mf{b}$ is a linear combination of the columns of $\mf{A}$, where the $m$ columns $\mf{a}_i$ and $\mf{b}$ are know, and the unknows $x_i$ are the mixture of the linear combination that we are interested in determining.
+
+
 
 \subsection{Linear equations in control problems}
 
