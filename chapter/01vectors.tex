@@ -1068,18 +1068,6 @@ The bottom left plot shows trajectory of the cluster means as the k-means algori
     
     \item Show that the set $\lc \mf{0} \rc$, $\mf{0} \in \mb{R}^n$ a subspace of $\mb{R}^n$? This is called the trivial subspace of $\mb{R}^n$. What is the dimension of this subspace?
     
-    \item Prove the following for $\mf{x}, \mf{y} \in \mathbb{R}^n$,
-    \begin{enumerate}
-        \item {\small \textbf{Triangle Inequality}}:
-        \[ \left\lVert \mf{x} + \mf{y}\right\rVert \leq \left\lVert \mf{x}\right\rVert + \left\lVert \mf{y}\right\rVert \]
-        \item {\small \textbf{Backward Triangle Inequality}}:
-        \[ \left\lVert \mf{x} - \mf{y}\right\rVert  \geq \left\lvert \left\lVert \mf{x}\right\rVert - \left\lVert \mf{y}\right\rVert \right\rvert \]
-        \item {\small \textbf{Parallelogram Identity}}:
-        \[ \frac{1}{2} \left(\left\lVert \mf{x} + \mf{y}\right\rVert^2 + \left\lVert \mf{x} - \mf{y}\right\rVert^2 \right) = \left\lVert \mf{x}\right\rVert^2 + \left\lVert \mf{y}\right\rVert^2 \]
-    \end{enumerate}
-
-    \item Consider a set of vectors $\mf{x}, \mf{y} \in \mathbb{R}^n$. When is $\left\lVert \mf{x} - \mf{y} \right\rVert = \left\lVert \mf{x} + \mf{y}\right\rVert$? What can you say about the geometry of the vectors $\mf{x},\,\mf{y},\,\mf{x} - \mf{y}$ and $\mf{x} + \mf{y}$? 
-    
     \item Find the $1$, $2$ and $\infty$ norms of the following vectors from $\mb{R}^3$:
     
     \begin{enumerate*}
@@ -1091,6 +1079,30 @@ The bottom left plot shows trajectory of the cluster means as the k-means algori
     \end{enumerate*}
 
     \item If $S_1, S_2 \subseteq V$ are subspaces of a vectors space $V$ then, is $S_1 \cap S_2$ a subspace? Is $S_1 \cup S_2$ a subspace? Explain your answers.
+
+    \item Consider a basis $B = \left\{\mf{b}_i\right\}_{i=1}^{n}$ of $\mb{R}^n$. Let the vectors $\mf{x}$ and $\mf{x}_b$ be the representations in the standard and $B$ basis respectively. 
+    \[ \mf{x} = \begin{bmatrix*}x_1\\x_2\\\vdots\\x_n\end{bmatrix*} = \sum_{i=1}^{n}x_i\mf{e}_i \,\,\,\,\, \text{and} \,\,\,\,\, \mf{x}_b =  \begin{bmatrix*}x_{b1}\\x_{b2}\\\vdots\\x_{bn}\end{bmatrix*} = \sum_{i=1}^{n}x_{bi}\mf{b}_i \]
+
+    Evaluate the $\left\lVert \mf{x}\right\rVert_2^2$ and $\left\lVert \mf{x}_b\right\rVert_2^2$. Determine what happens to $\left\lVert \mf{x}_b\right\rVert_2^2$ under the following conditions on the basis vectors:
+    \begin{enumerate}
+        \item $\left\lVert \mf{b}_i\right\rVert = 1, \forall i$
+        \item $\left\lVert \mf{b}_i^\top\mf{b}_j\right\rVert = \begin{cases}
+        1 & i = j\\
+        0 & i \neq j
+        \end{cases}$
+    \end{enumerate}
+
+    \item Prove the following for $\mf{x}, \mf{y} \in \mathbb{R}^n$,
+    \begin{enumerate}
+        \item {\small \textbf{Triangle Inequality}}:
+        \[ \left\lVert \mf{x} + \mf{y}\right\rVert \leq \left\lVert \mf{x}\right\rVert + \left\lVert \mf{y}\right\rVert \]
+        \item {\small \textbf{Backward Triangle Inequality}}:
+        \[ \left\lVert \mf{x} - \mf{y}\right\rVert  \geq \left\lvert \left\lVert \mf{x}\right\rVert - \left\lVert \mf{y}\right\rVert \right\rvert \]
+        \item {\small \textbf{Parallelogram Identity}}:
+        \[ \frac{1}{2} \left(\left\lVert \mf{x} + \mf{y}\right\rVert^2 + \left\lVert \mf{x} - \mf{y}\right\rVert^2 \right) = \left\lVert \mf{x}\right\rVert^2 + \left\lVert \mf{y}\right\rVert^2 \]
+    \end{enumerate}
+
+    \item Consider a set of vectors $\mf{x}, \mf{y} \in \mathbb{R}^n$. When is $\left\lVert \mf{x} - \mf{y} \right\rVert = \left\lVert \mf{x} + \mf{y}\right\rVert$? What can you say about the geometry of the vectors $\mf{x},\,\mf{y},\,\mf{x} - \mf{y}$ and $\mf{x} + \mf{y}$? 
     
     \item Consider a vector $\mf{v} = \begin{bmatrix*}v_1 & v_2 & \cdots & v_n\end{bmatrix*}^\top$. Express the following in-terms of inner product between a constant vector $\mf{u}$ and the given vector $\mf{v}$, and in each case specify the vector $\mf{u}$.
     \begin{enumerate}
@@ -1112,18 +1124,6 @@ The bottom left plot shows trajectory of the cluster means as the k-means algori
     \item An \textit{affine} function $f$ is defined as the sum of a linear function and a constant. It can in general be represented in the form, 
     \[ y = f\left(\mf{x}\right) = \mf{w}^\top\mf{x} + \beta, \quad \quad \mf{x}, \mf{w} \in \mathbb{R}^n, \, \beta \in \mathbb{R} \]
     Prove that affine functions are not linear. Prove that any affine function can be represented in the form $\mf{w}^\top\mf{x} + \beta$.
-
-    \item Consider a basis $B = \left\{\mf{b}_i\right\}_{i=1}^{n}$ of $\mb{R}^n$. Let the vectors $\mf{x}$ and $\mf{x}_b$ be the representations in the standard and $B$ basis respectively. 
-    \[ \mf{x} = \begin{bmatrix*}x_1\\x_2\\\vdots\\x_n\end{bmatrix*} = \sum_{i=1}^{n}x_i\mf{e}_i \,\,\,\,\, \text{and} \,\,\,\,\, \mf{x}_b =  \begin{bmatrix*}x_{b1}\\x_{b2}\\\vdots\\x_{bn}\end{bmatrix*} = \sum_{i=1}^{n}x_{bi}\mf{b}_i \]
-
-    Evaluate the $\left\lVert \mf{x}\right\rVert_2^2$ and $\left\lVert \mf{x}_b\right\rVert_2^2$. Determine what happens to $\left\lVert \mf{x}_b\right\rVert_2^2$ under the following conditions on the basis vectors:
-    \begin{enumerate}
-        \item $\left\lVert \mf{b}_i\right\rVert = 1, \forall i$
-        \item $\left\lVert \mf{b}_i^\top\mf{b}_j\right\rVert = \begin{cases}
-        1 & i = j\\
-        0 & i \neq j
-        \end{cases}$
-    \end{enumerate}
 
     \item \textcolor{blue}{\textbf{[Programming]}} Let's build a simple classifier using the concepts you've learned in this chapter. We will pretend that we are doing this for classifying or detecting the presence or absence of a disease called - \textit{vector space sickness}. We wish to diagnoze using two clinical tests - (1) \textit{Subspace assay} and (2) \textit{Basis balance scale}. Both these serious clinical tests generate numerical outcomes that can takeon any real number value.
     

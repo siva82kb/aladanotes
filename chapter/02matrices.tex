@@ -381,16 +381,28 @@ The inverse of matrix follows the following two properites, which you are en enc
     \[ c_{ij} = \sum_{k=1}^{p}a_{ik}b_{kj} \]
     We had discussed four different ways to think of matrix multiplication. By algebraically manipulating the previous equation, arrive at these four views (inner product view, column view, row view and outer product view)?
     
+    \item Show that $\ct{\mf{A}\mf{B}}^\top = \mf{B}^\top\mf{A}^\top$.
+    
+    \item Derive the inverse of the matrix $\mf{A} = \begin{bmatrix}a & b\\c & d\end{bmatrix}$.
+
+    \item Prove that the rank of an outer product $\mf{x}\mf{y}^\top$ is 1, where $\mf{x},\mf{y} \in \mb{R}^n$ and $\mf{x}, \mf{y} \neq \mf{0}$.  \textbf{[Marks: 1]}
+    
+    \item For a $n \times n$ square matrix $\mf{A}$, prove that if $\mf{A}\mf{X} = \mf{I}$, then $\mf{X}\mf{A} = \mf{I}$ and $\mf{X} = \mf{A}^{-1}$.
+
+    \item Prove the following for the non-singular square matrices $\mf{A}$ and $\mf{B}$:
+    \begin{enumerate}
+        \item $\mf{A}\mf{B}$ is non-singular.
+        \item $\ct{\mf{A}^{-1}}^{-1} = \mf{A}$.
+        \item $\ct{\mf{A}\mf{B}}^{-1} = \mf{B}^{-1}\mf{A}^{-1}$
+        \item $\ct{\mf{A}^\top}^{-1} = \ct{\mf{A}^{-1}}^\top$
+    \end{enumerate}
+    
     \item \textbf{Computational cost of different operations.} What is the computational cost of the following matrix operations? Computational cost refers to the number of arithmetic operations  required to carry out a particular matrix operation. Computational cost is a measure of the efficiency of an algorithm. For example, consider the operation of vector addition, $\mf{a} + \mf{b}$, where $\mf{a}, \mf{b} \in \mb{R}^n$. This requires $n$ addition/subtraction operations and zero multiplication/division operations.
     \begin{enumerate}
         \item Matrix multiplication: $\mf{AB}$, where $\mf{A}, \mf{B} \in \mb{R}^{n \times n}$
         \item Inner product: $\mf{u}^\top\mf{v}$
     \end{enumerate} 
     Report the counts for the addition/subtraction and multiplication/division operations separately.
-    
-    \item Show that $\ct{\mf{A}\mf{B}}^\top = \mf{B}^\top\mf{A}^\top$.
-    
-    \item Derive the inverse of the matrix $\mf{A} = \begin{bmatrix}a & b\\c & d\end{bmatrix}$.
     
     \item Consider the following matrix,
     \[ \mf{A} = \bmx \frac{\sqrt{3}}{2} & -\frac{1}{2}\\\frac{1}{2} & \frac{\sqrt{3}}{2} \emx \bmx 0.1 & 0\\0 & 0.9 \emx \bmx \frac{\sqrt{3}}{2} & \frac{1}{2}\\-\frac{1}{2} & \frac{\sqrt{3}}{2} \emx \]
@@ -406,23 +418,11 @@ The inverse of matrix follows the following two properites, which you are en enc
         \item $trace\left(\mf{A}^\top\mf{A}\right) = 0 \implies \mf{A} = 0$
     \end{enumerate}
 
-    \item Prove that the rank of an outer product $\mf{x}\mf{y}^\top$ is 1, where $\mf{x},\mf{y} \in \mb{R}^n$ and $\mf{x}, \mf{y} \neq \mf{0}$.  \textbf{[Marks: 1]}
-
     \item Consider upper triangular and lower triangular matrices $\mf{U}$ and $\mf{L}$, respectively.
     \begin{enumerate}
         \item Is the product of two upper triangular matrices $\mf{U}_1\mf{U}_2$ upper triangular?
         \item Is the product of two lower triangular matrices $\mf{L}_1\mf{L}_2$ upper triangular?
         \item What is the $trace\lp \mf{L}\mf{U} \rp$?
-    \end{enumerate}
-
-    \item For a $n \times n$ square matrix $\mf{A}$, prove that if $\mf{A}\mf{X} = \mf{I}$, then $\mf{X}\mf{A} = \mf{I}$ and $\mf{X} = \mf{A}^{-1}$.
-
-    \item Prove the following for the non-singular square matrices $\mf{A}$ and $\mf{B}$:
-    \begin{enumerate}
-        \item $\mf{A}\mf{B}$ is non-singular.
-        \item $\ct{\mf{A}^{-1}}^{-1} = \mf{A}$.
-        \item $\ct{\mf{A}\mf{B}}^{-1} = \mf{B}^{-1}\mf{A}^{-1}$
-        \item $\ct{\mf{A}^\top}^{-1} = \ct{\mf{A}^{-1}}^\top$
     \end{enumerate}
 
     \item Consider the following upper-triangular matrix, 
