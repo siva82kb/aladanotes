@@ -1045,7 +1045,6 @@ The k-means simplifies the computational problem because, choosing the optimal c
     \end{algorithm}
 \end{boxedstuff}
 
-
 This is demonstrated in Figure~\ref{fig:ch01-kmeans-demo}. The top left plot shows the dataset with $N$ samples without any cluster assignment; all data points are colored black. The top right plot shows the first step in the iteration where the cluster means were chosen randomly; these are shown in different colored filled triangles. The corresponding optimal cluster assingment of points that are closest to each mean are also depicted in this plot.
 
 \begin{figure}[h]
@@ -1055,7 +1054,7 @@ This is demonstrated in Figure~\ref{fig:ch01-kmeans-demo}. The top left plot sho
     \label{fig:ch01-kmeans-algo}
 \end{figure}
 
-The bottom left plot shows trajectory of the cluster means as the k-means algorithm iterates repeating the process of updating the cluster means and cluster assingments. The two steps in of the $k$-means algorithm are guaranteed to reduce $J_{clust}$, and thus with each iteration the value of $J_{clust}$ for the current cluster means and cluster assingments will reduce. This is depicted in the bottom right polot, which shows the trend of $J_{clust}$ as a function of the iteration number.
+The bottom left plot shows trajectory of the cluster means as the k-means algorithm iterates repeating the process of updating the cluster means and cluster assingments. The two steps in of the $k$-means algorithm are guaranteed to reduce $J_{clust}$, and thus with each iteration the value of $J_{clust}$ for the current cluster means and cluster assingments will reduce. This is depicted in the bottom right plot, which shows the trend of $J_{clust}$ as a function of the iteration number.
 
 \section{Exercise}
 \vspace{-0.5cm}

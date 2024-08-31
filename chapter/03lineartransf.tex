@@ -11,18 +11,23 @@
 \textbf{Thomas A Garrity} \small{in \textit{All the Mathematics You Missed.}}
 \end{flushright}
 
-I concede that the first two chapters were a bit dry. Hopefully, you will find topics from now on a bit more interest. Linear algebra is the study of linear transformations. We already saw an example of a linear transformation in Section~\ref{sec:ch01-lin-func}. We will look at linear transformations in in their general form and see how matrices can be used to represent and understand them.
+I concede that the first two chapters were a bit dry. Hopefully, you will find topics from now on a bit more interesting. Linear algebra is the study of linear transformations. We already saw an example of a linear transformation in Section~\ref{sec:ch01-lin-func}. We will look at linear transformations in in their general form and see how matrices can be used to represent and understand them.
 
 \section{What is a linear transformation?}\label{sec:ch03-lin-trans-def}
-A \textit{linear transformation} or \textit{linear map} $T$ is a function between between two vector spaces that preserves the operations of vector addition and scalar multiplication. In this course, we will particularly be interested in linear transformation from $\mb{R}^m$ to $\mb{R}^n$, i.e. $T: \mb{R}^m \to \mb{R}^n$. It satisfies the following two properties:
+A \textit{linear transformation} or \textit{linear map} $T$ is a function between two vector spaces that satisfies the homgeneity (scaling) and additivity properties. In this course, we will particularly be interested in linear transformation from $\mb{R}^m$ to $\mb{R}^n$, i.e. $T: \mb{R}^m \to \mb{R}^n$. These satisfy the following two properties:
 \begin{enumerate}
     \item \textbf{Additivity:} For all $\mf{x}, \mf{y} \in \mb{R}^m$, $T(\mf{x} + \mf{y}) = T(\mf{x}) + T(\mf{y})$.
     \item \textbf{Homogeneity:} For all $\mf{x} \in \mb{R}^m$ and $c \in \mb{R}$, $T(c\mf{x}) = cT(\mf{x})$.
 \end{enumerate}
-Note that linear transformations allow us to move the transformation operation into the paranthesis for the addition or scalar multiplication of the arguments. The above properties also imply the following:
+Note that linearity property allow us to move the transformation operation into the paranthesis for the addition or scalar multiplication of the arguments. The above properties also imply the following:
 \begin{itemize}
     \item \textbf{Superposition:} For all $\mf{x}, \mf{y} \in \mb{R}^m$ and $c, d \in \mb{R}$, $T\pp{c\mf{x} + d\mf{y}} = T\pp{c\mf{x}} + T\pp{d\mf{y}} = cT\pp{\mf{x}} + dT\pp{\mf{y}}$.
-    \item \textbf{Zero input:} $T(\mf{0}_m) = \mf{0}_n$, where $\mf{0}_m \in \mb{R}^m$ and $\mf{0}_n \in \mb{R}^n$. 
+    
+    Linear combination of two vectors $\mf{x}_1, \mf{x}_2 \in \mb{R}^m$  in the transformations arugment results in the same linear combination of the individual transformed vectors $T\pp{\mf{x}_1}, T\pp{\mf{x}_2} \in \mb{R}^n$. 
+    
+    \item \textbf{Zero input:} $T(\mf{0}_m) = \mf{0}_n$, where $\mf{0}_m \in \mb{R}^m$ and $\mf{0}_n \in \mb{R}^n$.
+    
+    The zero vector from $\mb{R}^m$ maps to the zero vector from $\mb{R}^m$ under any linear transformation.
 \end{itemize}
 
 The linear functions we considered in Section~\ref{sec:ch01-lin-func} are special cases of linear transformations, where $n = 1$. We will now look at some examples of transformations that are linear and some that are not.
@@ -37,7 +42,7 @@ Consider the transformation $T: \mb{R}^2 \to \mb{R}^2$ defined by $T\pp{\bmx x_1
 \end{example}
 \end{boxedstuff}
 
-Now you can try your hand at the following exercises. Note that to should $T: \mb{R}^m \to \mb{R}^n$ is not a linear transformation, you only need to shown an example that does not satisfied additivity and homogeneity. However, to show that it is linear, you need to demonstrate that $T$ satisfies both properties for all vectors in $\mb{R}^m$. The proof of linearity can be a bit more involved than showing non-linearity.
+Now you can try your hand at the following exercises. Note that to show $T: \mb{R}^m \to \mb{R}^n$ is not a linear transformation, you only need to show an example that does not satisfy additivity and homogeneity. However, to show that a transformation is linear, you need to demonstrate that $T$ satisfies both properties for all possible vectors in $\mb{R}^m$. The proof of linearity can be a bit more involved than showing non-linearity.
 \begin{boxedstuff}
 \begin{problem}
 Which of the following transformations are linear?
@@ -47,11 +52,10 @@ Which of the following transformations are linear?
     \item $T: \mb{R}^3 \to \mb{R}^2$, $T\pp{\bmx x_1 \\ x_2 \\ x_3\emx} = \bmx 0 \\ 0 \emx$
 \end{enumerate}
 \end{problem}
-
 \end{boxedstuff}
 
 \section{Matrices represent linear transformations}\label{sec:ch03-mat-lin-trans}
-In Section~\ref{sec:ch01-lin-func}, we say that any linear function $f: \mb{R}^m \to \mb{R}$ can be represented by a fixed $\mf{w} \in \mb{R}^m$, and $f\pp{\mf{x}} = \mf{w}^\top\mf{x}$. We can extend this idea to linear transformations from $\mb{R}^m$ to $\mb{R}^n$. Any linear transformation $T: \mb{R}^m \to \mb{R}^n$ can be represented by a fixed $n \times m$ matrix $\mf{A} \in \mb{R}^{n \times m}$, such that $T\pp{\mf{x}} = \mf{A}\mf{x}$; $\mf{A}$ is the \textit{matrix representation} of the linear transformation $T$.
+In Section~\ref{sec:ch01-lin-func}, we saw that any linear function $f: \mb{R}^m \to \mb{R}$ can be represented by a fixed $\mf{w} \in \mb{R}^m$, and $f\pp{\mf{x}} = \mf{w}^\top\mf{x}$. We can extend this idea to linear transformations from $\mb{R}^m$ to $\mb{R}^n$. Any linear transformation $T: \mb{R}^m \to \mb{R}^n$ can be represented by a fixed $n \times m$ matrix $\mf{A} \in \mb{R}^{n \times m}$, such that $T\pp{\mf{x}} = \mf{A}\mf{x}$; $\mf{A}$ is the \textit{matrix representation} of the linear transformation $T$.
 \begin{equation}
     \begin{split}
         \mf{y} = T\pp{\mf{x}} = \mf{A}\mf{x} &= \bmxc a_{11} & a_{12} & \cdots & a_{1m}\\ a_{21} & a_{22} & \cdots & a_{2m}\\ \vdots & \vdots & \ddots & \vdots\\ a_{n1} & a_{n2} & \cdots & a_{nm} \emx \bmxc x_1 \\ x_2 \\ \vdots \\ x_m\emx \\
@@ -62,9 +66,9 @@ In Section~\ref{sec:ch01-lin-func}, we say that any linear function $f: \mb{R}^m
     \end{split}
     \label{eq:ch03-lin-trans-mat-rep}
 \end{equation}
-This shows that all linear transformation are essentially a set of simultaneous linear equations.
+This shows that all linear transformation are essentially a set of simultaneous linear equations, where $y_i = a_{i1}x_1 + a_{i2}x_2 + \cdots + a_{im}x_m$, $1 \leq i \leq n$.
 
-Let's assume that I give you a Python/Julia function, which takes in vectors from $\mb{R}^m$, does some computation, and returns vectors from $\mb{R}^n$. I also tell to you that this function is linear. You do not want to use this function. If you knew the matrix $\mf{A}$ corresponding to this linear transformation, then you can just do the function computation yourself. But, how can you find the matrix corresponding this function? Remember, in the case of linear functions how we identified the entries of $\mf{w} \in \mb{R}^m$ (Section~\ref{sec:ch01-lin-func})? We had used the unit vectors of $\mb{R}^m$ to get  the $w_i$s. How could we possibly find out the elements of the matrix $\mf{A}$? Turns out, we do the exact same thing, and the elements of $\mf{A}$ will be revealed to us by the output of the linear transformation. If $\mf{a}_i$ is the $i^{th}$ column of $\mf{A}$, then 
+Let's assume that I give you a Python/Julia function, which takes in vectors from $\mb{R}^m$, does some computation, and returns vectors from $\mb{R}^n$. I also tell to you that this function is linear. You do not want to use this function. If you knew the matrix $\mf{A}$ corresponding to this linear transformation, then you can compute the function yourself. But, how can you find the matrix corresponding this function? Remember how how we identified the entries of $\mf{w} \in \mb{R}^m$ (Section~\ref{sec:ch01-lin-func}) in the case of linear functions? We had used the unit vectors of $\mb{R}^m$ to get  the $w_i$s. Turns out, we do the exact same thing, and the elements of $\mf{A}$ will be revealed to us by the output of the linear transformation to the $m$ unit vectors of $\mb{R}^m$. If $\mf{a}_i$ is the $i^{th}$ column of $\mf{A}$, then 
 $\mf{a}_i = T\pp{\mf{e}_i}, \,\, \mf{e}_i \in \mb{R}^m$. \textcolor{red}{Can you explain why?}
 
 % \begin{boxedstuff}
@@ -80,14 +84,14 @@ Consider the following two transformations $T_A$ and $T_B$:
     \mf{v} &= \bmx v_1 \\ v_2 \emx = T_B\pp{\mf{u}} = \mf{B}\mf{u} = \bmx b_{11} & b_{12} \\ b_{21} & b_{22}\emx \bmx u_1 \\ u_2 \emx = \bmx b_{11}u_1 + b_{12}u_2 \\ b_{21}u_1 + b_{22}u_2 \emx
 \end{split}
 \]
-Let $\mf{v} = T_C = T_A \circ T_B = T_A\pp{T_B\pp{\mf{x}}}$. We can write this as:
-\[ \mf{v} = T_C\pp{\mf{x}} = T_A\pp{T_B\pp{\mf{u}}} = T_A\pp{\mf{B}\mf{u}} = \mf{A}\mf{B}\mf{u} \]
-This implies that the matrix $\mf{A}\mf{B}$ corresponds to the transformation $T_C$. This is an important result. Matrix multiplication can be seen as the process of composing two linear transformations or applying two linear transoformation one after the other on a vector $\mf{x}$ (from right to left).
+Let $\mf{u} \in \mb{R}^2$ and $\mf{v} = T_C\pp{\mf{u}} = T_A \circ T_B\pp{\mf{u}} = T_A\pp{T_B\pp{\mf{u}}}$. We can write this as:
+\[ \mf{v} = T_C\pp{\mf{u}} = T_A\pp{T_B\pp{\mf{u}}} = T_A\pp{\mf{B}\mf{u}} = \mf{A}\mf{B}\mf{u} \]
+This implies that the matrix $\mf{A}\mf{B}$ corresponds to the transformation $T_C$. This is an important result. Matrix multiplication can be seen as the process of composing two linear transformations, i.e. applying two linear transoformation one after the other on a vector $\mf{x}$ (from right to left).
 \[ \begin{split}
     \mf{v} = \bmx v_1 \\ v_2 \emx &= T_A\pp{T_B\pp{\mf{u}}} = T_A\pp{\bmx b_{11}u_1 + b_{21}u_2 \\ b_{21}u_1 + b_{22}u_2 \emx} = \bmx a_{11}b_{11}u_1 + a_{11}b_{21}u_2 + a_{12}b_{21}u_1 + a_{12}b_{22}u_2 \\ a_{21}b_{11}u_1 + a_{21}b_{21}u_2 + a_{22}b_{21}u_1 + a_{22}b_{22}u_2 \emx \\
     &= \bmx \pp{a_{11}b_{11} + a_{12}b_{21}}u_1 + \pp{a_{11}b_{21} + a_{12}b_{22}}u_2 \\ \pp{a_{21}b_{11} + a_{22}b_{21}}u_1 + \pp{a_{21}b_{21} + a_{22}b_{22}}u_2 \emx = \bmx a_{11}b_{11} + a_{12}b_{21} + a_{11}b_{21} + a_{12}b_{22} \\ a_{21}b_{11} + a_{22}b_{21} + a_{21}b_{21} + a_{22}b_{22} \emx \bmx u_1 \\ u_2 \emx
 \end{split} \]
-The above equation shows how the strange definition of matrix multiplication comes out beautifully from the composition of linear transformations. Although, we have taken a simple example of $2 \times 2$ matrices, the same idea can be extended to matrices of any size, as long as the dimensions are compatible for multiplication.
+The above equation shows how the strange definition of matrix multiplication comes out beautifully from the composition of linear transformations. Although, we have taken a simple example of $2 \times 2$ matrices, the idea extends to matrices of any size, as long as the dimensions are compatible for multiplication.
 
 \begin{boxedstuff}
     \begin{problem}
@@ -120,8 +124,21 @@ The matrix representation offers a new geometrical view of the system of linear 
 \begin{equation}
     \mf{A}\mf{x} = \mf{b} \longrightarrow x_1\mf{a}_1 + x_2\mf{a}_2 + \cdots + x_m \mf{a}_m = \mf{b}
 \end{equation}
-The vector $\mf{b}$ is a linear combination of the columns of $\mf{A}$, where the $m$ columns $\mf{a}_i$ and $\mf{b}$ are know, and the unknows $x_i$ are the mixture of the linear combination that we are interested in determining.
+The vector $\mf{b}$ is a linear combination of the columns of $\mf{A}$, where the $m$ columns $\mf{a}_i$ and $\mf{b}$ are know, and the unknows $x_i$ are the mixture of the linear combination that we are interested in determining. The row and column view of a system of two linear equations with two unknowns are depicted in Figure~\ref{fig:ch03-lineq-col-view} and Figure~\ref{fig:ch03-lineq-row-view}, respectively.
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figure/chapter03/lineqrowview.pdf}
+    \caption{The row view of a system of two linear equations with two unknowns. The individual equations and lines are depicted in red and blue color in the plot. The intersection of these two lines is the solution to the problem, which is depicted by the black circle at $(2, -3)$.}
+    \label{fig:ch03-lineq-row-view}
+\end{figure}
+The row view for a system of $n$ linear equations with $m$ unknowns is is a set of $n$ is depicted in $\mb{R}^m$, while the column view is depicted in $\mb{R}^n$.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.714\textwidth]{figure/chapter03/lineqcolview.pdf}
+    \caption{The set of all real numbers with magnitude $1$. This set contains two numbers $\lc -1, 1 \rc$.}
+    \label{fig:ch03-lineq-col-view}
+\end{figure}
 
 
 \subsection{Linear equations in control problems}
