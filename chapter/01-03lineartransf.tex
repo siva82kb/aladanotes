@@ -132,7 +132,8 @@ The vector $\mf{b}$ is a linear combination of the columns of $\mf{A}$, where th
     \caption{The row view of a system of two linear equations with two unknowns. The individual equations and lines are depicted in red and blue color in the plot. The intersection of these two lines is the solution to the problem, which is depicted by the black circle at $(2, -3)$.}
     \label{fig:ch03-lineq-row-view}
 \end{figure}
-The row view for a system of $n$ linear equations with $m$ unknowns is is a set of $n$ is depicted in $\mb{R}^m$, while the column view is depicted in $\mb{R}^n$.
+The row view for a system of $n$ linear equations with $m$ unknowns is is a set of $n$ is depicted in $\mb{R}^m$, while the column view is depicted in $\mb{R}^n$. We will discuss this in more detail in the Section~\ref{sec:ch03-geom-lin-eqn}. We will now look at two types of applications where we come across linear equations: control problems and estimation problems. The equations have the same form in both cases, its our interpretation of ther different terms that changes.
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.714\textwidth]{figure/chapter03/lineqcolview.pdf}
@@ -140,14 +141,28 @@ The row view for a system of $n$ linear equations with $m$ unknowns is is a set 
     \label{fig:ch03-lineq-col-view}
 \end{figure}
 
-
 \subsection{Linear equations in control problems}
+Control problems are ones where the unknown $\mf{x}$ is the input to a system whose output is $\mf{b}$, and the matrix $\mf{A}$ is the system matrix mapping the inputs to the outputs. In control problems of the form $\mf{A}\mf{x} = \mf{b}$, the system matrix is known, and we wish to produce a desired output $\mf{b}$. We would like to find out the input $\mf{x}$ that produces the output for this system. In control problems, we ideally would like to have more inputs than outputs, which gives us more flexibility in controlling the system's output. This corresponds to system matrix is fat in this case ($n > m$); when $A$ is full rank, there are infinitely many inputs that produce the same output.
+
+\begin{boxedstuff}
+    \vspace{4mm}
+    \noindent{\large \textbf{Examples of control problems}}
+    \hrule
+    \begin{example}
+        \textbf{Radiotherapy}. Radiotheray or radiation therapy is a medical procedure where high-energy radiation is used to target and destroy cancer cells. Radiation therapy involves a radiation planning step, where the appropriate radiation dose is determined for delivery the desired dose to the cancers cells. The dose plannign step ca be formulated as a $\mf{A}\mf{x} = \mf{b}$ problem, where $\mf{A}$ is the radiation dose distribution matrix, $\mf{b}$ is the vector of desired radiation dose to the cancer cells, and $\mf{x}$ is the vector of unknown radiation dose to be delivered to the patient. We note that this descritpion is a simplification of the actual radiation therapy process. We will look at a more realistic description in Chapter~\ref{p04-chp:linprog} on Linear Programming.
+    \end{example}
+    \begin{example}
+        \textbf{Robotics}: In robotics, we can control the motion and interaction of a robot by controlling the input to the actuators of the robot. Consider a robot with a serial, open kinematic chain consisting of $m$ joints (with one actuator per joint) which control the 3D position of its end-effector. The relationship between the joint angles and the end-effector position is non-linear. However, for a given joint configuration (i.e., a fixed set of values for the joint angles), the relationship between the joint velocities $\bm{\omega} \in \mb{R}^m$ and the end-point velocity $\mf{v} \in \mb{R}^3$ is linear, which are related through the robot's \textit{Jacobian} matrix $\mf{J} \in \mb{R}^{3 \times m}$.
+        \[  \mf{v} = \mf{J} \bm{\omega} \]
+        Given the desired end-effector velocity $\mf{v}\in \mb{R}^3$ for a given joint configuration (i.e., know Jacobian matrix $\mf{J} \in \mb{R}^{3 \times m}$), the control problem is to determine the unknown joint velocities $\bm{\omega} \in \mb{R}^m$ that will produce the desired end-effector velocity.
+    \end{example}
+\end{boxedstuff}
 
 
 \subsection{Linear equations in estimation problems}
 
 
-\section{Geometry of linear equations}
+\section{Geometry of linear equations}\label{sec:ch03-geom-lin-eqn}
 
 
 \section{Solutions of linear equations}
