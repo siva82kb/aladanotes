@@ -71,6 +71,22 @@
 \epigraphwidth=1.0\linewidth
 \epigraphrule=0pt
 
+\usetikzlibrary{decorations.pathmorphing,patterns}
+\usepackage[american,cuteinductors]{circuitikz}
+\usetikzlibrary{shapes,arrows,circuits,calc,babel}
+% Definition of blocks:
+\tikzset{%
+  block/.style    = {draw, thick, rectangle, minimum height = 3em,
+    minimum width = 3em},
+  sum/.style      = {draw, circle, node distance = 2cm}, % Adder
+  input/.style    = {coordinate}, % Input
+  output/.style   = {coordinate} % Output
+}
+% Defining string as labels of certain blocks.
+\newcommand{\suma}{\Large$+$}
+\newcommand{\inte}{$\displaystyle \int$}
+\newcommand{\derv}{\huge$\frac{d}{dt}$}
+
 % adjust margin
 \usepackage[margin=2.3cm]{geometry}
 % \headheight13.6pt
@@ -239,6 +255,7 @@ delim_0 "\\nobreak\\dotfill"
 \input{./chapter/01-02matrices.tex}
 \input{./chapter/01-03lineartransf.tex}
 \input{./chapter/01-04orthogonality.tex}
+\input{./chapter/01-05matrixinverses.tex}
 % 05 matrix inverses
 % 06 eigenvalues and eigenvectors
 % 07 positive definite matrices

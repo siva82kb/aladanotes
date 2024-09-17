@@ -1,0 +1,53 @@
+% !TEX root = ../notes_template.tex
+\chapter{Matrix Inverses}\label{chp:matinv}
+
+% \minitoc
+
+% Inset a quote for the chapter
+\begin{flushright}
+\textit{``Every pair of perpendicular vectors are orthogonal, but not every pair of orthogonal vectors is perpendicular.''}\\
+% Draw a small line at the end of the quote
+\rule{0.5\textwidth}{.4pt}\\
+\textbf{Ben Grossmann} \small{in \href{https://math.stackexchange.com/questions/2326896/about-perpendicular-vectors}{StackExchange}.}
+\end{flushright}
+
+
+\section{Exercise}
+\vspace{-0.5cm}
+\begin{center}
+    \rule{\textwidth}{1pt}
+\end{center}
+
+\begin{enumerate}
+    \item When does the following diagnoal matrix have an inverse? 
+    \[ \mf{D} = \begin{bmatrix*}
+    d_1 & 0 & \cdots & 0\\
+    0 & d_2 & \cdots & 0\\
+    \vdots & \vdots & \ddots & \vdots\\
+    0 & 0 & \cdots & d_n\\\end{bmatrix*} \]
+    Write down an expression for $\mf{D}^{-1}$.
+    
+    \item Consider a $2 \times 2$ block matrix, $\mf{A} = \bmx \mf{B} & \mf{C}\\\mf{D} & \mf{E}\emx$, where $\mf{A} \in \mb{R}^{m \times m}$. Find an expression for the inverse $\mf{A}^{-1}$ interms of the block components and their inverses of $\mf{A}$. Hint: Consider $\mf{A}^{-1} = \bmx \mf{P} & \mf{Q}\\ \mf{R} & \mf{S}\emx$, and solve $\mf{A}\mf{A}^{-1} = \mf{I}$. 
+
+    \item Consider a matrix $\mf{A} \in \mathbb{R}^{m \times n}$ with linearly independent columns. Prove that the Gram matrix $\mf{A}^T\mf{A}$ is invertible. 
+
+    \item Consider the scalar equation, $ax = ay$. Here we can cancel $a$ from the equation when $a \neq 0$. When can we carry out similar cancellations for matrcies? 
+    \begin{enumerate}
+        \item $\mf{A}\mf{X} = \mf{A}\mf{Y}$. Prove that here $\mf{X}=\mf{Y}$ only when $\mf{A}$ is left invertible.
+        \item $\mf{X}\mf{A} = \mf{Y}\mf{A}$. Prove that here $\mf{X}=\mf{Y}$ only when $\mf{A}$ is right invertible.
+    \end{enumerate}
+
+    \item Consider two non-singular matrices $\mf{A}, \mf{B} \in \mb{R}^{n \times n}$. Explain whether or not the following matrices are invertible. If they are, then provide an expression for it inverse. 
+    \begin{enumerate}
+        \item $\mf{C} = \mf{A} + \mf{B}$
+        \item $\mf{C} = \bmx \mf{A} & \mf{0}\\\mf{0} & \mf{B}\emx$
+        \item $\mf{C} = \bmx \mf{A} & \mf{A} + \mf{B}\\\mf{0} & \mf{B}\emx$
+        \item $\mf{C} = \mf{A}\mf{B}\mf{A}$
+    \end{enumerate}
+
+    \item For a square matrix $\mf{A}$ with non-signular $\mf{I} - \mf{A}$, prove that, 
+    \[ \mf{A}\lp\mf{I} - \mf{A}\rp^{-1} = \lp\mf{I} - \mf{A}\rp^{-1}\mf{A} \]
+
+    \item Consider the non-singular matrices $\mf{A}$, $\mf{B}$ and $\mf{A} + \mf{B}$. Prove that, 
+    \[ \mf{A}\lp\mf{A} + \mf{B}\rp^{-1}\mf{B} = \mf{B}\lp\mf{A} + \mf{B}\rp^{-1}\mf{A} = \lp\mf{A}^{-1} + \mf{B}^{-1}\rp^{-1} \]
+\end{enumerate}
