@@ -120,11 +120,13 @@ We can write the above system of linear equations in the matrix form as the foll
         a_{n1}x_1 + \cdots& + a_{nm}x_m = b_n
     \end{split} \longrightarrow \mf{A}\mf{x} = \mf{b}, \quad \mf{A \in \mb{R}^{n \times m}}, \mf{x} \in \mb{R}^m, \mf{b} \in \mb{R}^n
 \end{equation}
+
+\subsection{Geometry interpretation of linear equations}
 The matrix representation offers a new geometrical view of the system of linear equations in Eq~\ref{eq:ch03-sys-lin-eqn}. The above geometrical interpreation of viewing each equation as a hyperplane in $\mb{R}^m$ is referred to as the \textit{row view}. The other geomtric view is the \textit{column view}, which can be easily seen from the following way of writing Eq.~\ref{eq:ch03-sys-lin-eqn}.
 \begin{equation}
     \mf{A}\mf{x} = \mf{b} \longrightarrow x_1\mf{a}_1 + x_2\mf{a}_2 + \cdots + x_m \mf{a}_m = \mf{b}
 \end{equation}
-The vector $\mf{b}$ is a linear combination of the columns of $\mf{A}$, where the $m$ columns $\mf{a}_i$ and $\mf{b}$ are know, and the unknows $x_i$ are the mixture of the linear combination that we are interested in determining. The row and column view of a system of two linear equations with two unknowns are depicted in Figure~\ref{fig:ch03-lineq-col-view} and Figure~\ref{fig:ch03-lineq-row-view}, respectively.
+The vector $\mf{b}$ is a linear combination of the columns of $\mf{A}$, where the $m$ columns $\mf{a}_i$ and $\mf{b}$ are know, and the unknows $x_i$ are the mixture of the linear combination that we are interested in determining. The row and column view of a system of two linear equations with two unknowns are depicted in Figure~\ref{fig:ch03-lineq-row-view} and Figure~\ref{fig:ch03-lineq-col-view}, respectively.
 
 \begin{figure}[h]
     \centering
@@ -132,7 +134,9 @@ The vector $\mf{b}$ is a linear combination of the columns of $\mf{A}$, where th
     \caption{The row view of a system of two linear equations with two unknowns. The individual equations and lines are depicted in red and blue color in the plot. The intersection of these two lines is the solution to the problem, which is depicted by the black circle at $(2, -3)$.}
     \label{fig:ch03-lineq-row-view}
 \end{figure}
-The row view for a system of $n$ linear equations with $m$ unknowns is is a set of $n$ is depicted in $\mb{R}^m$, while the column view is depicted in $\mb{R}^n$. We will discuss this in more detail in the Section~\ref{sec:ch03-geom-lin-eqn}. We will now look at two types of applications where we come across linear equations: control problems and estimation problems. The equations have the same form in both cases, its our interpretation of ther different terms that changes.
+The row view for a system of $n$ linear equations with $m$ unknowns is is a set of $n$ is depicted in $\mb{R}^m$, while the column view is depicted in $\mb{R}^n$. We will almost exclusively only make use of the column view for understanding linear equations and their solutions, as this view provides a more intuitive understanding than the row view. The row view is useful for when dealing with two unknowns, but becomes complicated for system of equations with more than two unknowns. 
+
+We will now look at two types of applications where we come across linear equations: control problems and estimation problems. The equations have the same form in both cases, its our interpretation of ther different terms that changes.
 
 \begin{figure}[h]
     \centering
@@ -142,7 +146,7 @@ The row view for a system of $n$ linear equations with $m$ unknowns is is a set 
 \end{figure}
 
 \subsection{Linear equations in control problems}
-Control problems are ones where the unknown $\mf{x}$ is the input to a system whose output is $\mf{b}$, and the matrix $\mf{A}$ is the system matrix mapping the inputs to the outputs. In control problems of the form $\mf{A}\mf{x} = \mf{b}$, the system matrix is known, and we wish to produce a desired output $\mf{b}$. We would like to find out the input $\mf{x}$ that produces the output for this system. In control problems, we ideally would like to have more inputs than outputs, which gives us more flexibility in controlling the system's output. This corresponds to system matrix is fat in this case ($n > m$); when $A$ is full rank, there are infinitely many inputs that produce the same output.
+Control problems are ones where the unknown $\mf{x}$ is the input to a system whose output is $\mf{b}$, and the matrix $\mf{A}$ is the system matrix mapping the inputs to the outputs. In control problems of the form $\mf{A}\mf{x} = \mf{b}$, the system matrix is known, and we wish to produce a desired output $\mf{b}$. We would like to find out the input $\mf{x}$ that produces the output for this system. The goal of solving $\mf{A}\mf{x} = \mf{b}$ in control problems, are to then apply these inputs to the real system to have it produce the output we desire. In such control problems, we ideally would like to have more inputs than outputs, which gives us more flexibility in controlling the system's output. This corresponds to system matrix is fat in this case ($n > m$); when $A$ is full rank, there are infinitely many inputs that produce the same output.
 
 \begin{boxedstuff}
     \vspace{4mm}
@@ -160,12 +164,39 @@ Control problems are ones where the unknown $\mf{x}$ is the input to a system wh
 
 
 \subsection{Linear equations in estimation problems}
+Estimation problems are ones where the unknown $\mf{x}$ is the set of parameter associated with a system that cannot be directly observed or measured, adn $\mf{b}$ is the of measureable quantities of the system, and the matrix $\mf{A}$ is the system matrix that determines how the parameters parameters influnce the system's measurable quantities. In estimation problems we are interested in solving $\mf{A}\mf{x} = \mf{b}$, because want to the know the internal parmeters $\mf{x}$ of the system that are responsible for generating the observed quantities $\mf{b}$. Note that unlike the control problems, we cannot modify that system parameters $\mf{x}$; in these problem solving for $\mf{x}$ is a way of knowing something about the system that we cannot directly observe. In these problems, the system matrix and measurements are known, and we ideally would like to have more measurements than the number of parameters associated with the system, as this allow redundancy in the measurements to account for noise in our measurements and obtain more accurate estimates of the system parameters. This corresponds to system matrix is tall in this case ($n > m$); when $A$ is full rank, then the outputs are forces to be constrained to lie in a smaller subspace of dimension $m$ in $\mb{R}^n$; these constrains are what help us beat noise when we have multiple measurements. We will discuss this in more detail in Chapter~\ref{p03-chp:statsest} on Statistical Estimation.
 
+\begin{boxedstuff}
+    \vspace{4mm}
+    \noindent{\large \textbf{Examples of estimation problems}}
+    \hrule
+    \begin{example}
+        \textbf{Computed tomography (CT)}.  CT is a medical imagining modality of creating cross-sectional images of the body using x-rays. X-ray passed through a cross-section of the body, and received by detectors on the other side. The internal distribution of the absoptivity of the body tissue is estimated from measurements made by shooting x-ray through the body from different angles. This can be fomulated as a $\mf{A}\mf{x} = \mf{b}$ problem, which is explained in a bit more details in the Exercises section of this chapter.
+    \end{example}
+    \begin{example}
+        \textbf{System identification of linear dynamical systems}: The process of estimating the parameters of a linear dynamical system from records of its input and output data is referred to as \textit{system identification}. This discussed in detail in the Applications section (Section~\ref{sec:ch03-appln}) of this chapter.
+        % Consider the following simple example of a discrete-time linear dynamical system,
+        % \[ y_n = a y_{n-1} + b_0 u_n, \quad 0 \leq n < N \]
+        % Let's assume that we have $N$ measurements of the input $x_n$ and output $y_n$ of the system. If we represent The goal of system identification is to estimate the unknown parameters $a$ and $b_0$ of the system. This can be formulated as a $\mf{A}\mf{x} = \mf{b}$ problem, where $\mf{A}$ is the system matrix, $\mf{x}$ is the vector of unknown parameters, and $\mf{b}$ is the vector of measurements. We will look at a more realistic description in Chapter~\ref{p03-chp:statsest} on Statistical Estimation.
+    \end{example}
+\end{boxedstuff}
 
-\section{Geometry of linear equations}\label{sec:ch03-geom-lin-eqn}
+\section{Solutions of linear equations}\label{sec:ch03-soln-lineq}
+We will not look at the procedure for solving a system of linear equations, but rather understand the different possible solution(s) to a system of linear equations, and how the properties of the matrix $\mf{A}$ and the vector $\mf{b}$ determine the solution(s) of $\mf{A}\mf{x} = \mf{b}$. A system of linear equations can be one of the following three types: (a) unique solution, (b) infinitely many solution, and (c) no solution. We will now look at the conditions under which each of these types of solutions occur.
 
+\subsection{Unique solution}
+A unique solution is possible under two conditions:
+\begin{itemize}
+    \item \textbf{Square, full rank } $\mf{A} \in \mb{R}^{n \times n}$: When $\mf{A}$ is square and full rank, then the span of the columns of $\mf{A}$ is $\mb{R}^n$ and are linearly independent. This implies that the columns of $\mf{A}$ form a basis for $\mb{R}^n$. Thus, any vector in $\mb{R}^n$ can be represents as a linear combination of the columns of $\mf{A}$ and in a unique manner. Thus, there is a unique solution to the system of linear equations. 
+    
+    \item \textbf{Tall, full rank } $\mf{A} \in \mb{R}^{n \times m}$ and $\mf{b} \in \textbf{span}\lc \mf{a}_1, \mf{a}_2, \cdots \mf{a}_m\rc$: When a tall matrix $\mf{A}$ is full rank, then $\text{rank}\lp \mf{A} \rp = m$. The columns of $\mf{A}$ are linearly independent and span a subspace $\mc{S}$ of $\mb{R}^n$ of dimension $m$. The columns of $\mf{A}$ also form basis for the subspace $\mc{S}$. Thus, if $\mf{b}$ is in $\mc{S}$, then a unique linear combination of the columns of $\mf{A}$ would produce $\mf{b}$. But what happens when $\mf{b} \notin \mc{S}$, then what?
+\end{itemize}
 
-\section{Solutions of linear equations}
+The geometry of the unique solution is depicted in Figure \hl{xxx}.
+
+\subsection{Infinitely many solutions}
+
+\subsection{No solution}
 
 
 \section{Revisiting linear independence}
@@ -173,7 +204,7 @@ Control problems are ones where the unknown $\mf{x}$ is the input to a system wh
 \section{Four fundamental subspaces of $\mf{A}$}
 
 
-\section{Applications}
+\section{Applications}\label{sec:ch03-appln}
 
 
 \section{Exercise}
