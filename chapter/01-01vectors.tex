@@ -1181,12 +1181,130 @@ The bottom left plot shows trajectory of the cluster means as the k-means algori
         \]
         Therefore, 
         \[
-        \Vert p(x) + \mf{q}(x) \Vert \leq \Vert p(x) \Vert + \Vert \mf{q}(x) \Vert.
+        \Vert p(x) + q(x) \Vert \leq \Vert p(x) \Vert + \Vert q(x) \Vert.
         \]
         This confirms that the triangle inequality holds.
 
         Since all three properties of a norm (non-negativity, homogeneity, and the triangle inequality) are satisfied, the given function is a valid norm on the vector space $\mc{P}_n$.
+
+        \textcolor{red}{\textbf{Think about it.} Can you propose a few more norms for the vector space $\mc{P}_n$? For example, could the area under the curve of the absolute value of the polynomial function be used as a norm? How about defining an inner product for two polynomials $p\pp{x}$ and $q\pp{x}$ from $\mc{P}_n$? Go ahead, explore some possibilities!}
     \end{boxedstuff}
+
+    \item Consider the following function,
+    \[ f\pp{\mf{x}} = \sum_{i=1}^n w_i \vert x_i \vert, \,\,\, \mf{x} \in \mb{R}^n, w_i \geq 0 \in \mb{R} \forall 1 \leq i \leq n \]
+    Is $f$ a norm? If not, what properties does it lack?
+    
+    \begin{boxedstuff}
+        \vspace{4mm}
+        \textbf{Solution:} To determine whether the given function $f(\mf{x}) = \sum_{i=1}^n w_i x_i^2$ is a valid norm, we need to check whether it satisfies the three properties of a norm:
+
+        \textbf{1. Non-negativity:} 
+        For any vector $\mf{x} = \bmxc x_1 \\ \vdots \\ x_n \emx \in \mathbb{R}^n$, the function
+        \[
+        f(\mf{x}) = \sum_{i=1}^n w_i \vert x_i \vert
+        \]
+        is non-negative because each term in the summation $w_i \vert x_i \vert$ is positive. And, $f\pp{\mf{x}} ? 0$ when $\mf{x} \neq \mf{0}$ (\textcolor{red}{Why?}). Thus, the non-negaivity is satisfied by $f\pp{\mf{x}}$.
+
+        \textbf{2. Homogeneity (Scaling Property):} 
+        Let $c \in \mathbb{R}$ be a scalar, and $\mf{x} \in \mathbb{R}^n$. Then,
+        \[
+        f(c \mf{x}) = \sum_{i=1}^n w_i \vert c x_i \vert = \vert c \vert \sum_{i=1}^n w_i \vert x_i \vert = \vert c \vert f(\mf{x}).
+        \]
+        Thus, homogeneity is also satisfied by $f(\mf{x})$.
+
+        \textbf{3. Triangle Inequality:} 
+        To verify the triangle inequality, we would need to check if for any vectors $\mf{x}, \mf{y} \in \mathbb{R}^n$,
+        \[ \begin{split}
+            f(\mf{x} + \mf{y}) &= \sum_{i=1}^n w_i \vert x_i + y_i \vert \\
+            &\leq \sum_{i=1}^n w_i \pp{\vert x_i \vert + \vert y_i \vert} \quad \quad (by the \text{ Triangle inequality for real numbers}) \\
+            &\leq \sum_{i=1}^n w_i \vert x_i \vert + \sum_{i=1}^n w_i \vert y_i \vert \\
+            &\leq f(\mf{x}) + f(\mf{y}).
+        \end{split} \]
+        The triangle inequality is satisfied by $f\pp{\mf{x}}$.
+
+        Thus, the function $f(\mf{x}) = \sum_{i=1}^n w_i \vert x_i \vert$ is a valid norm.
+
+        \textcolor{red}{\textbf{Think about it.} Will this function still be a valid norm if $w_i \geq 0$ instead of $w_i > 0$?}
+    \end{boxedstuff}
+
+    \item Consider the following function, which is often called the \textit{zero-norm} of a vector $\mf{x} \in \mathbb{R}^n$:
+    \[
+    \Vert \mf{x} \Vert_0 = \sum_{i=1}^n \mathbb{I}\pp{x_i \neq 0}, \,\, \text{where, } \mathbb{I}\pp{A} = \begin{cases} 1 & A \text{ is true,} \\ 0 & A \text{ is false.} \end{cases}  
+    \] 
+    Is the \textit{zero-norm}, which is often used for quantifying the \textit{sparsity} of a vector, a proper norm?
+    
+    \begin{boxedstuff}
+        \vspace{4mm}
+        \textbf{Solution:} Before we investigate this, let's look at what this function measures. It's a measure of the number of non-zero elements in the given vector $\mf{x}$.
+        
+        To determine whether the given \textit{zero-norm} $\Vert \mf{x} \Vert_0$ is a valid norm, we need to check whether it satisfies the three properties of a norm:
+
+        \textbf{1. Non-negativity:} 
+        By definition, $\Vert \mf{x} \Vert_0 = \sum_{i=1}^n \mathbb{I}(x_i \neq 0)$ counts the number of non-zero elements in the vector $\mf{x}$. Since the count of non-zero elements is always a non-negative integer, we have $\Vert \mf{x} \Vert_0 \geq 0$ for all $\mf{x} \in \mathbb{R}^n$. 
+
+        Additionally, $\Vert \mf{x} \Vert_0 = 0$ if and only if $\mf{x}$ is the zero vector (i.e., all elements $x_i = 0$ for $i = 1, \dots, n$). This satisfies the non-negativity condition.
+
+        \textbf{2. Homogeneity (Scaling Property):} 
+        Let $c \in \mathbb{R}$ be a scalar, and $\mf{x} \in \mathbb{R}^n$. For a proper norm, we require that 
+        \[
+        \Vert c \mf{x} \Vert_0 = |c| \Vert \mf{x} \Vert_0.
+        \]
+        However, the \textit{zero-norm} counts only the number of non-zero elements in the vector, and scalar multiplication by $c$ does not change the number of non-zero elements unless $c = 0$. Therefore,
+        \[
+        \Vert c \mf{x} \Vert_0 = \Vert \mf{x} \Vert_0 \quad \text{for } c \neq 0.
+        \]
+        This shows that homogeneity does not hold because we do not get the required scaling by $|c|$.
+
+        \textbf{3. Triangle Inequality:} 
+        For two vectors $\mf{x}, \mf{y} \in \mathbb{R}^n$, the triangle inequality requires that:
+        \[
+        \Vert \mf{x} + \mf{y} \Vert_0 \leq \Vert \mf{x} \Vert_0 + \Vert \mf{y} \Vert_0.
+        \]
+        The \textit{zero-norm} satisfies the triangle inequality because every non-zero element in $\mf{x}$ and $\mf{y}$ will contribute to the count of non-zero elements in $\mf{x} + \mf{y}$. ... Not completed yet.
+
+        % \textbf{Conclusion:} The \textit{zero-norm} $\Vert \mf{x} \Vert_0$ is **not** a valid norm because it fails to satisfy both the homogeneity condition and the triangle inequality. Despite being called a "norm," it is not a proper norm in the mathematical sense.
+
+        % \textcolor{red}{\textbf{Think about it.} Could you modify the \textit{zero-norm} to create a proper norm? What if we use a different definition to capture sparsity while satisfying all norm properties? How might we adjust this function to meet the required conditions?}
+    \end{boxedstuff}
+
+    \item Is the following set of vectors linearly independent?
+    \[ \left\{ \bmx 1 \\ 0 \\ 0 \\ 0 \emx, \bmx 1 \\ 2 \\ 0 \\ 0 \emx , \bmx 1 \\ 1 \\ -1 \\ 1 \emx , \bmx 1 \\ 2 \\ 0 \\ -1 \emx  \right\} \]
+    
+    \begin{boxedstuff}
+        \vspace{4mm}
+        \textbf{Solution:} To check if the given set of vectors is linearly independent, we need to determine whether the only solution to the equation
+        \[
+        c_1 \bmx 1 \\ 0 \\ 0 \\ 0 \emx + c_2 \bmx 1 \\ 2 \\ 0 \\ 0 \emx + c_3 \bmx 1 \\ 1 \\ -1 \\ 1 \emx + c_4 \bmx 1 \\ 2 \\ 0 \\ -1 \emx = \bmx 0 \\ 0 \\ 0 \\ 0 \emx
+        \]
+        is $c_1 = c_2 = c_3 = c_4 = 0$.
+
+        Let's express the system of equations that results from this linear combination:
+        \[
+        \begin{aligned}
+            c_1 + c_2 + c_3 + c_4 &= 0 \\
+            2c_2 + c_3 + 2c_4 &= 0 \\
+            -c_3 &= 0 \\
+            c_3 - c_4 &= 0.
+        \end{aligned}
+        \]
+
+        From the third equation, $-c_3 = 0$, we get $c_3 = 0$. Substituting $c_3 = 0$ into the fourth equation gives $c_4 = 0$.
+
+        Now substitute $c_3 = 0$ and $c_4 = 0$ into the second equation:
+        \[
+        2c_2 = 0 \quad \Rightarrow \quad c_2 = 0.
+        \]
+
+        Finally, substitute $c_2 = 0$, $c_3 = 0$, and $c_4 = 0$ into the first equation:
+        \[
+        c_1 = 0.
+        \]
+
+        Since the only solution is $c_1 = c_2 = c_3 = c_4 = 0$, the given set of vectors is linearly independent.
+
+        \textcolor{red}{\textbf{Think about it.} What is the span of this set? Does this set form the basis for its span? Does it form an orthonormal basis?}
+    \end{boxedstuff}
+
 \end{enumerate}
 
 \section{Exercise}
