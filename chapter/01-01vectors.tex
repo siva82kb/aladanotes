@@ -1056,6 +1056,139 @@ This is demonstrated in Figure~\ref{fig:ch01-kmeans-demo}. The top left plot sho
 
 The bottom left plot shows trajectory of the cluster means as the k-means algorithm iterates repeating the process of updating the cluster means and cluster assingments. The two steps in of the $k$-means algorithm are guaranteed to reduce $J_{clust}$, and thus with each iteration the value of $J_{clust}$ for the current cluster means and cluster assingments will reduce. This is depicted in the bottom right plot, which shows the trend of $J_{clust}$ as a function of the iteration number.
 
+\section{Solved Examples}
+\vspace{-0.5cm}
+\begin{center}
+    \rule{\textwidth}{1pt}
+\end{center}
+
+\begin{enumerate}
+    \item Is the following set a vector space?
+    $$S = \left\{ \mf{x} \, : \, \mf{x} = \bmx x_1 \\ x_2 \emx \in \mathbb{R}^2 \text{ and } a_1x_1 + a_2 x_2 = 0 \right\}$$
+    where $a_1, a_2 \in \mathbb{R}$ are fixed constants.
+    \begin{boxedstuff}
+        \vspace{4mm}
+        \textbf{Solution:} Any element $\mf{x} \in \mb{R}^2$ belong to $S$ only if it satisfies the set memebership condition for this set $S$, $a_1x_1 + a_2 x_2 = 0$. To check if this is a vector space we need to check if this set if closed on scalar multiplication and vector addition.
+
+        \textbf{Closure under scalar multiplication}. Let $\mf{x} = \bmx x_1 \\ x_2 \emx \in S$, then $a_1x_1 + a_2x_2 = 0$. Let $c \in \mathbb{R}$. If this set is closed under scalar multiplication, then the vector $c\mf{x} = \bmx cx_1 \\ cx_2 \emx$ must satisfy the set membership condition. 
+        $$a_1(cx_1) + a_2(cx_2) = c(a_1x_1 + a_2x_2) = 0$$ 
+        Thus, $c\mf{x} \in S$. The set is closed under scalar multiplication.
+
+        \textbf{Closure under vector addition}. Let $\mf{x} = \bmx x_1 \\ x_2 \emx,  \mf{y} = \bmx y_1 \\ y_2 \emx \in S$, then $a_1x_1 + a_2x_2 = 0$ and $a_1y_1 + a_2y_2 = 0$. If this set is closed under vector addition, then the vector $\mf{x} +\mf{y} = \bmx x_1 + y_1 \\ x_2 + y_2 \emx$ must satisfy the set membership condition.
+        $$a_1(x_1 + y_1) + a_2(x_2 + y_2) = (a_1x_1 + a_2x_2) + ((a_1y_1 + a_2y_2)) = 0 + 0 = 0$$ 
+        Thus, $\mf{x} + \mf{y} \in S$. The set is closed under vector addition.
+
+        This set of a vector space.
+
+        \textcolor{red}{\textbf{Think about it.} In fact, this is a subspace of $\mf{R}^2$. Why? If we were to plot the locus of all points of this set in $\mb{R}^2$, what will it look like?}
+    \end{boxedstuff}
+    
+
+    \item Is the following set a vector space?
+    $$S = \left\{ \mf{x} \, \vert \, \mathbf{x} \in \mathbb{R}^n \text{ and } \mathbf{a}^\top \mathbf{x} = b \right\} $$
+    where $\mathbf{a} \in \mathbb{R}^n$ and $b \in \mathbb{R}$ are fixed constants.
+
+    \begin{boxedstuff}
+        \vspace{4mm}
+        \textbf{Solution:} Any element $\mf{x} \in \mb{R}^n$ belongs to $S$ only if it satisfies the set membership condition $\mf{a}^\top \mf{x} = b$. To check if this is a vector space, we need to verify closure under scalar multiplication and vector addition.
+
+        \textbf{Closure under scalar multiplication}. Let $\mf{x} \in S$, then $\mf{a}^\top \mf{x} = b$. Let $c \in \mathbb{R}$. If this set is closed under scalar multiplication, then the vector $c\mf{x}$ must satisfy the set membership condition:
+        $$\mf{a}^\top (c \mf{x}) = c (\mf{a}^\top \mf{x}) = c b$$
+        Since $cb \neq b$ (for nonzero $c$ unless $b = 0$), the set is \textbf{not} closed under scalar multiplication, unless $b = 0$.
+
+        \textbf{Closure under vector addition}. Let $\mf{x}, \mf{y} \in S$, then $\mf{a}^\top \mf{x} = b$ and $\mf{a}^\top \mf{y} = b$. If this set is closed under vector addition, then the vector $\mf{x} + \mf{y}$ must satisfy the set membership condition:
+        $$\mf{a}^\top (\mf{x} + \mf{y}) = \mf{a}^\top \mf{x} + \mf{a}^\top \mf{y} = b + b = 2b$$
+        Thus, $\mf{x} + \mf{y} \in S$ only when $b = 0$.
+
+        Therefore, the set $S$ is \textbf{not} a vector space unless $b = 0$. If $b = 0$, the set forms a subspace of $\mathbb{R}^n$. Note the previous example is a special case of this problem.
+
+        \textcolor{red}{\textbf{Think about it.} What is the shape of this set $S$ in $\mb{R}^n$?}
+    \end{boxedstuff}
+
+    \item Is the following set a vector space?
+    $$S = \left\{ \mf{x} \, \vert \, \mathbf{x} \in \mathbb{R}^n \text{ and } \mathbf{x}^\top \mathbf{x} = 1 \right\}$$
+    
+    \begin{boxedstuff}
+        \vspace{4mm}
+        \textbf{Solution:} Any element $\mf{x} \in \mb{R}^n$ belongs to $S$ only if it satisfies the set membership condition $\mf{x}^\top \mf{x} = 1$. To check if this set is a vector space, we need to check if it is closed under scalar multiplication and vector addition.
+
+        \textbf{Closure under scalar multiplication}. Let $\mf{x} \in S$, then $\mf{x}^\top \mf{x} = 1$. Let $c \in \mathbb{R}$. If this set is closed under scalar multiplication, then the vector $c\mf{x}$ must satisfy the set membership condition:
+        $$ (c\mf{x})^\top (c\mf{x}) = c^2 (\mf{x}^\top \mf{x}) = c^2 \cdot 1 = c^2 $$
+        For $c \neq 1$ or $-1$, $c^2 \neq 1$, which means $c\mf{x} \notin S$. Hence, the set is \textbf{not} closed under scalar multiplication.
+
+        \textbf{Closure under vector addition}. Let $\mf{x}, \mf{y} \in S$, then $\mf{x}^\top \mf{x} = 1$ and $\mf{y}^\top \mf{y} = 1$. If this set is closed under vector addition, then the vector $\mf{x} + \mf{y}$ must satisfy the set membership condition:
+        $$ (\mf{x} + \mf{y})^\top (\mf{x} + \mf{y}) = \mf{x}^\top \mf{x} + 2 \mf{x}^\top \mf{y} + \mf{y}^\top \mf{y} = 1 + 2\mf{x}^\top \mf{y} + 1 = 2 + 2 \mf{x}^\top \mf{y} $$
+        Unless $\mf{x}^\top \mf{y} = -1$, we have $2 + 2\mf{x}^\top \mf{y} \neq 1$, so $\mf{x} + \mf{y} \notin S$. Hence, the set is \textbf{not} closed under vector addition.
+
+        Since the set is neither closed under scalar multiplication nor vector addition, it is \textbf{not} a vector space.
+
+        \textcolor{red}{\textbf{Think about it.} What is the shape of this set $S$ in $\mb{R}^n$?}
+    \end{boxedstuff}
+
+    \item Consider the following set of polynomials of order $n$ or less.
+    \[ \mc{P}_n = \left\{ \sum_{k=0}^n a_k x^k \, \bigg\vert \, a_k \in \mathbb{R} \right\}, \,\, \text{where, } x \in \left[0, 1\right] \]
+    Let's define a scalar multiplication and addition operation on this set as follows:
+    \begin{itemize}
+        \item \textbf{Scalar multiplication:} Let $p\lp x \rp = \sum_{k=0}^n a_k x^k \in \mc{P}_n$. The scalar multiplication of $p\lp x \rp$ is defined as follows,
+        $$c \cdot p\lp x \rp = c \sum_{k=0}^n a_k x^k = \sum_{k=0}^n \lp c a_k \rp x^k $$ 
+        \item \textbf{Polynomial addition:} Let $p\lp x \rp = \sum_{k=0}^n a_k x^k \in \mc{P}_n$ and $q\lp x \rp = \sum_{k=0}^n b_k x^k \in \mc{P}_n$. The addition of $p\lp x \rp$ and $q \lp x \rp$ is defined as follows,
+        $$ p\lp x \rp + q \lp x \rp = \sum_{k=0}^n a_k x^k + \sum_{k=0}^n b_k x^k = \sum_{k=0}^n \lp a_k + b_k \rp x^k $$
+    \end{itemize}
+    The zero polynomial is defined as $0\lp x \rp = 0$ for all $x \in \left[0, 1\right]$, i.e., $a_i = 0, \forall 0 \leq i \leq n$.
+    
+    Show that $\mc{P}_n$ is a vector space.
+
+    \begin{boxedstuff}
+        \vspace{4mm}
+        \textbf{Solution:} Note that the elements of this set are polynomial functions of order $\leq n$ defined over the domain $x \in \left[ 0, 1\right]$. The membership condition is that the coefficients of these polynomial have to real numbers.
+
+        It should be obvious from the definition of the scalar multiplication and addition operations that the set $\mc{P}_n$ is closed under these operations. The coefficients of the scaled polynomial are $x a_k$ which are real numbers, implying that the set is closed under scalar multiplication. The cofficients of for the addition of two polynomials are $a_k + b_k$, which are also real numbers. Thus the set is closed under addition. Thus, $\mc{P}_n$ is a vector space.
+
+        \textcolor{red}{\textbf{Think about it.} Is the set of all polynomials of order strictly less than $n$ (i.e. orders from 0 to $m < n$) form a subspace of $\mc{P}_n$? What about the set of all polynomials of a fixed order $m < n$?} 
+    \end{boxedstuff}
+    
+    \item Is the following function a valid norm of the vector space $\mc{P}_n$?
+    \[ \Vert p\pp{x} \Vert = \sqrt{\sum_{k=0}^{n} a_k^2 }, \quad p\pp{x} = \sum_{k=0}^n a_kx^k \in \mc{P}_n \]
+    
+    \begin{boxedstuff}
+        \vspace{4mm}
+        \textbf{Solution:} To verify whether the given function is a valid norm, we need to check if it satisfies the following properties of a norm:
+
+        \textbf{1. Non-negativity:} 
+        For any polynomial $p(x) = \sum_{k=0}^n a_k x^k$, we have 
+        \[
+        \Vert p(x) \Vert = \sqrt{\sum_{k=0}^{n} a_k^2}.
+        \]
+        Since the sum of squares of real numbers is always non-negative, $\Vert p(x) \Vert \geq 0$ for all $p(x) \in \mc{P}_n$. 
+
+        Additionally, $\Vert p(x) \Vert = 0$ if and only if all coefficients $a_k = 0$ for $k = 0, \dots, n$, which implies that $p(x)$ is the zero polynomial.
+
+        \textbf{2. Homogeneity (Scaling Property):} 
+        Let $c \in \mathbb{R}$ be a scalar, and let $p(x) = \sum_{k=0}^n a_k x^k \in \mc{P}_n$. Then,
+        \[
+        \Vert c p(x) \Vert = \sqrt{\sum_{k=0}^{n} (c a_k)^2} = \sqrt{c^2 \sum_{k=0}^{n} a_k^2} = |c| \sqrt{\sum_{k=0}^{n} a_k^2} = |c| \Vert p(x) \Vert.
+        \]
+        This shows that the norm is homogeneous.
+
+        \textbf{3. Triangle Inequality:} 
+        Let $p(x) = \sum_{k=0}^n a_k x^k$ and $q(x) = \sum_{k=0}^n b_k x^k$ be two polynomials in $\mc{P}_n$. Then,
+        \[
+        \Vert p(x) + q(x) \Vert = \sqrt{\sum_{k=0}^{n} (a_k + b_k)^2}.
+        \]
+        By the triangle inequality for real numbers, we have:
+        \[
+        \sqrt{\sum_{k=0}^{n} (a_k + b_k)^2} \leq \sqrt{\sum_{k=0}^{n} a_k^2} + \sqrt{\sum_{k=0}^{n} b_k^2}.
+        \]
+        Therefore, 
+        \[
+        \Vert p(x) + \mf{q}(x) \Vert \leq \Vert p(x) \Vert + \Vert \mf{q}(x) \Vert.
+        \]
+        This confirms that the triangle inequality holds.
+
+        Since all three properties of a norm (non-negativity, homogeneity, and the triangle inequality) are satisfied, the given function is a valid norm on the vector space $\mc{P}_n$.
+    \end{boxedstuff}
+\end{enumerate}
+
 \section{Exercise}
 \vspace{-0.5cm}
 \begin{center}
