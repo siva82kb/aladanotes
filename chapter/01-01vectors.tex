@@ -1055,6 +1055,7 @@ This is demonstrated in Figure~\ref{fig:ch01-kmeans-demo}. The top left plot sho
 \end{figure}
 
 The bottom left plot shows trajectory of the cluster means as the k-means algorithm iterates repeating the process of updating the cluster means and cluster assingments. The two steps in of the $k$-means algorithm are guaranteed to reduce $J_{clust}$, and thus with each iteration the value of $J_{clust}$ for the current cluster means and cluster assingments will reduce. This is depicted in the bottom right plot, which shows the trend of $J_{clust}$ as a function of the iteration number.
+\newpage
 
 \section{Solved Examples}
 \vspace{-0.5cm}
@@ -1260,11 +1261,18 @@ The bottom left plot shows trajectory of the cluster means as the k-means algori
         \[
         \Vert \mf{x} + \mf{y} \Vert_0 \leq \Vert \mf{x} \Vert_0 + \Vert \mf{y} \Vert_0.
         \]
-        The \textit{zero-norm} satisfies the triangle inequality because every non-zero element in $\mf{x}$ and $\mf{y}$ will contribute to the count of non-zero elements in $\mf{x} + \mf{y}$. ... Not completed yet.
+        This requires us to show that the number of non-zero elements in the sum of two vectors $\mf{x} + \mf{y}$ is less than or equal to the sum of the number of non-zero elements in $\mf{x}$ and $\mf{y}$. There are only two possibilities for the elements of $\mf{x} + \mf{y}$.
+        
+        \textbf{(a) Its non-zero.} If the $^{th}$ element of $\mf{x} + \mf{y}$ is non-zero $x_i + y_i \neq 0$, then it contributes an additional $1$ to $\Vert \mf{x} + \mf{y} \Vert_0$ compared to if $x_i + y_i = 0$. 
+        
+        This can happen under three conditions: (i) $x_i \neq 0, \, y_i = 0$, (ii) $x_i = 0, \, y_i \neq 0$, or (iii) $x_i \neq 0, \, y_i \neq 0$. Conditions (i) and (ii) will contribute $1$ to $\Vert \mf{x} \Vert_0 + \Vert \mf{y} \Vert_0$, while condition (iii) will contribute an additional $2$ to $\Vert \mf{x} \Vert_0 + \Vert \mf{y} \Vert_0$. Thus, under conditions (i) and (ii), $\Vert \,mf{x} + \mf{y} \Vert_0 = \Vert \mf{x} \Vert_0 + \Vert \mf{y} \Vert_0$, but under condition (iii), $\Vert \mf{x} + \mf{y} \Vert_0 < \Vert \mf{x} \Vert_0 + \Vert \mf{y} \Vert_0$.
+        
+        \textbf{(b) Its zero.} If $x_i + y_i = 0$, then the $i^{th}$ does not contribute anything to $\Vert \mf{x} + \mf{y} \Vert_0$. This can happen under two conditions: (i) $x_i = 0, \, y_i = 0$, or (ii) $x_i, y_i \neq 0, \, x_i = - y_i$. In the first case, the $i^{th}$ element of $\mf{x}$ and $\mf{y}$ will not contribute anything to $\Vert \mf{x} \Vert_0$ and $\Vert \mf{y} \Vert_0$, respectively. While in the second case, the non-zero values of the $i^{th}$ elements of $\mf{x}$ and $\mf{y}$ will contribute an additional $2$ to $\Vert \mf{x} \Vert_0 + \Vert \mf{y} \Vert_0$. Thus, under condition (i), $\Vert \mf{x} + \mf{y} \Vert_0 = \Vert \mf{x} \Vert_0 + \Vert \mf{y} \Vert_0$, but under condition (ii), $\Vert \mf{x} + \mf{y} \Vert_0 < \Vert \mf{x} \Vert_0 + \Vert \mf{y} \Vert_0$.
 
-        % \textbf{Conclusion:} The \textit{zero-norm} $\Vert \mf{x} \Vert_0$ is **not** a valid norm because it fails to satisfy both the homogeneity condition and the triangle inequality. Despite being called a "norm," it is not a proper norm in the mathematical sense.
-
-        % \textcolor{red}{\textbf{Think about it.} Could you modify the \textit{zero-norm} to create a proper norm? What if we use a different definition to capture sparsity while satisfying all norm properties? How might we adjust this function to meet the required conditions?}
+        Thus, we see that overall $\Vert \mf{x} + \mf{y} \Vert_0 
+        leq \Vert \mf{x} \Vert_0 + \Vert \mf{y} \Vert_0$, implying that the triangle inequality holds.
+        
+        However, because the \textit{zero-norm} does not satisfy the homogeneity property, it is not a proper norm.
     \end{boxedstuff}
 
     \item Is the following set of vectors linearly independent?
@@ -1304,8 +1312,9 @@ The bottom left plot shows trajectory of the cluster means as the k-means algori
 
         \textcolor{red}{\textbf{Think about it.} What is the span of this set? Does this set form the basis for its span? Does it form an orthonormal basis?}
     \end{boxedstuff}
-
+    
 \end{enumerate}
+\newpage
 
 \section{Exercise}
 \vspace{-0.5cm}
