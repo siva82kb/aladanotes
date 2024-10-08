@@ -1312,7 +1312,268 @@ The bottom left plot shows trajectory of the cluster means as the k-means algori
 
         \textcolor{red}{\textbf{Think about it.} What is the span of this set? Does this set form the basis for its span? Does it form an orthonormal basis?}
     \end{boxedstuff}
+
+    \item For any given $\mf{x} \in \mb{R}^n$, show that,
+    $$ \Vert \mf{x} \Vert_1 \geq \Vert \mf{x} \Vert_2 \geq \Vert \mf{x} \Vert_3 \cdots \geq \Vert \mf{x} \Vert_\infty $$
+
+    \begin{boxedstuff}
+        \vspace{4mm}
+        \textbf{Solution:} We are asked to show that for any vector $\mf{x} \in \mathbb{R}^n$, the norms satisfy the inequality
+        \[
+        \Vert \mf{x} \Vert_1 \geq \Vert \mf{x} \Vert_2 \geq \Vert \mf{x} \Vert_3 \cdots \geq \Vert \mf{x} \Vert_\infty.
+        \]
+        
+        First, recall the definition of the $p$-norms:
+        \[
+        \Vert \mf{x} \Vert_p = \left( \sum_{i=1}^n |x_i|^p \right)^{1/p}.
+        \]
+        Special cases include:
+        \[
+        \Vert \mf{x} \Vert_1 = \sum_{i=1}^n |x_i|, \quad \Vert \mf{x} \Vert_2 = \left( \sum_{i=1}^n |x_i|^2 \right)^{1/2}, \quad \Vert \mf{x} \Vert_\infty = \max_{i} |x_i|.
+        \]
+
+        We will prove the desired inequality by considering two parts:
+
+        \textbf{Part 1: Show that} $\Vert \mf{x} \Vert_1 \geq \Vert \mf{x} \Vert_2$. \\
+        By the Cauchy-Schwarz inequality, we know that:
+        \[
+        \left( \sum_{i=1}^n |x_i| \right)^2 \geq n \sum_{i=1}^n |x_i|^2.
+        \]
+        Taking the square root of both sides gives:
+        \[
+        \sum_{i=1}^n |x_i| \geq \left( \sum_{i=1}^n |x_i|^2 \right)^{1/2}.
+        \]
+        This shows that:
+        \[
+        \Vert \mf{x} \Vert_1 \geq \Vert \mf{x} \Vert_2.
+        \]
+
+        \textbf{Part 2: Show that} $\Vert \mf{x} \Vert_2 \geq \Vert \mf{x} \Vert_\infty$. \\
+        Consider the following:
+        \[
+        \Vert \mf{x} \Vert_2 = \left( \sum_{i=1}^n |x_i|^2 \right)^{1/2}.
+        \]
+        Since each term $|x_i|^2 \geq 0$, it follows that:
+        \[
+        \sum_{i=1}^n |x_i|^2 \geq |x_j|^2 \quad \text{for any} \, j.
+        \]
+        Taking the square root of both sides, we get:
+        \[
+        \Vert \mf{x} \Vert_2 \geq \max_{i} |x_i| = \Vert \mf{x} \Vert_\infty.
+        \]
+
+        \textbf{General case:} For any $1 \leq p < q \leq \infty$, we want to show that $\Vert \mf{x} \Vert_p \geq \Vert \mf{x} \Vert_q$.
+        This result follows from Hölder's inequality, which states that for $p < q$:
+        \[
+        \left( \sum_{i=1}^n |x_i|^q \right)^{1/q} \leq \left( \sum_{i=1}^n |x_i|^p \right)^{1/p}.
+        \]
+        Applying this inequality for $p=1, 2, 3, \dots$, we get:
+        \[
+        \Vert \mf{x} \Vert_1 \geq \Vert \mf{x} \Vert_2 \geq \cdots \geq \Vert \mf{x} \Vert_\infty.
+        \]
+
+        \vspace{2mm}
+        The chain of inequalities
+        \[
+        \Vert \mf{x} \Vert_1 \geq \Vert \mf{x} \Vert_2 \geq \Vert \mf{x} \Vert_3 \geq \cdots \geq \Vert \mf{x} \Vert_\infty
+        \]
+        holds for any vector $\mf{x} \in \mathbb{R}^n$, as shown by the proofs above.
+    \end{boxedstuff}
+
+    \item Consider the linear function $f : \mb{R}^3 \mapsto \mb{R}$. We know the output of the function for the following inputs,
+    \[
+    f\pp{\bmx 1 & 1  & 1\emx^\top} = -2, \quad f\pp{\bmx -1 & 2  & -1\emx^\top} = 1, \quad f\pp{\bmx -1 & 1  & 2\emx^\top} = 4
+    \]
+    Find an input $\mf{x} \in \mb{R}^3$ such that $f\pp{\mf{x}} = 0$.
+
+    \begin{boxedstuff}
+        \vspace{4mm}
+        \textbf{Solution:} We are given that $f$ is a linear function. Therefore, there exists a vector $\mf{a} = \bmx w_1 & w_2 & w_3 \emx^\top \in \mathbb{R}^3$ such that
+        \[
+        f(\mf{x}) = \mf{w}^\top \mf{x} = w_1 x_1 + w_2 x_2 + w_3 x_3.
+        \]
+        Using the given function values, we can form the following system of equations based on the inputs:
+        \[
+        \begin{aligned}
+            w_1 + w_2 + w_3 &= -2, \quad \text{(Equation 1)}\\
+            -w_1 + 2w_2 - w_3 &= 1, \quad \text{(Equation 2)} \\
+            -w_1 + w_2 + 2w_3 &= 4. \quad \text{(Equation 3)}
+        \end{aligned}
+        \]
+
+        This is a system of three linear equations in the three unknowns $w_1, w_2,$ and $w_3$. Let's solve it step by step.
+
+        Let's add Equations 1 and 2:
+        \[
+        (w_1 + w_2 + w_3) + (-w_1 + 2w_2 - w_3) = -2 + 1
+        \]
+        which simplifies to:
+        \[
+        3w_2 = -1 \implies w_2 = -\frac{1}{3}
+        \]
+
+        Now, add equations 1 and 3:
+        \[
+        (w_1 + w_2 + w_3) + (-w_1 + w_2 + 2w_3) = -2 + 4
+        \]
+        which simplifies to:
+        \[
+        2w_2 + 3w_3 = 2. \implies w_3 = \frac{8}{9}
+        \]
+        Thus, we have,
+        \[
+        w_1 = -2 - w_2 - w_3 = - 2 + \frac{1}{3} - \frac{8}{9} = -\frac{23}{9}.
+        \]
+        Thus, the linear function is:
+        \[
+        f(\mf{x}) = -\frac{23}{9} x_1 - \frac{1}{3} x_2 + \frac{8}{9} x_3.
+        \]
+
+        To find an input $\mf{x} \in \mathbb{R}^3$ such that $f(\mf{x}) = 0$, we need to solve $-\frac{4}{3} x_1 - \frac{1}{3} x_2 - \frac{1}{3} x_3 = 0$, which simplifies to:
+        \[
+        -23x_1 -3 x_2 + 8x_3 = 0
+        \]
+        One possible solution is $x_1 = 1, x_2 = \frac{1}{3}, x_3 = 3$. Therefore,
+        \[
+        \mf{x} = \bmx 1 \\ \frac{1}{3} \\ 3 \emx
+        \]
+        is a vector such that $f(\mf{x}) = 0$.
+
+        \textcolor{red}{\textbf{Think about it.} Did we have to solve for $\mf{w}$ to get one possible solution such that $f\pp{\mf{x}} = 0$? What if we only knew $f\pp{\bmx 1 & 1  & 1\emx^\top} = -2, \, f\pp{\bmx -1 & 2  & -1\emx^\top} = 1$?}
+    \end{boxedstuff}
+
+    \item Find the representation of $\mf{x} = \bmx 2 & 1\emx^\top$ in the following bases.
+    \begin{enumerate}
+        \item $\lc \bmx 1 \\ 0\emx, \bmx 0 \\ 1 \emx \rc$
+        \item $\frac{1}{\sqrt{2}}\lc \bmx 1 \\ 1\emx, \frac{1}{\sqrt{2}}\bmx 1 \\ -1 \emx \rc$
+        \item $\lc \bmx 2 \\ 1\emx, \bmx 1 \\ 1 \emx \rc$
+    \end{enumerate}
+
+    \begin{boxedstuff}
+        \vspace{4mm}
+        \textbf{Solution:} We are given $\mf{x} = \bmx 2 & 1 \emx^\top$ and we need to find its representation in different bases.
+
+        \begin{enumerate}
+            \item \textbf{In the basis} $\lc \bmx 1 \\ 0\emx, \bmx 0 \\ 1 \emx \rc$:
+
+            This is the standard basis for $\mathbb{R}^2$, so the coordinates of $\mf{x}$ are simply its components. Therefore, the representation of $\mf{x}$ in this basis is:
+            \[
+            \mf{x} = 2\bmx 1 \\ 0 \emx + 1\bmx 0 \\ 1 \emx.
+            \]
+            Hence, the representation of $\mf{x}$ in this basis is $\bmx 2 \\ 1 \emx$.
+
+            \item \textbf{In the orthonormal basis} $\frac{1}{\sqrt{2}}\lc \bmx 1 \\ 1\emx, \bmx 1 \\ -1\emx \rc$:
+
+            Let the basis vectors be $\mf{v}_1 = \frac{1}{\sqrt{2}} \bmx 1 \\ 1 \emx$ and $\mf{v}_2 = \frac{1}{\sqrt{2}} \bmx 1 \\ -1 \emx$. We need to express $\mf{x}$ as a linear combination of $\mf{v}_1$ and $\mf{v}_2$:
+            \[
+            \mf{x} = c_1 \mf{v}_1 + c_2 \mf{v}_2.
+            \]
+            To find $c_1$ and $c_2$, we take the dot product of $\mf{x}$ with each of the basis vectors:
+            \[
+            c_1 = \mf{v}_1^\top \mf{x} = \frac{1}{\sqrt{2}} \bmx 1 & 1 \emx \bmx 2 \\ 1 \emx = \frac{1}{\sqrt{2}}(2 + 1) = \frac{3}{\sqrt{2}},
+            \]
+            \[
+            c_2 = \mf{v}_2^\top \mf{x} = \frac{1}{\sqrt{2}} \bmx 1 & -1 \emx \bmx 2 \\ 1 \emx = \frac{1}{\sqrt{2}}(2 - 1) = \frac{1}{\sqrt{2}}.
+            \]
+            Therefore, the representation of $\mf{x}$ in this orthonormal basis is $\bmx \frac{3}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \emx$.
+
+            \item \textbf{In the basis} $\lc \bmx 2 \\ 1 \emx, \bmx 1 \\ 1 \emx \rc$:
+
+            Let the basis vectors be $\mf{u}_1 = \bmx 2 \\ 1 \emx$ and $\mf{u}_2 = \bmx 1 \\ 1 \emx$. We want to express $\mf{x}$ as a linear combination of $\mf{u}_1$ and $\mf{u}_2$:
+            \[
+            \mf{x} = d_1 \mf{u}_1 + d_2 \mf{u}_2.
+            \]
+            This leads to the system of equations:
+            \[
+            2d_1 + d_2 = 2,
+            \]
+            \[
+            d_1 + d_2 = 1.
+            \]
+            Solving this system:
+            \[
+            d_1 + d_2 = 1 \quad \Rightarrow \quad d_2 = 1 - d_1,
+            \]
+            \[
+            2d_1 + (1 - d_1) = 2 \quad \Rightarrow \quad 2d_1 + 1 - d_1 = 2 \quad \Rightarrow \quad d_1 = 1,
+            \]
+            \[
+            d_2 = 1 - 1 = 0.
+            \]
+            Therefore, the representation of $\mf{x}$ in this basis is $ \bmx 1 \\ 0 \emx $.
+        \end{enumerate}
+    \end{boxedstuff}
     
+    \item Consider the function $f_i : \mb{R}^n \mapsto \mb{R}$ that selects the $i^{th}$ element of a given vector $\mf{x} \in \mb{R}^n$.
+    \[ f\pp{\mf{x}} = x_i, \text{where} \quad \mf{x} = \bmx x_1 & x_2 \cdots & x_n \emx^\top \]
+    Is this function linear? If so, what is the vector $\mf{w}$ asssociated with this function, such that $f\pp{\mf{x}} = \mf{w}^\top\mf{x}$?
+    \begin{boxedstuff}
+        \vspace{4mm}
+        \textbf{Solution:} To determine if the function \( f_i \) is linear, we need to check if it satisfies the two properties of linearity:
+
+        \textbf{1. Additivity:} For any \( \mf{x}, \mf{y} \in \mathbb{R}^n \):
+        \[
+        f(\mf{x} + \mf{y}) = (x_1 + y_1, x_2 + y_2, \ldots, x_n + y_n)_i = x_i + y_i = f(\mf{x}) + f(\mf{y}).
+        \]
+        Thus, additivity holds.
+
+        \textbf{2. Homogeneity (Scaling Property):} For any scalar \( c \in \mathbb{R} \) and \( \mf{x} \in \mathbb{R}^n \):
+        \[
+        f(c \mf{x}) = f(c \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}) = f\begin{bmatrix} cx_1 \\ cx_2 \\ \vdots \\ cx_n \end{bmatrix} = cx_i = c f(\mf{x}).
+        \]
+        Therefore, homogeneity also holds.
+
+        Since both properties are satisfied, the function \( f_i \) is linear.
+
+        Now, to express \( f(\mf{x}) \) in terms of a vector \( \mf{w} \), we note that:
+        \[
+        f(\mf{x}) = x_i = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \\ \vdots \\ 0 \end{bmatrix}^\top \mf{x},
+        \]
+        where the \( 1 \) is in the \( i^{th} \) position, and all other entries are \( 0 \). Thus, we can define the vector \( \mf{w} \) as:
+        \[
+        \mf{w} = \begin{bmatrix} 0 \\ 0 \\ \vdots \\ 1 \\ \vdots \\ 0 \end{bmatrix} \text{ (with 1 in the \( i^{th} \) position)}.
+        \]
+        
+        In conclusion, the function \( f_i \) is linear, and the associated vector \( \mf{w} \) is the \( i^{th} \) standard basis vector in \( \mathbb{R}^n \).
+    \end{boxedstuff}
+
+    \item Given a set of real numbers $x_1, x_2, \ldots x_n \in \mb{R}$ which are used to the $n$-vector $\mf{x}$. Can you express the mean $\overline{x}$ and variance $\sigma_x^2$ of this set of data using the the standard inner product in $\mb{R}^n$? Note the following,
+    \[ \overline{x} = \frac{1}{n}\sum_{i=1}^n x_i \quad \quad \quad \sigma_x^2 = \frac{1}{n-1}\sum_{i=1}^n \pp{x_i - \overline{x}}^2 \]
+    \begin{boxedstuff}
+        \vspace{4mm}
+        \textbf{Solution:} To express the mean \( \overline{x} \) using the standard inner product, we can represent the vector \( \mf{x} \) as:
+        \[
+        \mf{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}.
+        \]
+        
+        The mean can be computed as:
+        \[
+        \overline{x} = \frac{1}{n} \mf{1}^\top \mf{x}
+        \]
+        where \( \mf{1} = \begin{bmatrix} 1 \\ 1 \\ \vdots \\ 1 \end{bmatrix} \in \mathbb{R}^n \) is the vector of ones. This inner product gives us the sum of all elements of \( \mf{x} \).
+
+        For the variance \( \sigma_x^2 \), we can expand the definition:
+        \[
+        \sigma_x^2 = \frac{1}{n-1} \sum_{i=1}^n (x_i - \overline{x})^2 = \frac{1}{n-1} \sum_{i=1}^n \left( x_i^2 - 2x_i\overline{x} + \overline{x}^2 \right).
+        \]
+
+        Using the inner product again, we have:
+        \[
+        \sum_{i=1}^n x_i^2 = \mf{x}^\top\mf{x} \quad \text{and} \quad 
+        \sum_{i=1}^n x_i = n\overline{x} = \mf{1}^\top\mf{x} \quad \text{and} \quad \sum_{i=1}^n \overline{x} = \frac{1}{n}\mf{1}^\top\mf{x}
+        \]
+
+        Thus, we can rewrite the variance as:
+        \[
+        \sigma_x^2 = \frac{1}{n-1} \left( \mf{x}^\top\mf{x} - \frac{2}{n}\lp \mf{1}^\top \mf{x} \rp^2 + \frac{1}{n}\lp \mf{x}^\top\mf{x} \rp^2 \right)
+        \]
+        Thus, we have
+        \[
+        \overline{x} = \frac{1}{n}\mf{1}^\top \mf{x} \quad \quad \quad 
+        \sigma_x^2 = \frac{1}{n-1} \left( \mf{x}^\top\mf{x} - \frac{1}{n} \lp \mf{1}^\top\mf{x} \rp^2 \right)
+        \]
+    \end{boxedstuff}
+
 \end{enumerate}
 \newpage
 
@@ -1340,7 +1601,7 @@ The bottom left plot shows trajectory of the cluster means as the k-means algori
     \item If $S_1, S_2 \subseteq V$ are subspaces of a vectors space $V$ then, is $S_1 \cap S_2$ a subspace? Is $S_1 \cup S_2$ a subspace? Explain your answers.
 
     \item Consider a basis $B = \left\{\mf{b}_i\right\}_{i=1}^{n}$ of $\mb{R}^n$. Let the vectors $\mf{x}$ and $\mf{x}_b$ be the representations in the standard and $B$ basis respectively. 
-    \[ \mf{x} = \begin{bmatrix*}x_1\\x_2\\\vdots\\x_n\end{bmatrix*} = \sum_{i=1}^{n}x_i\mf{e}_i \,\,\,\,\, \text{and} \,\,\,\,\, \mf{x}_b =  \begin{bmatrix*}x_{b1}\\x_{b2}\\\vdots\\x_{bn}\end{bmatrix*} = \sum_{i=1}^{n}x_{bi}\mf{b}_i \]
+    \[ \mf{x} = \begin{bmatrix*}x_1\\x_2\\\vdots\\x_n\end{bmatrix*} = \sum_{i=1}^{n}x_i\mf{e}_i \quad \text{and} \quad \mf{x}_b =  \begin{bmatrix*}x_{b1}\\x_{b2}\\\vdots\\x_{bn}\end{bmatrix*} = \sum_{i=1}^{n}x_{bi}\mf{b}_i \]
 
     Evaluate the $\left\lVert \mf{x}\right\rVert_2^2$ and $\left\lVert \mf{x}_b\right\rVert_2^2$. Determine what happens to $\left\lVert \mf{x}_b\right\rVert_2^2$ under the following conditions on the basis vectors:
     \begin{enumerate}
