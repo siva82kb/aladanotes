@@ -162,7 +162,6 @@ Control problems are ones where the unknown $\mf{x}$ is the input to a system wh
     \end{example}
 \end{boxedstuff}
 
-
 \subsection{Linear equations in estimation problems}
 Estimation problems are ones where the unknown $\mf{x}$ is the set of parameter associated with a system that cannot be directly observed or measured, adn $\mf{b}$ is the of measureable quantities of the system, and the matrix $\mf{A}$ is the system matrix that determines how the parameters parameters influnce the system's measurable quantities. In estimation problems we are interested in solving $\mf{A}\mf{x} = \mf{b}$, because want to the know the internal parmeters $\mf{x}$ of the system that are responsible for generating the observed quantities $\mf{b}$. Note that unlike the control problems, we cannot modify that system parameters $\mf{x}$; in these problem solving for $\mf{x}$ is a way of knowing something about the system that we cannot directly observe. In these problems, the system matrix and measurements are known, and we ideally would like to have more measurements than the number of parameters associated with the system, as this allow redundancy in the measurements to account for noise in our measurements and obtain more accurate estimates of the system parameters. This corresponds to system matrix is tall in this case ($n > m$); when $A$ is full rank, then the outputs are forces to be constrained to lie in a smaller subspace of dimension $m$ in $\mb{R}^n$; these constrains are what help us beat noise when we have multiple measurements. We will discuss this in more detail in Chapter~\ref{p03-chp:statsest} on Statistical Estimation.
 
@@ -189,23 +188,357 @@ A unique solution is possible under two conditions:
 \begin{itemize}
     \item \textbf{Square, full rank } $\mf{A} \in \mb{R}^{n \times n}$: When $\mf{A}$ is square and full rank, then the span of the columns of $\mf{A}$ is $\mb{R}^n$ and are linearly independent. This implies that the columns of $\mf{A}$ form a basis for $\mb{R}^n$. Thus, any vector in $\mb{R}^n$ can be represents as a linear combination of the columns of $\mf{A}$ and in a unique manner. Thus, there is a unique solution to the system of linear equations. 
     
-    \item \textbf{Tall, full rank } $\mf{A} \in \mb{R}^{n \times m}$ and $\mf{b} \in \textbf{span}\lc \mf{a}_1, \mf{a}_2, \cdots \mf{a}_m\rc$: When a tall matrix $\mf{A}$ is full rank, then $\text{rank}\lp \mf{A} \rp = m$. The columns of $\mf{A}$ are linearly independent and span a subspace $\mc{S}$ of $\mb{R}^n$ of dimension $m$. The columns of $\mf{A}$ also form basis for the subspace $\mc{S}$. Thus, if $\mf{b}$ is in $\mc{S}$, then a unique linear combination of the columns of $\mf{A}$ would produce $\mf{b}$. But what happens when $\mf{b} \notin \mc{S}$, then what?
+    \item \textbf{Tall, full rank } $\mf{A} \in \mb{R}^{n \times m}$ and $\mf{b} \in \textbf{span}\lc \mf{a}_1, \mf{a}_2, \cdots \mf{a}_m\rc$: When a tall matrix $\mf{A}$ is full rank, then $\text{rank}\lp \mf{A} \rp = m$. The columns of $\mf{A}$ are linearly independent and span a subspace $\mc{S}$ of $\mb{R}^n$ of dimension $m$. The columns of $\mf{A}$ also form basis for the subspace $\mc{S}$. Thus, if $\mf{b}$ is in $\mc{S}$, then a unique linear combination of the columns of $\mf{A}$ would produce $\mf{b}$. (\textcolor{red}{But what happens when $\mf{b} \notin \mc{S}$, then what?})
 \end{itemize}
 
-The geometry of the unique solution is depicted in Figure \hl{xxx}.
+Thus, when a matrix is full column rank and $\mf{b}$ is in the span of the columns of $\mf{A}$, then the system of equations has a unique solution. The geometry of the unique solution is depicted in Figure \hl{xxx}.
 
 \subsection{Infinitely many solutions}
+Infinitely many solutions are possible under the condition when $\mf{b} \in \textbf{span}\lc \mf{a}_1, \mf{a}_2, \cdots \mf{a}_m \rc$, and the columns of $\mf{A}$ form a linearly dependent set. This means that the columns of $\mf{A}$ span a subspace of dimension smaller than $m$. In the case of linear equations, if we have more than one solution, then there are infinitely many solutions. Let $\mf{x}_1$ and $\mf{x}_2$ are solutions to the equation $\mf{A}\mf{x} = \mf{b}$. Then all affine combinations (Section~\ref{sec:ch01-lincomb}) of $\mf{x}_1$ and $\mf{x}_2$ will also be solutions of $\mf{A}\mf{x} = \mf{b}$.
+\[ \mf{A}\pp{\alpha_1 \mf{x}_1 + \alpha_2 \mf{x}_2} = \alpha_1\mf{A}\mf{x}_1 + \alpha_2\mf{A}\mf{x}_2 = \alpha_1 \mf{b} + \alpha_2 \mf{b} = \pp{\alpha_1 + \alpha_2} \mf{b}  = \mf{b} \quad\quad \pp{\text{since, } \alpha_1 + \alpha_2 = 1} \]
+
+Thus, when the rank of a matrix $\mf{A}$ is less than its column rank and $\mf{b}$ is in the span of the columns of $\mf{A}$, then we have infinitely many solutions.
 
 \subsection{No solution}
-
+There is no solution to $\mf{A}\mf{x} = \mf{b}$, whenever $\mf{b}$ is not in the span of the columns of $\mf{A}$. 
 
 \section{Revisiting linear independence}
+The concept of linear independence of a set of vectors can be determined by solving a set of linear equations. Let's consider a set of vector $\lc \mf{a}_1, \mf{a}_2, \cdots \mf{a}_m \rc$, where $\mf{a}_i \in \mb{R}^n$. We can find out if this system is linearly independent if the following system of linear equations has a unique solution,
+\[ \mf{A}\mf{x} = \bmx \mf{a}_1 & \mf{a}_2 & \cdots \mf{a}_m \emx \bmxc x_1 \\ x_2 \\ \vdots \\ x_m \emx = \bmxc 0 \\ 0 \\ \vdots \\ 0 \emx = \mf{0}_m \]
+Note that here, the matrix $\mf{A}$ is block row containing the column vectors from the set $\lc \mf{a}_i\rc_{i=1}^m$ as its elements
+The above set of equations has a unique solution if and only if $\mf{x} = \mf{0}_n$ is the only solution. If a non-zero $\mf{x}$ solves the above equation, then there are infinitely many non-zero $\mf{x}$ that will also solve the above equation (\textcolor{red}{Why?}).
 
 \section{Four fundamental subspaces of $\mf{A}$}
+Every matrix $\mf{A} \in \mb{R}^{n \times m}$ represents a linear transformation or map from $\mb{R}^m$ to $\mb{R}^n$. Each matrix has four subspaces associated with it, which are called to the four fundamental subspace of the matrix $\mf{A}$. The four fundamental subspaces of a matrix $\mf{A} \in \mb{R}^{n \times m}$ are: (a) Column space, (b) Row space, (c) Nullspace, and (d) Left nullspace. These four fundamental subspaces allow us to get a deeper undestandinng of the tranformation performed by a matrix $\mf{A}$. We will now look at each of these subspaces in detail.
 
+\subsection{$\mc{C}\lp \mf{A} \rp$ -- Column space of $\mf{A}$}
+The column space is defined as the span of the columns of the matrix $\mf{A}$. It is a subspace of $\mb{R}^{n}$.
+\begin{equation}
+    \mc{C}\lp \mf{A} \rp = \textbf{span}\lc \mf{a}_1, \mf{a}_2, \cdots \mf{a}_m \rc = \lc \mf{A}\mf{x} \,\, : \,\, \mf{x} \in \mb{R}^m \rc \subseteq \mb{R}^n
+    \label{eq:ch-lintrans-colspace}
+\end{equation}
+The columun space is the set of all possible outputs that can be produced by the matrix $\mf{A}$ for all possible inputs $\mf{x} \in \mb{R}^m$. This implies that only those linear equations where $\mf{b}$ belong to the column space $\mc{C}\pp{\mf{A}}$. The dimension of $\mc{C}\pp{\mf{A}}$ is the rank of the matrix $\mf{A}$,
+\[ \textbf{dim}\pp{\mc{C}\pp{\mf{A}}} = \textbf{rank}\pp{\mf{A}} \]
+
+\subsection{$\mc{N}\lp \mf{A} \rp$ -- Nullspace of $\mf{A}$}
+The nullspace is defined as the set of all vectors $\mf{x}$ that are mapped to the zero vector $\mf{0} \in \mb{R}^n$ by the matrix $\mf{A}$. It is a subspace of $\mb{R}^{m}$.
+\begin{equation}
+    \mc{N}\lp \mf{A} \rp = \lc \mf{x} \in \mb{R}^m \,\, : \,\, \mf{A}\mf{x} = \mf{0} \rc \subseteq \mb{R}^m
+    \label{eq:ch-lintrans-nullspace}
+\end{equation}
+Note that,
+\[ \mf{A}\mf{x} = \mf{0} \Longleftrightarrow \mf{x} \in \mc{N}\pp{\mf{A}} \]
+The dimension of $\mc{N}\pp{\mf{A}}$ is the number of free variables in the solution to the system of linear equations $\mf{A}\mf{x} = \mf{0}$. We will look into this in more detail in the next chapter on solving linear equations (Chapter~\ref{chp:lineqsolve}).
+\[ \textbf{dim}\pp{\mc{N}\pp{\mf{A}}} = m - \textbf{rank}\pp{\mf{A}} \]
+
+\subsection{$\mc{C}\lp \mf{A}^\top \rp$ -- Row space of $\mf{A}$}
+The row space is defined as the span of the rows of the matrix $\mf{A}$. It is a subspace of $\mb{R}^{m}$.
+\begin{equation}
+    \mc{C}\lp \mf{A}^\top \rp = \textbf{span}\lc \tilde{\mf{a}}_1^\top, \tilde{\mf{a}}_2^\top, \cdots \tilde{\mf{a}}_n^\top \rc = \lc \mf{A}^\top\mf{y} \,\, : \,\, \mf{y} \in \mb{R}^n \rc \subseteq \mb{R}^m
+    \label{eq:ch-lintrans-rowspace}
+\end{equation}
+Note that the row space belongs to $\mb{R}^m$, as the rows of $\mf{A}$ are in $\mb{R}^m$. Unlike the nullspace of $\mf{A}$, any vector $\mf{x}$ from the row space, when multiplied by $\mf{A}$ will not produce the zero vector.
+\[ \mf{A}\mf{x} \neq \mf{0} \Longleftrightarrow \mf{x} \in \mc{C}\pp{\mf{A}^\top} \]
+The dimension of $\mc{C}\pp{\mf{A}^\top}$ is the rank of the matrix $\mf{A}$.
+\[ \textbf{dim}\pp{\mc{C}\pp{\mf{A}^\top}} = \textbf{rank}\pp{\mf{A}} \]
+
+\subsection{$\mc{N}\lp \mf{A}^\top \rp$ -- Left nullspace of $\mf{A}$}
+You've probably guessed it by now, the left nullspace is defined as the set of all vectors $\mf{y}$ that are mapped to the zero vector $\mf{0} \in \mb{R}^m$ by the matrix $\mf{A}$. It is a subspace of $\mb{R}^{n}$.
+\begin{equation}
+    \mc{N}\lp \mf{A}^\top \rp = \lc \mf{y} \in \mb{R}^n \,\, : \,\, \mf{A}^\top\mf{y} = \mf{0} \rc \subseteq \mb{R}^n
+    \label{eq:ch-lintrans-leftnullspace}
+\end{equation}
+Note that any element $\mf{y}$ from the left nullspace cannot be obtained through $\mf{A}\mf{x}$, i.e., whenever $\mf{b}$ is in the left nullspace, then the linear equation $\mf{A}\mf{x} = \mf{b}$ does not have a solution. Another way to think about the left nullspace is that these are vectors that cannot be reached by $\mf{A}\mf{x}$. 
+
+\noindent The dimension of $\mc{N}\pp{\mf{A}^\top}$ is the number of free variables in the solution to the system of linear equations $\mf{A}^\top\mf{y} = \mf{0}$.
+\[ \textbf{dim}\pp{\mc{N}\pp{\mf{A}^\top}} = n - \textbf{rank}\pp{\mf{A}} \]
 
 \section{Applications}\label{sec:ch03-appln}
+To be done
+\newpage
 
+\section{Solved Examples}
+\vspace{-0.5cm}
+\begin{center}
+    \rule{\textwidth}{1pt}
+\end{center}
+
+\begin{enumerate}
+    \item To be done
+    % \item Consider the following matrices:
+    % \[
+    % \mf{A} = \bmx 1 & 1 & -1 & 0 \\
+    % 0 & 2 & -2 & 1 \\
+    % -3 & 1 & 1 & 3
+    % \emx \quad \text{and} \quad \mf{B} = \bmx 2 & 1 & 1 \\
+    % 1 & -1 & 1 \\
+    % 3 & 2 & 1 \\
+    % 1 & 2 & 1
+    % \emx
+    % \]
+    % \begin{enumerate}
+    %     \item Find the product of the two matrices $\mf{C} = \mf{A}\mf{B}$ using the four views/interpretations of matrix multiplication.
+
+    %     \begin{boxedstuff}
+    %         \vspace{4mm}
+    %         \textbf{Solution:} We will compute $\mf{C} = \mf{A}\mf{B}$ using four different views of matrix multiplication.
+            
+    %         \textbf{View 1: Inner-product view}
+    %         The $ij^{th}$ element of $\mf{C}$ is the inner product of the $i^{th}$ row of $\mf{A}$ and the $j^{th}$ column of $\mf{B}$.
+    %         \[
+    %         \mf{C} = \bmx 0 & -2 & 1 \\
+    %         -3 & -4 & 1 \\
+    %         1 & 4 & 2 \emx
+    %         \]
+    %         \textbf{View 2: Column view}
+    %         The $i^{th}$ column of $\mf{C}$ is the linear combination of the columns of $\mf{A}$, with the coefficients coming from the $i^{th}$ column of $\mf{B}$. Let $\mf{C} = \bmx \mf{c}_1 & \mf{c}_2 & \mf{c}_3 \emx$. Then,
+    %         \[ \mf{c}_1 = \mf{A}\mf{b}_1 = 2\bmx 1 \\ 0 \\ -3\emx + 1\bmx 1 \\ 2 \\ 1\emx + 3\bmx -1 \\ -2 \\ 1\emx + 1\bmx 0 \\ 1 \\ 3\emx = \bmx 0 \\ -3 \\ 1\emx \]
+    %         \[ \mf{c}_2 = \mf{A}\mf{b}_2 = 1\bmx 1 \\ 0 \\ -3\emx - 1\bmx 1 \\ 2 \\ 1\emx + 2\bmx -1 \\ -2 \\ 1\emx + 2\bmx 0 \\ 1 \\ 3\emx = \bmx -2 \\ -4 \\ 4\emx \]
+    %         \[ \mf{c}_3 = \mf{A}\mf{b}_3 = 1\bmx 1 \\ 0 \\ -3\emx + 1\bmx 1 \\ 2 \\ 1\emx + 1\bmx -1 \\ -2 \\ 1\emx + 1\bmx 0 \\ 1 \\ 3\emx = \bmx 1 \\ 1 \\ 2\emx \]
+    %         \textbf{View 3: Row view}
+    %         The $i^{th}$ column of $\mf{C}$ is the linear combination of the columns of $\mf{A}$, with the coefficients coming from the $i^{th}$ column of $\mf{B}$. Let $\mf{C} = \bmx \mf{c}_1 & \mf{c}_2 & \mf{c}_3 \emx$. Then,
+    %         \[ \tilde{\mf{c}}_1^\top = \tilde{\mf{a}}_1^\top \mf{B} = 1\bmx 2 & 1 & 1\emx + 1\bmx 1 & -1 & 1\emx - 1\bmx 3 & 2 & 1\emx + 0\bmx 1 & 2 & 1\emx = \bmx 0 & -2 & 1\emx \]
+    %         \[ \tilde{\mf{c}}_2^\top = \tilde{\mf{a}}_2^\top \mf{B} = 0\bmx 2 & 1 & 1\emx + 2\bmx 1 & -1 & 1\emx - 2\bmx 3 & 2 & 1\emx + 1\bmx 1 & 2 & 1\emx = \bmx -3 & -4 & 1\emx \]
+    %         \[ \tilde{\mf{c}}_3^\top = \tilde{\mf{a}}_3^\top \mf{B}  = -3\bmx 2 & 1 & 1\emx + 1\bmx 1 & -1 & 1\emx + 1\bmx 3 & 2 & 1\emx + 3\bmx 1 & 2 & 1\emx = \bmx 1 & 4 & 2\emx \]
+    %         \textbf{View 4: Outer product view}
+    %         The matrix $C$ can be represented as the sum of $p$ outer product matrices obtained by the outer product of the $i^{th}$ column of $\mf{A}$ and the $i^{th}$ row of $\mf{B}$. Let $\mf{C} = \sum_{i=1}^{p} \mf{a}_i\tilde{\mf{b}}_i^\top$.
+    %         \[ \begin{split} \mf{C} &= 
+    %         \mf{a}_1\tilde{\mf{b}}_1^\top + \mf{a}_2\tilde{\mf{b}}_2^\top + \mf{a}_3\tilde{\mf{b}}_3^\top + \mf{a}_4\tilde{\mf{b}}_4^\top \\
+    %         &= \bmx 1 \\ 0 \\ -3\emx\bmx 2 & 1 & 1\emx + \bmx 1 \\ 2 \\ 1\emx\bmx 1 & -1 & 1\emx + \bmx -1 \\ -2 \\ 1\emx\bmx 3 & 2 & 1\emx + \bmx 0 \\ 1 \\ 3\emx\bmx 1 & 2 & 1\emx \\
+    %         &= \bmx 2 & 1 & 1 \\ 0 & 0 & 0 \\ -6 & -3 & -3 \emx + \bmx 1 & -1 & 1 \\ 2 & -2 & 2 \\ 1 & -1 & 1 \emx + \bmx -3 & -2 & -1 \\ -6 & -4 & 2 \\ 3 & 2 & 1 \emx + \bmx 0 & 0 & 0 \\ 1 & 2 & 1 \\ 3 & 6 & 3 \emx \\
+    %         &= \bmx 0 & -2 & 1 \\
+    %         -3 & -4 & 1 \\
+    %         1 & 4 & 2 \emx
+    %         \end{split} \]
+    %     \end{boxedstuff}
+
+    %     \item If we change $b_{23} = 0$. Can you compute the new matrix $\mf{C}$ without performing the entire matrix multiplication again?
+        
+    %     \begin{boxedstuff}
+    %         \textbf{Solution:} There are different ways in which the terms $b_{23}$ contributes to the matrix $\mf{C}$. From the column view, we know that $b_{23}$ affects the $3^{rd}$ column of $\mf{C}$ by contributing a scaled version of the $2^{nd}$ column of $\mf{A}$; $b_{23}\mf{a}_2$ to be precise. If we change $b_{23}$ to 0, then the new $\mf{C}$ can be obtained by the original $\mf{C}$ by simply subtracting $1 \bmx 1 \\ 2 \\ 1\emx$ from the $3^{rd}$ column of the original $\mf{C}$. Thus, we have,
+    %         \[ \mf{C}_{new} = \bmx 0 & -2 & 0 \\ -3 & -4 & -1 \\ 1 & 4 & 1 \emx \]
+    %     \end{boxedstuff}
+        
+    %     \item If we increase the value of the elements of the 3$^{\text{rd}}$ column of $\mf{A}$ by $1$, how can we compute the new $\mf{C}$ without performing the entire matrix multiplication?
+    %     \begin{boxedstuff}
+    %         \vspace{4mm}
+    %         \textbf{Solution:} We can use the row view of matrix multiplication to find the answer, becuase the $i^{th}$ row of $\mf{A}$ only impacts the $i^{th}$ row of $\mf{C}$. Since, the $3^{rd}$ column is increased by 1, this means that each row of $\mf{C}$ will now have one more of the $3^{rd}$ row of $\mf{B}$ added to it. Thus, we have
+    %         \[ \mf{C}_{new} = \bmx 3 & 0 & 2 \\
+    %         0 & -2 & 2 \\
+    %         4 & 6 & 3 \emx \]
+    %     \end{boxedstuff}
+        
+    %     \item If we insert a new row $\mf{1}^\top$ in $\mf{A}$ after the 2$^{\text{nd}}$ row of $\mf{A}$, how can we compute the new $\mf{C}$ without performing the entire matrix multiplication again?
+    %     \begin{boxedstuff}
+    %         \vspace{4mm}
+    %         \textbf{Solution:} This is quite simple. We will now have an additional row in $\mf{C}$ inserted after the $1^{st}$ row. The second row will be the sum of the rows of $\mf{B}$, and the existing rows of $\mf{C}$ after the first row will moved down by one row. Thus, we have 
+    %         \[ \mf{C}_{new} = \bmx
+    %         0 & -2 & 1 \\
+    %         7 & 4 & 4 \\
+    %         -3 & -4 & 1 \\
+    %         1 & 4 & 2
+    %         \emx \]
+    %     \end{boxedstuff}
+    % \end{enumerate}
+
+    % \item Consider a matrix $\mf{A} \in \mb{R}^{10^6 \times 5}$, and we are interested in computing the product $\mf{A}^\top\mf{A}\mf{A}^\top$. Should you compute the product as $\lp \mf{A}^\top\mf{A} \rp\mf{A}^\top$ or $\mf{A}^\top\lp \mf{A}\mf{A}^\top \rp$? Why?
+
+    % \begin{boxedstuff}
+    %     \vspace{4mm}
+    %     \textbf{Solution:} To decide which form of computation is more efficient (i.e. lower number of additions and multiplications, and memory storage), let's analyze the dimensions of the matrices involved.
+    %     \begin{itemize}
+    %         \item $\mf{A}$ has dimensions $10^6 \times 5$, meaning it has 1 million rows and 5 columns.
+    %         \item $\mf{A}^\top$ has dimensions $5 \times 10^6$, as it's the transpose of $\mf{A}$.
+    %     \end{itemize}
+
+    %     Now, let find the out the number of additions and multiplications required for each option.
+
+    %     \textbf{Option 1}: Compute $\lp \mf{A}^\top \mf{A} \rp \mf{A}^\top$.
+    %     \begin{itemize}
+    %         \item First, calculate $\mf{A}^\top \mf{A}$. This is a $5 \times 5$ matrix, and requires $10^6 \cdot 5^2$ multiplications, and $5^2 \cdot \pp{10^6 - 1}$ additions. Thus, approximately as total of $2 \cdot 5^2 \cdot 10^6$ operations.
+    %         \item Then, compute $\lp \mf{A}^\top \mf{A} \rp \mf{A}^\top$, which requires $5^2 \cdot 10^6$ multiplications and $5 \cdot 4 \cdot 10^6$ additions. Thus, a total of $2 \cdot 5^2 \cdot 10^6$ operations.
+    %         \item Thus, overall we have about $4 \cdot 5^2 \cdot 10^6$ operations.
+    %     \end{itemize}
+
+    %     \textbf{Option 2}: Compute $\mf{A}^\top \lp \mf{A}\mf{A}^\top \rp$.
+    %     \begin{itemize}
+    %         \item First, calculate $\mf{A} \mf{A}^\top$, a $10^6 \times 10^6$ matrix, which requires $5 \cdot 10^6 \cdot 10^6$ multiplications, and $4 \cdot 10^6  \cdot 10^6$ additions.
+    %         \item Then, multiply $\mf{A}^\top$ with this $10^6 \times 10^6$ matrix, which requires $5 \cdot 10^6 \cdot 10^{6}$ multiplications and $5 \cdot 10^6 \cdot \pp{10^6 -1}$ additions.
+    %         \item Thus, overall we have about $4 \cdot 5 \cdot 10^{12}$ operations.
+    %     \end{itemize}
+
+    %     Clearly, \textbf{Option 1} has a much lower computational cost, as it avoids constructing and multiplying large matrices. Hence, you should compute the product as $\lp \mf{A}^\top \mf{A} \rp \mf{A}^\top$.
+
+    %     \textcolor{red}{\textbf{Think about it.} Why is avoiding a $10^6 \times 10^6$ matrix advantageous here?}
+    % \end{boxedstuff}
+    
+    % \item Consider an orthogonal, square matrix $\mf{A} \in \mb{R}^{n \times n}$ and $\mf{B} \in \mb{R}^{n \times m}$. We generate a new matrix $\mf{C} = \mf{A}\mf{B}$. What can we say about the following questions regarding this product?
+    % \begin{enumerate}
+    %     \item How are the columns of $\mf{C}$ related to the columns of $\mf{A}$?
+    %     \begin{boxedstuff}
+    %         \vspace{4mm}
+    %         \textbf{Solution:} The columns of $\mf{C}$ are linear combinations of the columns of $\mf{A}$. The $i^{th}$ column of $\mf{C}$ is given by,
+    %         \[ \mf{c}_i = \sum_{j=1}^n b_{ji} \mf{a}_j \]
+    %         This means that all the columns of $\mf{C}$ are in the span of the columns of the matrix $\mf{A}$.
+    %         \[ \mf{c}_i \in \text{span} \lc \mf{a}_1, \mf{a}_2, \cdots  \mf{a}_n \rc \]
+    %     \end{boxedstuff}
+    %     \item How is the 2-norm of the $i^{th}$ column of $\mf{C}$ related to that of the columns of $\mf{B}$?
+    %     \begin{boxedstuff}
+    %         \vspace{4mm}
+    %         \textbf{Solution:} The square of the 2-norm of $\mf{c}_i$ is given by the following,
+    %         \[ \begin{split}
+    %             \Vert \mf{c}_i \Vert_2^2 = \mf{c}_1^\top\mf{c}_i &= \pp{\sum_{j=1}^n b_{ji} \mf{a}_j}^\top \pp{\sum_{k=1}^n b_{ki} \mf{a}_k} = \pp{\sum_{j=1}^n b_{ji} \mf{a}_j^\top} \pp{\sum_{k=1}^n b_{ki} \mf{a}_k} \\
+    %             &= \sum_{j=1}^n \sum_{k=1}^n b_{ji} b_{ki} \mf{a}_j^\top \mf{a}_k
+    %         \end{split} \]
+    %         We know that $\mf{a}_j^\top \mf{a}_i = \begin{cases} 1 & j = k \\ 0 & j \neq i\end{cases}$. Thus, the above expression simplifies to,
+    %         \[ \Vert \mf{c}_i \Vert_2^2 = \mf{c}_i^\top \mf{c}_i = \sum_{j=1}^n b_{ji}^2 = \Vert \mf{b}_i \Vert_2^2 \]
+            
+    %         This means that the 2-norm of the $i^{th}$ column of $\mf{C}$, denoted as $\mf{c}_i$, is the same as the 2-norm of the $i^{th}$ column of $\mf{B}$. Therefore, the 2-norm of each column of $\mf{C}$ is equal to the corresponding column of $\mf{B}$:
+    %         $$ \Vert \mf{c}_i \Vert_2 = \Vert \mf{b}_i \Vert_2 $$
+        
+    %         \textcolor{red}{\textbf{Think about it.} What can we say about the standard inner product between two columns of $\mf{C}$? Do they have any relationship with the columns of $\mf{B}$?}
+    %     \end{boxedstuff}
+    % \end{enumerate}
+
+    % \item Show that the matrix product $\mf{A}\mf{B}\mf{C}$ can be written as a weighted sum of the outer products of the columns of $\mf{A} \in \mb{R}^{n \times p}$ and rows of $\mf{C} \in \mb{R}^{q \times n}$, with the weights coming from the matrix $\mf{B} \in \mb{R}^{p \times q}$.
+    % \[
+    % \mf{A}\mf{B}\mf{C} = \sum_{l=1}^p \sum_{k=1}^q b_{lk} \mf{a}_l \tilde{\mf{c}}_k^\top
+    % \]
+    % \begin{boxedstuff}
+    %     \vspace{4mm}
+    %     \textbf{Solution:} To show this, we will simply demonstrate that the $ij^{th}$ element of the matrix $\mf{A}\mf{B}\mf{C}$ equals the $ij^{th}$ element of the matrix $\sum_{l=1}^p \sum_{k=1}^q b_{lk} \mf{a}_l \tilde{\mf{c}}_k^\top$.
+
+    %     \textbf{${ij}^{th}$ element of $\mf{A}\mf{B}\mf{C}$.} The $ij^{th}$ element of $\mf{A}\mf{B}\mf{C}$ is given by the inner product of the $i^{th}$ row of $\mf{A}$ and the $j^{th}$ column of $\mf{B}\mf{C} = \mf{D}$. And the $j^{th}$ column of $\mf{B}\mf{C}$ (or $\mf{D}$) $\mf{d}_j$ is the linear combination of the columns of $\mf{B}$, with the coefficients coming from the $j^{th}$ column of $\mf{C}$. Thus, the $ij^{th}$ element of $\mf{A}\mf{B}\mf{C}$ is given by,
+    %     \[ \begin{split}
+    %         \pp{\mf{A}\mf{B}\mf{C}}_{ij} &= \tilde{\mf{a}}_i^\top\mf{d}_j = \tilde{\mf{a}}_i^\top\sum_{k=1}^q c_{kj} \mf{b}_k = \sum_{k=1}^q c_{kj} \tilde{\mf{a}}_i^\top \mf{b}_k = \sum_{l=1}^p \sum_{k=1}^q c_{kj} a_{il} b_{lk} \\
+    %         &= \sum_{l=1}^p \sum_{k=1}^q  b_{lk} a_{il} c_{kj}
+    %     \end{split} \]
+
+    %     \textbf{${ij}^{th}$ element of $\sum_{l=1}^p \sum_{k=1}^q b_{lk} \mf{a}_l \tilde{\mf{c}}_k^\top$.} This is weighted summation of $pq$ outer product matrices. So, the ${ij}^{th}$ element of this matrix will be the weight sum of the ${ij}^{th}$ element of the indiviaul outer product matrices. The ${ij}^{th}$ element of the $lk^{th}$ outer product matrix is given by,
+    %     \[ \pp{\mf{a}_l \tilde{\mf{c}}_k^\top}_{ij} = a_{il}c_{kj} \]
+    %     Thus, the ${ij}^{th}$ element of the weighted sum of the outer product matrices is given by,
+    %     \[ \begin{split}
+    %         \pp{\sum_{l=1}^p \sum_{k=1}^q b_{lk} \mf{a}_l \tilde{\mf{c}}_k^\top}_{ij} &= \sum_{l=1}^p \sum_{k=1}^q b_{lk} \pp{\mf{a}_l \tilde{\mf{c}}_k^\top}_{ij} = \sum_{l=1}^p \sum_{k=1}^q b_{lk} a_{il} c_{kj}\\
+    %         &= \pp{\mf{A}\mf{B}\mf{C}}_{ij}
+    %     \end{split} \]
+    %     Thus, $\mf{A}\mf{B}\mf{C}$ can be written as a weighted sum of the outer products of the columns of $\mf{A}$ and the rows of $\mf{C}$.
+
+    %     \textcolor{red}{\textbf{Think about it.} Are there other ways of demonstrating this? Can you try and find one?}
+    % \end{boxedstuff}
+
+    % \item Prove the following for the matrices $\mf{A}_1, \mf{A}_2, \mf{A}_3, \ldots, \mf{A}_n$:
+    % \[
+    % \lp \mf{A}_1 \mf{A}_2 \mf{A}_3 \ldots \mf{A}_n \rp^\top =  \mf{A}_n^\top \mf{A}_{n-1}^\top \ldots \mf{A}_2^\top \mf{A}_1^\top
+    % \]
+    % \begin{boxedstuff}
+    %     \vspace{4mm}
+    %     \textbf{Solution:} The transpose of a product of two matrices follows the property that:
+    %     \[
+    %     \lp \mf{A}_1 \mf{A}_2 \rp^\top = \mf{A}_2^\top \mf{A}_1^\top
+    %     \]
+    %     Is this true for the product of three matrices?
+    %     \[ \lp \mf{A}_1\mf{A}_2\mf{A}_3\rp^\top = \lp \lp \mf{A}_1\mf{A}_2\rp\mf{A}_3\rp^\top = \mf{A}_3^\top \lp \mf{A}_1\mf{A}_2\rp^\top = \mf{A}_3^\top \mf{A}_2^\top \mf{A}_1^\top \]
+    %     We need to show that this rule generalizes to a product of $n$ matrices. Let's assume that this is true for a product of $n-1$ matrices, i.e.,
+    %     \[ \lp \mf{A}_1 \mf{A}_2 \mf{A}_3 \ldots \mf{A}_{n-1} \rp^\top =  \mf{A}_{n-1}^\top \mf{A}_{n-2}^\top \ldots \mf{A}_2^\top \mf{A}_1^\top \]
+
+    %     Then for the product of $n$ matrices, we have:
+    %     \[ \lp \mf{A}_1 \mf{A}_2 \mf{A}_3 \ldots \mf{A}_n \rp^\top = \lp \lp \mf{A}_1 \mf{A}_2 \mf{A}_3 \ldots \mf{A}_{n-1} \rp \mf{A}_n \rp^\top = \mf{A}_n^\top \lp \mf{A}_1 \mf{A}_2 \mf{A}_3 \ldots \mf{A}_{n-1} \rp^\top = \mf{A}_n^\top \mf{A}_{n-1}^\top \ldots \mf{A}_2^\top \mf{A}_1^\top \]
+
+    %     Thus, we see that the property holds for a product of $n$ matrices if its true for a product of $n-1$ matrices. Because we know this is ture for a product of two matrices, its ture for three matrices, which implies it ture for four matrices, and so on and so forth. Thus, the property holds for the product of any $n$ matrices.
+    % \end{boxedstuff}
+
+    % \item \textbf{Matrix Inversion Lemma}. Consider an invertible matrix $\mf{A}$. The matrix $\mf{A} + \mf{u}\mf{v}^\top$ is invertible if and only if the two vectors $\mf{u}, \mf{v} \neq \mf{0}$, and $\mf{v}^\top\mf{A}^{-1}\mf{u} \neq -1$. Then, the inverse is given by,
+	% \[
+	% \lp \mf{A} + \mf{u}\mf{v}^\top\rp^{-1} = \mf{A}^{-1} - \frac{\mf{A}^{-1}\mf{u}\mf{v}^\top\mf{A}^{-1}}{1 + \mf{v}^{\top}\mf{A}^{-1}\mf{u}}
+	% \]
+    % \begin{boxedstuff}
+    %     \vspace{4mm}
+    %     \textbf{Solution:} The matrix inversion lemma, also known as the Sherman-Morrison formula, provides an efficient way to compute the inverse of a rank-1 update to an invertible matrix $\mf{A}$. Rank one update of a matrix $\mf{A}$ refers to the addition of a matrix of rank 1 to $\mf{A}$; note that every matrix with rank 1 can be expressed as the outer product of two vectors of appropriate lengths (\textcolor{red}{Can you show how?}).
+
+    %     To verify this formula, we simply need to show that if the pre or post-multiplication of $\mf{A} + \mf{u}\mf{v}^\top$ by the right hand side of the formula, we get the identity matrix.
+
+    %     \textbf{Pre-multiplication:}
+    %     \[ 
+    %     \begin{split}
+    %         & \pp{\mf{A}^{-1} - \frac{\mf{A}^{-1}\mf{u}\mf{v}^\top\mf{A}^{-1}}{1 + \mf{v}^{\top}\mf{A}^{-1}\mf{u}}}\pp{\mf{A} + \mf{u}\mf{v}^\top} \\
+    %         &= \mf{A}^{-1}\mf{A} + \mf{A}^{-1}\mf{u}\mf{v}^\top - \frac{\mf{A}^{-1}\mf{u}\mf{v}^\top\mf{A}^{-1}\mf{A}}{1 + \mf{v}^{\top}\mf{A}^{-1}\mf{u}} - \frac{\mf{A}^{-1}\mf{u}\mf{v}^\top\mf{A}^{-1}\mf{u}\mf{v}^\top}{1 + \mf{v}^{\top}\mf{A}^{-1}\mf{u}} \\
+    %         &= \mf{I} + \mf{A}^{-1}\mf{u}\mf{v}^\top - \frac{\mf{A}^{-1}\mf{u}\mf{v}^\top}{1 + \mf{v}^{\top}\mf{A}^{-1}\mf{u}} - \frac{\mf{A}^{-1}\mf{u}\mf{v}^\top\mf{A}^{-1}\mf{u}\mf{v}^\top}{1 + \mf{v}^{\top}\mf{A}^{-1}\mf{u}}
+    %     \end{split}
+    %     \]
+    %     Notice that in the last term $\frac{\mf{A}^{-1}\mf{u}\mf{v}^\top\mf{A}^{-1}\mf{u}\mf{v}^\top}{1 + \mf{v}^{\top}\mf{A}^{-1}\mf{u}}$, there is scalar sitting in the middle of the complicated mess in the numerator. Do you see it? The term $\mf{v}^{\top}\mf{A}^{-1}\mf{u}$ is a scalar and it can be moved to the front of the expression. 
+    %     \[ \frac{\mf{A}^{-1}\mf{u}\mf{v}^\top\mf{A}^{-1}\mf{u}\mf{v}^\top}{1 + \mf{v}^{\top}\mf{A}^{-1}\mf{u}} = \mf{v}^\top\mf{A}^{-1}\mf{u}\frac{\mf{A}^{-1}\mf{u}\mf{v}^\top}{1 + \mf{v}^{\top}\mf{A}^{-1}\mf{u}} \]
+    %     Thus, we now have,
+    %     \[ 
+    %     \begin{split}
+    %         & \pp{\mf{A}^{-1} - \frac{\mf{A}^{-1}\mf{u}\mf{v}^\top\mf{A}^{-1}}{1 + \mf{v}^{\top}\mf{A}^{-1}\mf{u}}}\pp{\mf{A} + \mf{u}\mf{v}^\top} \\
+    %         &= \mf{I} + \mf{A}^{-1}\mf{u}\mf{v}^\top - \frac{\mf{A}^{-1}\mf{u}\mf{v}^\top}{1 + \mf{v}^{\top}\mf{A}^{-1}\mf{u}} - \mf{v}^\top\mf{A}^{-1}\mf{u}\frac{\mf{A}^{-1}\mf{u}\mf{v}^\top}{1 + \mf{v}^{\top}\mf{A}^{-1}\mf{u}} \\
+    %         &= \mf{I} + \mf{A}^{-1}\mf{u}\mf{v}^\top - \mf{A}^{-1}\mf{u}\mf{v}^\top \frac{1 + \mf{v}^{\top}\mf{A}^{-1}\mf{u}}{1 + \mf{v}^{\top}\mf{A}^{-1}\mf{u}}\\
+    %         &= \mf{I} + \mf{A}^{-1}\mf{u}\mf{v}^\top - \mf{A}^{-1}\mf{u}\mf{v}^\top \\
+    %         &= \mf{I}
+    %     \end{split}
+    %     \]
+        
+    %     You can similarly show that the post-multiplication also results in the identity matrix (\textcolor{red}{Can you veryify this?}). Thus, the matrix inversion lemma holds.
+    % \end{boxedstuff}
+
+    % \item Prove that $tr\lp \mf{A}\mf{B} \rp = tr\lp \mf{B}\mf{A} \rp$, where $\mf{A} \in \mb{R}^{n \times d}$ and $\mf{B} \in \mb{R}^{d \times n}$.
+    % \begin{boxedstuff}
+    %     \vspace{4mm}
+    %     \textbf{Solution:} Let's start with the trace of $\mf{A}\mf{B} \in \mb{R}^{n \times n}$.
+    %     \[
+    %     tr\lp \mf{A}\mf{B} \rp = \sum_{i=1}^n \pp{\mf{A}\mf{B}}_{ii}
+    %     \]
+    %     The ${ii}^{th}$ element of $\mf{A}\mf{B}$ is the inner product of the $i^{th}$ row of $\mf{A}$ and the $i^{th}$ column of $\mf{B}$.
+    %     \[
+    %         tr\lp \mf{A}\mf{B} \rp = \sum_{i=1}^n \tilde{\mf{a}}_i^\top\mf{b}_i = \sum_{i=1}^n \sum_{j=1}^d a_{ij}b_{ji}
+    %     \]
+    %     Now, let's now look at the trace of $\mf{B}\mf{A} \in \mb{R}^{d \times d}$:
+    %     \[
+    %     tr\lp \mf{B}\mf{A} \rp = \sum_{i=1}^d \tilde{\mf{b}}_i^\top\mf{a}_i = \sum_{i=1}^d \sum_{j=1}^n b_{ij}a_{ji}
+    %     \]
+    %     Notice the summation expressions for $tr\lp \mf{A}\mf{B} \rp$ and $tr\lp \mf{B}\mf{A} \rp$ are summing the same terms, just indexed differently; the indices $i$ and $j$ are swapped. Therefore:
+    %     \[
+    %     tr\lp \mf{A}\mf{B} \rp = tr\lp \mf{B}\mf{A} \rp
+    %     \]
+    % \end{boxedstuff}
+
+    % \item Show that the diagonal elements of a square matrix $\mf{A}$, such that $\mf{A}^\top = -\mf{A}$, are zero. These are \textit{skew-symmetric} matrices.
+
+    % \begin{boxedstuff}
+    %     \vspace{4mm}
+    %     \textbf{Solution:} A matrix $\mf{A} \in \mathbb{R}^{n \times n}$ is called skew-symmetric if $\mf{A}^\top = -\mf{A}$. We will show that all diagonal elements of $\mf{A}$ must be zero.
+
+    %     Let $\mf{A}$ be a skew-symmetric matrix. The diagonal element at position $(i,i)$ is denoted by $a_{ii}$. By the skew-symmetric property, we have:
+    %     \[
+    %     a_{ii} = (\mf{A})_{ii} = (\mf{A}^\top)_{ii} = (-\mf{A})_{ii} = -a_{ii}
+    %     \]
+    %     The only way this equality can hold is if $a_{ii} = 0$ for all $i$. Therefore, the diagonal elements of a skew-symmetric matrix are zero.
+    % \end{boxedstuff}
+
+    % \item Show that $\mf{x}^\top\mf{A}\mf{x} = 0$ if $\mf{A}$ is a skew-symmetric matrix from $\mb{R}^{n \times n}$ and $\mf{x} \in \mb{R}^n$.
+    % \begin{boxedstuff}
+    %     \vspace{4mm}
+    %     \textbf{Solution:} Let $\mf{A} \in \mathbb{R}^{n \times n}$ be a skew-symmetric matrix, meaning that $\mf{A}^\top = -\mf{A}$. We want to show that for any vector $\mf{x} \in \mathbb{R}^n$, the quadratic form $\mf{x}^\top \mf{A} \mf{x} = 0$.
+
+    %     Consider the expression $\mf{x}^\top \mf{A} \mf{x}$, which is a scalar. We can examine its transpose:
+    %     \[
+    %     \lp \mf{x}^\top \mf{A} \mf{x} \rp^\top = \mf{x}^\top \mf{A}^\top \mf{x}
+    %     \]
+    %     Since $\mf{A}$ is skew-symmetric, $\mf{A}^\top = -\mf{A}$, so:
+    %     \[
+    %     \mf{x}^\top \mf{A}^\top \mf{x} = \mf{x}^\top (-\mf{A}) \mf{x} = -\mf{x}^\top \mf{A} \mf{x}
+    %     \]
+    %     Therefore, we have:
+    %     \[
+    %     \mf{x}^\top \mf{A} \mf{x} = -\mf{x}^\top \mf{A} \mf{x}
+    %     \]
+    %     The only way this equality can hold is if $\mf{x}^\top \mf{A} \mf{x} = 0$.
+
+    %     Thus, for any skew-symmetric matrix $\mf{A}$ and any vector $\mf{x} \in \mathbb{R}^n$, the quadratic form $\mf{x}^\top \mf{A} \mf{x}$ is zero.
+    % \end{boxedstuff}
+
+\end{enumerate}
+\newpage
 
 \section{Exercise}
 \vspace{-0.5cm}

@@ -83,7 +83,7 @@ Matrices are a fundamental concept in linear algebra, and are used in many appli
 \end{itemize}
 
 \vspace{0.2cm}
-\noindent \textbf{Linear transformations:} Matrices are used to represent linear transformations. A linear transformation is a function that maps a vector to another vector, which means these can be use to manipulate vectors. We will have a detailed discussion on this section \hl{xxx}.
+\noindent \textbf{Linear transformations:} Matrices are used to represent linear transformations. A linear transformation is a function that maps a vector to another vector, which means these can be use to manipulate vectors. We will have a detailed discussion on this in the next Chapter (Chapter~\ref{chp:lintrans}).
 
 \section{Matrix operations}
 We will now define some important matrix operations involving matrices. These are the operations that we will use in this course.
@@ -359,9 +359,9 @@ The \textit{rank of a matrix} $\mf{A} \in \mb{R}^{n \times m}$ is the dimension 
 This is also equivalent to saying it is the smallest number of columns or rows of $\mf{A}$ that form  a linearly independent set; basically, the number of linearly independent columns or rows of the matrix $\mf{A}$. A matrix $\mf{A} \in \mb{R}^{n \times m}$ is said to be a \textbf{full rank matrix} if $\text{rank}\pp{\mf{A}} = \min\pp{n, m}$. A matrix is said to be \textbf{rank deficient} if $\text{rank}\pp{\mf{A}} < \min\pp{n, m}$.
 
 \section{Matrix inverse}
-We will talk about matrix inverses in more detail in Chapter \hl{xxx}, but we will conclude this chapter with a provide brief discussion of this concept. Consider a square matrix $\mf{A} \in \mb{R}^{n \times n}$ that is full rank (if so, what is the rank of $\mf{A}$?). A matrix $\mf{B} \in \mb{R}^{n \times n}$ is called the \textit{inverse} of the matrix $\mf{A}$ if and only if $\mf{A}\mf{B} = \mf{B}\mf{A} = \mf{I}_n$. This matrix $\mf{B}$ is denoted by $\mf{A}^{-1}$. 
+We will talk about matrix inverses in more detail in Chapter~\ref{chp:matinv}, but we will conclude this chapter with a provide brief discussion of this concept. Consider a square matrix $\mf{A} \in \mb{R}^{n \times n}$ that is full rank (if so, what is the rank of $\mf{A}$?). A matrix $\mf{B} \in \mb{R}^{n \times n}$ is called the \textit{inverse} of the matrix $\mf{A}$ if and only if $\mf{A}\mf{B} = \mf{B}\mf{A} = \mf{I}_n$. This matrix $\mf{B}$ is denoted by $\mf{A}^{-1}$. 
 
-All full rank square matrices have a unique inverse. These matrices are said to be \textit{invertible} or \textit{non-singular}, which rank deficient square matrices are said to \textit{non-invertible} or \textit{singular}. For a non-singular matrix $\mf{A}$, $\mf{A}$ and $\mf{A}^{-1}$ are inverses of each other. Because both pre- and post-multiplying $\mf{A}^{-1}$ with $\mf{A}$ gives us the identity matrix, we say $\mf{A}^{-1}$ is both the left and right inverse of $\mf{A}$. We will see in Chapter \hl{xxx} that full rectangular matrices can either have non-unique left or right inverses, and not both.
+All full rank square matrices have a unique inverse. These matrices are said to be \textit{invertible} or \textit{non-singular}, which rank deficient square matrices are said to \textit{non-invertible} or \textit{singular}. For a non-singular matrix $\mf{A}$, $\mf{A}$ and $\mf{A}^{-1}$ are inverses of each other. Because both pre- and post-multiplying $\mf{A}^{-1}$ with $\mf{A}$ gives us the identity matrix, we say $\mf{A}^{-1}$ is both the left and right inverse of $\mf{A}$. We will see in Chapter~\ref{chp:matinv} that full rectangular matrices can either have non-unique left or right inverses, and not both.
 
 The inverse of matrix follows the following two properites, which you are en encouraged to demonstrate:
 \begin{itemize}
